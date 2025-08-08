@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="bn" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ক্ষিপ্র কিবোর্ড - দ্রুততম বাংলা টাইপিং অভিজ্ঞতা</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'primary': '#4a7c59',
+                        'primary-light': '#5d9e73',
+                        'primary-dark': '#3e664a',
+                        'secondary': '#eaddcf',
+                        'light': '#fdfbf8',
+                        'dark': '#333333',
+                        'accent': '#d4a373'
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anek+Bangla:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Anek Bangla', sans-serif;
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23eaddcf' fill-opacity='0.2'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+        
+        .bg-pattern {
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%234a7c59' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+    </style>
+</head>
+<body class="antialiased bg-light text-dark">
+    <!-- Header -->
+    <header id="header" class="bg-light/90 backdrop-blur-md sticky top-0 z-50 shadow-lg">
+        <nav class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <div class="flex-shrink-0">
+                    <a href="#home" class="flex items-center gap-3">
+                        <img src="https://raw.githubusercontent.com/rank-coder/khipro-m17n/9ea3d1d6c7afae4d0ca82d1d71e30cec004b2fbb/khipro_logo.png" 
+                             alt="ক্ষিপ্র লোগো" 
+                             class="h-[42px] drop-shadow-sm">
+                        <span class="text-xl font-bold text-primary hidden sm:block">ক্ষিপ্র</span>
+                    </a>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-4">
+                        <a href="#home" class="nav-link relative px-3 py-2 rounded-md text-base font-medium transition-all duration-300 hover:text-primary after:content-[''] after:absolute after:bottom-[-2px] after:left-0 after:w-0 after:h-0.5 after:bg-primary after:transition-all after:duration-300 hover:after:w-full">পরিচিতি</a>
+                        <a href="#installation" class="nav-link relative px-3 py-2 rounded-md text-base font-medium transition-all duration-300 hover:text-primary after:content-[''] after:absolute after:bottom-[-2px] after:left-0 after:w-0 after:h-0.5 after:bg-primary after:transition-all after:duration-300 hover:after:w-full">ইনস্টলেশন</a>
+                        <a href="#community" class="nav-link relative px-3 py-2 rounded-md text-base font-medium transition-all duration-300 hover:text-primary after:content-[''] after:absolute after:bottom-[-2px] after:left-0 after:w-0 after:h-0.5 after:bg-primary after:transition-all after:duration-300 hover:after:w-full">কমিউনিটি</a>
+                        <a href="/docs" class="nav-link relative px-3 py-2 rounded-md text-base font-medium transition-all duration-300 hover:text-primary after:content-[''] after:absolute after:bottom-[-2px] after:left-0 after:w-0 after:h-0.5 after:bg-primary after:transition-all after:duration-300 hover:after:w-full">ডকুমেন্টেশন</a>
+                    </div>
+                </div>
+                <div class="md:hidden">
+                    <button id="mobile-menu-button" aria-expanded="false" aria-controls="mobile-menu" class="inline-flex items-center justify-center p-2 rounded-md text-gray-600 hover:text-primary hover:bg-gray-100 focus:outline-none transition-colors">
+                        <span class="sr-only">Open main menu</span>
+                        <svg id="menu-icon-open" class="h-6 w-6 block" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                        </svg>
+                        <svg id="menu-icon-close" class="h-6 w-6 hidden" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </nav>
+        <div id="mobile-menu" class="md:hidden hidden bg-white py-4">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="#home" class="nav-link block px-3 py-3 rounded-md text-base font-medium transition-all duration-300 hover:text-primary">পরিচিতি</a>
+                <a href="#installation" class="nav-link block px-3 py-3 rounded-md text-base font-medium transition-all duration-300 hover:text-primary">ইনস্টলেশন</a>
+                <a href="#community" class="nav-link block px-3 py-3 rounded-md text-base font-medium transition-all duration-300 hover:text-primary">কমিউনিটি</a>
+                <a href="/docs" class="nav-link block px-3 py-3 rounded-md text-base font-medium transition-all duration-300 hover:text-primary">ডকুমেন্টেশন</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section id="home" class="pt-16 pb-24 sm:pt-24 sm:pb-32">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="max-w-4xl mx-auto text-center">
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-gray-900">
+                        <span class="block text-primary">বাংলা টাইপিংয়ে সেরা অভিজ্ঞতার জন্য একটি উদ্যোগ</span>
+                    </h1>
+                    <div class="mt-8 text-lg sm:text-xl text-gray-600 space-y-5 text-left max-w-5xl mx-auto">
+                        <p>
+                            ট্র্যাডিশনাল বাংলা ফোনেটিক টাইপিংয়ের জন্য অভ্র নিঃসন্দেহে সবচেয়ে জনপ্রিয় এবং বহুল ব্যবহৃত একটি পদ্ধতি। কিন্তু অভ্রতে দ্রুত টাইপ করার ক্ষেত্রে একটি বড় সীমাবদ্ধতা হলো বার বার শিফট (Shift) কী ব্যবহারের প্রয়োজনীয়তা। এর ফলে লেখার স্বাভাবিক গতি ও ধারাবাহিকতা নষ্ট হয় এবং টাইপিং স্পিড একটি নির্দিষ্ট সীমার পর আর বাড়ানো কঠিন হয়ে পড়ে।
+                        </p>
+                        <p>
+                            এই সমস্যার সমাধানে আমরা চীনের 'পিনইন' (Pinyin) রোমানাইজেশন পদ্ধতি থেকে অনুপ্রাণিত হয়েছি। পিনইন মডেলে কেস-ইনসেনসিটিভ (case-insensitive) ফোনেটিক ম্যাপিং ব্যবহার করা হয়, যার ফলে চীনারা তাদের জটিল ভাষার অক্ষরগুলোকেও ইংরেজির চেয়ে দ্রুত গতিতে টাইপ করতে পারে।
+                        </p>
+                        <p>
+                            ক্ষিপ্র প্রকল্পে আমরা ঠিক এই ধারণাটিই বাংলা টাইপিংয়ে নিয়ে আসার চেষ্টা করছি, যেন শিফট কী-এর ব্যবহার ছাড়াই দ্রুত ও স্বচ্ছন্দ গতিতে বাংলা লেখা যায়।
+                        </p>
+                    </div>
+                    <div class="mt-10 flex flex-wrap gap-4 justify-center">
+                        <a href="#installation" class="bg-primary hover:bg-primary-dark text-white font-semibold px-8 py-4 rounded-lg shadow-md transition-all duration-300 transform hover:-translate-y-0.5 hover:shadow-xl relative overflow-hidden z-10 before:absolute before:top-0 before:left-0 before:w-0 before:h-full before:bg-white/20 before:transition-all before:duration-500 before:z-[-1] hover:before:w-full">ইনস্টল করে দেখুন</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Installation Section -->
+        <section id="installation" class="py-20 sm:py-24 bg-secondary/20">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 relative inline-block pb-2.5 after:content-[''] after:absolute after:bottom-0 after:left-1/2 after:transform after:-translate-x-1/2 after:w-[70px] after:h-0.5 after:bg-primary after:rounded-full">আপনার ডিভাইসে ক্ষিপ্র</h2>
+                    <p class="mt-4 max-w-2xl mx-auto text-lg text-gray-600">
+                        ক্ষিপ্র শুধু একটি সফটওয়্যার নয়, এটি বাংলা টাইপিং-এর একটি নতুন আইডিয়া। আনুষ্ঠানিকভাবে ক্ষিপ্র শুধু লিনাক্সে পাওয়া গেলেও, আমাদের অসাধারণ কমিউনিটির হাত ধরে উইন্ডোজেও এটি বিভিন্নভাবে ব্যবহার করা যাচ্ছে। খুব শীঘ্রই আসছে অ্যান্ড্রয়েড সংস্করণও!
+                    </p>
+                </div>
+                <div class="mt-12 max-w-4xl mx-auto">
+                    <div class="mb-6 border-b border-gray-300 flex justify-center space-x-2 sm:space-x-4" role="tablist">
+                        <button class="tab-button active text-sm sm:text-base font-semibold py-3 px-4 sm:px-6 border-b-2 border-primary text-primary" data-tab="linux" role="tab" aria-selected="true"><i class="fab fa-linux"></i> লিনাক্স</button>
+                        <button class="tab-button text-sm sm:text-base font-semibold py-3 px-4 sm:px-6 border-b-2 border-transparent text-gray-500 hover:text-gray-700 transition-colors" data-tab="windows" role="tab" aria-selected="false"><i class="fab fa-windows"></i> উইন্ডোজ</button>
+                        <button class="tab-button text-sm sm:text-base font-semibold py-3 px-4 sm:px-6 border-b-2 border-transparent text-gray-500 hover:text-gray-700 transition-colors" data-tab="android" role="tab" aria-selected="false"><i class="fab fa-android"></i> অ্যান্ড্রয়েড</button>
+                    </div>
+                    <div id="tab-content" class="mt-8">
+                        <div class="tab-pane active" id="linux" role="tabpanel">
+                            <div class="max-w-3xl mx-auto space-y-4">
+                                <div class="accordion-item bg-white rounded-xl shadow-md overflow-hidden">
+                                    <button class="accordion-header w-full flex justify-between items-center text-left px-6 py-4 font-semibold text-lg transition-all duration-300 hover:bg-secondary/30">
+                                        <span>ধাপ ১: পূর্বশর্ত ইনস্টল করুন</span>
+                                        <span class="accordion-icon transform duration-300 text-primary">▼</span>
+                                    </button>
+                                    <div class="accordion-content text-gray-600 max-h-0 overflow-hidden transition-all duration-400 pl-6 pr-6">
+                                        <div class="pb-6 pt-2">
+                                            <p class="mb-2">ক্ষিপ্র চালানোর জন্য আপনার সিস্টেমে `m17n` ইনস্টল থাকা প্রয়োজন। আপনার ইনপুট মেথড অনুযায়ী `Fcitx-m17n` বা `ibus-m17n` ইনস্টল করুন।</p>
+                                            <p class="mb-4">বুদ্ধিদীপ্ত সাজেশনের জন্য `ibus-typing-booster` ইনস্টল করতে হবে। এক্ষেত্রে `ibus-m17n` ব্যবহার করা ভালো।</p>
+                                            <p class="font-mono text-sm bg-gray-100 p-3 rounded-md">sudo apt install ibus-m17n ibus-typing-booster</p>
+                                            <p class="text-xs mt-2"> (ডেবিয়ান/উবুন্টু ভিত্তিক ডিস্ট্রোর জন্য।)</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="accordion-item bg-white rounded-xl shadow-md overflow-hidden">
+                                    <button class="accordion-header w-full flex justify-between items-center text-left px-6 py-4 font-semibold text-lg transition-all duration-300 hover:bg-secondary/30">
+                                        <span>ধাপ ২: ক্ষিপ্র ইনস্টল করুন</span>
+                                        <span class="accordion-icon transform duration-300 text-primary">▼</span>
+                                    </button>
+                                    <div class="accordion-content text-gray-600 max-h-0 overflow-hidden transition-all duration-400 pl-6 pr-6">
+                                        <div class="pb-6 pt-2">
+                                            <p class="mb-4">নিচের কমান্ডটি টার্মিনালে চালিয়ে দিন। এটি স্বয়ংক্রিয়ভাবে সর্বশেষ সংস্করণ ইনস্টল করে দেবে।</p>
+                                            <div class="relative">
+                                                <pre class="font-mono text-sm bg-gray-800 text-white p-4 rounded-md overflow-x-auto pr-16"><code id="install-script">sudo rm /usr/share/m17n/bn-khipro*.mim; cd ~/; rm -rf khipro-m17n; git clone https://github.com/rank-coder/khipro-m17n.git; cd ~/khipro-m17n; sudo cp bn-khipro*.mim /usr/share/m17n/</code></pre>
+                                                <button id="copy-button" title="কমান্ড কপি করুন" class="absolute top-1/2 right-2 -translate-y-1/2 bg-gray-600 hover:bg-gray-500 text-white p-2 rounded-md transition-colors">
+                                                     <svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" /></svg>
+                                                </button>
+                                            </div>
+                                            <p class="mt-4">ইনস্টলেশন শেষে আপনার কম্পিউটার রিস্টার্ট করুন অথবা লগ-আউট করে আবার লগ-ইন করুন।</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="accordion-item bg-white rounded-xl shadow-md overflow-hidden">
+                                    <button class="accordion-header w-full flex justify-between items-center text-left px-6 py-4 font-semibold text-lg transition-all duration-300 hover:bg-secondary/30">
+                                        <span>ধাপ ৩: কনফিগার করুন</span>
+                                        <span class="accordion-icon transform duration-300 text-primary">▼</span>
+                                    </button>
+                                    <div class="accordion-content text-gray-600 max-h-0 overflow-hidden transition-all duration-400 pl-6 pr-6">
+                                        <div class="pb-6 pt-2">
+                                            <p>সেরা অভিজ্ঞতার জন্য আপনার সিস্টেমের ইনপুট মেথড সেটিংসে গিয়ে 'Bengali (khipro-m17n)' যুক্ত করুন এবং `ibus-typing-booster`-এর সেটিংস README অনুযায়ী কনফিগার করুন।</p>
+                                            <a href="https://github.com/rank-coder/khipro-m17n#%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%A4%E0%A6%BE%E0%A6%B0%E0%A6%BF%E0%A6%A4-%E0%A6%95%E0%A6%A8%E0%A6%AB%E0%A6%BF%E0%A6%97%E0%A6%BE%E0%A6%B0%E0%A7%87%E0%A6%B6%E0%A6%A8" target="_blank" class="text-primary font-semibold mt-4 inline-block hover:underline transition-all">বিস্তারিত কনফিগারেশন দেখুন &rarr;</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane hidden" id="windows" role="tabpanel">
+                            <div class="grid md:grid-cols-2 gap-8">
+                                <div class="bg-white p-6 rounded-2xl shadow-md transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
+                                    <div class="flex items-center mb-4">
+                                        <div class="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-white mr-3">
+                                            <i class="fab fa-windows"></i>
+                                        </div>
+                                        <h3 class="text-xl font-bold text-primary">Borno কীবোর্ডে ক্ষিপ্র</h3>
+                                    </div>
+                                    <p class="mt-2 text-gray-600">Codepotro-এর জনপ্রিয় কীবোর্ড Borno Native-এর নতুন সংস্করণে ক্ষিপ্র লেআউট বিল্ট-ইন থাকছে।</p>
+                                    <ol class="mt-4 space-y-2 text-sm list-decimal list-inside">
+                                        <li>Codepotro-এর টেলিগ্রাম সাপোর্ট গ্রুপ থেকে সর্বশেষ সংস্করণ ডাউনলোড করুন।</li>
+                                        <li>অ্যাপ্লিকেশনটি ইনস্টল করুন।</li>
+                                        <li>কীবোর্ড সেটিংস থেকে ক্ষিপ্র লেআউট নির্বাচন করুন।</li>
+                                    </ol>
+                                    <a href="https://t.me/codepotro" target="_blank" class="mt-4 bg-primary hover:bg-primary-dark text-white font-semibold px-4 py-2 rounded-lg text-sm inline-block transition-all duration-300">সাপোর্ট গ্রুপ</a>
+                                </div>
+                                <div class="bg-white p-6 rounded-2xl shadow-md transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
+                                    <div class="flex items-center mb-4">
+                                        <div class="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-white mr-3">
+                                            <i class="fas fa-keyboard"></i>
+                                        </div>
+                                        <h3 class="text-xl font-bold text-primary">Nms Kontho-তে ক্ষিপ্র</h3>
+                                    </div>
+                                    <p class="mt-2 text-gray-600">Nms Kontho অ্যাপ্লিকেশনের জন্য তৈরি কাস্টম লেআউট ব্যবহার করুন।</p>
+                                    <ol class="mt-4 space-y-2 text-sm list-decimal list-inside">
+                                        <li><a href="https://nabil-bot.github.io/Kontho/" target="_blank" class="text-primary underline">NMS Kontho</a> ইনস্টল করুন।</li>
+                                        <li><a href="https://github.com/NabilSnigdho/khipro-nms/raw/refs/heads/main/Khipro.nmsLayout" class="text-primary underline">Khipro NMS লেআউট</a> ডাউনলোড করুন।</li>
+                                        <li>ডাউনলোড করা লেআউটটি ইম্পোর্ট করুন।</li>
+                                        <li>NMS Kontho রিস্টার্ট করুন।</li>
+                                        <li>ক্ষিপ্র লেআউট নির্বাচন করুন।</li>
+                                    </ol>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane hidden" id="android" role="tabpanel">
+                            <div class="bg-white p-8 text-center max-w-lg mx-auto rounded-2xl shadow-md transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
+                                <div class="w-16 h-16 rounded-full bg-primary flex items-center justify-center text-white mx-auto mb-6">
+                                    <i class="fab fa-android text-2xl"></i>
+                                </div>
+                                <h3 class="text-2xl font-bold text-primary">অ্যান্ড্রয়েড: কাজ চলছে</h3>
+                                <p class="mt-4 text-gray-600">অ্যান্ড্রয়েড ব্যবহারকারীদের জন্যেও সুখবর আসছে! Codepotro টিম তাদের জনপ্রিয় `Borno Android` কীবোর্ডে ক্ষিপ্র যুক্ত করার কাজ করছে। দ্রুত টাইপিংয়ের অভিজ্ঞতা আপনার হাতের মুঠোয় আসতে আর বেশি দেরি নেই।</p>
+                                <a href="https://play.google.com/store/apps/details?id=com.codepotro.borno.keyboard" target="_blank" class="mt-6 bg-primary hover:bg-primary-dark text-white font-semibold px-6 py-3 rounded-lg shadow-md inline-block transition-all duration-300">Borno Android দেখুন</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Community Section -->
+        <section id="community" class="py-20 sm:py-24 bg-pattern">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 relative inline-block pb-2.5 after:content-[''] after:absolute after:bottom-0 after:left-1/2 after:transform after:-translate-x-1/2 after:w-[70px] after:h-0.5 after:bg-primary after:rounded-full">আমাদের আড্ডায় যোগ দিন</h2>
+                <p class="mt-4 max-w-2xl mx-auto text-lg text-gray-600">
+                    ক্ষিপ্র একটি কমিউনিটি প্রজেক্ট। আপনার যেকোনো প্রশ্ন, আইডিয়া বা সমস্যা নিয়ে সরাসরি চলে আসুন আমাদের আড্ডায়। আপনার অংশগ্রহণই আমাদের এগিয়ে চলার প্রেরণা।
+                </p>
+                <div class="mt-10 grid sm:grid-cols-2 gap-6 max-w-2xl mx-auto">
+                    <a href="https://t.me/khipro" target="_blank" class="bg-white p-6 rounded-xl shadow-md flex items-center space-x-4 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:bg-white/95">
+                        <span class="text-4xl text-primary"><i class="fab fa-telegram"></i></span>
+                        <div class="text-left">
+                            <h3 class="font-semibold text-lg">টেলিগ্রাম গ্রুপ</h3>
+                            <p class="text-gray-500">সরাসরি আলোচনা ও সাপোর্টের জন্য</p>
+                        </div>
+                    </a>
+                    <a href="https://github.com/KhiproKeyboard" target="_blank" class="bg-white p-6 rounded-xl shadow-md flex items-center space-x-4 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:bg-white/95">
+                        <span class="text-4xl text-gray-800"><i class="fab fa-github"></i></span>
+                        <div class="text-left">
+                            <h3 class="font-semibold text-lg">গিটহাব অর্গানাইজেশন</h3>
+                            <p class="text-gray-500">কোড দেখুন এবং উন্নয়নে অংশ নিন</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-primary text-white pb-8">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="border-t border-primary-light mt-10 pt-6 text-center text-sm opacity-80">
+                <p>&copy; ২০২৪ ক্ষিপ্র কিবোর্ড প্রকল্প। সকল স্বত্ব সংরক্ষিত নয়, এটি একটি মুক্ত সফটওয়্যার।</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Mobile Menu Toggle
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const menuIconOpen = document.getElementById('menu-icon-open');
+            const menuIconClose = document.getElementById('menu-icon-close');
+
+            if (mobileMenuButton) {
+                mobileMenuButton.addEventListener('click', () => {
+                    const isExpanded = mobileMenu.classList.toggle('hidden');
+                    mobileMenuButton.setAttribute('aria-expanded', !isExpanded);
+                    menuIconOpen.classList.toggle('hidden');
+                    menuIconClose.classList.toggle('hidden');
+                });
+            }
+
+            // Close mobile menu on link click
+            document.querySelectorAll('#mobile-menu a').forEach(link => {
+                link.addEventListener('click', () => {
+                    if (mobileMenu && !mobileMenu.classList.contains('hidden')) {
+                         mobileMenu.classList.add('hidden');
+                         mobileMenuButton.setAttribute('aria-expanded', 'false');
+                         menuIconOpen.classList.remove('hidden');
+                         menuIconClose.classList.add('hidden');
+                    }
+                });
+            });
+
+            // Tabs Functionality
+            const tabButtons = document.querySelectorAll('.tab-button');
+            const tabPanes = document.querySelectorAll('.tab-pane');
+            tabButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const tabId = button.dataset.tab;
+                    tabButtons.forEach(btn => {
+                        btn.classList.remove('active', 'border-primary', 'text-primary');
+                        btn.setAttribute('aria-selected', 'false');
+                        btn.classList.add('text-gray-500', 'border-transparent');
+                    });
+                    button.classList.add('active', 'border-primary', 'text-primary');
+                    button.setAttribute('aria-selected', 'true');
+                    button.classList.remove('text-gray-500', 'border-transparent');
+
+                    tabPanes.forEach(pane => {
+                        pane.classList.add('hidden');
+                        if (pane.id === tabId) {
+                            pane.classList.remove('hidden');
+                        }
+                    });
+                });
+            });
+
+            // Smooth Accordion for Linux install
+            document.querySelectorAll('#linux .accordion-header').forEach(header => {
+                header.addEventListener('click', () => {
+                    const content = header.nextElementSibling;
+                    const icon = header.querySelector('.accordion-icon');
+                    
+                    const isOpen = content.style.maxHeight && content.style.maxHeight !== '0px';
+                    
+                    if (isOpen) {
+                        content.style.maxHeight = '0px';
+                        icon.style.transform = 'rotate(0deg)';
+                    } else {
+                        content.style.maxHeight = content.scrollHeight + 'px';
+                        icon.style.transform = 'rotate(180deg)';
+                    }
+                    
+                    header.setAttribute('aria-expanded', !isOpen);
+                });
+            });
+
+            // Copy to Clipboard
+            const copyButton = document.getElementById('copy-button');
+            const installScript = document.getElementById('install-script');
+            if (copyButton && installScript) {
+                const originalIcon = copyButton.innerHTML;
+                const copiedIcon = `<svg class="h-4 w-4 text-green-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>`;
+                
+                copyButton.addEventListener('click', () => {
+                    navigator.clipboard.writeText(installScript.textContent.trim()).then(() => {
+                        copyButton.innerHTML = copiedIcon;
+                        setTimeout(() => {
+                            copyButton.innerHTML = originalIcon;
+                        }, 2000);
+                    }).catch(err => {
+                        console.error('Failed to copy command: ', err);
+                    });
+                });
+            }
+
+            // Active Nav Link on Scroll
+            const sections = document.querySelectorAll('main section');
+            const navLinks = document.querySelectorAll('header nav a');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        navLinks.forEach(link => {
+                            link.classList.remove('active', 'text-primary');
+                            link.querySelector('::after') && (link.querySelector('::after').style.width = '0');
+                            if (link.getAttribute('href').substring(1) === entry.target.id) {
+                                link.classList.add('active', 'text-primary');
+                            }
+                        });
+                    }
+                });
+            }, { rootMargin: '-40% 0px -60% 0px' });
+
+            sections.forEach(section => {
+                observer.observe(section);
+            });
+            
+            // Make sure the initial active tab content is visible
+            const activeTab = document.querySelector('.tab-pane.active');
+            if (activeTab) {
+                activeTab.classList.remove('hidden');
+            }
+        });
+    </script>
+</body>
+</html>
