@@ -10,16 +10,28 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
+            darkMode: 'class',
             theme: {
                 extend: {
                     colors: {
+                        // Light mode colors
                         'primary': '#4a7c59',
                         'primary-light': '#5d9e73',
                         'primary-dark': '#3e664a',
                         'secondary': '#eaddcf',
                         'light': '#fdfbf8',
-                        'dark': '#333333',
-                        'accent': '#d4a373'
+                        'dark-text': '#2d2d2d',
+                        'accent': '#d4a373',
+
+                        // Dark mode colors
+                        'dark': '#1a1f1d',
+                        'dark-primary': '#6fa882',
+                        'dark-primary-light': '#7fb892',
+                        'dark-primary-dark': '#5f9472',
+                        'dark-secondary': '#2a2f2d',
+                        'dark-light': '#242924',
+                        'dark-text-light': '#f5f5f5',
+                        'dark-accent': '#c4936a',
                     }
                 }
             }
@@ -33,41 +45,71 @@
     <style>
         body {
             font-family: 'Anek Bangla', sans-serif;
-            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23eaddcf' fill-opacity='0.2'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+
+        .bg-body-pattern {
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23eaddcf' fill-opacity='0.15'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+
+        .dark .bg-body-pattern {
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%236fa882' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
         }
 
         .bg-pattern {
-            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%234a7c59' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%234a7c59' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+
+        .dark .bg-pattern {
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%236fa882' fill-opacity='0.02'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
         }
     </style>
 </head>
 
-<body class="antialiased bg-light text-dark">
+<body class="antialiased bg-light text-dark-text dark:bg-dark dark:text-dark-text-light bg-body-pattern">
+    <script>
+        // On page load or when changing themes, best to add inline in `head` to avoid FOUC
+        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark')
+        } else {
+            document.documentElement.classList.remove('dark')
+        }
+
+        // Listen for changes in the system's color scheme preference
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
+            if (!('theme' in localStorage)) { // Only auto-switch if no explicit theme is set
+                if (event.matches) {
+                    document.documentElement.classList.add('dark');
+                } else {
+                    document.documentElement.classList.remove('dark');
+                }
+            }
+        });
+    </script>
     <!-- Header -->
-    <header id="header" class="bg-light/90 backdrop-blur-md sticky top-0 z-50 shadow-lg">
+    <header id="header" class="bg-primary/90 dark:bg-dark-primary/90 backdrop-blur-md sticky top-0 z-50 shadow-lg">
         <nav class="container mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-20">
                 <div class="flex-shrink-0">
                     <a href="#home" class="flex items-center gap-3">
                         <img src="img/khipro_logo.png" alt="ক্ষিপ্র লোগো" class="h-[42px] drop-shadow-sm">
-                        <span class="text-xl font-bold text-primary hidden sm:block">ক্ষিপ্র</span>
+                        <span class="text-xl font-bold text-white hidden sm:block">ক্ষিপ্র</span>
                     </a>
                 </div>
                 <div class="hidden md:block">
                     <div class="ml-10 flex items-baseline space-x-4">
                         <a href="#home"
-                            class="nav-link relative px-3 py-2 rounded-md text-base font-medium transition-all duration-300 hover:text-primary after:content-[''] after:absolute after:bottom-[-2px] after:left-0 after:w-0 after:h-0.5 after:bg-primary after:transition-all after:duration-300 hover:after:w-full">পরিচিতি</a>
+                            class="nav-link relative px-3 py-2 rounded-md text-base font-medium text-white/90 hover:text-white transition-all duration-300 after:content-[''] after:absolute after:bottom-[-2px] after:left-0 after:w-0 after:h-0.5 after:bg-white after:transition-all after:duration-300 hover:after:w-full">পরিচিতি</a>
                         <a href="#installation"
-                            class="nav-link relative px-3 py-2 rounded-md text-base font-medium transition-all duration-300 hover:text-primary after:content-[''] after:absolute after:bottom-[-2px] after:left-0 after:w-0 after:h-0.5 after:bg-primary after:transition-all after:duration-300 hover:after:w-full">ইনস্টলেশন</a>
+                            class="nav-link relative px-3 py-2 rounded-md text-base font-medium text-white/90 hover:text-white transition-all duration-300 after:content-[''] after:absolute after:bottom-[-2px] after:left-0 after:w-0 after:h-0.5 after:bg-white after:transition-all after:duration-300 hover:after:w-full">ইনস্টলেশন</a>
                         <a href="#community"
-                            class="nav-link relative px-3 py-2 rounded-md text-base font-medium transition-all duration-300 hover:text-primary after:content-[''] after:absolute after:bottom-[-2px] after:left-0 after:w-0 after:h-0.5 after:bg-primary after:transition-all after:duration-300 hover:after:w-full">কমিউনিটি</a>
+                            class="nav-link relative px-3 py-2 rounded-md text-base font-medium text-white/90 hover:text-white transition-all duration-300 after:content-[''] after:absolute after:bottom-[-2px] after:left-0 after:w-0 after:h-0.5 after:bg-white after:transition-all after:duration-300 hover:after:w-full">কমিউনিটি</a>
                         <a href="/docs"
-                            class="nav-link relative px-3 py-2 rounded-md text-base font-medium transition-all duration-300 hover:text-primary after:content-[''] after:absolute after:bottom-[-2px] after:left-0 after:w-0 after:h-0.5 after:bg-primary after:transition-all after:duration-300 hover:after:w-full">ডকুমেন্টেশন</a>
+                            class="nav-link relative px-3 py-2 rounded-md text-base font-medium text-white/90 hover:text-white transition-all duration-300 after:content-[''] after:absolute after:bottom-[-2px] after:left-0 after:w-0 after:h-0.5 after:bg-white after:transition-all after:duration-300 hover:after:w-full">ডকুমেন্টেশন</a>
                     </div>
                 </div>
                 <div class="md:hidden">
                     <button id="mobile-menu-button" aria-expanded="false" aria-controls="mobile-menu"
-                        class="inline-flex items-center justify-center p-2 rounded-md text-gray-600 hover:text-primary hover:bg-gray-100 focus:outline-none transition-colors">
+                        class="inline-flex items-center justify-center p-2 rounded-md text-white/90 hover:text-white hover:bg-primary-light dark:hover:bg-dark-primary-light focus:outline-none transition-colors">
                         <span class="sr-only">Open main menu</span>
                         <svg id="menu-icon-open" class="h-6 w-6 block" xmlns="http://www.w3.org/2000/svg" fill="none"
                             viewBox="0 0 24 24" stroke="currentColor">
@@ -83,29 +125,28 @@
                 </div>
             </div>
         </nav>
-        <div id="mobile-menu" class="md:hidden hidden bg-white py-4">
+        <div id="mobile-menu" class="md:hidden hidden bg-primary dark:bg-dark-primary py-4">
             <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
                 <a href="#home"
-                    class="nav-link block px-3 py-3 rounded-md text-base font-medium transition-all duration-300 hover:text-primary">পরিচিতি</a>
+                    class="nav-link block px-3 py-3 rounded-md text-base font-medium text-white/90 hover:text-white transition-all duration-300">পরিচিতি</a>
                 <a href="#installation"
-                    class="nav-link block px-3 py-3 rounded-md text-base font-medium transition-all duration-300 hover:text-primary">ইনস্টলেশন</a>
+                    class="nav-link block px-3 py-3 rounded-md text-base font-medium text-white/90 hover:text-white transition-all duration-300">ইনস্টলেশন</a>
                 <a href="#community"
-                    class="nav-link block px-3 py-3 rounded-md text-base font-medium transition-all duration-300 hover:text-primary">কমিউনিটি</a>
+                    class="nav-link block px-3 py-3 rounded-md text-base font-medium text-white/90 hover:text-white transition-all duration-300">কমিউনিটি</a>
                 <a href="/docs"
-                    class="nav-link block px-3 py-3 rounded-md text-base font-medium transition-all duration-300 hover:text-primary">ডকুমেন্টেশন</a>
+                    class="nav-link block px-3 py-3 rounded-md text-base font-medium text-white/90 hover:text-white transition-all duration-300">ডকুমেন্টেশন</a>
             </div>
         </div>
     </header>
-
     <main>
         <!-- Hero Section -->
         <section id="home" class="pt-16 pb-24 sm:pt-24 sm:pb-32">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="max-w-4xl mx-auto text-center">
-                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-gray-900">
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-gray-900 dark:text-gray-100">
                         <span class="block text-primary">বাংলা টাইপিংয়ে সেরা অভিজ্ঞতার জন্য একটি উদ্যোগ</span>
                     </h1>
-                    <div class="mt-8 text-lg sm:text-xl text-gray-600 space-y-5 text-left max-w-5xl mx-auto">
+                    <div class="mt-8 text-lg sm:text-xl text-gray-600 dark:text-gray-300 space-y-5 text-left max-w-5xl mx-auto">
                         <p>
                             প্রচলিত বাংলা ফোনেটিক টাইপিংয়ের জন্য অভ্র নিঃসন্দেহে সবচেয়ে জনপ্রিয় এবং বহুল ব্যবহৃত একটি
                             পদ্ধতি। কিন্তু অভ্রতে দ্রুত টাইপ করার ক্ষেত্রে দুটি বড়ো সীমাবদ্ধতা হলো বার বার Shift Key
@@ -141,73 +182,73 @@
         </section>
 
         <!-- Installation Section -->
-        <section id="installation" class="py-20 sm:py-24 bg-secondary/20">
+        <section id="installation" class="py-20 sm:py-24 bg-secondary/20 dark:bg-dark-secondary/20">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="text-center mb-16">
                     <h2
-                        class="text-3xl sm:text-4xl font-bold text-gray-900 relative inline-block pb-2.5 after:content-[''] after:absolute after:bottom-0 after:left-1/2 after:transform after:-translate-x-1/2 after:w-[70px] after:h-0.5 after:bg-primary after:rounded-full">
+                        class="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-gray-100 relative inline-block pb-2.5 after:content-[''] after:absolute after:bottom-0 after:left-1/2 after:transform after:-translate-x-1/2 after:w-[70px] after:h-0.5 after:bg-primary after:transition-all after:duration-300 after:rounded-full">
                         আপনার ডিভাইসে ক্ষিপ্র</h2>
-                    <p class="mt-4 max-w-2xl mx-auto text-lg text-gray-600">
+                    <p class="mt-4 max-w-2xl mx-auto text-lg text-gray-600 dark:text-gray-300">
                         ক্ষিপ্র শুধু একটি সফটওয়্যার নয়, এটি বাংলা টাইপিং-এর একটি নতুন আইডিয়া। আনুষ্ঠানিকভাবে ক্ষিপ্র
                         শুধু লিনাক্সে পাওয়া গেলেও, আমাদের অসাধারণ কমিউনিটির হাত ধরে উইন্ডোজেও এটি বিভিন্নভাবে ব্যবহার
                         করা যাচ্ছে। খুব শীঘ্রই অ্যান্ড্রয়েডেও আসছে!
                     </p>
                 </div>
                 <div class="mt-12 max-w-4xl mx-auto">
-                    <div class="mb-6 border-b border-gray-300 flex justify-center space-x-2 sm:space-x-4"
+                    <div class="mb-6 border-b border-gray-300 dark:border-gray-700 flex justify-center space-x-2 sm:space-x-4"
                         role="tablist">
                         <button
                             class="tab-button active text-sm sm:text-base font-semibold py-3 px-4 sm:px-6 border-b-2 border-primary text-primary"
                             data-tab="linux" role="tab" aria-selected="true"><i class="fab fa-linux"></i>
                             লিনাক্স</button>
                         <button
-                            class="tab-button text-sm sm:text-base font-semibold py-3 px-4 sm:px-6 border-b-2 border-transparent text-gray-500 hover:text-gray-700 transition-colors"
+                            class="tab-button text-sm sm:text-base font-semibold py-3 px-4 sm:px-6 border-b-2 border-transparent text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200 transition-colors"
                             data-tab="windows" role="tab" aria-selected="false"><i class="fab fa-windows"></i>
                             উইন্ডোজ</button>
                         <button
-                            class="tab-button text-sm sm:text-base font-semibold py-3 px-4 sm:px-6 border-b-2 border-transparent text-gray-500 hover:text-gray-700 transition-colors"
+                            class="tab-button text-sm sm:text-base font-semibold py-3 px-4 sm:px-6 border-b-2 border-transparent text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200 transition-colors"
                             data-tab="android" role="tab" aria-selected="false"><i class="fab fa-android"></i>
                             অ্যান্ড্রয়েড</button>
                     </div>
                     <div id="tab-content" class="mt-8">
                         <div class="tab-pane active" id="linux" role="tabpanel">
                             <div class="max-w-3xl mx-auto space-y-4">
-                                <div class="accordion-item bg-white rounded-xl shadow-md overflow-hidden">
+                                <div class="accordion-item bg-white dark:bg-dark-secondary rounded-xl shadow-md overflow-hidden">
                                     <button
-                                        class="accordion-header w-full flex justify-between items-center text-left px-6 py-4 font-semibold text-lg transition-all duration-300 hover:bg-secondary/30">
+                                        class="accordion-header w-full flex justify-between items-center text-left px-6 py-4 font-semibold text-lg transition-all duration-300 hover:bg-secondary/30 dark:hover:bg-dark-light/30">
                                         <span>ধাপ ১: ডিপেন্ডেন্সি ইনস্টল করা</span>
                                         <span class="accordion-icon transform duration-300 text-primary">▼</span>
                                     </button>
                                     <div
-                                        class="accordion-content text-gray-600 max-h-0 overflow-hidden transition-all duration-400 pl-6 pr-6">
+                                        class="accordion-content text-gray-600 dark:text-gray-300 max-h-0 overflow-hidden transition-all duration-400 pl-6 pr-6">
                                         <div class="pb-6 pt-2">
                                             <p class="mb-2">ক্ষিপ্র চালানোর জন্য আপনার সিস্টেমে `m17n` ইনস্টল থাকা
                                                 প্রয়োজন। আপনার ইনপুট মেথড অনুযায়ী `ibus-m17n` বা `Fcitx-m17n` ইনস্টল
                                                 করুন।</p>
                                             <p class="mb-4">স্মার্ট সাজেশনের জন্য `ibus-typing-booster` ইনস্টল করতে হবে।
                                                 এক্ষেত্রে `ibus-m17n` ইনস্টল করা থাকতে হবে।</p>
-                                            <p class="font-mono text-sm bg-gray-100 p-3 rounded-md">sudo apt install
+                                            <p class="font-mono text-sm bg-gray-100 dark:bg-gray-700 p-3 rounded-md">sudo apt install
                                                 ibus-m17n ibus-typing-booster</p>
                                             <p class="text-xs mt-2"> (ডেবিয়ান/উবুন্টু ভিত্তিক ডিস্ট্রোর জন্য।)</p>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="accordion-item bg-white rounded-xl shadow-md overflow-hidden">
+                                <div class="accordion-item bg-white dark:bg-dark-secondary rounded-xl shadow-md overflow-hidden">
                                     <button
-                                        class="accordion-header w-full flex justify-between items-center text-left px-6 py-4 font-semibold text-lg transition-all duration-300 hover:bg-secondary/30">
+                                        class="accordion-header w-full flex justify-between items-center text-left px-6 py-4 font-semibold text-lg transition-all duration-300 hover:bg-secondary/30 dark:hover:bg-dark-light/30">
                                         <span>ধাপ ২: ক্ষিপ্র ইনস্টল করা</span>
                                         <span class="accordion-icon transform duration-300 text-primary">▼</span>
                                     </button>
                                     <div
-                                        class="accordion-content text-gray-600 max-h-0 overflow-hidden transition-all duration-400 pl-6 pr-6">
+                                        class="accordion-content text-gray-600 dark:text-gray-300 max-h-0 overflow-hidden transition-all duration-400 pl-6 pr-6">
                                         <div class="pb-6 pt-2">
                                             <p class="mb-4">নিচের কমান্ডটি টার্মিনালে চালিয়ে দিন। এটি অটোমেটিকভাবে
                                                 সর্বশেষ ভার্শনটি ইনস্টল করে দেবে।</p>
                                             <div class="relative">
                                                 <pre
-                                                    class="font-mono text-sm bg-gray-800 text-white p-4 rounded-md overflow-x-auto pr-16"><code id="install-script">sudo rm /usr/share/m17n/bn-khipro*.mim; cd ~/; rm -rf khipro-m17n; git clone https://github.com/rank-coder/khipro-m17n.git; cd ~/khipro-m17n; sudo cp bn-khipro*.mim /usr/share/m17n/</code></pre>
+                                                    class="font-mono text-sm bg-dark-text dark:bg-dark text-white p-4 rounded-md overflow-x-auto pr-16"><code id="install-script">sudo rm /usr/share/m17n/bn-khipro*.mim; cd ~/; rm -rf khipro-m17n; git clone https://github.com/rank-coder/khipro-m17n.git; cd ~/khipro-m17n; sudo cp bn-khipro*.mim /usr/share/m17n/</code></pre>
                                                 <button id="copy-button" title="কমান্ড কপি করুন"
-                                                    class="absolute top-1/2 right-2 -translate-y-1/2 bg-gray-600 hover:bg-gray-500 text-white p-2 rounded-md transition-colors">
+                                                    class="absolute top-1/2 right-2 -translate-y-1/2 bg-dark-text dark:bg-dark-secondary hover:bg-gray-500 dark:hover:bg-gray-400 text-white p-2 rounded-md transition-colors">
                                                     <svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none"
                                                         viewBox="0 0 24 24" stroke="currentColor">
                                                         <path stroke-linecap="round" stroke-linejoin="round"
@@ -221,14 +262,14 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="accordion-item bg-white rounded-xl shadow-md overflow-hidden">
+                                <div class="accordion-item bg-white dark:bg-dark-secondary rounded-xl shadow-md overflow-hidden">
                                     <button
-                                        class="accordion-header w-full flex justify-between items-center text-left px-6 py-4 font-semibold text-lg transition-all duration-300 hover:bg-secondary/30">
+                                        class="accordion-header w-full flex justify-between items-center text-left px-6 py-4 font-semibold text-lg transition-all duration-300 hover:bg-secondary/30 dark:hover:bg-dark-light/30">
                                         <span>ধাপ ৩: কনফিগার করা</span>
                                         <span class="accordion-icon transform duration-300 text-primary">▼</span>
                                     </button>
                                     <div
-                                        class="accordion-content text-gray-600 max-h-0 overflow-hidden transition-all duration-400 pl-6 pr-6">
+                                        class="accordion-content text-gray-600 dark:text-gray-300 max-h-0 overflow-hidden transition-all duration-400 pl-6 pr-6">
                                         <div class="pb-6 pt-2">
                                             <p>সেরা অভিজ্ঞতার জন্য আপনার সিস্টেমের ইনপুট মেথড সেটিংসে গিয়ে 'Bengali
                                                 (khipro-m17n)' যুক্ত করুন এবং `ibus-typing-booster`-এর সেটিংস README
@@ -245,7 +286,7 @@
                         <div class="tab-pane hidden" id="windows" role="tabpanel">
                             <div class="grid md:grid-cols-2 gap-8">
                                 <div
-                                    class="bg-white p-6 rounded-2xl shadow-md transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
+                                    class="bg-white dark:bg-dark-secondary p-6 rounded-2xl shadow-md transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
                                     <div class="flex items-center mb-4">
                                         <div
                                             class="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-white mr-3">
@@ -253,20 +294,20 @@
                                         </div>
                                         <h3 class="text-xl font-bold text-primary">বর্ণ কিবোর্ডে ক্ষিপ্র</h3>
                                     </div>
-                                    <p class="mt-2 text-gray-600">Codepotro-এর জনপ্রিয় কিবোর্ড Borno Native-এর নতুন
+                                    <p class="mt-2 text-gray-600 dark:text-gray-300">Codepotro-এর জনপ্রিয় কিবোর্ড Borno Native-এর নতুন
                                         ভার্শনে ক্ষিপ্র লেআউট বিল্ট-ইন থাকছে।</p>
                                     <ol class="mt-4 space-y-2 text-sm list-decimal list-inside">
                                         <li>Codepotro-এর টেলিগ্রাম সাপোর্ট গ্রুপ থেকে সর্বশেষ ভার্শনটি ডাউনলোড করুন।
                                         </li>
                                         <li>অ্যাপ্লিকেশনটি ইনস্টল করুন।</li>
-                                        <li>কিবোর্ড সেটিংস থেকে ক্ষিপ্র লেআউট নির্বাচন করুন।</li>
+                                        <li>কibোর্ড সেটিংস থেকে ক্ষিপ্র লেআউট নির্বাচন করুন।</li>
                                     </ol>
                                     <a href="https://t.me/codepotro" target="_blank"
                                         class="mt-4 bg-primary hover:bg-primary-dark text-white font-semibold px-4 py-2 rounded-lg text-sm inline-block transition-all duration-300">সাপোর্ট
                                         গ্রুপ</a>
                                 </div>
                                 <div
-                                    class="bg-white p-6 rounded-2xl shadow-md transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
+                                    class="bg-white dark:bg-dark-secondary p-6 rounded-2xl shadow-md transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
                                     <div class="flex items-center mb-4">
                                         <div
                                             class="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-white mr-3">
@@ -274,7 +315,7 @@
                                         </div>
                                         <h3 class="text-xl font-bold text-primary">Nms Kontho-তে ক্ষিপ্র</h3>
                                     </div>
-                                    <p class="mt-2 text-gray-600">Nms Kontho অ্যাপ্লিকেশনের জন্য তৈরি কাস্টম লেআউট
+                                    <p class="mt-2 text-gray-600 dark:text-gray-300">Nms Kontho অ্যাপ্লিকেশনের জন্য তৈরি কাস্টম লেআউট
                                         ব্যবহার করুন।</p>
                                     <ol class="mt-4 space-y-2 text-sm list-decimal list-inside">
                                         <li><a href="https://nabil-bot.github.io/Kontho/" target="_blank"
@@ -290,13 +331,13 @@
                         </div>
                         <div class="tab-pane hidden" id="android" role="tabpanel">
                             <div
-                                class="bg-white p-8 text-center max-w-lg mx-auto rounded-2xl shadow-md transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
+                                class="bg-white dark:bg-dark-secondary p-8 text-center max-w-lg mx-auto rounded-2xl shadow-md transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
                                 <div
                                     class="w-16 h-16 rounded-full bg-primary flex items-center justify-center text-white mx-auto mb-6">
                                     <i class="fab fa-android text-2xl"></i>
                                 </div>
                                 <h3 class="text-2xl font-bold text-primary">অ্যান্ড্রয়েড: কাজ চলছে</h3>
-                                <p class="mt-4 text-gray-600">অ্যান্ড্রয়েড ব্যবহারকারীদের জন্যেও সুখবর আসছে! Codepotro
+                                <p class="mt-4 text-gray-600 dark:text-gray-300">অ্যান্ড্রয়েড ব্যবহারকারীদের জন্যেও সুখবর আসছে! Codepotro
                                     টিম তাদের জনপ্রিয় `Borno Android` কিবোর্ডে ক্ষিপ্র যুক্ত করার কাজ করছে। দ্রুত
                                     টাইপিংয়ের অভিজ্ঞতা আপনার হাতের মুঠোয় আসতে আর বেশি দেরি নেই।</p>
                                 <a href="https://play.google.com/store/apps/details?id=com.codepotro.borno.keyboard"
@@ -314,27 +355,27 @@
         <section id="community" class="py-20 sm:py-24 bg-pattern">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
                 <h2
-                    class="text-3xl sm:text-4xl font-bold text-gray-900 relative inline-block pb-2.5 after:content-[''] after:absolute after:bottom-0 after:left-1/2 after:transform after:-translate-x-1/2 after:w-[70px] after:h-0.5 after:bg-primary after:rounded-full">
+                    class="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-gray-100 relative inline-block pb-2.5 after:content-[''] after:absolute after:bottom-0 after:left-1/2 after:transform after:-translate-x-1/2 after:w-[70px] after:h-0.5 after:bg-primary after:transition-all after:duration-300 after:rounded-full">
                     আমাদের আড্ডায় যোগ দিন</h2>
-                <p class="mt-4 max-w-2xl mx-auto text-lg text-gray-600">
+                <p class="mt-4 max-w-2xl mx-auto text-lg text-gray-600 dark:text-gray-300">
                     ক্ষিপ্র একটি কমিউনিটি প্রজেক্ট। আপনার যেকোনো প্রশ্ন, আইডিয়া বা সমস্যা নিয়ে সরাসরি চলে আসুন আমাদের
                     আড্ডায়। আপনার অংশগ্রহণই আমাদের এগিয়ে চলার প্রেরণা।
                 </p>
                 <div class="mt-10 grid sm:grid-cols-2 gap-6 max-w-2xl mx-auto">
                     <a href="https://t.me/KhiproKeyboard" target="_blank"
-                        class="bg-white p-6 rounded-xl shadow-md flex items-center space-x-4 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:bg-white/95">
+                        class="bg-white dark:bg-dark-secondary p-6 rounded-xl shadow-md flex items-center space-x-4 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:bg-white/95 dark:hover:bg-dark-secondary/95">
                         <span class="text-4xl text-primary"><i class="fab fa-telegram"></i></span>
                         <div class="text-left">
                             <h3 class="font-semibold text-lg">টেলিগ্রাম গ্রুপ</h3>
-                            <p class="text-gray-500">সরাসরি আলোচনা ও সাপোর্টের জন্য</p>
+                            <p class="text-gray-500 dark:text-gray-300">সরাসরি আলোচনা ও সাপোর্টের জন্য</p>
                         </div>
                     </a>
                     <a href="https://github.com/KhiproKeyboard" target="_blank"
-                        class="bg-white p-6 rounded-xl shadow-md flex items-center space-x-4 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:bg-white/95">
-                        <span class="text-4xl text-gray-800"><i class="fab fa-github"></i></span>
+                        class="bg-white dark:bg-dark-secondary p-6 rounded-xl shadow-md flex items-center space-x-4 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:bg-white/95 dark:hover:bg-dark-secondary/95">
+                        <span class="text-4xl text-gray-800 dark:text-gray-200"><i class="fab fa-github"></i></span>
                         <div class="text-left">
                             <h3 class="font-semibold text-lg">গিটহাব অর্গানাইজেশন</h3>
-                            <p class="text-gray-500">কোড দেখুন এবং উন্নয়নে অংশ নিন</p>
+                            <p class="text-gray-500 dark:text-gray-300">কোড দেখুন এবং উন্নয়নে অংশ নিন</p>
                         </div>
                     </a>
                 </div>
@@ -352,32 +393,74 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function () {
-            // Mobile Menu Toggle
-            const mobileMenuButton = document.getElementById('mobile-menu-button');
-            const mobileMenu = document.getElementById('mobile-menu');
-            const menuIconOpen = document.getElementById('menu-icon-open');
-            const menuIconClose = document.getElementById('menu-icon-close');
+            // Function to load HTML partials
+            async function loadHTML(url, elementId, callback) {
+                try {
+                    const response = await fetch(url);
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`);
+                    }
+                    const html = await response.text();
+                    document.getElementById(elementId).innerHTML = html;
+                    if (callback) callback();
+                } catch (error) {
+                    console.error(`Could not load ${url}:`, error);
+                }
+            }
 
-            if (mobileMenuButton) {
-                mobileMenuButton.addEventListener('click', () => {
-                    const isExpanded = mobileMenu.classList.toggle('hidden');
-                    mobileMenuButton.setAttribute('aria-expanded', !isExpanded);
-                    menuIconOpen.classList.toggle('hidden');
-                    menuIconClose.classList.toggle('hidden');
+            // Initialize header-related scripts
+            function initializeHeaderScripts() {
+                // Mobile Menu Toggle
+                const mobileMenuButton = document.getElementById('mobile-menu-button');
+                const mobileMenu = document.getElementById('mobile-menu');
+                const menuIconOpen = document.getElementById('menu-icon-open');
+                const menuIconClose = document.getElementById('menu-icon-close');
+
+                if (mobileMenuButton) {
+                    mobileMenuButton.addEventListener('click', () => {
+                        const isExpanded = mobileMenu.classList.toggle('hidden');
+                        mobileMenuButton.setAttribute('aria-expanded', !isExpanded);
+                        menuIconOpen.classList.toggle('hidden');
+                        menuIconClose.classList.toggle('hidden');
+                    });
+                }
+
+                // Close mobile menu on link click
+                document.querySelectorAll('#mobile-menu a').forEach(link => {
+                    link.addEventListener('click', () => {
+                        if (mobileMenu && !mobileMenu.classList.contains('hidden')) {
+                            mobileMenu.classList.add('hidden');
+                            mobileMenuButton.setAttribute('aria-expanded', 'false');
+                            menuIconOpen.classList.remove('hidden');
+                            menuIconClose.classList.add('hidden');
+                        }
+                    });
+                });
+
+                // Active Nav Link on Scroll
+                const sections = document.querySelectorAll('main section');
+                const navLinks = document.querySelectorAll('header nav a');
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            navLinks.forEach(link => {
+                                link.classList.remove('active', 'text-white'); // Changed from text-primary to text-white
+                                link.querySelector('::after') && (link.querySelector('::after').style.width = '0');
+                                if (link.getAttribute('href').substring(1) === entry.target.id) {
+                                    link.classList.add('active', 'text-white'); // Changed from text-primary to text-white
+                                }
+                            });
+                        }
+                    });
+                }, { rootMargin: '-40% 0px -60% 0px' });
+
+                sections.forEach(section => {
+                    observer.observe(section);
                 });
             }
 
-            // Close mobile menu on link click
-            document.querySelectorAll('#mobile-menu a').forEach(link => {
-                link.addEventListener('click', () => {
-                    if (mobileMenu && !mobileMenu.classList.contains('hidden')) {
-                        mobileMenu.classList.add('hidden');
-                        mobileMenuButton.setAttribute('aria-expanded', 'false');
-                        menuIconOpen.classList.remove('hidden');
-                        menuIconClose.classList.add('hidden');
-                    }
-                });
-            });
+            // Initialize header scripts now that the header is directly in the DOM
+            initializeHeaderScripts();
 
             // Tabs Functionality
             const tabButtons = document.querySelectorAll('.tab-button');
@@ -405,23 +488,23 @@
 
             // Smooth Accordion for Linux install
             document.querySelectorAll('#linux .accordion-header').forEach(header => {
-                header.addEventListener('click', () => {
-                    const content = header.nextElementSibling;
-                    const icon = header.querySelector('.accordion-icon');
+                    header.addEventListener('click', () => {
+                        const content = header.nextElementSibling;
+                        const icon = header.querySelector('.accordion-icon');
 
-                    const isOpen = content.style.maxHeight && content.style.maxHeight !== '0px';
+                        const isOpen = content.style.maxHeight && content.style.maxHeight !== '0px';
 
-                    if (isOpen) {
-                        content.style.maxHeight = '0px';
-                        icon.style.transform = 'rotate(0deg)';
-                    } else {
-                        content.style.maxHeight = content.scrollHeight + 'px';
-                        icon.style.transform = 'rotate(180deg)';
-                    }
+                        if (isOpen) {
+                            content.style.maxHeight = '0px';
+                            icon.style.transform = 'rotate(0deg)';
+                        } else {
+                            content.style.maxHeight = content.scrollHeight + 'px';
+                            icon.style.transform = 'rotate(180deg)';
+                        }
 
-                    header.setAttribute('aria-expanded', !isOpen);
+                        header.setAttribute('aria-expanded', !isOpen);
+                    });
                 });
-            });
 
             // Copy to Clipboard
             const copyButton = document.getElementById('copy-button');
@@ -441,27 +524,6 @@
                     });
                 });
             }
-
-            // Active Nav Link on Scroll
-            const sections = document.querySelectorAll('main section');
-            const navLinks = document.querySelectorAll('header nav a');
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        navLinks.forEach(link => {
-                            link.classList.remove('active', 'text-primary');
-                            link.querySelector('::after') && (link.querySelector('::after').style.width = '0');
-                            if (link.getAttribute('href').substring(1) === entry.target.id) {
-                                link.classList.add('active', 'text-primary');
-                            }
-                        });
-                    }
-                });
-            }, { rootMargin: '-40% 0px -60% 0px' });
-
-            sections.forEach(section => {
-                observer.observe(section);
-            });
 
             // Make sure the initial active tab content is visible
             const activeTab = document.querySelector('.tab-pane.active');

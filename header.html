@@ -1,0 +1,53 @@
+<!-- Header -->
+    <header id="header" class="bg-primary/90 dark:bg-dark-primary/90 backdrop-blur-md sticky top-0 z-50 shadow-lg">
+        <nav class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <div class="flex-shrink-0">
+                    <a href="#home" class="flex items-center gap-3">
+                        <img src="img/khipro_logo.png" alt="ক্ষিপ্র লোগো" class="h-[42px] drop-shadow-sm">
+                        <span class="text-xl font-bold text-white hidden sm:block">ক্ষিপ্র</span>
+                    </a>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-4">
+                        <a href="#home"
+                            class="nav-link relative px-3 py-2 rounded-md text-base font-medium text-white/90 hover:text-white transition-all duration-300 after:content-[''] after:absolute after:bottom-[-2px] after:left-0 after:w-0 after:h-0.5 after:bg-white after:transition-all after:duration-300 hover:after:w-full">পরিচিতি</a>
+                        <a href="#installation"
+                            class="nav-link relative px-3 py-2 rounded-md text-base font-medium text-white/90 hover:text-white transition-all duration-300 after:content-[''] after:absolute after:bottom-[-2px] after:left-0 after:w-0 after:h-0.5 after:bg-white after:transition-all after:duration-300 hover:after:w-full">ইনস্টলেশন</a>
+                        <a href="#community"
+                            class="nav-link relative px-3 py-2 rounded-md text-base font-medium text-white/90 hover:text-white transition-all duration-300 after:content-[''] after:absolute after:bottom-[-2px] after:left-0 after:w-0 after:h-0.5 after:bg-white after:transition-all after:duration-300 hover:after:w-full">কমিউনিটি</a>
+                        <a href="/docs"
+                            class="nav-link relative px-3 py-2 rounded-md text-base font-medium text-white/90 hover:text-white transition-all duration-300 after:content-[''] after:absolute after:bottom-[-2px] after:left-0 after:w-0 after:h-0.5 after:bg-white after:transition-all after:duration-300 hover:after:w-full">ডকুমেন্টেশন</a>
+                    </div>
+                </div>
+                <div class="md:hidden">
+                    <button id="mobile-menu-button" aria-expanded="false" aria-controls="mobile-menu"
+                        class="inline-flex items-center justify-center p-2 rounded-md text-white/90 hover:text-white hover:bg-primary-light dark:hover:bg-dark-primary-light focus:outline-none transition-colors">
+                        <span class="sr-only">Open main menu</span>
+                        <svg id="menu-icon-open" class="h-6 w-6 block" xmlns="http://www.w3.org/2000/svg" fill="none"
+                            viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4 6h16M4 12h16m-7 6h7" />
+                        </svg>
+                        <svg id="menu-icon-close" class="h-6 w-6 hidden" xmlns="http://www.w3.org/2000/svg" fill="none"
+                            viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </nav>
+        <div id="mobile-menu" class="md:hidden hidden bg-primary dark:bg-dark-primary py-4">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="#home"
+                    class="nav-link block px-3 py-3 rounded-md text-base font-medium text-white/90 hover:text-white transition-all duration-300">পরিচিতি</a>
+                <a href="#installation"
+                    class="nav-link block px-3 py-3 rounded-md text-base font-medium text-white/90 hover:text-white transition-all duration-300">ইনস্টলেশন</a>
+                <a href="#community"
+                    class="nav-link block px-3 py-3 rounded-md text-base font-medium text-white/90 hover:text-white transition-all duration-300">কমিউনিটি</a>
+                <a href="/docs"
+                    class="nav-link block px-3 py-3 rounded-md text-base font-medium text-white/90 hover:text-white transition-all duration-300">ডকুমেন্টেশন</a>
+            </div>
+        </div>
+    </header>
