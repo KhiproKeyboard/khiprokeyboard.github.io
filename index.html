@@ -18,6 +18,7 @@
                         'primary': '#6fa882',
                         'primary-light': '#7fb892',
                         'primary-dark': '#5f9472',
+                        'header-dark': '#497b59',
                         'secondary': '#eaddcf',
                         'light': '#fdfbf8',
                         'dark-text': '#2d2d2d',
@@ -28,6 +29,7 @@
                         'dark-primary': '#8bc9a0',
                         'dark-primary-light': '#a5d4b5',
                         'dark-primary-dark': '#7fb892',
+                        'dark-header-dark': '#497b59',
                         'dark-secondary': '#2a2f2d',
                         'dark-light': '#242924',
                         'dark-text-light': '#f5f5f5',
@@ -86,7 +88,7 @@
         });
     </script>
     <!-- Header will be loaded here -->
-    <div id="header-container"></div>
+    <div id="header-container" class="contents"></div>
     <main>
         <!-- Hero Section -->
         <section id="home" class="pt-16 pb-24 sm:pt-24 sm:pb-32">
@@ -345,7 +347,15 @@
                         throw new Error(`HTTP error! status: ${response.status}`);
                     }
                     const html = await response.text();
-                    document.getElementById(elementId).innerHTML = html;
+                    const targetElement = document.getElementById(elementId);
+                    
+                    // For header, insert directly into body to maintain sticky positioning
+                    if (elementId === 'header-container') {
+                        targetElement.outerHTML = html;
+                    } else {
+                        targetElement.innerHTML = html;
+                    }
+                    
                     if (callback) callback();
                 } catch (error) {
                     console.error(`Could not load ${url}:`, error);
