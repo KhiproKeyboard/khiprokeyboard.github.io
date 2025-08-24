@@ -415,13 +415,13 @@
                 button.addEventListener('click', () => {
                     const tabId = button.dataset.tab;
                     tabButtons.forEach(btn => {
-                        btn.classList.remove('active', 'border-primary', 'text-primary');
+                        btn.classList.remove('active', 'border-primary', 'text-primary', 'dark:border-dark-primary', 'dark:text-dark-primary');
                         btn.setAttribute('aria-selected', 'false');
-                        btn.classList.add('text-gray-500', 'border-transparent');
+                        btn.classList.add('text-gray-500', 'border-transparent', 'dark:text-gray-400');
                     });
-                    button.classList.add('active', 'border-primary', 'text-primary');
+                    button.classList.add('active', 'border-primary', 'text-primary', 'dark:border-dark-primary', 'dark:text-dark-primary');
                     button.setAttribute('aria-selected', 'true');
-                    button.classList.remove('text-gray-500', 'border-transparent');
+                    button.classList.remove('text-gray-500', 'border-transparent', 'dark:text-gray-400');
 
                     tabPanes.forEach(pane => {
                         pane.classList.add('hidden');
