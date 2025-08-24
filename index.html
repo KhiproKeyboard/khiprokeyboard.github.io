@@ -163,138 +163,121 @@
                     </div>
                     <div id="tab-content" class="mt-8">
                         <div class="tab-pane active" id="linux" role="tabpanel">
-                            <div class="max-w-3xl mx-auto space-y-4">
-                                <div class="accordion-item bg-white dark:bg-dark-secondary rounded-xl shadow-md overflow-hidden">
-                                    <button
-                                        class="accordion-header w-full flex justify-between items-center text-left px-6 py-4 font-semibold text-lg transition-all duration-300 hover:bg-secondary/30 dark:hover:bg-dark-light/30">
-                                        <span>ধাপ ১: ডিপেন্ডেন্সি ইনস্টল করা</span>
-                                        <span class="accordion-icon transform duration-300 text-primary dark:text-dark-primary">▼</span>
-                                    </button>
-                                    <div
-                                        class="accordion-content text-gray-600 dark:text-gray-300 max-h-0 overflow-hidden transition-all duration-400 pl-6 pr-6">
-                                        <div class="pb-6 pt-2">
-                                            <p class="mb-2">ক্ষিপ্র চালানোর জন্য আপনার সিস্টেমে `m17n` ইনস্টল থাকা
-                                                প্রয়োজন। আপনার ইনপুট মেথড অনুযায়ী `ibus-m17n` বা `Fcitx-m17n` ইনস্টল
-                                                করুন।</p>
-                                            <p class="mb-4">স্মার্ট সাজেশনের জন্য `ibus-typing-booster` ইনস্টল করতে হবে।
-                                                এক্ষেত্রে `ibus-m17n` ইনস্টল করা থাকতে হবে।</p>
-                                            <p class="font-mono text-sm bg-gray-100 dark:bg-gray-700 p-3 rounded-md">sudo apt install
-                                                ibus-m17n ibus-typing-booster</p>
-                                            <p class="text-xs mt-2"> (ডেবিয়ান/উবুন্টু ভিত্তিক ডিস্ট্রোর জন্য।)</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="accordion-item bg-white dark:bg-dark-secondary rounded-xl shadow-md overflow-hidden">
-                                    <button
-                                        class="accordion-header w-full flex justify-between items-center text-left px-6 py-4 font-semibold text-lg transition-all duration-300 hover:bg-secondary/30 dark:hover:bg-dark-light/30">
-                                        <span>ধাপ ২: ক্ষিপ্র ইনস্টল করা</span>
-                                        <span class="accordion-icon transform duration-300 text-primary dark:text-dark-primary">▼</span>
-                                    </button>
-                                    <div
-                                        class="accordion-content text-gray-600 dark:text-gray-300 max-h-0 overflow-hidden transition-all duration-400 pl-6 pr-6">
-                                        <div class="pb-6 pt-2">
-                                            <p class="mb-4">নিচের কমান্ডটি টার্মিনালে চালিয়ে দিন। এটি অটোমেটিকভাবে
-                                                সর্বশেষ ভার্শনটি ইনস্টল করে দেবে।</p>
-                                            <div class="relative">
-                                                <pre
-                                                    class="font-mono text-sm bg-dark-text dark:bg-dark text-white p-4 rounded-md overflow-x-auto pr-16"><code id="install-script">sudo rm /usr/share/m17n/bn-khipro*.mim; cd ~/; rm -rf khipro-m17n; git clone https://github.com/rank-coder/khipro-m17n.git; cd ~/khipro-m17n; sudo cp bn-khipro*.mim /usr/share/m17n/</code></pre>
-                                                <button id="copy-button" title="কমান্ড কপি করুন"
-                                                    class="absolute top-1/2 right-2 -translate-y-1/2 bg-dark-text dark:bg-dark-secondary hover:bg-gray-500 dark:hover:bg-gray-400 text-white p-2 rounded-md transition-colors">
-                                                    <svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none"
-                                                        viewBox="0 0 24 24" stroke="currentColor">
-                                                        <path stroke-linecap="round" stroke-linejoin="round"
-                                                            stroke-width="2"
-                                                            d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
-                                                    </svg>
-                                                </button>
+                            <div class="max-w-3xl mx-auto">
+                                <p class="text-center text-gray-600 dark:text-gray-300 mb-8">
+                                    লিনাক্সে ক্ষিপ্র ব্যবহারের জন্য দুটি প্রধান পদ্ধতি রয়েছে। আপনার পছন্দের পদ্ধতি বেছে নিন:
+                                </p>
+                                <div class="grid md:grid-cols-2 gap-6 mb-8">
+                                    <div class="bg-white dark:bg-dark-secondary p-6 rounded-2xl shadow-md">
+                                        <div class="flex items-center mb-4">
+                                            <div class="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-white mr-3">
+                                                <i class="fas fa-keyboard"></i>
                                             </div>
-                                            <p class="mt-4">ইনস্টলেশন শেষে আপনার কম্পিউটার রিস্টার্ট করুন অথবা লগ-আউট
-                                                করে আবার লগ-ইন করুন।</p>
+                                            <h3 class="text-xl font-bold text-primary dark:text-dark-primary">ibus দিয়ে ক্ষিপ্র</h3>
                                         </div>
+                                        <p class="text-gray-600 dark:text-gray-300 mb-4">
+                                            ibus-m17n এবং টাইপিং বুস্টার ব্যবহার করে স্মার্ট সাজেশন সহ ক্ষিপ্র ব্যবহার করুন।
+                                        </p>
+                                        <a href="installation.html#ibus-method" 
+                                           class="bg-primary hover:bg-primary-dark text-white font-semibold px-4 py-2 rounded-lg text-sm inline-block transition-all duration-300">
+                                            বিস্তারিত দেখুন
+                                        </a>
+                                    </div>
+                                    <div class="bg-white dark:bg-dark-secondary p-6 rounded-2xl shadow-md">
+                                        <div class="flex items-center mb-4">
+                                            <div class="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-white mr-3">
+                                                <i class="fas fa-cog"></i>
+                                            </div>
+                                            <h3 class="text-xl font-bold text-primary dark:text-dark-primary">fcitx দিয়ে ক্ষিপ্র</h3>
+                                        </div>
+                                        <p class="text-gray-600 dark:text-gray-300 mb-4">
+                                            fcitx-m17n ব্যবহার করে ক্ষিপ্র ইনস্টল করুন। fcitx5 ব্যবহারকারীদের জন্য উপযুক্ত।
+                                        </p>
+                                        <a href="installation.html#fcitx-method" 
+                                           class="bg-primary hover:bg-primary-dark text-white font-semibold px-4 py-2 rounded-lg text-sm inline-block transition-all duration-300">
+                                            বিস্তারিত দেখুন
+                                        </a>
                                     </div>
                                 </div>
-                                <div class="accordion-item bg-white dark:bg-dark-secondary rounded-xl shadow-md overflow-hidden">
-                                    <button
-                                        class="accordion-header w-full flex justify-between items-center text-left px-6 py-4 font-semibold text-lg transition-all duration-300 hover:bg-secondary/30 dark:hover:bg-dark-light/30">
-                                        <span>ধাপ ৩: কনফিগার করা</span>
-                                        <span class="accordion-icon transform duration-300 text-primary dark:text-dark-primary">▼</span>
-                                    </button>
-                                    <div
-                                        class="accordion-content text-gray-600 dark:text-gray-300 max-h-0 overflow-hidden transition-all duration-400 pl-6 pr-6">
-                                        <div class="pb-6 pt-2">
-                                            <p>সেরা অভিজ্ঞতার জন্য আপনার সিস্টেমের ইনপুট মেথড সেটিংসে গিয়ে 'Bengali
-                                                (khipro-m17n)' যুক্ত করুন এবং `ibus-typing-booster`-এর সেটিংস README
-                                                অনুযায়ী কনফিগার করুন।</p>
-                                            <a href="https://github.com/rank-coder/khipro-m17n#%E0%A6%A1%E0%A6%95%E0%A7%81%E0%A6%AE%E0%A7%87%E0%A6%A8%E0%A7%8D%E0%A6%9F%E0%A7%87%E0%A6%B6%E0%A6%A8"
-                                                target="_blank"
-                                                class="text-primary dark:text-dark-primary font-semibold mt-4 inline-block hover:underline transition-all">README
-                                                পড়ুন &rarr;</a>
+                                <div class="bg-secondary/20 dark:bg-dark-secondary/20 p-6 rounded-2xl">
+                                    <div class="flex items-center mb-4">
+                                        <div class="w-10 h-10 rounded-full bg-accent flex items-center justify-center text-white mr-3">
+                                            <i class="fas fa-magic"></i>
                                         </div>
+                                        <h3 class="text-xl font-bold text-primary dark:text-dark-primary">টাইপিং বুস্টার কনফিগারেশন</h3>
                                     </div>
+                                    <p class="text-gray-600 dark:text-gray-300 mb-4">
+                                        সর্বোচ্চ টাইপিং অভিজ্ঞতার জন্য টাইপিং বুস্টার সঠিকভাবে কনফিগার করুন।
+                                    </p>
+                                    <a href="installation.html#টাইপিং-বুস্টার-কনফিগার-করা" 
+                                       class="bg-accent hover:bg-accent/80 text-white font-semibold px-4 py-2 rounded-lg text-sm inline-block transition-all duration-300">
+                                        কনফিগারেশন গাইড
+                                    </a>
                                 </div>
                             </div>
                         </div>
                         <div class="tab-pane hidden" id="windows" role="tabpanel">
-                            <div class="grid md:grid-cols-2 gap-8">
-                                <div
-                                    class="bg-white dark:bg-dark-secondary p-6 rounded-2xl shadow-md transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
-                                    <div class="flex items-center mb-4">
-                                        <div
-                                            class="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-white mr-3">
-                                            <i class="fab fa-windows"></i>
+                            <div class="max-w-3xl mx-auto">
+                                <p class="text-center text-gray-600 dark:text-gray-300 mb-8">
+                                    উইন্ডোজে ক্ষিপ্র ব্যবহারের জন্য বিভিন্ন পদ্ধতি রয়েছে। আপনার পছন্দের পদ্ধতি বেছে নিন:
+                                </p>
+                                <div class="grid md:grid-cols-2 gap-6">
+                                    <div class="bg-white dark:bg-dark-secondary p-6 rounded-2xl shadow-md">
+                                        <div class="flex items-center mb-4">
+                                            <div class="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-white mr-3">
+                                                <i class="fab fa-windows"></i>
+                                            </div>
+                                            <h3 class="text-xl font-bold text-primary dark:text-dark-primary">বর্ণ কিবোর্ডে ক্ষিপ্র</h3>
                                         </div>
-                                        <h3 class="text-xl font-bold text-primary dark:text-dark-primary">বর্ণ কিবোর্ডে ক্ষিপ্র</h3>
+                                        <p class="text-gray-600 dark:text-gray-300 mb-4">
+                                            Codepotro-এর জনপ্রিয় কিবোর্ড Borno Native-এর নতুন ভার্শনে ক্ষিপ্র লেআউট বিল্ট-ইন।
+                                        </p>
+                                        <a href="installation.html#borno-native-method" 
+                                           class="bg-primary hover:bg-primary-dark text-white font-semibold px-4 py-2 rounded-lg text-sm inline-block transition-all duration-300">
+                                            বিস্তারিত দেখুন
+                                        </a>
                                     </div>
-                                    <p class="mt-2 text-gray-600 dark:text-gray-300">Codepotro-এর জনপ্রিয় কিবোর্ড Borno Native-এর নতুন
-                                        ভার্শনে ক্ষিপ্র লেআউট বিল্ট-ইন থাকছে।</p>
-                                    <ol class="mt-4 space-y-2 text-sm list-decimal list-inside">
-                                        <li>Codepotro-এর টেলিগ্রাম সাপোর্ট গ্রুপ থেকে সর্বশেষ ভার্শনটি ডাউনলোড করুন।
-                                        </li>
-                                        <li>অ্যাপ্লিকেশনটি ইনস্টল করুন।</li>
-                                        <li>কibোর্ড সেটিংস থেকে ক্ষিপ্র লেআউট নির্বাচন করুন।</li>
-                                    </ol>
-                                    <a href="https://t.me/codepotro" target="_blank"
-                                        class="mt-4 bg-primary hover:bg-primary-dark text-white font-semibold px-4 py-2 rounded-lg text-sm inline-block transition-all duration-300">সাপোর্ট
-                                        গ্রুপ</a>
-                                </div>
-                                <div
-                                    class="bg-white dark:bg-dark-secondary p-6 rounded-2xl shadow-md transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
-                                    <div class="flex items-center mb-4">
-                                        <div
-                                            class="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-white mr-3">
-                                            <i class="fas fa-keyboard"></i>
+                                    <div class="bg-white dark:bg-dark-secondary p-6 rounded-2xl shadow-md">
+                                        <div class="flex items-center mb-4">
+                                            <div class="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-white mr-3">
+                                                <i class="fas fa-keyboard"></i>
+                                            </div>
+                                            <h3 class="text-xl font-bold text-primary dark:text-dark-primary">NMS Kontho-তে ক্ষিপ্র</h3>
                                         </div>
-                                        <h3 class="text-xl font-bold text-primary dark:text-dark-primary">Nms Kontho-তে ক্ষিপ্র</h3>
+                                        <p class="text-gray-600 dark:text-gray-300 mb-4">
+                                            NMS Kontho অ্যাপ্লিকেশনের জন্য কমিউনিটির তৈরি কাস্টম ক্ষিপ্র লেআউট।
+                                        </p>
+                                        <a href="installation.html#windows-installation" 
+                                           class="bg-primary hover:bg-primary-dark text-white font-semibold px-4 py-2 rounded-lg text-sm inline-block transition-all duration-300">
+                                            বিস্তারিত দেখুন
+                                        </a>
                                     </div>
-                                    <p class="mt-2 text-gray-600 dark:text-gray-300">Nms Kontho অ্যাপ্লিকেশনের জন্য তৈরি কাস্টম লেআউট
-                                        ব্যবহার করুন।</p>
-                                    <ol class="mt-4 space-y-2 text-sm list-decimal list-inside">
-                                        <li><a href="https://nabil-bot.github.io/Kontho/" target="_blank"
-                                                class="text-primary dark:text-dark-primary underline">NMS Kontho</a> ইনস্টল করুন।</li>
-                                        <li><a href="https://github.com/NabilSnigdho/khipro-nms/raw/refs/heads/main/Khipro.nmsLayout"
-                                                class="text-primary dark:text-dark-primary underline">Khipro NMS লেআউট</a> ডাউনলোড করুন।</li>
-                                        <li>ডাউনলোড করা লেআউটটি ইমপোর্ট করুন।</li>
-                                        <li>NMS Kontho রিস্টার্ট করুন।</li>
-                                        <li>ক্ষিপ্র লেআউট নির্বাচন করুন।</li>
-                                    </ol>
                                 </div>
                             </div>
                         </div>
                         <div class="tab-pane hidden" id="android" role="tabpanel">
-                            <div
-                                class="bg-white dark:bg-dark-secondary p-8 text-center max-w-lg mx-auto rounded-2xl shadow-md transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
-                                <div
-                                    class="w-16 h-16 rounded-full bg-primary flex items-center justify-center text-white mx-auto mb-6">
-                                    <i class="fab fa-android text-2xl"></i>
+                            <div class="max-w-3xl mx-auto">
+                                <p class="text-center text-gray-600 dark:text-gray-300 mb-8">
+                                    অ্যান্ড্রয়েডে ক্ষিপ্র ব্যবহারের জন্য উন্নয়ন কাজ চলমান। বর্তমান অবস্থা দেখুন:
+                                </p>
+                                <div class="bg-white dark:bg-dark-secondary p-8 text-center rounded-2xl shadow-md">
+                                    <div class="w-16 h-16 rounded-full bg-primary flex items-center justify-center text-white mx-auto mb-6">
+                                        <i class="fab fa-android text-2xl"></i>
+                                    </div>
+                                    <h3 class="text-2xl font-bold text-primary dark:text-dark-primary mb-4">অ্যান্ড্রয়েড: কাজ চলছে</h3>
+                                    <p class="text-gray-600 dark:text-gray-300 mb-6">
+                                        অ্যান্ড্রয়েড ব্যবহারকারীদের জন্যেও সুখবর আসছে! Codepotro টিম তাদের জনপ্রিয় Borno Android কিবোর্ডে ক্ষিপ্র যুক্ত করার কাজ করছে।
+                                    </p>
+                                    <a href="installation.html#android-installation" 
+                                       class="bg-primary hover:bg-primary-dark text-white font-semibold px-6 py-3 rounded-lg shadow-md inline-block transition-all duration-300 mr-4">
+                                        বিস্তারিত দেখুন
+                                    </a>
+                                    <a href="https://play.google.com/store/apps/details?id=com.codepotro.borno.keyboard"
+                                       target="_blank"
+                                       class="bg-accent hover:bg-accent/80 text-white font-semibold px-6 py-3 rounded-lg shadow-md inline-block transition-all duration-300">
+                                        Borno Android দেখুন
+                                    </a>
                                 </div>
-                                <h3 class="text-2xl font-bold text-primary">অ্যান্ড্রয়েড: কাজ চলছে</h3>
-                                <p class="mt-4 text-gray-600 dark:text-gray-300">অ্যান্ড্রয়েড ব্যবহারকারীদের জন্যেও সুখবর আসছে! Codepotro
-                                    টিম তাদের জনপ্রিয় `Borno Android` কিবোর্ডে ক্ষিপ্র যুক্ত করার কাজ করছে। দ্রুত
-                                    টাইপিংয়ের অভিজ্ঞতা আপনার হাতের মুঠোয় আসতে আর বেশি দেরি নেই।</p>
-                                <a href="https://play.google.com/store/apps/details?id=com.codepotro.borno.keyboard"
-                                    target="_blank"
-                                    class="mt-6 bg-primary hover:bg-primary-dark text-white font-semibold px-6 py-3 rounded-lg shadow-md inline-block transition-all duration-300">Borno
-                                    Android দেখুন</a>
                             </div>
                         </div>
                     </div>
