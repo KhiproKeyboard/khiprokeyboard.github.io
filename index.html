@@ -85,59 +85,8 @@
             }
         });
     </script>
-    <!-- Header -->
-    <header id="header" class="bg-primary/90 dark:bg-dark-primary/90 backdrop-blur-md sticky top-0 z-50 shadow-lg">
-        <nav class="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex items-center justify-between h-20">
-                <div class="flex-shrink-0">
-                    <a href="#home" class="flex items-center gap-3">
-                        <img src="img/khipro_logo.png" alt="ক্ষিপ্র লোগো" class="h-[42px] drop-shadow-sm">
-                        <span class="text-xl font-bold text-white hidden sm:block">ক্ষিপ্র</span>
-                    </a>
-                </div>
-                <div class="hidden md:block">
-                    <div class="ml-10 flex items-baseline space-x-4">
-                        <a href="#home"
-                            class="nav-link relative px-3 py-2 rounded-md text-base font-medium text-white/90 hover:text-white transition-all duration-300 after:content-[''] after:absolute after:bottom-[-2px] after:left-0 after:w-0 after:h-0.5 after:bg-white after:transition-all after:duration-300 hover:after:w-full">পরিচিতি</a>
-                        <a href="#installation"
-                            class="nav-link relative px-3 py-2 rounded-md text-base font-medium text-white/90 hover:text-white transition-all duration-300 after:content-[''] after:absolute after:bottom-[-2px] after:left-0 after:w-0 after:h-0.5 after:bg-white after:transition-all after:duration-300 hover:after:w-full">ইনস্টলেশন</a>
-                        <a href="#community"
-                            class="nav-link relative px-3 py-2 rounded-md text-base font-medium text-white/90 hover:text-white transition-all duration-300 after:content-[''] after:absolute after:bottom-[-2px] after:left-0 after:w-0 after:h-0.5 after:bg-white after:transition-all after:duration-300 hover:after:w-full">কমিউনিটি</a>
-                        <a href="/docs"
-                            class="nav-link relative px-3 py-2 rounded-md text-base font-medium text-white/90 hover:text-white transition-all duration-300 after:content-[''] after:absolute after:bottom-[-2px] after:left-0 after:w-0 after:h-0.5 after:bg-white after:transition-all after:duration-300 hover:after:w-full">ডকুমেন্টেশন</a>
-                    </div>
-                </div>
-                <div class="md:hidden">
-                    <button id="mobile-menu-button" aria-expanded="false" aria-controls="mobile-menu"
-                        class="inline-flex items-center justify-center p-2 rounded-md text-white/90 hover:text-white hover:bg-primary-light dark:hover:bg-dark-primary-light focus:outline-none transition-colors">
-                        <span class="sr-only">Open main menu</span>
-                        <svg id="menu-icon-open" class="h-6 w-6 block" xmlns="http://www.w3.org/2000/svg" fill="none"
-                            viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M4 6h16M4 12h16m-7 6h7" />
-                        </svg>
-                        <svg id="menu-icon-close" class="h-6 w-6 hidden" xmlns="http://www.w3.org/2000/svg" fill="none"
-                            viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M6 18L18 6M6 6l12 12" />
-                        </svg>
-                    </button>
-                </div>
-            </div>
-        </nav>
-        <div id="mobile-menu" class="md:hidden hidden bg-primary dark:bg-dark-primary py-4">
-            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-                <a href="#home"
-                    class="nav-link block px-3 py-3 rounded-md text-base font-medium text-white/90 hover:text-white transition-all duration-300">পরিচিতি</a>
-                <a href="#installation"
-                    class="nav-link block px-3 py-3 rounded-md text-base font-medium text-white/90 hover:text-white transition-all duration-300">ইনস্টলেশন</a>
-                <a href="#community"
-                    class="nav-link block px-3 py-3 rounded-md text-base font-medium text-white/90 hover:text-white transition-all duration-300">কমিউনিটি</a>
-                <a href="/docs"
-                    class="nav-link block px-3 py-3 rounded-md text-base font-medium text-white/90 hover:text-white transition-all duration-300">ডকুমেন্টেশন</a>
-            </div>
-        </div>
-    </header>
+    <!-- Header will be loaded here -->
+    <div id="header-container"></div>
     <main>
         <!-- Hero Section -->
         <section id="home" class="pt-16 pb-24 sm:pt-24 sm:pb-32">
@@ -364,7 +313,7 @@
                 <div class="mt-10 grid sm:grid-cols-2 gap-6 max-w-2xl mx-auto">
                     <a href="https://t.me/KhiproKeyboard" target="_blank"
                         class="bg-white dark:bg-dark-secondary p-6 rounded-xl shadow-md flex items-center space-x-4 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:bg-white/95 dark:hover:bg-dark-secondary/95">
-                        <span class="text-4xl text-primary"><i class="fab fa-telegram"></i></span>
+                        <span class="text-4xl text-primary dark:text-white"><i class="fab fa-telegram"></i></span>
                         <div class="text-left">
                             <h3 class="font-semibold text-lg">টেলিগ্রাম গ্রুপ</h3>
                             <p class="text-gray-500 dark:text-gray-300">সরাসরি আলোচনা ও সাপোর্টের জন্য</p>
@@ -372,7 +321,7 @@
                     </a>
                     <a href="https://github.com/KhiproKeyboard" target="_blank"
                         class="bg-white dark:bg-dark-secondary p-6 rounded-xl shadow-md flex items-center space-x-4 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:bg-white/95 dark:hover:bg-dark-secondary/95">
-                        <span class="text-4xl text-gray-800 dark:text-gray-200"><i class="fab fa-github"></i></span>
+                        <span class="text-4xl text-gray-800 dark:text-white"><i class="fab fa-github"></i></span>
                         <div class="text-left">
                             <h3 class="font-semibold text-lg">গিটহাব অর্গানাইজেশন</h3>
                             <p class="text-gray-500 dark:text-gray-300">কোড দেখুন এবং উন্নয়নে অংশ নিন</p>
@@ -383,13 +332,8 @@
         </section>
     </main>
 
-    <footer class="bg-primary text-white pb-8">
-        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="border-t border-primary-light mt-10 pt-6 text-center text-sm opacity-80">
-                <p>&copy; ২০২৪ ক্ষিপ্র কিবোর্ড প্রকল্প। সকল স্বত্ব সংরক্ষিত নয়, এটি একটি মুক্ত সফটওয়্যার।</p>
-            </div>
-        </div>
-    </footer>
+    <!-- Footer will be loaded here -->
+    <div id="footer-container"></div>
 
     <script>
         document.addEventListener('DOMContentLoaded', function () {
@@ -444,10 +388,10 @@
                     entries.forEach(entry => {
                         if (entry.isIntersecting) {
                             navLinks.forEach(link => {
-                                link.classList.remove('active', 'text-white'); // Changed from text-primary to text-white
+                                link.classList.remove('active', 'text-white');
                                 link.querySelector('::after') && (link.querySelector('::after').style.width = '0');
                                 if (link.getAttribute('href').substring(1) === entry.target.id) {
-                                    link.classList.add('active', 'text-white'); // Changed from text-primary to text-white
+                                    link.classList.add('active', 'text-white');
                                 }
                             });
                         }
@@ -459,8 +403,17 @@
                 });
             }
 
-            // Initialize header scripts now that the header is directly in the DOM
-            initializeHeaderScripts();
+            // Load header and footer, then initialize scripts
+            async function loadComponents() {
+                await loadHTML('header.html', 'header-container');
+                await loadHTML('footer.html', 'footer-container');
+                
+                // Initialize header scripts after header is loaded
+                initializeHeaderScripts();
+            }
+
+            // Start loading components
+            loadComponents();
 
             // Tabs Functionality
             const tabButtons = document.querySelectorAll('.tab-button');
