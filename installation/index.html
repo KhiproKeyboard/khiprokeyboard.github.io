@@ -387,8 +387,8 @@
 
             // Load header and footer, then initialize scripts
             async function loadComponents() {
-                await loadHTML('header.html', 'header-container');
-                await loadHTML('footer.html', 'footer-container');
+                await loadHTML('/header.html', 'header-container');
+                await loadHTML('/footer.html', 'footer-container');
                 
                 // Initialize header scripts after header is loaded
                 initializeHeaderScripts();
