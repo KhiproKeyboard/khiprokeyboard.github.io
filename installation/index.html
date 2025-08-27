@@ -15,7 +15,7 @@
                 extend: {
                     colors: {
                         // Light mode colors
-                        'primary': '#6fa882',
+                        'primary': '#497b59',
                         'primary-light': '#7fb892',
                         'primary-dark': '#5f9472',
                         'header-dark': '#497b59',
@@ -34,6 +34,7 @@
                         'dark-light': '#242924',
                         'dark-text-light': '#f5f5f5',
                         'dark-accent': '#d4a373',
+
                     }
                 }
             }
@@ -67,7 +68,8 @@
 
         /* Fix header overlap for section navigation */
         div[id] {
-            scroll-margin-top: 5rem; /* 80px to account for header height */
+            scroll-margin-top: 5rem;
+            /* 80px to account for header height */
         }
     </style>
 </head>
@@ -99,70 +101,116 @@
         <section class="pt-16 pb-16 sm:pt-24 sm:pb-32">
             <div class="container mx-auto px-3 sm:px-6 lg:px-8">
                 <div class="max-w-4xl mx-auto">
-                    <h1 class="text-3xl sm:text-4xl lg:text-6xl font-extrabold tracking-tight text-gray-900 dark:text-gray-100 text-center mb-8 sm:mb-16">
+                    <h1
+                        class="text-3xl sm:text-4xl lg:text-6xl font-extrabold tracking-tight text-gray-900 dark:text-gray-100 text-center mb-8 sm:mb-16">
                         <span class="block text-primary dark:text-dark-primary">ক্ষিপ্র কিবোর্ড ইনস্টলেশন গাইড</span>
                     </h1>
 
                     <!-- Linux Section -->
-                    <div id="linux-installation" class="mb-8 sm:mb-16 bg-white dark:bg-dark-secondary rounded-xl sm:rounded-2xl shadow-lg p-4 sm:p-8">
-                        <h1 class="text-2xl sm:text-3xl font-bold text-primary dark:text-dark-primary mb-6 sm:mb-8 border-b border-gray-200 dark:border-gray-700 pb-3 sm:pb-4">
+                    <div id="linux-installation"
+                        class="mb-8 sm:mb-16 bg-white dark:bg-dark-secondary rounded-xl sm:rounded-2xl shadow-lg p-4 sm:p-8">
+                        <h1
+                            class="text-2xl sm:text-3xl font-bold text-primary dark:text-dark-primary mb-6 sm:mb-8 border-b border-gray-200 dark:border-gray-700 pb-3 sm:pb-4">
                             লিনাক্স সিস্টেমে
                         </h1>
-                        
+
                         <div class="prose prose-lg max-w-none text-gray-700 dark:text-gray-300 mb-8">
                             <p>লিনাক্স সিস্টেমে khipro-m17n দুইভাবে ব্যবহার করা যায়।</p>
                             <ol class="list-decimal list-inside space-y-2">
-                                <li>ibus-m17n দিয়ে। এক্ষেত্রে চাইলে টাইপিং বুস্টারও ইনস্টল করা যাবে (ইন্টেলিজেন্ট সাজেশনের জন্য)</li>
+                                <li>ibus-m17n দিয়ে। এক্ষেত্রে চাইলে টাইপিং বুস্টারও ইনস্টল করা যাবে (ইন্টেলিজেন্ট
+                                    সাজেশনের জন্য)</li>
                                 <li>fcitx5-m17n দিয়ে। fcitx5 -এ আপাতত টাইপিং বুস্টার ব্যবহার করা যাচ্ছে না।</li>
                             </ol>
                         </div>
 
                         <!-- ibus-m17n Section -->
                         <div id="ibus-method" class="mb-8 sm:mb-12">
-                            <h2 class="text-xl sm:text-2xl font-semibold text-primary dark:text-dark-primary mb-4 sm:mb-6">ibus-m17n দিয়ে ক্ষিপ্র ব্যবহার করা</h2>
-                            
+                            <h2
+                                class="text-xl sm:text-2xl font-semibold text-primary dark:text-dark-primary mb-4 sm:mb-6">
+                                ibus-m17n দিয়ে ক্ষিপ্র ব্যবহার করা</h2>
+
                             <div class="space-y-6">
                                 <div class="bg-secondary/20 dark:bg-dark-light/20 rounded-lg p-4 sm:p-6">
-                                    <ol class="list-decimal list-inside space-y-3 sm:space-y-4 text-sm sm:text-base text-gray-700 dark:text-gray-300">
+                                    <ol
+                                        class="list-decimal list-inside space-y-3 sm:space-y-4 text-sm sm:text-base text-gray-700 dark:text-gray-300">
                                         <li>ক্ষিপ্র ইনস্টল করার আগে ibus-m17n ইনস্টল করতে হবে।</li>
-                                        <li>উবুন্টু, লিনাক্স মিন্ট এবং আরো কিছু ডিস্ট্রোতে বাংলার language pack আলাদা ভাবে ইনস্টল করতে হয়। Ubuntu-র ক্ষেত্রে "Language Support" অ্যাপটি ওপেন করে সেখান থেকে বাংলার জন্য ল্যাংগুয়েজ সাপোর্ট ইনস্টল করে নিন।<br>
-                                        বাংলার জন্য ল্যাংগুয়েজ সাপোর্ট ইনস্টল করলেই বেশ কিছু ডিস্ট্রোতে ibus-m17n অটো ইনস্টল হয়ে যায়।<br>
-                                        ল্যাংগুয়েজ সাপোর্টের মাধ্যমে বাংলার সাপোর্ট এবং ibus-m17n দুটোই ইনস্টল থাকাটা জরুরি। দুটোই ইনস্টল করা আছে কিনা নিশ্চিত করুন।</li>
-                                        <li>এরপর <a href="https://mike-fabian.github.io/ibus-typing-booster/" target="_blank" class="text-primary dark:text-dark-primary underline">টাইপিং বুস্টার</a> ইনস্টল করে নিন। উবুন্টুতে sudo apt install ibus-typing-booster কমান্ড দিতে হবে। Fedora -তে প্রি-ইনস্টল করা থাকার কথা।</li>
-                                        <li>এরপরের কাজ, <a href="https://github.com/rank-coder/khipro-m17n" target="_blank" class="text-primary dark:text-dark-primary underline">khipro-m17n এর গিটহাব রিপোজিটরি</a> থেকে bn-khipro.mim ফাইলটি সিস্টেমের সঠিক জায়গায় রেখে দিতে হবে। এই কাজটি এক কমান্ডে করতে নিচের কমান্ডটি টার্মিনালে রান করুন:
-                                        <div class="mt-3 relative">
-                                            <div class="bg-dark-text dark:bg-dark text-white p-3 sm:p-4 rounded-md font-mono text-xs sm:text-sm overflow-x-auto pr-12" id="ibus-install-command">
-                                                sudo rm /usr/share/m17n/bn-khipro*.mim; cd ~/; sudo rm -rf khipro-m17n; git clone https://github.com/rank-coder/khipro-m17n.git; cd ~/khipro-m17n; sudo cp bn-khipro*.mim /usr/share/m17n/; ibus restart
+                                        <li>উবুন্টু, লিনাক্স মিন্ট এবং আরো কিছু ডিস্ট্রোতে বাংলার language pack আলাদা
+                                            ভাবে ইনস্টল করতে হয়। Ubuntu-র ক্ষেত্রে "Language Support" অ্যাপটি ওপেন করে
+                                            সেখান থেকে বাংলার জন্য ল্যাংগুয়েজ সাপোর্ট ইনস্টল করে নিন।<br>
+                                            বাংলার জন্য ল্যাংগুয়েজ সাপোর্ট ইনস্টল করলেই বেশ কিছু ডিস্ট্রোতে ibus-m17n
+                                            অটো ইনস্টল হয়ে যায়।<br>
+                                            ল্যাংগুয়েজ সাপোর্টের মাধ্যমে বাংলার সাপোর্ট এবং ibus-m17n দুটোই ইনস্টল
+                                            থাকাটা জরুরি। দুটোই ইনস্টল করা আছে কিনা নিশ্চিত করুন।</li>
+                                        <li>এরপর <a href="https://mike-fabian.github.io/ibus-typing-booster/"
+                                                target="_blank"
+                                                class="text-primary dark:text-dark-primary underline font-medium">টাইপিং বুস্টার</a>
+                                            ইনস্টল করে নিন। উবুন্টুতে sudo apt install ibus-typing-booster কমান্ড দিতে
+                                            হবে। Fedora -তে প্রি-ইনস্টল করা থাকার কথা।</li>
+                                        <li>এরপরের কাজ, <a href="https://github.com/rank-coder/khipro-m17n"
+                                                target="_blank"
+                                                class="text-primary dark:text-dark-primary underline font-medium">khipro-m17n এর
+                                                গিটহাব রিপোজিটরি</a> থেকে bn-khipro.mim ফাইলটি সিস্টেমের সঠিক জায়গায়
+                                            রেখে দিতে হবে। এই কাজটি এক কমান্ডে করতে নিচের কমান্ডটি টার্মিনালে রান করুন:
+                                            <div class="mt-3 relative">
+                                                <div class="bg-dark-text dark:bg-dark text-white p-3 sm:p-4 rounded-md font-mono text-xs sm:text-sm overflow-x-auto pr-12"
+                                                    id="ibus-install-command">
+                                                    sudo rm /usr/share/m17n/bn-khipro*.mim; cd ~/; sudo rm -rf
+                                                    khipro-m17n; git clone
+                                                    https://github.com/rank-coder/khipro-m17n.git; cd ~/khipro-m17n;
+                                                    sudo cp bn-khipro*.mim /usr/share/m17n/; ibus restart
+                                                </div>
+                                                <button onclick="copyCommand('ibus-install-command')"
+                                                    class="absolute top-2 right-2 bg-gray-600 hover:bg-gray-500 text-white p-2 rounded transition-colors duration-200"
+                                                    title="Copy command">
+                                                    <svg class="w-4 h-4" fill="none" stroke="currentColor"
+                                                        viewBox="0 0 24 24">
+                                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                                            stroke-width="2"
+                                                            d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z">
+                                                        </path>
+                                                    </svg>
+                                                </button>
                                             </div>
-                                            <button onclick="copyCommand('ibus-install-command')" class="absolute top-2 right-2 bg-gray-600 hover:bg-gray-500 text-white p-2 rounded transition-colors duration-200" title="Copy command">
-                                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
-                                                </svg>
-                                            </button>
-                                        </div>
                                         </li>
-                                        <li>এরপর টাইপিং বুস্টার কনফিগারেশনের পালা। টাইপিং বুস্টার ব্যবহারের সেরা অভিজ্ঞতা পাওয়ার জন্য টাইপিং বুস্টারের কনফিগারেশন সংক্রান্ত সকল নির্দেশনা ও টিপস <a href="#টাইপিং-বুস্টার-কনফিগার-করা" class="text-primary dark:text-dark-primary underline">নিচে (এখানে ক্লিক করুন)</a> সংযুক্ত করা হয়েছে।</li>
-                                        <li>যারা টাইপিং বুস্টার ছাড়া ব্যবহার করতে চান তারা ক্ষিপ্র ইনস্টল করার পরে আপনার সিস্টেমের সেটিংস থেকে ক্ষিপ্র-কে ইনপুট সোর্স হিসেবে অ্যাড করে নিন।
-                                        <div class="mt-3">
-                                            <img src="/img/installation/image3.webp" alt="Installation Image" class="rounded-lg shadow-md max-w-full h-auto">
-                                        </div>
+                                        <li>এরপর টাইপিং বুস্টার কনফিগারেশনের পালা। টাইপিং বুস্টার ব্যবহারের সেরা
+                                            অভিজ্ঞতা পাওয়ার জন্য টাইপিং বুস্টারের কনফিগারেশন সংক্রান্ত সকল নির্দেশনা ও
+                                            টিপস <a href="#টাইপিং-বুস্টার-কনফিগার-করা"
+                                                class="text-primary dark:text-dark-primary underline font-medium">নিচে (এখানে ক্লিক
+                                                করুন)</a> সংযুক্ত করা হয়েছে।</li>
+                                        <li>যারা টাইপিং বুস্টার ছাড়া ব্যবহার করতে চান তারা ক্ষিপ্র ইনস্টল করার পরে
+                                            আপনার সিস্টেমের সেটিংস থেকে ক্ষিপ্র-কে ইনপুট সোর্স হিসেবে অ্যাড করে নিন।
+                                            <div class="mt-3">
+                                                <img src="/img/installation/image3.webp" alt="Installation Image"
+                                                    class="rounded-lg shadow-md max-w-full h-auto">
+                                            </div>
                                         </li>
                                     </ol>
                                 </div>
                             </div>
                             <!-- Update Section -->
                             <div class="mt-8">
-                                <h3 class="text-xl font-semibold text-primary dark:text-dark-primary mb-4">আপডেট করা</h3>
+                                <h3 class="text-xl font-semibold text-primary dark:text-dark-primary mb-4">আপডেট করা
+                                </h3>
                                 <div class="bg-secondary/20 dark:bg-dark-light/20 rounded-lg p-4 sm:p-6">
-                                    <p class="text-gray-700 dark:text-gray-300 mb-4">আপডেট করাটা খুবই সোজা। <a href="https://mike-fabian.github.io/ibus-typing-booster/" target="_blank"
-                                        class="text-primary dark:text-dark-primary-light underline">khipro-m17n এর রিলিজ পেজে</a> চেক করুন নতুন আপডেট এসেছে কিনা। নতুন আপডেট এসে থাকলে নতুন করে .mim ফাইল ডাউনলোড করে জায়গা মতো রেখে দিতে হবে। এটা একটা কমান্ডেই করা যায়:</p>
+                                    <p class="text-gray-700 dark:text-gray-300 mb-4">আপডেট করাটা খুবই সোজা। <a
+                                            href="https://mike-fabian.github.io/ibus-typing-booster/" target="_blank"
+                                            class="text-primary dark:text-dark-primary underline font-medium">khipro-m17n এর
+                                            রিলিজ পেজে</a> চেক করুন নতুন আপডেট এসেছে কিনা। নতুন আপডেট এসে থাকলে নতুন করে
+                                        .mim ফাইল ডাউনলোড করে জায়গা মতো রেখে দিতে হবে। এটা একটা কমান্ডেই করা যায়:</p>
                                     <div class="relative mb-4">
-                                        <div class="bg-dark-text dark:bg-dark text-white p-4 rounded-md font-mono text-sm overflow-x-auto pr-12" id="ibus-update-command">
-                                            sudo rm /usr/share/m17n/bn-khipro*.mim; cd ~/; sudo rm -rf khipro-m17n; git clone https://github.com/rank-coder/khipro-m17n.git; cd ~/khipro-m17n; sudo cp bn-khipro*.mim /usr/share/m17n/; ibus restart; exit
+                                        <div class="bg-dark-text dark:bg-dark text-white p-4 rounded-md font-mono text-sm overflow-x-auto pr-12"
+                                            id="ibus-update-command">
+                                            sudo rm /usr/share/m17n/bn-khipro*.mim; cd ~/; sudo rm -rf khipro-m17n; git
+                                            clone https://github.com/rank-coder/khipro-m17n.git; cd ~/khipro-m17n; sudo
+                                            cp bn-khipro*.mim /usr/share/m17n/; ibus restart; exit
                                         </div>
-                                        <button onclick="copyCommand('ibus-update-command')" class="absolute top-2 right-2 bg-gray-600 hover:bg-gray-500 text-white p-2 rounded transition-colors duration-200" title="Copy command">
+                                        <button onclick="copyCommand('ibus-update-command')"
+                                            class="absolute top-2 right-2 bg-gray-600 hover:bg-gray-500 text-white p-2 rounded transition-colors duration-200"
+                                            title="Copy command">
                                             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                    d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z">
+                                                </path>
                                             </svg>
                                         </button>
                                     </div>
@@ -172,10 +220,14 @@
 
                             <!-- Uninstall Section -->
                             <div class="mt-8">
-                                <h3 class="text-xl font-semibold text-primary dark:text-dark-primary mb-4">আনইনস্টল করা</h3>
+                                <h3 class="text-xl font-semibold text-primary dark:text-dark-primary mb-4">আনইনস্টল করা
+                                </h3>
                                 <div class="bg-secondary/20 dark:bg-dark-light/20 rounded-lg p-4 sm:p-6">
                                     <p class="text-sm sm:text-base text-gray-700 dark:text-gray-300 mb-2">
-                                        আনইনস্টল করার জন্য টাইপিং বুস্টার আনইনস্টল করে তারপরে m17n আনইনস্টল করতে হবে। তবে m17n আনইনস্টল করাটা জরুরি নয়, কারণ সেটি অন্য কোনো লেআউটের জন্য ডিপেন্ডেন্সি হিসেবে থাকতে পারে। এরচেয়ে কেবল ক্ষিপ্রর .mim ফাইলটি আপনার সিস্টেম থেকে ডিলিট করে দিতে পারেন। 
+                                        আনইনস্টল করার জন্য টাইপিং বুস্টার আনইনস্টল করে তারপরে m17n আনইনস্টল করতে হবে।
+                                        তবে m17n আনইনস্টল করাটা জরুরি নয়, কারণ সেটি অন্য কোনো লেআউটের জন্য ডিপেন্ডেন্সি
+                                        হিসেবে থাকতে পারে। এরচেয়ে কেবল ক্ষিপ্রর .mim ফাইলটি আপনার সিস্টেম থেকে ডিলিট করে
+                                        দিতে পারেন।
                                     </p>
                                 </div>
                             </div>
@@ -183,25 +235,45 @@
 
                         <!-- fcitx5-m17n Section -->
                         <div id="fcitx5-method" class="mb-8 sm:mb-12">
-                            <h2 class="text-xl sm:text-2xl font-semibold text-primary dark:text-dark-primary mb-4 sm:mb-6">fcitx5-m17n দিয়ে ক্ষিপ্র ব্যবহার করা</h2>
-                            
+                            <h2
+                                class="text-xl sm:text-2xl font-semibold text-primary dark:text-dark-primary mb-4 sm:mb-6">
+                                fcitx5-m17n দিয়ে ক্ষিপ্র ব্যবহার করা</h2>
+
                             <div class="space-y-6">
                                 <div class="bg-secondary/20 dark:bg-dark-light/20 rounded-lg p-4 sm:p-6">
-                                    <ol class="list-decimal list-inside space-y-3 sm:space-y-4 text-sm sm:text-base text-gray-700 dark:text-gray-300">
+                                    <ol
+                                        class="list-decimal list-inside space-y-3 sm:space-y-4 text-sm sm:text-base text-gray-700 dark:text-gray-300">
                                         <li>ক্ষিপ্র ইনস্টল করার আগে fcitx5-m17n ইনস্টল করতে হবে।</li>
-                                        <li>উবুন্টু, লিনাক্স মিন্ট এবং আরো কিছু ডিস্ট্রোতে বাংলার language pack আলাদা ভাবে ইনস্টল করতে হয়। Ubuntu-র ক্ষেত্রে "Language Support" অ্যাপটি ওপেন করে সেখান থেকে বাংলার জন্য ল্যাংগুয়েজ সাপোর্ট ইনস্টল করে নিন।<br>
-                                        ল্যাংগুয়েজ সাপোর্টের মাধ্যমে বাংলার সাপোর্ট এবং fcitx5-m17n দুটোই ইনস্টল থাকাটা জরুরি। দুটোই ইনস্টল করা আছে কিনা নিশ্চিত করুন।</li>
-                                        <li>এরপর <a href="https://github.com/rank-coder/khipro-m17n" target="_blank" class="text-primary dark:text-dark-primary underline">khipro-m17n এর গিটহাব রিপোজিটরি</a> থেকে bn-khipro.mim ফাইলটি সিস্টেমের সঠিক জায়গায় রেখে দিতে হবে। যারা fcitx5 ব্যবহার করেন তারা এই কাজটি এক কমান্ডে করতে নিচের কমান্ডটি টার্মিনালে রান করুন:
-                                        <div class="mt-3 relative">
-                                            <div class="bg-dark-text dark:bg-dark text-white p-3 sm:p-4 rounded-md font-mono text-xs sm:text-sm overflow-x-auto pr-12" id="fcitx5-install-command">
-                                                sudo rm /usr/share/m17n/bn-khipro*.mim && cd ~/ && sudo rm -rf ~/khipro-m17n && git clone https://github.com/rank-coder/khipro-m17n.git && cd ~/khipro-m17n && sudo cp bn-khipro*.mim /usr/share/m17n/ && fcitx5 restart
+                                        <li>উবুন্টু, লিনাক্স মিন্ট এবং আরো কিছু ডিস্ট্রোতে বাংলার language pack আলাদা
+                                            ভাবে ইনস্টল করতে হয়। Ubuntu-র ক্ষেত্রে "Language Support" অ্যাপটি ওপেন করে
+                                            সেখান থেকে বাংলার জন্য ল্যাংগুয়েজ সাপোর্ট ইনস্টল করে নিন।<br>
+                                            ল্যাংগুয়েজ সাপোর্টের মাধ্যমে বাংলার সাপোর্ট এবং fcitx5-m17n দুটোই ইনস্টল
+                                            থাকাটা জরুরি। দুটোই ইনস্টল করা আছে কিনা নিশ্চিত করুন।</li>
+                                        <li>এরপর <a href="https://github.com/rank-coder/khipro-m17n" target="_blank"
+                                                class="text-primary dark:text-dark-primary underline font-medium">khipro-m17n এর
+                                                গিটহাব রিপোজিটরি</a> থেকে bn-khipro.mim ফাইলটি সিস্টেমের সঠিক জায়গায়
+                                            রেখে দিতে হবে। যারা fcitx5 ব্যবহার করেন তারা এই কাজটি এক কমান্ডে করতে নিচের
+                                            কমান্ডটি টার্মিনালে রান করুন:
+                                            <div class="mt-3 relative">
+                                                <div class="bg-dark-text dark:bg-dark text-white p-3 sm:p-4 rounded-md font-mono text-xs sm:text-sm overflow-x-auto pr-12"
+                                                    id="fcitx5-install-command">
+                                                    sudo rm /usr/share/m17n/bn-khipro*.mim && cd ~/ && sudo rm -rf
+                                                    ~/khipro-m17n && git clone
+                                                    https://github.com/rank-coder/khipro-m17n.git && cd ~/khipro-m17n &&
+                                                    sudo cp bn-khipro*.mim /usr/share/m17n/ && fcitx5 restart
+                                                </div>
+                                                <button onclick="copyCommand('fcitx5-install-command')"
+                                                    class="absolute top-2 right-2 bg-gray-600 hover:bg-gray-500 text-white p-2 rounded transition-colors duration-200"
+                                                    title="Copy command">
+                                                    <svg class="w-4 h-4" fill="none" stroke="currentColor"
+                                                        viewBox="0 0 24 24">
+                                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                                            stroke-width="2"
+                                                            d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z">
+                                                        </path>
+                                                    </svg>
+                                                </button>
                                             </div>
-                                            <button onclick="copyCommand('fcitx5-install-command')" class="absolute top-2 right-2 bg-gray-600 hover:bg-gray-500 text-white p-2 rounded transition-colors duration-200" title="Copy command">
-                                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
-                                                </svg>
-                                            </button>
-                                        </div>
                                         </li>
                                     </ol>
                                 </div>
@@ -209,17 +281,29 @@
 
                             <!-- Update Section -->
                             <div class="mt-8">
-                                <h3 class="text-xl font-semibold text-primary dark:text-dark-primary mb-4">আপডেট করা</h3>
+                                <h3 class="text-xl font-semibold text-primary dark:text-dark-primary mb-4">আপডেট করা
+                                </h3>
                                 <div class="bg-secondary/20 dark:bg-dark-light/20 rounded-lg p-4 sm:p-6">
-                                    <p class="text-gray-700 dark:text-gray-300 mb-4">আপডেট করাটা খুবই সোজা। <a href="https://mike-fabian.github.io/ibus-typing-booster/" target="_blank"
-                                        class="text-primary dark:text-dark-primary-light underline">khipro-m17n এর রিলিজ পেজে</a> চেক করুন নতুন আপডেট এসেছে কিনা। নতুন আপডেট এসে থাকলে নতুন করে .mim ফাইল ডাউনলোড করে জায়গা মতো রেখে দিতে হবে। এটা একটা কমান্ডেই করা যায়:</p>
+                                    <p class="text-gray-700 dark:text-gray-300 mb-4">আপডেট করাটা খুবই সোজা। <a
+                                            href="https://mike-fabian.github.io/ibus-typing-booster/" target="_blank"
+                                            class="text-primary dark:text-dark-primary underline font-medium">khipro-m17n এর
+                                            রিলিজ পেজে</a> চেক করুন নতুন আপডেট এসেছে কিনা। নতুন আপডেট এসে থাকলে নতুন করে
+                                        .mim ফাইল ডাউনলোড করে জায়গা মতো রেখে দিতে হবে। এটা একটা কমান্ডেই করা যায়:</p>
                                     <div class="relative mb-4">
-                                        <div class="bg-dark-text dark:bg-dark text-white p-4 rounded-md font-mono text-sm overflow-x-auto pr-12" id="fcitx5-update-command">
-                                            sudo rm /usr/share/m17n/bn-khipro*.mim && cd ~/ && sudo rm -rf ~/khipro-m17n && git clone https://github.com/rank-coder/khipro-m17n.git && cd ~/khipro-m17n && sudo cp bn-khipro*.mim /usr/share/m17n/ && fcitx5 restart && exit
+                                        <div class="bg-dark-text dark:bg-dark text-white p-4 rounded-md font-mono text-sm overflow-x-auto pr-12"
+                                            id="fcitx5-update-command">
+                                            sudo rm /usr/share/m17n/bn-khipro*.mim && cd ~/ && sudo rm -rf ~/khipro-m17n
+                                            && git clone https://github.com/rank-coder/khipro-m17n.git && cd
+                                            ~/khipro-m17n && sudo cp bn-khipro*.mim /usr/share/m17n/ && fcitx5 restart
+                                            && exit
                                         </div>
-                                        <button onclick="copyCommand('fcitx5-update-command')" class="absolute top-2 right-2 bg-gray-600 hover:bg-gray-500 text-white p-2 rounded transition-colors duration-200" title="Copy command">
+                                        <button onclick="copyCommand('fcitx5-update-command')"
+                                            class="absolute top-2 right-2 bg-gray-600 hover:bg-gray-500 text-white p-2 rounded transition-colors duration-200"
+                                            title="Copy command">
                                             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                    d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z">
+                                                </path>
                                             </svg>
                                         </button>
                                     </div>
@@ -229,10 +313,14 @@
 
                             <!-- Uninstall Section -->
                             <div class="mt-8">
-                                <h3 class="text-xl font-semibold text-primary dark:text-dark-primary mb-4">আনইনস্টল করা</h3>
+                                <h3 class="text-xl font-semibold text-primary dark:text-dark-primary mb-4">আনইনস্টল করা
+                                </h3>
                                 <div class="bg-secondary/20 dark:bg-dark-light/20 rounded-lg p-4 sm:p-6">
                                     <p class="text-gray-700 dark:text-gray-300 mb-2">
-                                        আনইনস্টল করার জন্য টাইপিং বুস্টার আনইনস্টল করে তারপরে m17n আনইনস্টল করতে হবে। তবে m17n আনইনস্টল করাটা জরুরি নয়, কারণ সেটি অন্য কোনো লেআউটের জন্য ডিপেন্ডেন্সি হিসেবে থাকতে পারে। এরচেয়ে কেবল ক্ষিপ্রর .mim ফাইলটি আপনার সিস্টেম থেকে ডিলিট করে দিতে পারেন। 
+                                        আনইনস্টল করার জন্য টাইপিং বুস্টার আনইনস্টল করে তারপরে m17n আনইনস্টল করতে হবে।
+                                        তবে m17n আনইনস্টল করাটা জরুরি নয়, কারণ সেটি অন্য কোনো লেআউটের জন্য ডিপেন্ডেন্সি
+                                        হিসেবে থাকতে পারে। এরচেয়ে কেবল ক্ষিপ্রর .mim ফাইলটি আপনার সিস্টেম থেকে ডিলিট করে
+                                        দিতে পারেন।
                                     </p>
                                 </div>
                             </div>
@@ -240,12 +328,15 @@
                     </div>
 
                     <!-- Windows Section -->
-                    <div id="windows-installation" class="mb-8 sm:mb-16 bg-white dark:bg-dark-secondary rounded-xl sm:rounded-2xl shadow-lg p-4 sm:p-8">
-                        <h1 class="text-2xl sm:text-3xl font-bold text-primary dark:text-dark-primary mb-6 sm:mb-8 border-b border-gray-200 dark:border-gray-700 pb-3 sm:pb-4">
+                    <div id="windows-installation"
+                        class="mb-8 sm:mb-16 bg-white dark:bg-dark-secondary rounded-xl sm:rounded-2xl shadow-lg p-4 sm:p-8">
+                        <h1
+                            class="text-2xl sm:text-3xl font-bold text-primary dark:text-dark-primary mb-6 sm:mb-8 border-b border-gray-200 dark:border-gray-700 pb-3 sm:pb-4">
                             উইন্ডোজ সিস্টেমে
                         </h1>
-                        
-                        <div class="prose prose-base sm:prose-lg max-w-none text-gray-700 dark:text-gray-300 mb-6 sm:mb-8">
+
+                        <div
+                            class="prose prose-base sm:prose-lg max-w-none text-gray-700 dark:text-gray-300 mb-6 sm:mb-8">
                             <p>একাধিক উপায়ে ক্ষিপ্রকে উইন্ডোজে ব্যবহার করা যাচ্ছে:</p>
                             <ol class="list-decimal list-inside space-y-2">
                                 <li>বিখ্যাত বর্ণ কিবোর্ডের নতুন সংস্করণ, Borno (Native) -এ ক্ষিপ্র বিল্ট-ইন রয়েছে।</li>
@@ -255,12 +346,19 @@
 
                         <!-- Borno Native Section -->
                         <div id="borno-native-method" class="mb-8 sm:mb-12">
-                            <h2 class="text-xl sm:text-2xl font-semibold text-primary dark:text-dark-primary mb-4 sm:mb-6">Borno (Native) এর মাধ্যমে</h2>
-                            
+                            <h2
+                                class="text-xl sm:text-2xl font-semibold text-primary dark:text-dark-primary mb-4 sm:mb-6">
+                                Borno (Native) এর মাধ্যমে</h2>
+
                             <div class="bg-secondary/20 dark:bg-dark-light/20 rounded-lg p-6">
-                                <p class="text-sm sm:text-base text-gray-700 dark:text-gray-300 mb-4 sm:mb-6">Codepotro-এর জনপ্রিয় কিবোর্ড Borno Native-এর নতুন ভার্শনে ক্ষিপ্র লেআউট বিল্ট-ইন থাকছে।</p>
-                                <ol class="list-decimal list-inside space-y-2 sm:space-y-3 text-sm sm:text-base text-gray-700 dark:text-gray-300">
-                                    <li><a href="https://t.me/codepotro" target="_blank" class="text-primary dark:text-dark-primary underline">Codepotro-এর টেলিগ্রাম সাপোর্ট গ্রুপ</a> থেকে সর্বশেষ ভার্শনটি ডাউনলোড করুন।</li>
+                                <p class="text-sm sm:text-base text-gray-700 dark:text-gray-300 mb-4 sm:mb-6">
+                                    Codepotro-এর জনপ্রিয় কিবোর্ড Borno Native-এর নতুন ভার্শনে ক্ষিপ্র লেআউট বিল্ট-ইন
+                                    থাকছে।</p>
+                                <ol
+                                    class="list-decimal list-inside space-y-2 sm:space-y-3 text-sm sm:text-base text-gray-700 dark:text-gray-300">
+                                    <li><a href="https://t.me/codepotro" target="_blank"
+                                            class="text-primary dark:text-dark-primary underline font-medium">Codepotro-এর টেলিগ্রাম
+                                            সাপোর্ট গ্রুপ</a> থেকে সর্বশেষ ভার্শনটি ডাউনলোড করুন।</li>
                                     <li>অ্যাপ্লিকেশনটি ইনস্টল করুন।</li>
                                     <li>কিবোর্ড সেটিংস থেকে ক্ষিপ্র লেআউট নির্বাচন করুন।</li>
                                 </ol>
@@ -269,16 +367,24 @@
 
                         <!-- NMS Kontho Section -->
                         <div id="nms-kontho-method" class="mb-8 sm:mb-12">
-                            <h2 class="text-xl sm:text-2xl font-semibold text-primary dark:text-dark-primary mb-4 sm:mb-6">NMS Kontho তে ক্ষিপ্র</h2>
-                            
+                            <h2
+                                class="text-xl sm:text-2xl font-semibold text-primary dark:text-dark-primary mb-4 sm:mb-6">
+                                NMS Kontho তে ক্ষিপ্র</h2>
+
                             <div class="bg-secondary/20 dark:bg-dark-light/20 rounded-lg p-6">
-                                <p class="text-sm sm:text-base text-gray-700 dark:text-gray-300 mb-4 sm:mb-6">NMS Kontho সফটওয়্যারের জন্য কমিউনিটির তৈরি একটি ক্ষিপ্র-ভিত্তিক লেআউট রয়েছে। লেআউটটি ক্ষিপ্র কিবোর্ডের একটি পুরনো সংস্করণের ভিত্তিতে রচিত।</p>
+                                <p class="text-sm sm:text-base text-gray-700 dark:text-gray-300 mb-4 sm:mb-6">NMS Kontho
+                                    সফটওয়্যারের জন্য কমিউনিটির তৈরি একটি ক্ষিপ্র-ভিত্তিক লেআউট রয়েছে। লেআউটটি ক্ষিপ্র
+                                    কিবোর্ডের একটি পুরনো সংস্করণের ভিত্তিতে রচিত।</p>
                                 <div class="space-y-3">
                                     <p class="text-sm sm:text-base text-gray-700 dark:text-gray-300">
-                                        <a href="https://nabil-bot.github.io/Kontho/index.html" target="_blank" class="text-primary dark:text-dark-primary underline">NMS Kontho সফটওয়্যারের লিংক</a>
+                                        <a href="https://nabil-bot.github.io/Kontho/index.html" target="_blank"
+                                            class="text-primary dark:text-dark-primary underline font-medium">NMS Kontho
+                                            সফটওয়্যারের লিংক</a>
                                     </p>
                                     <p class="text-sm sm:text-base text-gray-700 dark:text-gray-300">
-                                        <a href="https://github.com/NabilSnigdho/khipro-nms" target="_blank" class="text-primary dark:text-dark-primary underline">Khipro NMS লেআউটের লিংক</a>
+                                        <a href="https://github.com/NabilSnigdho/khipro-nms" target="_blank"
+                                            class="text-primary dark:text-dark-primary underline font-medium">Khipro NMS লেআউটের
+                                            লিংক</a>
                                     </p>
                                 </div>
                             </div>
@@ -286,48 +392,86 @@
                     </div>
 
                     <!-- Android Section -->
-                    <div id="android-installation" class="mb-8 sm:mb-16 bg-white dark:bg-dark-secondary rounded-xl sm:rounded-2xl shadow-lg p-4 sm:p-8">
-                        <h1 class="text-2xl sm:text-3xl font-bold text-primary dark:text-dark-primary mb-6 sm:mb-8 border-b border-gray-200 dark:border-gray-700 pb-3 sm:pb-4">
+                    <div id="android-installation"
+                        class="mb-8 sm:mb-16 bg-white dark:bg-dark-secondary rounded-xl sm:rounded-2xl shadow-lg p-4 sm:p-8">
+                        <h1
+                            class="text-2xl sm:text-3xl font-bold text-primary dark:text-dark-primary mb-6 sm:mb-8 border-b border-gray-200 dark:border-gray-700 pb-3 sm:pb-4">
                             অ্যান্ড্রয়েডে
                         </h1>
-                        
+
                         <div class="bg-secondary/20 dark:bg-dark-light/20 rounded-lg p-6">
-                            <p class="text-sm sm:text-base text-gray-700 dark:text-gray-300 mb-3 sm:mb-4">অ্যান্ড্রয়েড ব্যবহারকারীদের জন্যেও সুখবর আসছে! Codepotro টিম তাদের জনপ্রিয় `Borno Android` কিবোর্ডে ক্ষিপ্র যুক্ত করার কাজ করছে। দ্রুত টাইপিংয়ের অভিজ্ঞতা আপনার হাতের মুঠোয় আসতে আর বেশি দেরি নেই।</p>
-                            <p class="text-sm sm:text-base text-gray-700 dark:text-gray-300"><a href="https://play.google.com/store/apps/details?id=com.codepotro.borno.keyboard&pcampaignid=web_share" target="_blank" class="text-primary dark:text-dark-primary underline">গুগল প্লে স্টোরে `Borno Android`</a> পাওয়া যাচ্ছে।</p>
+                            <p class="text-sm sm:text-base text-gray-700 dark:text-gray-300 mb-3 sm:mb-4">অ্যান্ড্রয়েড
+                                ব্যবহারকারীদের জন্যেও সুখবর আসছে! Codepotro টিম তাদের জনপ্রিয় `Borno Android` কিবোর্ডে
+                                ক্ষিপ্র যুক্ত করার কাজ করছে। দ্রুত টাইপিংয়ের অভিজ্ঞতা আপনার হাতের মুঠোয় আসতে আর বেশি
+                                দেরি নেই।</p>
+                            <p class="text-sm sm:text-base text-gray-700 dark:text-gray-300"><a
+                                    href="https://play.google.com/store/apps/details?id=com.codepotro.borno.keyboard&pcampaignid=web_share"
+                                    target="_blank" class="text-primary dark:text-dark-primary underline font-medium">গুগল প্লে
+                                    স্টোরে `Borno Android`</a> পাওয়া যাচ্ছে।</p>
                         </div>
                     </div>
 
                     <!-- Typing Booster Configuration Section -->
-                    <div class="mb-8 sm:mb-16 bg-white dark:bg-dark-secondary rounded-xl sm:rounded-2xl shadow-lg p-4 sm:p-8" id="টাইপিং-বুস্টার-কনফিগার-করা">
-                        <h1 class="text-2xl sm:text-3xl font-bold text-primary dark:text-dark-primary mb-6 sm:mb-8 border-b border-gray-200 dark:border-gray-700 pb-3 sm:pb-4">
+                    <div class="mb-8 sm:mb-16 bg-white dark:bg-dark-secondary rounded-xl sm:rounded-2xl shadow-lg p-4 sm:p-8"
+                        id="টাইপিং-বুস্টার-কনফিগার-করা">
+                        <h1
+                            class="text-2xl sm:text-3xl font-bold text-primary dark:text-dark-primary mb-6 sm:mb-8 border-b border-gray-200 dark:border-gray-700 pb-3 sm:pb-4">
                             টাইপিং বুস্টার কনফিগার করা
                         </h1>
-                        
-                        <div class="prose prose-base sm:prose-lg max-w-none text-gray-700 dark:text-gray-300 space-y-4 sm:space-y-6">
-                            <p class="text-sm sm:text-base">টাইপিং বুস্টার ইনস্টল করা হয়ে গেলে এরপর কম্পিউটার লগ আউট করে আবার লগ ইন করতে হবে। তারপরে সিস্টেমের ইনপুট মেথড কিংবা কিবোর্ড সংক্রান্ত সেটিংস থেকে টাইপিং বুস্টার সিলেক্ট করতে হবে। যদি আপনার ডিস্ট্রোতে সেটিংস থেকে আইবাসের সেটিংস কনফিগার করা না যায় তবে ibus-preferences থেকে কাজটি করতে হবে। (নিচের ছবি দ্রষ্টব্য)</p>
+
+                        <div
+                            class="prose prose-base sm:prose-lg max-w-none text-gray-700 dark:text-gray-300 space-y-4 sm:space-y-6">
+                            <p class="text-sm sm:text-base">টাইপিং বুস্টার ইনস্টল করা হয়ে গেলে এরপর কম্পিউটার লগ আউট
+                                করে আবার লগ ইন করতে হবে। তারপরে সিস্টেমের ইনপুট মেথড কিংবা কিবোর্ড সংক্রান্ত সেটিংস থেকে
+                                টাইপিং বুস্টার সিলেক্ট করতে হবে। যদি আপনার ডিস্ট্রোতে সেটিংস থেকে আইবাসের সেটিংস কনফিগার
+                                করা না যায় তবে ibus-preferences থেকে কাজটি করতে হবে। (নিচের ছবি দ্রষ্টব্য)</p>
                             <div class="text-center">
-                                <img src="/img/installation/image4.webp" alt="Installation Image 4" class="rounded-lg shadow-md max-w-full h-auto mx-auto">
+                                <img src="/img/installation/image4.webp" alt="Installation Image 4"
+                                    class="rounded-lg shadow-md max-w-full h-auto mx-auto">
                             </div>
                             <p>এখান থেকে টাইপিং বুস্টারের preferences কিংবা সেটিংসে যেতে হবে। (নিচের ছবি দ্রষ্টব্য)</p>
                             <div class="text-center">
-                                <img src="/img/installation/image6.webp" alt="Installation Image 6" class="rounded-lg shadow-md max-w-full h-auto mx-auto">
+                                <img src="/img/installation/image6.webp" alt="Installation Image 6"
+                                    class="rounded-lg shadow-md max-w-full h-auto mx-auto">
                             </div>
-                            <p>টাইপিং বুস্টারের সেটিংস ওপেন হলে প্রথমেই দেখা যাবে "Dictionaries & Input Methods" ট্যাব। সেখান থেকে বাংলার জন্য একটা ডিকশনারি সিলেক্ট করতে হবে। বাংলার জন্য তিনটা ডিকশনারি পাবেন; যেকোনো একটি সিলেক্ট করলেই হবে। এরপর টাইপিং বুস্টারের মধ্যেই ইনপুট মেথড হিসেবে ক্ষিপ্রকে সিলেক্ট করতে হবে এবং অন্যান্য ইনপুট মেথড রিমুভ করতে হবে। (নিচের ছবির মতো দেখাতে হবে)</p>
+                            <p>টাইপিং বুস্টারের সেটিংস ওপেন হলে প্রথমেই দেখা যাবে "Dictionaries & Input Methods" ট্যাব।
+                                সেখান থেকে বাংলার জন্য একটা ডিকশনারি সিলেক্ট করতে হবে। বাংলার জন্য তিনটা ডিকশনারি পাবেন;
+                                যেকোনো একটি সিলেক্ট করলেই হবে। এরপর টাইপিং বুস্টারের মধ্যেই ইনপুট মেথড হিসেবে ক্ষিপ্রকে
+                                সিলেক্ট করতে হবে এবং অন্যান্য ইনপুট মেথড রিমুভ করতে হবে। (নিচের ছবির মতো দেখাতে হবে)</p>
                             <div class="text-center">
-                                <img src="/img/installation/image1.webp" alt="Installation Image 1" class="rounded-lg shadow-md max-w-full h-auto mx-auto">
+                                <img src="/img/installation/image1.webp" alt="Installation Image 1"
+                                    class="rounded-lg shadow-md max-w-full h-auto mx-auto">
                             </div>
-                            <p>এরপরে "Options" ট্যাবে গিয়ে সেখান থেকে Use inline completion, Auto Capitalize, Unicode Symbols & Emoji Prediction, Add a space when committing by mouse click, Off the record mode সহ সবই বন্ধ করে দিতে হবে। Record Mode এর জন্য everything সিলেক্ট করতে হবে। (নিচের ছবির মতো দেখাতে হবে)</p>
+                            <p>এরপরে "Options" ট্যাবে গিয়ে সেখান থেকে Use inline completion, Auto Capitalize, Unicode
+                                Symbols & Emoji Prediction, Add a space when committing by mouse click, Off the record
+                                mode সহ সবই বন্ধ করে দিতে হবে। Record Mode এর জন্য everything সিলেক্ট করতে হবে। (নিচের
+                                ছবির মতো দেখাতে হবে)</p>
                             <div class="text-center">
-                                <img src="/img/installation/image5.webp" alt="Installation Image 5" class="rounded-lg shadow-md max-w-full h-auto mx-auto">
+                                <img src="/img/installation/image5.webp" alt="Installation Image 5"
+                                    class="rounded-lg shadow-md max-w-full h-auto mx-auto">
                             </div>
-                            <p>তবে একটা জিনিস এক্ষেত্রে বিশেষভাবে লক্ষণীয়; "Avoid using the forward_key_event() function" এটাতে টিকচিহ্ন ✓ দিতে হবে যদি টাইপিং বুস্টারে কমিট করার সময় হঠাৎ একাএকা ইনসার্শন পয়েন্টার নড়ে যাওয়ার ইস্যুর সম্মুখীন হন।</p>
-                            <p>এরপরে "Keybindings" ট্যাবে যেতে হবে। সেখানে Commit এর জন্য Enter, Commit-candidate-1 এর জন্য কিবোর্ডের Shift+J সেট করুন। commit-candidate-1-plus-space এখান থেকে 1-কে, এবং KP_1-কেও সরিয়ে দিতে হবে। এটা করার কারণ হলো বাংলার জন্য সাজেশন কমিট করার পর স্পেস যুক্ত হওয়াটা ভালো না। বাংলায় বিভক্তি, কিংবা দুই শব্দ জোড়া দিয়ে লিখতে হতে পারে। যাই হোক এভাবে 1 থেকে 4 পর্যন্ত J,K,L, এবং সেমিকোলন (;) সেট করবেন। 4 এর বেশি করতে যাবেন না। এডিট করা হলে নিচের ছবির মতো দাঁড়াবে:</p>
+                            <p>তবে একটা জিনিস এক্ষেত্রে বিশেষভাবে লক্ষণীয়; "Avoid using the forward_key_event()
+                                function" এটাতে টিকচিহ্ন ✓ দিতে হবে যদি টাইপিং বুস্টারে কমিট করার সময় হঠাৎ একাএকা
+                                ইনসার্শন পয়েন্টার নড়ে যাওয়ার ইস্যুর সম্মুখীন হন।</p>
+                            <p>এরপরে "Keybindings" ট্যাবে যেতে হবে। সেখানে Commit এর জন্য Enter, Commit-candidate-1 এর
+                                জন্য কিবোর্ডের Shift+J সেট করুন। commit-candidate-1-plus-space এখান থেকে 1-কে, এবং
+                                KP_1-কেও সরিয়ে দিতে হবে। এটা করার কারণ হলো বাংলার জন্য সাজেশন কমিট করার পর স্পেস যুক্ত
+                                হওয়াটা ভালো না। বাংলায় বিভক্তি, কিংবা দুই শব্দ জোড়া দিয়ে লিখতে হতে পারে। যাই হোক
+                                এভাবে 1 থেকে 4 পর্যন্ত J,K,L, এবং সেমিকোলন (;) সেট করবেন। 4 এর বেশি করতে যাবেন না। এডিট
+                                করা হলে নিচের ছবির মতো দাঁড়াবে:</p>
                             <div class="text-center">
-                                <img src="/img/installation/image7.webp" alt="Installation Image 7" class="rounded-lg shadow-md max-w-full h-auto mx-auto">
+                                <img src="/img/installation/image7.webp" alt="Installation Image 7"
+                                    class="rounded-lg shadow-md max-w-full h-auto mx-auto">
                             </div>
-                            <p>এরপরে আমাদের কাজ "Appearance" ট্যাবে। এখানেও যতোগুলো চেকবক্স আছে সবগুলো বন্ধ করে দিতে হবে (যাতে টাইপিং বুস্টার দ্রুত কাজ করবে)। এরপরে Candidate window page size করতে হবে 4; কারণ চারটির বেশি সাজেশন আসলে সেটা লেখার প্রতি মনোযোগ নষ্ট করতে পারে। এরপরে Candidate window orientation করে দিতে হবে Horizontal এতে চোখ কম নাড়িয়ে সবগুলো সাজেশন দেখতে পাওয়া যাবে। Preedit underline "Single" রাখতে পারেন; তবে এটা একটা রাখলেই হলো। (নিচের ছবির মতো দেখাতে হবে)</p>
+                            <p>এরপরে আমাদের কাজ "Appearance" ট্যাবে। এখানেও যতোগুলো চেকবক্স আছে সবগুলো বন্ধ করে দিতে হবে
+                                (যাতে টাইপিং বুস্টার দ্রুত কাজ করবে)। এরপরে Candidate window page size করতে হবে 4; কারণ
+                                চারটির বেশি সাজেশন আসলে সেটা লেখার প্রতি মনোযোগ নষ্ট করতে পারে। এরপরে Candidate window
+                                orientation করে দিতে হবে Horizontal এতে চোখ কম নাড়িয়ে সবগুলো সাজেশন দেখতে পাওয়া যাবে।
+                                Preedit underline "Single" রাখতে পারেন; তবে এটা একটা রাখলেই হলো। (নিচের ছবির মতো দেখাতে
+                                হবে)</p>
                             <div class="text-center">
-                                <img src="/img/installation/image2.webp" alt="Installation Image 2" class="rounded-lg shadow-md max-w-full h-auto mx-auto">
+                                <img src="/img/installation/image2.webp" alt="Installation Image 2"
+                                    class="rounded-lg shadow-md max-w-full h-auto mx-auto">
                             </div>
                         </div>
                     </div>
@@ -350,14 +494,14 @@
                     }
                     const html = await response.text();
                     const targetElement = document.getElementById(elementId);
-                    
+
                     // For header, insert directly into body to maintain sticky positioning
                     if (elementId === 'header-container') {
                         targetElement.outerHTML = html;
                     } else {
                         targetElement.innerHTML = html;
                     }
-                    
+
                     if (callback) callback();
                 } catch (error) {
                     console.error(`Could not load ${url}:`, error);
@@ -398,7 +542,7 @@
             async function loadComponents() {
                 await loadHTML('/header.html', 'header-container');
                 await loadHTML('/footer.html', 'footer-container');
-                
+
                 // Initialize header scripts after header is loaded
                 initializeHeaderScripts();
             }
@@ -411,8 +555,8 @@
         function copyCommand(elementId) {
             const element = document.getElementById(elementId);
             const text = element.textContent.trim();
-            
-            navigator.clipboard.writeText(text).then(function() {
+
+            navigator.clipboard.writeText(text).then(function () {
                 // Show success feedback
                 const button = element.nextElementSibling;
                 const originalHTML = button.innerHTML;
@@ -423,13 +567,13 @@
                 `;
                 button.classList.remove('bg-gray-600', 'hover:bg-gray-500');
                 button.classList.add('bg-green-600');
-                
-                setTimeout(function() {
+
+                setTimeout(function () {
                     button.innerHTML = originalHTML;
                     button.classList.remove('bg-green-600');
                     button.classList.add('bg-gray-600', 'hover:bg-gray-500');
                 }, 2000);
-            }).catch(function(err) {
+            }).catch(function (err) {
                 console.error('Failed to copy command: ', err);
                 // Fallback for older browsers
                 const textArea = document.createElement('textarea');
