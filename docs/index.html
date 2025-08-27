@@ -247,6 +247,11 @@
                 padding-right: 0.5rem !important;
             }
         }
+
+        /* Fix header overlap for section navigation */
+        section[id], div[id] {
+            scroll-margin-top: 5rem; /* 80px to account for header height */
+        }
     </style>
 </head>
 
