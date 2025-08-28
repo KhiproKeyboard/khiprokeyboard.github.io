@@ -264,3 +264,28 @@
 .nav-link.active::after {
     background-color: white;
 }
+
+/* Custom Icon and Button Background Classes */
+.bg-icon-primary {
+    background-color: var(--color-primary) !important;
+}
+
+.dark .bg-icon-primary {
+    background-color: #8b4a47 !important;
+}
+
+.bg-btn-primary {
+    background-color: var(--color-primary) !important;
+}
+
+.dark .bg-btn-primary {
+    background-color: #8b4a47 !important;
+}
+
+.bg-btn-primary:hover {
+    background-color: var(--color-primary-dark) !important;
+}
+
+.dark .bg-btn-primary:hover {
+    background-color: #7a4240 !important;
+}

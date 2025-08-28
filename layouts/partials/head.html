@@ -46,10 +46,9 @@
         
         // Check for saved theme preference or default to light mode
         const savedTheme = localStorage.getItem('theme');
-        const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
         
-        // Set initial theme
-        if (savedTheme === 'dark' || (!savedTheme && systemPrefersDark)) {
+        // Set initial theme - always default to light mode unless user explicitly chose dark
+        if (savedTheme === 'dark') {
             html.classList.add('dark');
         } else {
             html.classList.remove('dark');
@@ -68,14 +67,11 @@
             });
         }
         
-        // Listen for system theme changes
+        // Listen for system theme changes - but only apply if user hasn't made an explicit choice
         window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function(e) {
             if (!localStorage.getItem('theme')) {
-                if (e.matches) {
-                    html.classList.add('dark');
-                } else {
-                    html.classList.remove('dark');
-                }
+                // Always stay in light mode regardless of system preference
+                html.classList.remove('dark');
             }
         });
     });
