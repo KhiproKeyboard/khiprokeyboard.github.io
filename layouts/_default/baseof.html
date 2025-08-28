@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="bn" class="scroll-smooth">
+<head>
+    {{ partial "head.html" . }}
+</head>
+<body class="antialiased bg-light text-dark-text dark:bg-dark dark:text-dark-text-light bg-body-pattern">
+    <script>
+        // On page load or when changing themes, best to add inline in `head` to avoid FOUC
+        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark')
+        } else {
+            document.documentElement.classList.remove('dark')
+        }
+
+        // Listen for changes in the system's color scheme preference
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
+            if (!('theme' in localStorage)) { // Only auto-switch if no explicit theme is set
+                if (event.matches) {
+                    document.documentElement.classList.add('dark');
+                } else {
+                    document.documentElement.classList.remove('dark');
+                }
+            }
+        });
+    </script>
+    
+    {{ partial "header.html" . }}
+    
+    <main>
+        {{ block "main" . }}{{ end }}
+    </main>
+    
+    {{ partial "footer.html" . }}
+    {{ partial "scripts.html" . }}
+</body>
+</html>
