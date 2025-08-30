@@ -27,9 +27,9 @@ toc: true
 3. এরপর [টাইপিং বুস্টার](https://mike-fabian.github.io/ibus-typing-booster/) ইনস্টল করে নিন। উবুন্টুতে sudo apt install ibus-typing-booster কমান্ড দিতে হবে। Fedora \-তে প্রি-ইনস্টল করা থাকার কথা।  
 4. এরপরের কাজ, [khipro-m17n এর গিটহাব রিপোজিটরি](https://github.com/rank-coder/khipro-m17n) থেকে bn-khipro.mim ফাইলটি সিস্টেমের সঠিক জায়গায় রেখে দিতে হবে। এই কাজটি এক কমান্ডে করতে নিচের কমান্ডটি টার্মিনালে রান করুন:  
    ```
-   sudo rm /usr/share/m17n/bn-khipro\*.mim; cd \~/; sudo rm \-rf khipro-m17n; git clone https://github.com/rank-coder/khipro-m17n.git; cd \~/khipro-m17n; sudo cp bn-khipro\*.mim /usr/share/m17n/; ibus restart
+   sudo rm /usr/share/m17n/bn-khipro*.mim; cd ~/; sudo rm -rf khipro-m17n; git clone https://github.com/rank-coder/khipro-m17n.git; cd ~/khipro-m17n; sudo cp bn-khipro*.mim /usr/share/m17n/; ibus restart
    ```  
-5. এরপর টাইপিং বুস্টার কনফিগারেশনের পালা। টাইপিং বুস্টার ব্যবহারের সেরা অভিজ্ঞতা পাওয়ার জন্য টাইপিং বুস্টারের কনফিগারেশন সংক্রান্ত সকল নির্দেশনা ও টিপস [নিচে (এখানে ক্লিক করুন)](#টাইপিং-বুস্টার-কনফিগার-করা) সংযুক্ত করা হয়েছে।  
+5. এরপর টাইপিং বুস্টার কনফিগারেশনের পালা। টাইপিং বুস্টার ব্যবহারের সেরা অভিজ্ঞতা পাওয়ার জন্য টাইপিং বুস্টারের কনফিগারেশন সংক্রান্ত সকল নির্দেশনা ও টিপস নিচে [(এখানে ক্লিক করুন)](/installation/#%E0%A6%9F%E0%A6%87%E0%A6%AA-%E0%A6%AC%E0%A6%B8%E0%A6%9F%E0%A6%B0-%E0%A6%95%E0%A6%A8%E0%A6%AB%E0%A6%97%E0%A6%B0-%E0%A6%95%E0%A6%B0) সংযুক্ত করা হয়েছে।  
 6. যারা টাইপিং বুস্টার ছাড়া ব্যবহার করতে চান তারা ক্ষিপ্র ইনস্টল করার পরে আপনার সিস্টেমের সেটিংস থেকে ক্ষিপ্র-কে ইনপুট সোর্স হিসেবে অ্যাড করে নিন।
 
 ![](/img/installation/image1.webp)
@@ -38,7 +38,7 @@ toc: true
 
 আপডেট করাটা খুবই সোজা। [khipro-m17n এর রিলিজ পেজে](https://github.com/rank-coder/khipro-m17n/releases) চেক করুন নতুন আপডেট এসেছে কিনা। নতুন আপডেট এসে থাকলে নতুন করে .mim ফাইল ডাউনলোড করে জায়গা মতো রেখে দিতে হবে। এটা একটা কমান্ডেই করা যায়:  
 ```
-sudo rm /usr/share/m17n/bn-khipro\*.mim; cd \~/; sudo rm \-rf khipro-m17n; git clone https://github.com/rank-coder/khipro-m17n.git; cd \~/khipro-m17n; sudo cp bn-khipro\*.mim /usr/share/m17n/; ibus restart; exit 
+sudo rm /usr/share/m17n/bn-khipro*.mim; cd ~/; sudo rm -rf khipro-m17n; git clone https://github.com/rank-coder/khipro-m17n.git; cd ~/khipro-m17n; sudo cp bn-khipro*.mim /usr/share/m17n/; ibus restart; exit
 ``` 
 এরপর, কম্পিউটার লগআউট করে লগইন করুন।
 
@@ -54,14 +54,14 @@ sudo rm /usr/share/m17n/bn-khipro\*.mim; cd \~/; sudo rm \-rf khipro-m17n; git c
    ল্যাংগুয়েজ সাপোর্টের মাধ্যমে বাংলার সাপোর্ট এবং fcitx5-m17n দুটোই ইনস্টল থাকাটা জরুরি। দুটোই ইনস্টল করা আছে কিনা নিশ্চিত করুন।  
 3. এরপর [khipro-m17n এর গিটহাব রিপোজিটরি](https://github.com/rank-coder/khipro-m17n) থেকে bn-khipro.mim ফাইলটি সিস্টেমের সঠিক জায়গায় রেখে দিতে হবে। যারা fcitx5 ব্যবহার করেন তারা  এই কাজটি এক কমান্ডে করতে নিচের কমান্ডটি টার্মিনালে রান করুন:  
    ```
-   sudo rm /usr/share/m17n/bn-khipro\*.mim && cd \~/ && sudo rm \-rf \~/khipro-m17n && git clone https://github.com/rank-coder/khipro-m17n.git && cd \~/khipro-m17n && sudo cp bn-khipro\*.mim /usr/share/m17n/ && fcitx5 restart
+   sudo rm /usr/share/m17n/bn-khipro*.mim && cd ~/ && sudo rm -rf ~/khipro-m17n && git clone https://github.com/rank-coder/khipro-m17n.git && cd ~/khipro-m17n && sudo cp bn-khipro*.mim /usr/share/m17n/ && fcitx5 restart
    ```
 
 ### আপডেট করা
 
 আপডেট করাটা খুবই সোজা। [khipro-m17n এর রিলিজ পেজে](https://github.com/rank-coder/khipro-m17n/releases) চেক করুন নতুন আপডেট এসেছে কিনা। নতুন আপডেট এসে থাকলে নতুন করে .mim ফাইল ডাউনলোড করে জায়গা মতো রেখে দিতে হবে। এটা একটা কমান্ডেই করা যায়:  
 ```
-sudo rm /usr/share/m17n/bn-khipro\*.mim && cd \~/ && sudo rm \-rf \~/khipro-m17n && git clone https://github.com/rank-coder/khipro-m17n.git && cd \~/khipro-m17n && sudo cp bn-khipro\*.mim /usr/share/m17n/ && fcitx5 restart && exit  
+sudo rm /usr/share/m17n/bn-khipro*.mim && cd ~/ && sudo rm -rf ~/khipro-m17n && git clone https://github.com/rank-coder/khipro-m17n.git && cd ~/khipro-m17n && sudo cp bn-khipro*.mim /usr/share/m17n/ && fcitx5 restart && exit  
 ```
 এরপর, কম্পিউটার লগআউট করে লগইন করুন।
 

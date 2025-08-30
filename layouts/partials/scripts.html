@@ -174,4 +174,29 @@
             updateNavigation(); // Initial call
         }
     });
+
+    // External links handler - make all external links open in new tabs
+    const links = document.querySelectorAll('a[href]');
+    
+    links.forEach(function(link) {
+        const href = link.getAttribute('href');
+        
+        // Check if it's an external link (starts with http/https and not the current domain)
+        if (href && (href.startsWith('http://') || href.startsWith('https://'))) {
+            const currentDomain = window.location.hostname;
+            try {
+                const linkDomain = new URL(href).hostname;
+                
+                // If it's a different domain, make it open in new tab
+                if (linkDomain !== currentDomain) {
+                    link.setAttribute('target', '_blank');
+                    link.setAttribute('rel', 'noopener noreferrer');
+                }
+            } catch (e) {
+                // If URL parsing fails, assume it's external and add target="_blank"
+                link.setAttribute('target', '_blank');
+                link.setAttribute('rel', 'noopener noreferrer');
+            }
+        }
+    });
 </script>
