@@ -1,5 +1,5 @@
 {{ define "main" }}
-<div class="min-h-screen bg-gray-50 dark:bg-dark-primary pt-0">
+<div class="min-h-screen bg-gray-50 dark:bg-dark-primary pt-0 {{ if eq .Section "installation" }}page-installation{{ else if eq .Section "docs" }}page-docs{{ end }}">
     <div class="flex flex-col lg:flex-row gap-6 p-4 lg:p-8">
         <!-- TOC Sidebar -->
         {{ partial "toc.html" . }}
@@ -23,7 +23,7 @@
                     </header>
                     
                     <!-- Content -->
-                    <div class="content-wrapper max-w-none">
+                    <div class="content-wrapper max-w-none {{ if eq .Section "installation" }}installation-content{{ else if eq .Section "docs" }}docs-content{{ end }}">
                         {{ .Content }}
                     </div>
 

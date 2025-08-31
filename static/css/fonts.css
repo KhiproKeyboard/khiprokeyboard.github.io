@@ -1,0 +1,30 @@
+/* Khipro Keyboard - Font System */
+/* All font declarations and typography configurations */
+
+/* Font Face Declarations */
+@font-face {
+    font-family: 'Anek Bangla';
+    src: url('/fonts/AnekBangla.ttf') format('truetype');
+    font-weight: 300 700;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Kalpurush';
+    src: url('/fonts/kalpurush.ttf') format('truetype');
+    font-weight: normal;
+    font-display: swap;
+}
+
+/* Font Family Configurations */
+/* Default font for all pages */
+body {
+    font-family: 'Anek Bangla', sans-serif;
+}
+
+/* Kalpurush font only for installation and docs pages - using URL-based targeting */
+body[data-page="installation"],
+body[data-page="docs"] {
+    font-family: 'Kalpurush', 'Anek Bangla', sans-serif;
+}
+

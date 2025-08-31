@@ -3,7 +3,7 @@
 <head>
     {{ partial "head.html" . }}
 </head>
-<body class="antialiased bg-light text-dark-text dark:bg-dark dark:text-dark-text-light bg-body-pattern">
+<body class="antialiased bg-light text-dark-text dark:bg-dark dark:text-dark-text-light bg-body-pattern" data-page="{{ if eq .RelPermalink "/installation/" }}installation{{ else if eq .RelPermalink "/docs/" }}docs{{ end }}">
     <script>
         // On page load or when changing themes, best to add inline in `head` to avoid FOUC
         if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {

@@ -1,6 +1,7 @@
 /* Khipro Keyboard - Centralized Color System */
 /* All colors are managed from this single file using CSS custom properties */
 
+
 :root {
     /* Light Mode Colors - Coral & Deep Red Theme */
     --color-primary: #c56e6c;        /* Logo coral color */
@@ -19,9 +20,9 @@
     
     /* Text Colors */
     --color-text-primary: #2d1f1f;   /* Dark warm gray for light mode */
-    --color-text-secondary: #4b5563;
-    --color-text-muted: #6b7280;
-    --color-text-light: #9ca3af;
+    --color-text-secondary: #1f2937;  /* Darker for better readability */
+    --color-text-muted: #374151;      /* Much darker for docs content */
+    --color-text-light: #4b5563;      /* Darker for better contrast */
     
     /* Border Colors */
     --color-border-light: #e5e7eb;
@@ -163,15 +164,15 @@
 }
 
 .content-wrapper h3 {
-    color: var(--color-text-muted);
+    color: var(--color-text-secondary);
 }
 
 .content-wrapper h4 {
-    color: var(--color-text-light);
+    color: var(--color-text-muted);
 }
 
 .content-wrapper p {
-    color: var(--color-text-muted);
+    color: var(--color-text-primary);
 }
 
 .content-wrapper a {
@@ -289,3 +290,4 @@
 .dark .bg-btn-primary:hover {
     background-color: #7a4240 !important;
 }
+
