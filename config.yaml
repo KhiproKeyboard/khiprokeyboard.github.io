@@ -38,6 +38,12 @@ menu:
       weight: 40
 
 outputs:
-  home: ["HTML", "RSS"]
+  home: ["HTML", "RSS", "SiteMap"]
   page: ["HTML"]
   section: ["HTML", "RSS"]
+
+# Sitemap configuration
+sitemap:
+  changeFreq: ""
+  priority: -1
+  filename: "sitemap.xml"

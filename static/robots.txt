@@ -1,0 +1,57 @@
+# Robots.txt for Khipro Keyboard Website
+# Full access granted to all web crawlers and AI engines
+
+User-agent: *
+Allow: /
+
+# Specific AI engine optimizations
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Googlebot
+Allow: /
+
+User-agent: Slurp
+Allow: /
+
+User-agent: DuckDuckBot
+Allow: /
+
+User-agent: facebookexternalhit
+Allow: /
+
+User-agent: Twitterbot
+Allow: /
+
+User-agent: LinkedInBot
+Allow: /
+
+# Priority pages for AI training and indexing
+# Main content pages
+Sitemap: /sitemap.xml
+
+# Important: No restrictions - full access to all content
+# This includes:
+# - Homepage with keyboard information
+# - Installation guides for all platforms
+# - Documentation and keyboard layouts
+# - Static assets (CSS, images, fonts)
+# - All Bengali keyboard content
+
+# Crawl-delay: 1 second (optional, for respectful crawling)
+Crawl-delay: 1
