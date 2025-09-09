@@ -220,13 +220,15 @@ html {
 
 /* Table Container for Responsive Design */
 .content-wrapper table {
-    width: 100%;
+    width: auto;
+    max-width: 100%;
     border-collapse: collapse;
     margin: 0;
-    font-size: 0.875rem;
+    font-size: 1.150rem;
     border: 1px solid #e5e7eb;
     border-radius: 0.5rem;
     overflow: hidden;
+    table-layout: auto;
 }
 
 .dark .content-wrapper table {
@@ -259,6 +261,8 @@ html {
     border-bottom: 1px solid #e5e7eb;
     border-right: 1px solid #e5e7eb;
     word-wrap: break-word;
+    width: auto;
+    white-space: nowrap;
 }
 
 .content-wrapper th:last-child,
@@ -280,6 +284,8 @@ html {
     color: #4b5563;
     word-wrap: break-word;
     font-size: 1.150rem;
+    width: auto;
+    white-space: nowrap;
 }
 
 .dark .content-wrapper td {
@@ -288,60 +294,82 @@ html {
     color: #d1d5db;
 }
 
+/* Alternating row colors (zebra striping) */
+.content-wrapper tr:nth-child(even) {
+    background-color: #e5e7eb;
+}
+
+.dark .content-wrapper tr:nth-child(even) {
+    background-color: #374151;
+}
+
 .content-wrapper tr:hover {
-    background-color: #f3f4f6;
+    border: 2px solid #497b59;
+    border-radius: 4px;
 }
 
 .dark .content-wrapper tr:hover {
-    background-color: #4b5563;
+    border: 2px solid #6ee7b7;
+    border-radius: 4px;
+}
+
+/* Allow text wrapping for cells with longer content */
+.content-wrapper td:last-child,
+.content-wrapper th:last-child {
+    white-space: normal;
+    max-width: 300px;
 }
 
 /* Mobile responsive styles */
 @media (max-width: 768px) {
     .content-wrapper table {
-        font-size: 0.8rem;
-        min-width: 600px;
+        font-size: 1.150rem;
+        min-width: auto;
     }
 
     .content-wrapper th,
     .content-wrapper td {
         padding: 0.5rem 0.25rem;
-        min-width: 60px;
+        white-space: normal;
+        min-width: auto;
     }
 
     /* Special handling for the first two tables */
     .content-wrapper table:nth-of-type(1),
     .content-wrapper table:nth-of-type(2) {
-        min-width: 800px;
+        min-width: auto;
     }
 
     .content-wrapper table:nth-of-type(1) th,
     .content-wrapper table:nth-of-type(1) td,
     .content-wrapper table:nth-of-type(2) th,
     .content-wrapper table:nth-of-type(2) td {
-        min-width: 50px;
+        min-width: auto;
         text-align: center;
-        font-size: 0.75rem;
+        font-size: 1.150rem;
+        white-space: nowrap;
     }
 }
 
 @media (max-width: 480px) {
     .content-wrapper table {
-        font-size: 0.75rem;
+        font-size: 1.150rem;
     }
 
     .content-wrapper th,
     .content-wrapper td {
         padding: 0.4rem 0.2rem;
-        min-width: 45px;
+        min-width: auto;
+        white-space: normal;
     }
 
     .content-wrapper table:nth-of-type(1) th,
     .content-wrapper table:nth-of-type(1) td,
     .content-wrapper table:nth-of-type(2) th,
     .content-wrapper table:nth-of-type(2) td {
-        min-width: 40px;
-        font-size: 0.7rem;
+        min-width: auto;
+        font-size: 1.150rem;
+        white-space: nowrap;
     }
 }
 
