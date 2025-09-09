@@ -215,10 +215,15 @@
 }
 
 .content-wrapper th {
-    background-color: var(--color-border-light);
-    color: var(--color-text-secondary);
+    background-color: #6e3133;
+    color: white;
     border-bottom: 1px solid var(--color-border-light);
     border-right: 1px solid var(--color-border-light);
+}
+
+.dark .content-wrapper th {
+    background-color: var(--color-header-dark);
+    color: var(--color-dark-text);
 }
 
 .content-wrapper td {

@@ -253,13 +253,9 @@ html {
 }
 
 .content-wrapper th {
-    background-color: #f9fafb;
-    color: #374151;
     font-weight: 600;
     padding: 0.75rem 0.5rem;
     text-align: left;
-    border-bottom: 1px solid #e5e7eb;
-    border-right: 1px solid #e5e7eb;
     word-wrap: break-word;
     width: auto;
     white-space: nowrap;
@@ -270,37 +266,21 @@ html {
     border-right: none;
 }
 
-.dark .content-wrapper th {
-    background-color: #374151;
-    color: #f9fafb;
-    border-bottom-color: #4b5563;
-    border-right-color: #4b5563;
-}
-
 .content-wrapper td {
     padding: 0.75rem 0.5rem;
-    border-bottom: 1px solid #e5e7eb;
-    border-right: 1px solid #e5e7eb;
-    color: #4b5563;
     word-wrap: break-word;
     font-size: 1.150rem;
     width: auto;
     white-space: nowrap;
 }
 
-.dark .content-wrapper td {
-    border-bottom-color: #374151;
-    border-right-color: #374151;
-    color: #d1d5db;
-}
-
 /* Alternating row colors (zebra striping) */
 .content-wrapper tr:nth-child(even) {
-    background-color: #e5e7eb;
+    background-color: var(--color-border-light);
 }
 
 .dark .content-wrapper tr:nth-child(even) {
-    background-color: #374151;
+    background-color: var(--color-border-light);
 }
 
 .content-wrapper tr:hover {
