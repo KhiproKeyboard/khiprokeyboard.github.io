@@ -75,7 +75,7 @@ sudo rm /usr/share/m17n/bn-khipro*.mim; cd ~/ ; sudo rm -rf ~/khipro-m17n ; git 
 # ওয়েব ব্রাউজারে
 
 Bangla-IM টুল বা ক্ষিপ্রপ্যাড ব্যবহার করে ওয়েব ব্রাউজারেই ক্ষিপ্র দিয়ে লিখতে পারবেন।    
-Bangla-IM টুল বা ক্ষিপ্রপ্যাড ব্যবহার করতে কিছু সেটাপ করার প্রয়োজন নেই। [ক্ষিপ্রপ্যাডের পেজ](https://khiprokeyboard.github.io/khipropad) বা [Bangla-IM টুলের সাইটে](https://www.nabilsnigdho.dev/bangla-im) গিয়েই টাইপিং টেস্ট করতে পারবেন।  
+Bangla-IM টুল বা ক্ষিপ্রপ্যাড ব্যবহার করতে কিছু সেটাপ করার প্রয়োজন নেই। [Bangla-IM টুলের সাইটে](https://www.nabilsnigdho.dev/bangla-im) কিংবা [ক্ষিপ্রপ্যাডের পেজে](https://khiprokeyboard.github.io/khipropad) গিয়েই টাইপিং টেস্ট করতে পারবেন।  
 ওখানে টাইপ করে আপনি যেকোনো জায়গায় কপি পেস্ট করতে পারবেন।  
 
 # উইন্ডোজ সিস্টেমে
