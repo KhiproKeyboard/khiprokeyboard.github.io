@@ -7,9 +7,9 @@ toc: true
 
 # ক্ষিপ্র কিবোর্ড <br> কনসেপ্ট ও ব্যবহার-নির্দেশিকা
 
-ডকুমেন্টেশন সংস্করণ: ৪  
+ডকুমেন্টেশন সংস্করণ: ৬  
 প্রথম প্রকাশ: ২৪শে আগস্ট, ২০২৫  
-৫ম সংস্করণ (পরিমার্জিত): ১৮ই সেপ্টেম্বর, ২০২৫
+৬ষ্ঠ সংস্করণ: ১৮ই সেপ্টেম্বর, ২০২৫
 
 [PDF Documentation](https://docs.google.com/document/d/1dlfCptSiUfYKEpCLfxglZmdKMbiVoVTRI0FFjpxHE9Y/edit?usp=drivesdk) | [For Developers](/docs/#%E0%A6%A1%E0%A6%AD%E0%A6%B2%E0%A6%AA%E0%A6%B0%E0%A6%A6%E0%A6%B0-%E0%A6%9C%E0%A6%A8%E0%A6%AF-for-developers)
 
