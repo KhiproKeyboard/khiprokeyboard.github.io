@@ -842,7 +842,7 @@ toc: true
 ## ক্ষিপ্র পাইথন
 
 1. [Khipro Python Version](https://github.com/KhiproKeyboard/khipro-python) (ক্ষিপ্র পাইথন সংস্করণ) থেকে লজিক ব্লুপ্রিন্ট ব্যবহার করে ডেভেলপারগণ তাঁদের কিবোর্ডে ক্ষিপ্র ইমপ্লিমেন্ট করতে পারেন।
-2. ক্ষিপ্র-র মূল রিপোজিটরি [khipro-m17n](https://github.com/rank-coder/khipro-m17n) সহ অন্যান্য কয়েকটি ল্যাংগুয়েজে ক্ষিপ্র-র যেসব মডিউল তৈরি করা হয়েছে সেগুলোর একটা তালিকা আমাদের ওয়েবসাইটে দেওয়া হয়েছে: https://khiprokeyboard.github.io/#repositories
+2. ক্ষিপ্র-র মূল রিপোজিটরি [khipro-m17n](https://github.com/rank-coder/khipro-m17n) সহ অন্যান্য কয়েকটি ল্যাংগুয়েজে ক্ষিপ্র-র যেসব মডিউল তৈরি করা হয়েছে সেগুলোর একটা তালিকা ওয়েবসাইটের হোম পেজে [ক্ষিপ্র রিপোজিটরি সমূহ](https://khiprokeyboard.github.io/#repositories) সেকশনে দেওয়া হয়েছে।
 
 ## টাচস্ক্রিনে অ্যাডাপটেশনের জন্য সাজেশন
 
