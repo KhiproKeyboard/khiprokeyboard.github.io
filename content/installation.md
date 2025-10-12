@@ -96,7 +96,7 @@ NMS Kontho সফটওয়্যারের জন্য কমিউনি�
 
 [NMS Kontho সফটওয়্যারের লিংক](https://nabil-bot.github.io/Kontho/index.html)
 
-[Khipro NMS লেআউটের লিংক](https://github.com/NabilSnigdho/khipro-nms)
+[Khipro NMS লেআউটের লিংক](https://github.com/KhiproKeyboard/khipro-nms)
 
 ---
 
