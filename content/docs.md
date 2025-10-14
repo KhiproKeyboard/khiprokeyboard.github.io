@@ -9,7 +9,7 @@ toc: true
 
 ডকুমেন্টেশন সংস্করণ: ৫  
 প্রথম প্রকাশ: ২৪শে আগস্ট, ২০২৫  
-৫ম সংস্করণ (পরিমার্জিত): ১৮ই সেপ্টেম্বর, ২০২৫
+৫ম সংস্করণ (পরিমার্জিত): ১৪ই অক্টোবর, ২০২৫
 
 [PDF Documentation](https://docs.google.com/document/d/1dlfCptSiUfYKEpCLfxglZmdKMbiVoVTRI0FFjpxHE9Y/edit?usp=drivesdk) | [For Developers](/docs/#%E0%A6%A1%E0%A6%AD%E0%A6%B2%E0%A6%AA%E0%A6%B0%E0%A6%A6%E0%A6%B0-%E0%A6%9C%E0%A6%A8%E0%A6%AF-for-developers)
 
@@ -413,125 +413,640 @@ toc: true
 
 ## স্বরবর্ণ ও স্বরচিহ্ন
 
-| ইনপুট | আউটপুট | উদাহরণ |
-| :---- | :---- | :---- |
-| o | অ | omor → অমর |
-| a | আ,  া | amar → আমার, kaka → কাকা |
-| i | ই,   ি | iti → ইতি, ki → কি |
-| ii | ঈ,  ী | iid → ঈদ, kii → কী |
-| u | উ,  ু | ui → উই, oju → অজু |
-| uu | ঊ,  ূ | uuru → ঊরু, kuup → কূপ |
-| q | ঋ,  ৃ | qju → ঋজু, kqtii → কৃতী |
-| e | এ,  ে | ebar → এবার, ke → কে |
-| oi | ঐ,  ৈ | oik → ঐক, koi → কৈ |
-| w | ও,  ো | wstad → ওস্তাদ,  kwn → কোন |
-| ou | ঔ,  ৌ | oucitz → ঔচিত্য, nou → নৌ |
-| ae | অ্যা, ্যা | aep → অ্যাপ, maep → ম্যাপ |
-| aef | অ্যা | hwatfsaefp → হোয়াটসঅ্যাপ |
-| wa | ওয়া, োয়া | watfar → ওয়াটার, dhwa → ধোয়া |
-| we | ওয়ে, োয়ে | wedar → ওয়েদার, swetfar → সোয়েটার  |
-| wae | ওয়্যা | harrdfwaer → হার্ডওয়্যার |
+<table border="0.5" cellspacing="0" cellpadding="4">
+  <tr>
+    <th colspan="2">ম্যাপিং</th>
+    <th colspan="2">উদাহরণ</th>
+  </tr>
+  <tr>
+    <td>ইনপুট</td>
+    <td>আউটপুট</td>
+    <td>ইনপুট</td>
+    <td>আউটপুট</td>
+  </tr>
+  <tr>
+    <td>o</td>
+    <td>অ</td>
+    <td>omor</td>
+    <td>অমর</td>
+  </tr>
+  <tr>
+    <td>a</td>
+    <td>আ<br>া</td>
+    <td>amar<br>kaka</td>
+    <td>আমার<br>কাকা</td>
+  </tr>
+  <tr>
+    <td>i</td>
+    <td>ই<br>ি</td>
+    <td>iti<br>ki</td>
+    <td>ইতি<br>কি</td>
+  </tr>
+  <tr>
+    <td>ii</td>
+    <td>ঈ<br>ী</td>
+    <td>iid<br>kii</td>
+    <td>ঈদ<br>কী</td>
+  </tr>
+  <tr>
+    <td>u</td>
+    <td>উ<br>ু</td>
+    <td>ui<br>oju</td>
+    <td>উই<br>অজু</td>
+  </tr>
+  <tr>
+    <td>uu</td>
+    <td>ঊ<br>ূ</td>
+    <td>uuru<br>kuup</td>
+    <td>ঊরু<br>কূপ</td>
+  </tr>
+  <tr>
+    <td>q</td>
+    <td>ঋ<br>ৃ</td>
+    <td>qju<br>kqtii</td>
+    <td>ঋজু<br>কৃতি</td>
+  </tr>
+  <tr>
+    <td>e</td>
+    <td>এ<br>ে</td>
+    <td>ebar<br>ke</td>
+    <td>এবার<br>কে</td>
+  </tr>
+  <tr>
+    <td>oi</td>
+    <td>ঐ<br>ৈ</td>
+    <td>oik<br>koi</td>
+    <td>ঐক<br>কৈ</td>
+  </tr>
+  <tr>
+    <td>w</td>
+    <td>ও<br> ো</td>
+    <td>wstad<br>kwn</td>
+    <td>ওস্তাদ<br>কোন</td>
+  </tr>
+  <tr>
+    <td>ou</td>
+    <td>ঔ<br> ৌ</td>
+    <td>oucitz<br>nou</td>
+    <td>ঔচিত্য<br>নৌ</td>
+  </tr>
+  <tr>
+    <td>ae</td>
+    <td>অ্যা<br>্যা</td>
+    <td>aep<br>maep</td>
+    <td>অ্যাপ<br>ম্যাপ</td>
+  </tr>
+  <tr>
+    <td>aef</td>
+    <td>অ্যা</td>
+    <td>hwatfsaefp</td>
+    <td>হোয়াটসঅ্যাপ</td>
+  </tr>
+  <tr>
+    <td>wa</td>
+    <td>ওয়া<br>োয়া</td>
+    <td>watfar<br>dhwa</td>
+    <td>ওয়াটার<br>ধোয়া</td>
+  </tr>
+  <tr>
+    <td>we</td>
+    <td>ওয়ে<br>োয়ে</td>
+    <td>wedar<br>swetfar</td>
+    <td>ওয়েদার<br>সোয়েটার</td>
+  </tr>
+  <tr>
+    <td>wae</td>
+    <td>ওয়্যা</td>
+    <td>harrdfwaer</td>
+    <td>হার্ডওয়্যার</td>
+  </tr>
+</table>
 
 ## স্বরবর্ণ ও স্বরচিহ্ন টিপ্‌স
 
-| ইনপুট | আউটপুট | উদাহরণ |
-| :---- | :---- | :---- |
-| o | (অ-কার) | kol → কল, oto → অত |
-| ; | পৃথায়ক ও যুক্তবর্ণ রোধক | am;ar → আমআর, chok;ka → ছককা |
-| f{কার} | শব্দের শুরুতে কারচিহ্নের বদলে স্বরবর্ণ আসা রোধ করবে। | far → ার |
-| {ব্যঞ্জন}oif | {ব্যঞ্জন} ই | boif → বই |
-| {ব্যঞ্জন}ouf | {ব্যঞ্জন} উ | bouf → বউ |
-| {ব্যঞ্জন}{কার}f | {ব্যঞ্জন}{স্বরবর্ণ} (ঐ, ঔ বাদে) | bif → বই |
-| {কার}ff | স্বচ্ছ স্টাইলের কারচিহ্ন | ruup → রূপ, ruuffp → র‌ূপ |
+<table border="0.5" cellspacing="0" cellpadding="4">
+  <tr>
+    <th colspan="2">ম্যাপিং</th>
+    <th colspan="2">উদাহরণ</th>
+  </tr>
+  <tr>
+    <td>ইনপুট</td>
+    <td>আউটপুট</td>
+    <td>ইনপুট</td>
+    <td>আউটপুট</td>
+  </tr>
+  <tr>
+    <td>o</td>
+    <td>(অ-কার)</td>
+    <td>kol<br>oto</td>
+    <td>কল<br>অত</td>
+  </tr>
+  <tr>
+    <td>;</td>
+    <td>পৃথায়ক ও যুক্তবর্ণ রোধক</td>
+    <td>am;ar<br>chok;ka</td>
+    <td>আমআর<br>ছককা</td>
+  </tr>
+  <tr>
+    <td>f{কার}</td>
+    <td>শব্দের শুরুতে কারচিহ্নের বদলে স্বরবর্ণ আসা রোধ করবে।</td>
+    <td>far</td>
+    <td>ার</td>
+  </tr>
+  <tr>
+    <td>{ব্যঞ্জন}oif</td>
+    <td>{ব্যঞ্জন} ই</td>
+    <td>boif</td>
+    <td>বই</td>
+  </tr>
+  <tr>
+    <td>{ব্যঞ্জন}ouf</td>
+    <td>{ব্যঞ্জন} উ</td>
+    <td>bouf</td>
+    <td>বউ</td>
+  </tr>
+  <tr>
+    <td>{ব্যঞ্জন}{কার}f</td>
+    <td>{ব্যঞ্জন}{স্বরবর্ণ} (ঐ, ঔ বাদে)</td>
+    <td>bif</td>
+    <td>বই</td>
+  </tr>
+  <tr>
+    <td>{কার}ff</td>
+    <td>স্বচ্ছ স্টাইলের কারচিহ্ন</td>
+    <td>ruup<br>ruuffp</td>
+    <td>রূপ<br>র‌ূপ</td>
+  </tr>
+</table>
 
 ## ব্যঞ্জনবর্ণ
-| ইনপুট | আউটপুট | উদাহরণ |
-| :---- | :---- | :---- |
-| k | ক | kolom → কলম, k;l;m → কলম |
-| kh | খ | khata → খাতা |
-| g | গ | garfi → গাড়ি |
-| gh | ঘ | ghor → ঘর, gh;r → ঘর |
-| ngo, nga, ... | ঙ | rongo → রঙ, ranga → রাঙা, rangga → রাঙ্গা, ongk → অঙ্ক, কিন্তু ongfk → অংক |
-| c | চ | ca → চা |
-| ch | ছ | chata → ছাতা |
-| j | জ | jadughor → জাদুঘর |
-| jh | ঝ | jhorf → ঝড় |
-| nff | ঞ | minffa → মিঞা, কিন্তু jhonjha → ঝঞ্ঝা |
-| tf | ট | tfaka → টাকা, কিন্তু ottf → অট্ট |
-| tff, tfh | ঠ | tffandfa, tfhandfa → ঠান্ডা |
-| df | ড | odfitf → অডিট, কিন্তু addfa → আড্ডা |
-| dff, dfh | ঢ | dffaka, dfhaka → ঢাকা |
-| nf | ণ | boronf → বরণ |
-| t | ত | tumi → তুমি, twmar → তোমার |
-| th | থ | thaka → থাকা |
-| d | দ | d;i → দই, dif → দই |
-| dh | ধ | dhakka → ধাক্কা, dhbni → ধ্বনি  |
-| n | ন | nombor → নম্বর, n;mb;r → নম্বর |
-| p | প | pakhi → পাখি |
-| ph | ফ | phol → ফল |
-| b | ব | barfi → বাড়ি |
-| v | ভ | vorpur → ভরপুর |
-| m | ম | matfi → মাটি |
-| z | য | zokhon, zkhn → যখন |
-| r | র | rong → রং |
-| l | ল | lav → লাভ |
-| sh | শ | shobd → শব্দ |
-| sf | ষ | susfom → সুষম |
-| s | স | sob → সব |
-| h | হ | hawa → হাওয়া |
-| y | য় | upay → উপায় |
-| rf | ড় | jwrfa → জোড়া |
-| rff | ঢ় | asfarff → আষাঢ় |
+<table border="0.5" cellspacing="0" cellpadding="4">
+  <tr>
+    <th colspan="2">ম্যাপিং</th>
+    <th colspan="2">উদাহরণ</th>
+  </tr>
+  <tr>
+    <td>ইনপুট</td>
+    <td>আউটপুট</td>
+    <td>ইনপুট</td>
+    <td>আউটপুট</td>
+  </tr>
+  <tr>
+    <td>k</td>
+    <td>ক</td>
+    <td>kolom, k;l;m</td>
+    <td>কলম</td>
+  </tr>
+  <tr>
+    <td>kh</td>
+    <td>খ</td>
+    <td>khata</td>
+    <td>খাতা</td>
+  </tr>
+  <tr>
+    <td>g</td>
+    <td>গ</td>
+    <td>garfi</td>
+    <td>গাড়ি</td>
+  </tr>
+  <tr>
+    <td>gh</td>
+    <td>ঘ</td>
+    <td>ghor, gh;r</td>
+    <td>ঘর</td>
+  </tr>
+  <tr>
+    <td>ngo, nga, ...</td>
+    <td>ঙ</td>
+    <td>rongo<br>ranga<br>rangga<br>ongk<br>ongfk</td>
+    <td>রঙ<br>রাঙা<br>রাঙ্গা<br>অঙ্ক<br>অংক</td>
+  </tr>
+  <tr>
+    <td>c</td>
+    <td>চ</td>
+    <td>ca</td>
+    <td>চা</td>
+  </tr>
+  <tr>
+    <td>ch</td>
+    <td>ছ</td>
+    <td>chata</td>
+    <td>ছাতা</td>
+  </tr>
+  <tr>
+    <td>j</td>
+    <td>জ</td>
+    <td>jadughor</td>
+    <td>জাদুঘর</td>
+  </tr>
+  <tr>
+    <td>jh</td>
+    <td>ঝ</td>
+    <td>jhorf</td>
+    <td>ঝড়</td>
+  </tr>
+  <tr>
+    <td>nff</td>
+    <td>ঞ</td>
+    <td>minffa<br>jhonjha</td>
+    <td>মিঞা<br>ঝঞ্ঝা</td>
+  </tr>
+  <tr>
+    <td>tf</td>
+    <td>ট</td>
+    <td>tfaka<br>ottf</td>
+    <td>টাকা<br>অট্ট</td>
+  </tr>
+  <tr>
+    <td>tff, tfh</td>
+    <td>ঠ</td>
+    <td>tffandfa, tfhandfa</td>
+    <td>ঠান্ডা</td>
+  </tr>
+  <tr>
+    <td>df</td>
+    <td>ড</td>
+    <td>odfitf<br>addfa</td>
+    <td>অডিট<br>আড্ডা</td>
+  </tr>
+  <tr>
+    <td>dff, dfh</td>
+    <td>ঢ</td>
+    <td>dffaka, dfhaka</td>
+    <td>ঢাকা</td>
+  </tr>
+  <tr>
+    <td>nf</td>
+    <td>ণ</td>
+    <td>boronf</td>
+    <td>বরণ</td>
+  </tr>
+  <tr>
+    <td>t</td>
+    <td>ত</td>
+    <td>tumi<br>twmar</td>
+    <td>তুমি<br>তোমার</td>
+  </tr>
+  <tr>
+    <td>th</td>
+    <td>থ</td>
+    <td>thaka</td>
+    <td>থাকা</td>
+  </tr>
+  <tr>
+    <td>d</td>
+    <td>দ</td>
+    <td>d;i, dif</td>
+    <td>দই</td>
+  </tr>
+  <tr>
+    <td>dh</td>
+    <td>ধ</td>
+    <td>dhakka<br>dhbni</td>
+    <td>ধাক্কা<br>ধ্বনি</td>
+  </tr>
+  <tr>
+    <td>n</td>
+    <td>ন</td>
+    <td>nombor, n;mb;r</td>
+    <td>নম্বর</td>
+  </tr>
+  <tr>
+    <td>p</td>
+    <td>প</td>
+    <td>pakhi</td>
+    <td>পাখি</td>
+  </tr>
+  <tr>
+    <td>ph</td>
+    <td>ফ</td>
+    <td>phol</td>
+    <td>ফল</td>
+  </tr>
+  <tr>
+    <td>b</td>
+    <td>ব</td>
+    <td>barfi</td>
+    <td>বাড়ি</td>
+  </tr>
+  <tr>
+    <td>v</td>
+    <td>ভ</td>
+    <td>vorpur</td>
+    <td>ভরপুর</td>
+  </tr>
+  <tr>
+    <td>m</td>
+    <td>ম</td>
+    <td>matfi</td>
+    <td>মাটি</td>
+  </tr>
+  <tr>
+    <td>z</td>
+    <td>য</td>
+    <td>zokhon, zkhn</td>
+    <td>যখন</td>
+  </tr>
+  <tr>
+    <td>r</td>
+    <td>র</td>
+    <td>rong</td>
+    <td>রং</td>
+  </tr>
+  <tr>
+    <td>l</td>
+    <td>ল</td>
+    <td>lav</td>
+    <td>লাভ</td>
+  </tr>
+  <tr>
+    <td>sh</td>
+    <td>শ</td>
+    <td>shobd</td>
+    <td>শব্দ</td>
+  </tr>
+  <tr>
+    <td>sf</td>
+    <td>ষ</td>
+    <td>susfom</td>
+    <td>সুষম</td>
+  </tr>
+  <tr>
+    <td>s</td>
+    <td>স</td>
+    <td>sob</td>
+    <td>সব</td>
+  </tr>
+  <tr>
+    <td>h</td>
+    <td>হ</td>
+    <td>hawa</td>
+    <td>হাওয়া</td>
+  </tr>
+  <tr>
+    <td>y</td>
+    <td>য়</td>
+    <td>upay</td>
+    <td>উপায়</td>
+  </tr>
+  <tr>
+    <td>rf</td>
+    <td>ড়</td>
+    <td>jwrfa</td>
+    <td>জোড়া</td>
+  </tr>
+  <tr>
+    <td>rff</td>
+    <td>ঢ়</td>
+    <td>asfarff</td>
+    <td>আষাঢ়</td>
+  </tr>
+</table>
 
 ## বিশেষ কিছু যুক্তবর্ণ এবং বিবিধ
 
-| ইনপুট | আউটপুট | উদাহরণ |
-| :---- | :---- | :---- |
-| rr | রেফ | gorrb → গর্ব, porrzay → পর্যায় |
-| rz | র‍্য | rzam → র‍্যাম,  raem → র‍্যাম |
-| kf, kkh, ksf | ক্ষ | shikfa → শিক্ষা, diikfa → দীক্ষা |
-| nc | ঞ্চ | oncol → অঞ্চল, poncash → পঞ্চাশ |
-| nch | ঞ্ছ | bancha → বাঞ্ছা |
-| nj | ঞ্জ | gunjon → গুঞ্জন, bznjon → ব্যঞ্জন |
-| njh | ঞ্ঝ | jhonjhatf → ঝঞ্ঝাট |
-| gg, jnff | জ্ঞ | ggan → জ্ঞান, biggan → বিজ্ঞান |
-| ggg | গ্গ | duggga → দুগ্গা |
-| ttf, tftf | ট্ট | ottf → অট্ট, cottfgram → চট্টগ্রাম |
-| ddf, dfdf | ড্ড | addfa → আড্ডা |
-| sfk | ষ্ক | shusfk → শুষ্ক |
-| sftf | ষ্ট | misftfi → মিষ্টি |
-| sftff, sftfh | ষ্ঠ | kasftff, kasftfh → কাষ্ঠ |
-| sfn, sfnf | ষ্ণ | usfn → উষ্ণ |
-| sfp | ষ্প | basfp → বাষ্প |
-| sfph | ষ্ফ | nisfphol → নিষ্ফল |
-| qq | ্ (হসন্ত) | জোরপূর্বক যুক্তবর্ণ গঠন করতে, kilqqn → কিল্ন |
-| xx | ্‌ {ZWNJ} | হসন্ত সাথে ZWNJ. যুক্তবর্ণ গঠন করবে না এমন হসন্ত। শব্দের মাঝে হসন্ত দেখাতে, udxxdiin → উদ্‌দীন |
-| \`\` | \[ZWNJ\] | হসন্তের যুক্তবর্ণ গঠন রোধ করে—যা ঠিক এর উপরের ঘরেই আলোচিত হয়েছে। এছাড়া স্বচ্ছ স্টাইলের কারচিহ্ন লিখতে এটি ব্যবহৃত হয়। |
-| \~\~ | \[ZWJ\] | র‍্য লিখতে এবং যুক্তবর্ণের সংক্ষিপ্ত গ্লিফ লিখতে এটি ব্যবহৃত হয়। |
+<table border="0.5" cellspacing="0" cellpadding="4">
+  <tr>
+    <th colspan="2">ম্যাপিং</th>
+    <th colspan="2">উদাহরণ</th>
+  </tr>
+  <tr>
+    <td>ইনপুট</td>
+    <td>আউটপুট</td>
+    <td>ইনপুট</td>
+    <td>আউটপুট</td>
+  </tr>
+  <tr>
+    <td>rr</td>
+    <td>রেফ</td>
+    <td>porrzay</td>
+    <td>পর্যায়</td>
+  </tr>
+  <tr>
+    <td>rz</td>
+    <td>র‍্য</td>
+    <td>rzam, raem</td>
+    <td>র‍্যাম</td>
+  </tr>
+  <tr>
+    <td>kf, kkh, ksf</td>
+    <td>ক্ষ</td>
+    <td>shikfa</td>
+    <td>শিক্ষা</td>
+  </tr>
+  <tr>
+    <td>nc</td>
+    <td>ঞ্চ</td>
+    <td>poncash</td>
+    <td>পঞ্চাশ</td>
+  </tr>
+  <tr>
+    <td>nch</td>
+    <td>ঞ্ছ</td>
+    <td>bancha</td>
+    <td>বাঞ্ছা</td>
+  </tr>
+  <tr>
+    <td>nj</td>
+    <td>ঞ্জ</td>
+    <td>bznjon</td>
+    <td>ব্যঞ্জন</td>
+  </tr>
+  <tr>
+    <td>njh</td>
+    <td>ঞ্ঝ</td>
+    <td>jhonjhatf</td>
+    <td>ঝঞ্ঝাট</td>
+  </tr>
+  <tr>
+    <td>gg, jnff</td>
+    <td>জ্ঞ</td>
+    <td>biggan</td>
+    <td>বিজ্ঞান</td>
+  </tr>
+  <tr>
+    <td>ggg</td>
+    <td>গ্গ</td>
+    <td>duggga</td>
+    <td>দুগ্গা</td>
+  </tr>
+  <tr>
+    <td>ttf, tftf</td>
+    <td>ট্ট</td>
+    <td>cottfgram</td>
+    <td>চট্টগ্রাম</td>
+  </tr>
+  <tr>
+    <td>ddf, dfdf</td>
+    <td>ড্ড</td>
+    <td>addfa</td>
+    <td>আড্ডা</td>
+  </tr>
+  <tr>
+    <td>sfk</td>
+    <td>ষ্ক</td>
+    <td>shusfk</td>
+    <td>শুষ্ক</td>
+  </tr>
+  <tr>
+    <td>sftf</td>
+    <td>ষ্ট</td>
+    <td>misftfi</td>
+    <td>মিষ্টি</td>
+  </tr>
+  <tr>
+    <td>sftff, sftfh</td>
+    <td>ষ্ঠ</td>
+    <td>kasftff, kasftfh</td>
+    <td>কাষ্ঠ</td>
+  </tr>
+  <tr>
+    <td>sfn, sfnf</td>
+    <td>ষ্ণ</td>
+    <td>usfn</td>
+    <td>উষ্ণ</td>
+  </tr>
+  <tr>
+    <td>sfp</td>
+    <td>ষ্প</td>
+    <td>basfp</td>
+    <td>বাষ্প</td>
+  </tr>
+  <tr>
+    <td>sfph</td>
+    <td>ষ্ফ</td>
+    <td>nisfphol</td>
+    <td>নিষ্ফল</td>
+  </tr>
+  <tr>
+    <td>qq</td>
+    <td> ্ (হসন্ত)</td>
+    <td colspan="2">জোরপূর্বক যুক্তবর্ণ গঠন করতে, kilqqn = কিল্ন</td>
+  </tr>
+  <tr>
+    <td>xx</td>
+    <td> ্{ZWNJ}</td>
+    <td colspan="2">হসন্ত সাথে ZWNJ. যুক্তবর্ণ গঠন করবে না এমন হসন্ত।<br>শব্দের মাঝে হসন্ত দেখাতে, udxxdiin = উদ্‌দীন</td>
+  </tr>
+  <tr>
+    <td>``</td>
+    <td>[ZWNJ]</td>
+    <td colspan="2">হসন্তের যুক্তবর্ণ গঠন রোধ করে—যা ঠিক এর উপরের ঘরেই<br>আলোচিত হয়েছে। এছাড়া স্বচ্ছ স্টাইলের কারচিহ্ন লিখতে এটি<br>ব্যবহৃত হয়।</td>
+  </tr>
+  <tr>
+    <td>~~</td>
+    <td>[ZWJ]</td>
+    <td colspan="2">র‍্য লিখতে এবং যুক্তবর্ণের সংক্ষিপ্ত গ্লিফ লিখতে এটি ব্যবহৃত হয়।</td>
+  </tr>
+</table>
 
 ## ডায়াক্রিটিক, বিরামচিহ্ন, ও বিবিধ
 
-| ইনপুট | আউটপুট | মন্তব্য/উদাহরণ |
-| :---- | :---- | :---- |
-| t/ | ৎ | খণ্ড-ত, ut/s → উৎস; কিন্তু to/ ও t;/ → তঁ |
-| x | ঃ | বিসর্গ, duxkh → দুঃখ |
-| ng, ngf | ং | অনুস্বার, bangla → বাংলা, baengfk → ব্যাংক |
-| / | ঁ | চন্দ্রবিন্দু, ca/d → চাঁদ |
-| . | । | দাঁড়ি |
-| .f | ॥ | ডাবল দাঁড়ি |
-| .ff | ৺ | ঈশ্বর চিহ্ন |
-| oo | ঽ | অবগ্রহ |
-| ,, | ় | নুকতা, sirij,, → সিরিজ়, h,,asan → হ়াসান |
-| .. | . | ডট বা বিন্দু। বি.দ্র. → bi..dro.. |
-| … | … | বহুবিন্দু বা এলিপসিস বা তিন ডট |
-| ,,, | ,, | পরপর দুইবার কমা |
-| ;; | ; | সেমিকোলন |
-| // | / | ফরওয়ার্ড স্ল্যাশ |
-| .{অঙ্ক} | .{অঙ্ক} | 3.1416 → ৩.১৪১৬ |
-| $ | ৳ | টাকা চিহ্ন |
-| $f | ₹ | রুপি চিহ্ন |
-| \+f | × | গুণ চিহ্ন |
-| \-f | ÷ | ভাগ চিহ্ন |
+<table border="0.5" cellspacing="0" cellpadding="4">
+  <tr>
+    <th colspan="2">ম্যাপিং</th>
+    <th rowspan="2">মন্তব্য/উদাহরণ</th>
+  </tr>
+  <tr>
+    <td>ইনপুট</td>
+    <td>আউটপুট</td>
+  </tr>
+  <tr>
+    <td>t/</td>
+    <td>ৎ</td>
+    <td>খণ্ড-ত, ut/s = উৎস; কিন্তু to/ ও t;/ = তঁ</td>
+  </tr>
+  <tr>
+    <td>x</td>
+    <td>ঃ</td>
+    <td>বিসর্গ, duxkh = দুঃখ</td>
+  </tr>
+  <tr>
+    <td>ng, ngf</td>
+    <td>ং</td>
+    <td>অনুস্বার, bangla = বাংলা, baengfk = ব্যাংক</td>
+  </tr>
+  <tr>
+    <td>/</td>
+    <td>ঁ</td>
+    <td>চন্দ্রবিন্দু, ca/d = চাঁদ</td>
+  </tr>
+  <tr>
+    <td>.</td>
+    <td>।</td>
+    <td>দাঁড়ি</td>
+  </tr>
+  <tr>
+    <td>.f</td>
+    <td>॥</td>
+    <td>ডাবল দাঁড়ি</td>
+  </tr>
+  <tr>
+    <td>.ff</td>
+    <td>৺</td>
+    <td>ঈশ্বর চিহ্ন</td>
+  </tr>
+  <tr>
+    <td>oo</td>
+    <td>ঽ</td>
+    <td>অবগ্রহ</td>
+  </tr>
+  <tr>
+    <td>,,</td>
+    <td>়</td>
+    <td>নুকতা, sirij,, = সিরিজ়, h,,asan = হ়াসান</td>
+  </tr>
+  <tr>
+    <td>..</td>
+    <td>.</td>
+    <td>ডট বা বিন্দু। bi..dro.. = বি.দ্র.</td>
+  </tr>
+  <tr>
+    <td>…</td>
+    <td>…</td>
+    <td>বহুবিন্দু বা এলিপসিস বা তিন ডট</td>
+  </tr>
+  <tr>
+    <td>,,,</td>
+    <td>,,</td>
+    <td>পরপর দুইবার কমা</td>
+  </tr>
+  <tr>
+    <td>;;</td>
+    <td>;</td>
+    <td>সেমিকোলন</td>
+  </tr>
+  <tr>
+    <td>//</td>
+    <td>/</td>
+    <td>ফরওয়ার্ড স্ল্যাশ</td>
+  </tr>
+  <tr>
+    <td>.{অঙ্ক}</td>
+    <td>.{অঙ্ক}</td>
+    <td>3.1416 = ৩.১৪১৬</td>
+  </tr>
+  <tr>
+    <td>$</td>
+    <td>৳</td>
+    <td>টাকা চিহ্ন</td>
+  </tr>
+  <tr>
+    <td>$f</td>
+    <td>₹</td>
+    <td>রুপি চিহ্ন</td>
+  </tr>
+  <tr>
+    <td>+f</td>
+    <td>×</td>
+    <td>গুণ চিহ্ন</td>
+  </tr>
+  <tr>
+    <td>-f</td>
+    <td>÷</td>
+    <td>ভাগ চিহ্ন</td>
+  </tr>
+</table>
 
 ## যুক্তবর্ণের পূর্ণাঙ্গ তালিকা
 
