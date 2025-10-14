@@ -300,11 +300,27 @@ html {
     max-width: 300px;
 }
 
+/* Scrollable wrapper for tables */
+.content-wrapper {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+/* Table base style */
+.content-wrapper table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
 /* Mobile responsive styles */
 @media (max-width: 768px) {
+    .content-wrapper {
+        overflow-x: auto;
+    }
+
     .content-wrapper table {
         font-size: 1.150rem;
-        min-width: auto;
+        min-width: 300px; /* ensures table doesn't get squashed */
     }
 
     .content-wrapper th,
@@ -313,6 +329,7 @@ html {
         white-space: normal;
         min-width: auto;
     }
+}
 
     /* Special handling for the first two tables */
     .content-wrapper table:nth-of-type(1),
@@ -331,9 +348,15 @@ html {
     }
 }
 
+/* Very small screens */
 @media (max-width: 480px) {
+    .content-wrapper {
+        overflow-x: auto;
+    }
+
     .content-wrapper table {
         font-size: 1.150rem;
+        min-width: 300px; /* makes table scrollable horizontally */
     }
 
     .content-wrapper th,
