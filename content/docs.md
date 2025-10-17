@@ -464,7 +464,7 @@ toc: true
     <td>q</td>
     <td>ঋ<br>ৃ</td>
     <td>qju<br>kqtii</td>
-    <td>ঋজু<br>কৃতি</td>
+    <td>ঋজু<br>কৃতী</td>
   </tr>
   <tr>
     <td>e</td>
