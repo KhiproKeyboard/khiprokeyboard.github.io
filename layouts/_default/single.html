@@ -1,6 +1,6 @@
 {{ define "main" }}
 <div class="min-h-screen bg-gray-50 dark:bg-dark-primary pt-0 {{ if eq .Section "installation" }}page-installation{{ else if eq .Section "docs" }}page-docs{{ end }}">
-    <div class="flex flex-col lg:flex-row gap-6 p-4 lg:p-8">
+    <div class="flex flex-col lg:flex-row gap-4 sm:gap-6 p-2 sm:p-4 lg:p-8">
         <!-- TOC Sidebar -->
         {{ partial "toc.html" . }}
         
@@ -9,7 +9,7 @@
         <div class="w-full">
             <!-- Main Content -->
             <main class="w-full">
-                <article class="bg-white dark:bg-dark-secondary rounded-2xl shadow-lg p-8 lg:p-12 w-full">
+                <article class="bg-white dark:bg-dark-secondary rounded-2xl shadow-lg p-4 sm:p-6 lg:p-12 w-full">
                     <!-- Page Header - Front matter content hidden -->
                     <header class="mb-4 pb-3 border-b border-gray-200 dark:border-gray-700" style="display: none;">
                         <h1 class="text-3xl lg:text-4xl font-bold text-gray-900 dark:text-gray-100 mb-2">
@@ -23,9 +23,7 @@
                     </header>
                     
                     <!-- Content -->
-                    <div class="content-wrapper max-w-none {{ if eq .Section "installation" }}installation-content{{ else if eq .Section "docs" }}docs-content{{ end }}">
-                        {{ .Content }}
-                    </div>
+                    {{ .Content }}
 
 <style>
 /* Smooth scrolling and anchor offset handling */
@@ -34,18 +32,18 @@ html {
 }
 
 /* Add scroll margin to headings to account for sticky header */
-.content-wrapper h1[id],
-.content-wrapper h2[id], 
-.content-wrapper h3[id],
-.content-wrapper h4[id],
-.content-wrapper h5[id],
-.content-wrapper h6[id] {
+article h1[id],
+article h2[id], 
+article h3[id],
+article h4[id],
+article h5[id],
+article h6[id] {
     scroll-margin-top: 100px; /* Header height + padding */
 }
 
 /* Typography Styles - Colors managed by /css/colors.css */
 
-.content-wrapper h1 {
+article h1 {
     font-size: 2.5rem;
     font-weight: 700;
     margin-bottom: 1.5rem;
@@ -54,7 +52,7 @@ html {
     padding-bottom: 0.75rem;
 }
 
-.content-wrapper h2 {
+article h2 {
     font-size: 2rem;
     font-weight: 600;
     margin-top: 3rem;
@@ -63,7 +61,7 @@ html {
     padding-bottom: 0.5rem;
 }
 
-.content-wrapper h3 {
+article h3 {
     font-size: 1.5rem;
     font-weight: 600;
     margin-top: 2rem;
@@ -71,31 +69,31 @@ html {
     line-height: 1.4;
 }
 
-.content-wrapper h4 {
+article h4 {
     font-size: 1.25rem;
     font-weight: 600;
     margin-top: 1.5rem;
     margin-bottom: 0.75rem;
 }
 
-.content-wrapper p {
+article p {
     font-size: 1.150rem;
     line-height: 1.75;
     margin-bottom: 1.25rem;
     text-align: justify;
 }
 
-.content-wrapper a {
+article a {
     text-decoration: none;
     font-weight: 500;
     transition: all 0.2s ease;
 }
 
-.content-wrapper strong {
+article strong {
     font-weight: 600;
 }
 
-.content-wrapper code {
+article code {
     padding: 0.25rem 0.5rem;
     border-radius: 0.375rem;
     font-size: 0.875rem;
@@ -103,7 +101,7 @@ html {
     font-weight: 500;
 }
 
-.content-wrapper pre {
+article pre {
     padding: 0.75rem;
     padding-top: 2rem;
     border-radius: 0.5rem;
@@ -118,7 +116,7 @@ html {
     word-break: normal;
 }
 
-.content-wrapper pre code {
+article pre code {
     background-color: transparent !important;
     color: inherit !important;
     padding: 0 !important;
@@ -131,9 +129,9 @@ html {
 }
 
 /* Clean shell command styling */
-.content-wrapper pre code[class*="language-sh"],
-.content-wrapper pre code[class*="language-bash"],
-.content-wrapper pre code[class*="language-shell"] {
+article pre code[class*="language-sh"],
+article pre code[class*="language-bash"],
+article pre code[class*="language-shell"] {
     color: #000000 !important;
 }
 
@@ -161,16 +159,16 @@ html {
     z-index: 10;
 }
 
-.content-wrapper pre::-webkit-scrollbar {
+article pre::-webkit-scrollbar {
     height: 8px;
 }
 
-.content-wrapper pre::-webkit-scrollbar-track {
+article pre::-webkit-scrollbar-track {
     background: rgba(0,0,0,0.1);
     border-radius: 4px;
 }
 
-.content-wrapper pre::-webkit-scrollbar-thumb {
+article pre::-webkit-scrollbar-thumb {
     background: rgba(0,0,0,0.3);
     border-radius: 4px;
 }
@@ -184,7 +182,7 @@ html {
     opacity: 1;
 }
 
-.content-wrapper blockquote {
+article blockquote {
     padding: 1rem 1.5rem;
     margin: 1.5rem 0;
     border-radius: 0 0.5rem 0.5rem 0;
@@ -192,26 +190,26 @@ html {
     font-size: 1.150rem;
 }
 
-.content-wrapper ul, .content-wrapper ol {
+article ul, article ol {
     margin: 1.25rem 0;
     padding-left: 2rem;
 }
 
-.content-wrapper ul {
+article ul {
     list-style-type: disc;
 }
 
-.content-wrapper ol {
+article ol {
     list-style-type: decimal;
 }
 
-.content-wrapper li {
+article li {
     margin-bottom: 0.5rem;
     line-height: 1.6;
     font-size: 1.150rem;
 }
 
-.content-wrapper hr {
+article hr {
     border: none;
     height: 2px;
     margin: 2rem 0;
@@ -219,112 +217,110 @@ html {
 }
 
 /* Table Container for Responsive Design */
-.content-wrapper table {
-    width: auto;
+.table-responsive-wrapper {
+    width: 100%;
     max-width: 100%;
-    border-collapse: collapse;
-    margin: 0;
-    font-size: 1.150rem;
-    border: 1px solid #e5e7eb;
-    border-radius: 0.5rem;
-    overflow: hidden;
-    table-layout: auto;
+    overflow-x: auto;
+    overflow-y: visible;
+    -webkit-overflow-scrolling: touch;
+    margin: 1.5rem 0;
+    position: relative;
 }
 
-.dark .content-wrapper table {
-    border-color: #4b5563;
+.scroll-indicator {
+    margin-bottom: 0.5rem;
+    color: #6b7280;
+    font-size: 0.875rem;
+}
+
+.dark .scroll-indicator {
+    color: #9ca3af;
+}
+
+article table {
+    width: auto; /* Table sizes to fit content */
+    max-width: none; /* Allow table to be wider than container */
+    min-width: 0; /* No minimum width - fully flexible */
+    border-collapse: separate; /* Use separate borders for better visibility */
+    border-spacing: 0; /* No spacing between cells */
+    margin: 0;
+    font-size: 1.150rem;
+    border-radius: 0.5rem;
+    overflow: hidden;
+    table-layout: auto; /* Columns size based on content */
+    /* Border color managed by colors.css */
 }
 
 /* Responsive Table Wrapper */
-.content-wrapper p + table,
-.content-wrapper h1 + table,
-.content-wrapper h2 + table,
-.content-wrapper h3 + table,
-.content-wrapper h4 + table {
+article p + table,
+article h1 + table,
+article h2 + table,
+article h3 + table,
+article h4 + table {
     margin-top: 1.5rem;
 }
 
-.content-wrapper table + p,
-.content-wrapper table + h1,
-.content-wrapper table + h2,
-.content-wrapper table + h3,
-.content-wrapper table + h4 {
+article table + p,
+article table + h1,
+article table + h2,
+article table + h3,
+article table + h4 {
     margin-top: 1.5rem;
 }
 
-.content-wrapper th {
+article th {
     font-weight: 600;
     padding: 0.75rem 0.5rem;
     text-align: left;
     word-wrap: break-word;
-    width: auto;
-    white-space: nowrap;
+    width: auto; /* Cell width based on content */
+    white-space: nowrap; /* Keep content on one line */
 }
 
-.content-wrapper th:last-child,
-.content-wrapper td:last-child {
-    border-right: none;
-}
-
-.content-wrapper td {
+article td {
     padding: 0.75rem 0.5rem;
     word-wrap: break-word;
     font-size: 1.150rem;
-    width: auto;
-    white-space: nowrap;
+    width: auto; /* Cell width based on content */
+    white-space: nowrap; /* Keep content on one line */
 }
 
-/* Alternating row colors (zebra striping) */
-.content-wrapper tr:nth-child(even) {
-    background-color: var(--color-border-light);
-}
-
-.dark .content-wrapper tr:nth-child(even) {
-    background-color: var(--color-border-light);
-}
-
-.content-wrapper tr:hover {
-    border: 2px solid #497b59;
-    border-radius: 4px;
-}
-
-.dark .content-wrapper tr:hover {
-    border: 2px solid #6ee7b7;
-    border-radius: 4px;
-}
+/* Alternating row colors and hover - managed by colors.css */
 
 /* Allow text wrapping for cells with longer content */
-.content-wrapper td:last-child,
-.content-wrapper th:last-child {
+article td:last-child:not([colspan]),
+article th:last-child:not([colspan]) {
     white-space: normal;
     max-width: 300px;
 }
 
-/* Mobile responsive styles */
-@media (max-width: 768px) {
-    .content-wrapper table {
-        font-size: 1.150rem;
-        min-width: auto;
-
-    .content-wrapper th,
-    .content-wrapper td {
-        padding: 0.5rem 0.25rem;
-        white-space: normal;
-        min-width: auto;
-    }
+/* Cells with colspan should not have max-width constraint */
+article td[colspan],
+article th[colspan] {
+    white-space: normal;
+    max-width: none;
 }
 
-    /* Special handling for the first two tables */
-    .content-wrapper table:nth-of-type(1),
-    .content-wrapper table:nth-of-type(2) {
-        min-width: auto;
+/* Mobile responsive styles */
+@media (max-width: 768px) {
+    article table {
+        font-size: 1.150rem;
+        width: auto; /* Let table size based on content */
+        min-width: 0; /* Remove minimum width constraint */
     }
 
-    .content-wrapper table:nth-of-type(1) th,
-    .content-wrapper table:nth-of-type(1) td,
-    .content-wrapper table:nth-of-type(2) th,
-    .content-wrapper table:nth-of-type(2) td {
-        min-width: auto;
+    article th,
+    article td {
+        padding: 0.5rem 0.25rem;
+        white-space: nowrap; /* Prevent wrapping to maintain natural width */
+        min-width: 0; /* Remove minimum width constraint */
+    }
+
+    /* Special handling for the first two tables */
+    article table:nth-of-type(1) th,
+    article table:nth-of-type(1) td,
+    article table:nth-of-type(2) th,
+    article table:nth-of-type(2) td {
         text-align: center;
         font-size: 1.150rem;
         white-space: nowrap;
@@ -332,28 +328,27 @@ html {
 }
 
 @media (max-width: 480px) {
-    .content-wrapper table {
+    article table {
         font-size: 1.150rem;
+        width: auto; /* Let table size based on content */
     }
 
-    .content-wrapper th,
-    .content-wrapper td {
+    article th,
+    article td {
         padding: 0.4rem 0.2rem;
-        min-width: auto;
-        white-space: normal;
+        white-space: nowrap; /* Keep content on one line for natural sizing */
     }
 
-    .content-wrapper table:nth-of-type(1) th,
-    .content-wrapper table:nth-of-type(1) td,
-    .content-wrapper table:nth-of-type(2) th,
-    .content-wrapper table:nth-of-type(2) td {
-        min-width: auto;
+    article table:nth-of-type(1) th,
+    article table:nth-of-type(1) td,
+    article table:nth-of-type(2) th,
+    article table:nth-of-type(2) td {
         font-size: 1.150rem;
         white-space: nowrap;
     }
 }
 
-.content-wrapper img {
+article img {
     max-width: 100%;
     height: auto;
     border-radius: 0.5rem;
@@ -402,8 +397,13 @@ html {
 <script>
 document.addEventListener('DOMContentLoaded', function() {
     // Wrap tables in responsive containers
-    const tables = document.querySelectorAll('.content-wrapper table');
+    const tables = document.querySelectorAll('article table');
     tables.forEach(function(table) {
+        // Skip if already wrapped
+        if (table.parentElement.classList.contains('table-responsive-wrapper')) {
+            return;
+        }
+        
         // Create scroll indicator paragraph (before table)
         const indicator = document.createElement('p');
         indicator.className = 'scroll-indicator text-sm text-gray-600 dark:text-gray-400 mb-2 flex items-center';
@@ -415,8 +415,7 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // Create wrapper div
         const wrapper = document.createElement('div');
-        wrapper.className = 'table-responsive-wrapper overflow-x-auto';
-        wrapper.style.webkitOverflowScrolling = 'touch';
+        wrapper.className = 'table-responsive-wrapper';
         
         // Insert wrapper before table and move table inside
         table.parentNode.insertBefore(wrapper, table);
@@ -424,16 +423,22 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // Show/hide scroll indicator based on content overflow
         function checkOverflow() {
-            if (wrapper.scrollWidth > wrapper.clientWidth) {
-                indicator.style.display = 'flex';
-            } else {
-                indicator.style.display = 'none';
-            }
+            const hasOverflow = wrapper.scrollWidth > wrapper.clientWidth;
+            indicator.style.display = hasOverflow ? 'flex' : 'none';
         }
         
-        // Check on load and resize
+        // Check on load and resize with debouncing
         checkOverflow();
-        window.addEventListener('resize', checkOverflow);
+        let resizeTimeout;
+        window.addEventListener('resize', function() {
+            clearTimeout(resizeTimeout);
+            resizeTimeout = setTimeout(checkOverflow, 100);
+        });
+        
+        // Also check after fonts load
+        if (document.fonts) {
+            document.fonts.ready.then(checkOverflow);
+        }
     });
 
     // Add anchor links to headings
