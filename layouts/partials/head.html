@@ -11,7 +11,6 @@
 <script src="https://cdn.tailwindcss.com"></script>
 <script>
     tailwind.config = {
-        darkMode: 'class',
         theme: {
             extend: {
                 colors: {
@@ -24,62 +23,19 @@
                     'light': 'var(--color-light)',
                     'dark-text': 'var(--color-dark-text)',
                     'accent': 'var(--color-accent)',
-                    
-                    // Dark mode variants
-                    'dark': 'var(--color-body-bg)',
-                    'dark-primary': 'var(--color-primary)',
-                    'dark-primary-light': 'var(--color-primary-light)',
-                    'dark-primary-dark': 'var(--color-primary-dark)',
-                    'dark-header-dark': 'var(--color-header-dark)',
-                    'dark-secondary': 'var(--color-secondary)',
-                    'dark-light': 'var(--color-light)',
-                    'dark-text-light': 'var(--color-text-primary)',
-                    'dark-accent': 'var(--color-accent)',
                 }
             }
         }
     }
 </script>
-<script>
-    // Theme toggle functionality
-    document.addEventListener('DOMContentLoaded', function() {
-        const themeToggle = document.getElementById('theme-toggle');
-        const html = document.documentElement;
-        
-        // Check for saved theme preference or default to light mode
-        const savedTheme = localStorage.getItem('theme');
-        
-        // Set initial theme - always default to light mode unless user explicitly chose dark
-        if (savedTheme === 'dark') {
-            html.classList.add('dark');
-        } else {
-            html.classList.remove('dark');
-        }
-        
-        // Theme toggle event listener
-        if (themeToggle) {
-            themeToggle.addEventListener('click', function() {
-                if (html.classList.contains('dark')) {
-                    html.classList.remove('dark');
-                    localStorage.setItem('theme', 'light');
-                } else {
-                    html.classList.add('dark');
-                    localStorage.setItem('theme', 'dark');
-                }
-            });
-        }
-        
-        // Listen for system theme changes - but only apply if user hasn't made an explicit choice
-        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function(e) {
-            if (!localStorage.getItem('theme')) {
-                // Always stay in light mode regardless of system preference
-                html.classList.remove('dark');
-            }
-        });
-    });
-</script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <style>
+    /* Mobile Bottom Navigation Padding */
+    @media (max-width: 768px) {
+        body {
+            padding-bottom: 4rem; /* Add padding to prevent content from being hidden behind bottom nav */
+        }
+    }
 
     /* Background patterns now managed by /css/colors.css */
 
@@ -122,10 +78,6 @@
         border: 1px solid #e5e7eb;
     }
 
-    .dark .table-container {
-        border-color: #374151;
-    }
-
     table {
         width: 100%;
         border-collapse: collapse;
@@ -139,27 +91,14 @@
         word-wrap: break-word;
     }
 
-    .dark th, .dark td {
-        border-color: #374151;
-    }
-
     th {
         background-color: #f9fafb;
         font-weight: 600;
         color: #374151;
     }
 
-    .dark th {
-        background-color: #374151;
-        color: #f9fafb;
-    }
-
     tr:hover {
         background-color: #f3f4f6;
-    }
-
-    .dark tr:hover {
-        background-color: #4b5563;
     }
 
     /* Mobile responsive tables */

@@ -1,344 +1,637 @@
 {{ define "main" }}
 <!-- Hero Section -->
-<section id="home" class="pt-16 pb-24 sm:pt-24 sm:pb-32">
-    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="max-w-4xl mx-auto text-center">
-            <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-gray-900 dark:text-gray-100">
-                <span class="block text-primary dark:text-dark-primary">বাংলা টাইপিংয়ে সেরা অভিজ্ঞতার জন্য একটি উদ্যোগ</span>
-            </h1>
-            <div class="mt-8 text-lg sm:text-xl text-gray-600 dark:text-gray-300 space-y-5 text-left max-w-5xl mx-auto">
-                <p>বাংলা ফোনেটিক টাইপিংয়ের জন্য অভ্র জনপ্রিয় হলেও, বারবার Shift চাপা এবং কিছু key দূরে থাকার কারণে (যেমন ঁ এর জন্য ^) গতি ও ফ্লো নষ্ট হয়। ফলে একটা সীমার পর গতি আরও বাড়ানো অসম্ভব হয়ে যায়।</p>
-                <p>এই সীমাবদ্ধতা কাটাতে আমরা চীনের পিনইন পদ্ধতি থেকে অনুপ্রাণিত হয়েছি। পিনইন কেস-ইনসেনসিটিভ হওয়ায় এবং সাথে ইন্টেলিজেন্ট সাজেশনের কারণে চীনারা চীনা ভাষা ইংরেজির চেয়েও দ্রুত লিখতে পারেন।</p>
-                <p>ক্ষিপ্র-তে সেই ধারণাই আনা হয়েছে—Shift ছাড়াই দ্রুত ও স্বচ্ছন্দে বাংলা লেখা যায়। প্রয়োজনীয় সব চিহ্ন হাত না সরিয়েই টাইপ করা সম্ভব।</p>
-                <p>লিনাক্সে <a href="https://mike-fabian.github.io/ibus-typing-booster/" target="_blank" class="text-primary dark:text-dark-primary underline font-medium">টাইপিং বুস্টারের</a> মাধ্যমে ক্ষিপ্র আরও ক্ষিপ্রতর হয়, যেখানে পরবর্তী একাধিক শব্দের সাজেশন পাওয়া যায়। উইন্ডোজ, অ্যান্ড্রয়েডসহ অন্যান্য প্ল্যাটফর্মেও ক্ষিপ্র ইমপ্লিমেন্ট করা অ্যাপ দিয়ে প্রেডিকটিভ টেক্সট সুবিধা ব্যবহার করা যাবে।</p>
-                <center><h1>প্রচলিত ফিক্সড-ফোনেটিক পদ্ধতির সাথে ক্ষিপ্রর পার্থক্য</h1></center>
-<ol>
-  <li>বারবার শিফট চাপা থেকে মুক্তি।</li>
-  <li>সব ধরনের প্রয়োজনীয়, কম প্রয়োজনীয় চিহ্ন হাতের কাছে।</li>
-  <li>
-    অ্যা ধ্বনিকে স্বর হিসেবে বিবেচনা করা হয়েছে। ae দিয়ে অ্যা লেখা যাবে এবং যেকোনো ব্যঞ্জনের পরে কারচিহ্ন হিসেবে যুক্ত করা যাবে। যেমন:<br>
-    র‍্যা = <code>rae</code>
-  </li>
-  <li>
-    ট-বর্গীয় ব্যঞ্জনবর্ণগুলো টাইপ করার ক্ষেত্রে প্রচলিত ফিক্সড-ফোনেটিক এর সঙ্গে ক্ষিপ্রর পার্থক্য রয়েছে।
-    <p>ত-বর্গের ক্ষেত্রে:</p>
-    <ul>
-      <li><code>t</code> = ত</li>
-      <li><code>th</code> = থ</li>
-      <li><code>d</code> = দ</li>
-      <li><code>dh</code> = ধ</li>
-    </ul>
-    <p>কিন্তু ট-বর্গের ক্ষেত্রে:</p>
-    <ul>
-      <li><code>tf</code> = ট</li>
-      <li><code>{tff}</code> অথবা <code>tfh</code> = ঠ</li>
-      <li><code>df</code> = ড</li>
-      <li><code>{df}</code> অথবা <code>dfh</code> = ঢ</li>
-    </ul>
-  </li>
-  <li>
-    ঙ এবং ং এর ব্যবহার হবে কনটেক্সট ভিত্তিক:
-    <ul>
-      <li><code>bangla</code> = বাংলা</li>
-      <li><code>bangali</code> = বাঙালি</li>
-      <li><code>ongk</code> = অঙ্ক</li>
-      <li><code>ongg</code> = অঙ্গ</li>
-      <li><code>ongfk</code> = অংক</li>
-    </ul>
-  </li>
-  <li>সাজেশনের প্রতি কোনো নির্ভরশীলতা নেই, কোনো সাজেশন ছাড়াই দ্রুত লেখা যাবে। তবে চাইলে সাজেশন ব্যবহার করা যেতে পারে। (টাইপিং বুস্টারের কথা বারংবার উল্লেখ করার কারণ হলো এতে পরবর্তী একাধিক শব্দ সাজেশন হিসেবে আসতে পারে, তাই সাজেশন লেখার গতি না কমিয়ে উল্টো বাড়িয়ে দেয়।)</li>
-  <li>
-    যেখানেই সম্ভব হয়েছে নতুন-নতুন এবং সুবিধাজনক শর্টকাট তৈরি করার চেষ্টা করা হয়েছে। যেমন:
-    <ul>
-      <li>ক্ষ = <code>kkh</code> অথবা <code>kf</code></li>
-      <li>ট্ট = <code>tftf</code> এর পাশাপাশি <code>ttf</code></li>
-    </ul>
-  </li>
-  <li>
-    অভিনব কিছু ম্যাপিং আছে, যেমন: অ্যা কে স্বরধ্বনির মতো ব্যবহার করা যাবে:
-    <ul>
-      <li><code>"ae"</code> = অ্যা</li>
-      <li><code>"hae"</code> = হ্যা</li>
-    </ul>
-  </li>
-</ol>
-            </div>
-            <div class="mt-10 flex flex-wrap gap-4 justify-center">
-                <a href="/docs" class="bg-btn-primary text-white font-medium px-8 py-4 rounded-lg transition-all duration-300 transform hover:-translate-y-0.5">
-                    ক্ষিপ্র ব্যবহার নির্দেশিকা
-                </a>
-            </div>
+<section id="home" class="pt-16 pb-24 sm:pt-24 sm:pb-32 bg-white">
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="max-w-7xl mx-auto">
+      <div class="grid md:grid-cols-2 gap-12 items-center">
+        <!-- Left Column: Title and Description -->
+        <div class="order-2 md:order-1">
+          <h1
+            class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-gray-900 mb-6">
+            <span class="block text-primary-dark"
+              >বাংলা টাইপিংয়ে সেরা অভিজ্ঞতার জন্য একটি উদ্যোগ</span
+            >
+          </h1>
+          <div class="text-lg text-gray-600 space-y-4">
+            <p>
+              বাংলা ফোনেটিক টাইপিংয়ের জন্য অভ্র জনপ্রিয় হলেও, বারবার Shift
+              চাপা এবং কিছু key দূরে থাকার কারণে গতি ও ফ্লো নষ্ট হয়।
+            </p>
+            <p>
+              ক্ষিপ্র-তে চীনের পিনইন পদ্ধতি থেকে অনুপ্রাণিত হয়ে Shift ছাড়াই
+              দ্রুত ও স্বচ্ছন্দে বাংলা লেখা যায়। প্রয়োজনীয় সব চিহ্ন হাত না
+              সরিয়েই টাইপ করা সম্ভব।
+            </p>
+          </div>
+          <div class="mt-8">
+            <a
+              href="/docs"
+              class="bg-primary-dark hover:bg-accent text-white font-medium px-8 py-4 rounded-lg transition-all duration-300 transform hover:-translate-y-0.5 inline-block shadow-lg">
+              ক্ষিপ্র ব্যবহার নির্দেশিকা
+            </a>
+          </div>
         </div>
+
+        <!-- Right Column: Logo -->
+        <div class="order-1 md:order-2 flex items-center justify-center">
+          <img
+            src="/img/khipro-logo.webp"
+            alt="ক্ষিপ্র লোগো"
+            class="w-64 h-64 sm:w-80 sm:h-80 lg:w-96 lg:h-96 drop-shadow-2xl rounded-3xl" />
+        </div>
+      </div>
     </div>
+  </div>
+</section>
+
+<!-- FAQ Section -->
+<section id="faq" class="py-20 sm:py-24 bg-gray-50">
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-16">
+      <h2
+        class="text-3xl sm:text-4xl font-bold text-gray-900 relative inline-block pb-2.5 after:content-[''] after:absolute after:bottom-0 after:left-1/2 after:transform after:-translate-x-1/2 after:w-[70px] after:h-0.5 after:bg-primary-dark after:transition-all after:duration-300 after:rounded-full">
+        প্রায়শই জিজ্ঞাসিত প্রশ্ন
+      </h2>
+      <p class="mt-4 max-w-2xl mx-auto text-lg text-gray-600">
+        ক্ষিপ্র কিবোর্ড সম্পর্কে সাধারণ প্রশ্ন এবং উত্তর
+      </p>
+    </div>
+
+    <div class="max-w-6xl mx-auto">
+      <div class="grid md:grid-cols-2 gap-6">
+        <!-- Left Column FAQs -->
+        <div class="space-y-4">
+          <!-- FAQ Item 1 -->
+          <div class="faq-item bg-white rounded-lg shadow-md overflow-hidden">
+            <button
+              class="faq-question w-full text-left px-6 py-4 flex items-center justify-between hover:bg-gray-50 transition-colors">
+              <span class="font-semibold text-gray-900"
+                >ক্ষিপ্র কিবোর্ড কী?</span
+              >
+              <i
+                class="fas fa-chevron-down text-primary transition-transform duration-300"></i>
+            </button>
+            <div
+              class="faq-answer hidden px-6 py-4 text-gray-600 border-t border-gray-200">
+              <p>
+                ক্ষিপ্র একটি উদ্ভাবনী বাংলা টাইপিং পদ্ধতি যা চীনের পিনইন থেকে
+                অনুপ্রাণিত। এটি Shift কী ছাড়াই দ্রুত এবং স্বাচ্ছন্দ্যে বাংলা
+                টাইপ করার সুবিধা প্রদান করে। সব প্রয়োজনীয় চিহ্ন হাতের কাছেই
+                থাকে।
+              </p>
+            </div>
+          </div>
+
+          <!-- FAQ Item 2 -->
+          <div class="faq-item bg-white rounded-lg shadow-md overflow-hidden">
+            <button
+              class="faq-question w-full text-left px-6 py-4 flex items-center justify-between hover:bg-gray-50 transition-colors">
+              <span class="font-semibold text-gray-900"
+                >ক্ষিপ্র কোন প্ল্যাটফর্মে পাওয়া যায়?</span
+              >
+              <i
+                class="fas fa-chevron-down text-primary transition-transform duration-300"></i>
+            </button>
+            <div
+              class="faq-answer hidden px-6 py-4 text-gray-600 border-t border-gray-200">
+              <p>
+                ক্ষিপ্র আনুষ্ঠানিকভাবে লিনাক্সে পাওয়া যায় (ibus-m17n এবং
+                fcitx5-m17n এর মাধ্যমে)। কমিউনিটির সহায়তায় উইন্ডোজেও ব্যবহার
+                করা যাচ্ছে (Borno Native এবং NMS Kontho)। অ্যান্ড্রয়েড ভার্সন
+                শীঘ্রই আসছে।
+              </p>
+            </div>
+          </div>
+
+          <!-- FAQ Item 3 -->
+          <div class="faq-item bg-white rounded-lg shadow-md overflow-hidden">
+            <button
+              class="faq-question w-full text-left px-6 py-4 flex items-center justify-between hover:bg-gray-50 transition-colors">
+              <span class="font-semibold text-gray-900"
+                >অভ্র থেকে ক্ষিপ্রর পার্থক্য কী?</span
+              >
+              <i
+                class="fas fa-chevron-down text-primary transition-transform duration-300"></i>
+            </button>
+            <div
+              class="faq-answer hidden px-6 py-4 text-gray-600 border-t border-gray-200">
+              <p>
+                ক্ষিপ্রে Shift কী চাপার প্রয়োজন নেই, সব চিহ্ন হাতের কাছে,
+                কেস-ইনসেনসিটিভ টাইপিং, এবং কনটেক্সট-ভিত্তিক অক্ষর ইনপুট। এটি
+                দ্রুততর এবং আরও স্বাচ্ছন্দ্যময় টাইপিং অভিজ্ঞতা প্রদান করে।
+              </p>
+            </div>
+          </div>
+
+          <!-- FAQ Item 4 -->
+          <div class="faq-item bg-white rounded-lg shadow-md overflow-hidden">
+            <button
+              class="faq-question w-full text-left px-6 py-4 flex items-center justify-between hover:bg-gray-50 transition-colors">
+              <span class="font-semibold text-gray-900"
+                >ক্ষিপ্র শিখতে কতদিন লাগে?</span
+              >
+              <i
+                class="fas fa-chevron-down text-primary transition-transform duration-300"></i>
+            </button>
+            <div
+              class="faq-answer hidden px-6 py-4 text-gray-600 border-t border-gray-200">
+              <p>
+                যদি আপনি ইতিমধ্যে ফোনেটিক টাইপিং জানেন, তাহলে ক্ষিপ্র শিখতে খুব
+                বেশি সময় লাগবে না। মূল পার্থক্যগুলো বুঝতে ১-২ দিন এবং
+                সাবলীলভাবে টাইপ করতে ১-২ সপ্তাহ সময় লাগতে পারে।
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Column FAQs -->
+        <div class="space-y-4">
+          <!-- FAQ Item 5 -->
+          <div class="faq-item bg-white rounded-lg shadow-md overflow-hidden">
+            <button
+              class="faq-question w-full text-left px-6 py-4 flex items-center justify-between hover:bg-gray-50 transition-colors">
+              <span class="font-semibold text-gray-900"
+                >টাইপিং বুস্টার কী?</span
+              >
+              <i
+                class="fas fa-chevron-down text-primary transition-transform duration-300"></i>
+            </button>
+            <div
+              class="faq-answer hidden px-6 py-4 text-gray-600 border-t border-gray-200">
+              <p>
+                টাইপিং বুস্টার হলো লিনাক্সের একটি ইন্টেলিজেন্ট ইনপুট মেথড যা
+                পরবর্তী একাধিক শব্দের সাজেশন দেয়। ক্ষিপ্রর সাথে ব্যবহার করলে
+                টাইপিং গতি আরও বৃদ্ধি পায় এবং আরও সুবিধাজনক হয়।
+              </p>
+            </div>
+          </div>
+
+          <!-- FAQ Item 6 -->
+          <div class="faq-item bg-white rounded-lg shadow-md overflow-hidden">
+            <button
+              class="faq-question w-full text-left px-6 py-4 flex items-center justify-between hover:bg-gray-50 transition-colors">
+              <span class="font-semibold text-gray-900"
+                >ক্ষিপ্র কি ওপেন সোর্স?</span
+              >
+              <i
+                class="fas fa-chevron-down text-primary transition-transform duration-300"></i>
+            </button>
+            <div
+              class="faq-answer hidden px-6 py-4 text-gray-600 border-t border-gray-200">
+              <p>
+                হ্যাঁ, ক্ষিপ্র সম্পূর্ণ ওপেন সোর্স এবং ফ্রি সফটওয়্যার। সব কোড
+                GitHub-এ উপলব্ধ এবং যে কেউ অবদান রাখতে পারেন। এটি একটি
+                কমিউনিটি-চালিত প্রজেক্ট।
+              </p>
+            </div>
+          </div>
+
+          <!-- FAQ Item 7 -->
+          <div class="faq-item bg-white rounded-lg shadow-md overflow-hidden">
+            <button
+              class="faq-question w-full text-left px-6 py-4 flex items-center justify-between hover:bg-gray-50 transition-colors">
+              <span class="font-semibold text-gray-900"
+                >সাপোর্ট কোথায় পাবো?</span
+              >
+              <i
+                class="fas fa-chevron-down text-primary transition-transform duration-300"></i>
+            </button>
+            <div
+              class="faq-answer hidden px-6 py-4 text-gray-600 border-t border-gray-200">
+              <p>
+                আমাদের টেলিগ্রাম গ্রুপে যোগ দিন যেখানে সক্রিয় কমিউনিটি সদস্যরা
+                সাহায্য করবেন। GitHub-এ ইস্যু তৈরি করতে পারেন অথবা আমাদের
+                ডকুমেন্টেশন দেখতে পারেন।
+              </p>
+            </div>
+          </div>
+
+          <!-- FAQ Item 8 -->
+          <div class="faq-item bg-white rounded-lg shadow-md overflow-hidden">
+            <button
+              class="faq-question w-full text-left px-6 py-4 flex items-center justify-between hover:bg-gray-50 transition-colors">
+              <span class="font-semibold text-gray-900"
+                >ক্ষিপ্রতে অবদান রাখতে চাই</span
+              >
+              <i
+                class="fas fa-chevron-down text-primary transition-transform duration-300"></i>
+            </button>
+            <div
+              class="faq-answer hidden px-6 py-4 text-gray-600 border-t border-gray-200">
+              <p>
+                দুর্দান্ত! আমাদের GitHub অর্গানাইজেশনে যান, রিপোজিটরিগুলো দেখুন
+                এবং কন্ট্রিবিউট করুন। কোড, ডকুমেন্টেশন, টেস্টিং - সব ধরনের অবদান
+                স্বাগত। টেলিগ্রাম গ্রুপেও আলোচনা করতে পারেন।
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
 
 <!-- Installation Section -->
-<section id="installation" class="py-20 sm:py-24 bg-secondary/20 dark:bg-dark-secondary/20">
-    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center mb-16">
-            <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-gray-100 relative inline-block pb-2.5 after:content-[''] after:absolute after:bottom-0 after:left-1/2 after:transform after:-translate-x-1/2 after:w-[70px] after:h-0.5 after:bg-primary after:transition-all after:duration-300 after:rounded-full">
-                আপনার ডিভাইসে ক্ষিপ্র</h2>
-            <p class="mt-4 max-w-2xl mx-auto text-lg text-gray-600 dark:text-gray-300">
-                ক্ষিপ্র শুধু একটি সফটওয়্যার নয়, এটি বাংলা টাইপিং-এর একটি নতুন আইডিয়া। আনুষ্ঠানিকভাবে ক্ষিপ্র শুধু লিনাক্সে পাওয়া গেলেও, আমাদের অসাধারণ কমিউনিটির হাত ধরে উইন্ডোজেও এটি বিভিন্নভাবে ব্যবহার করা যাচ্ছে। খুব শীঘ্রই অ্যান্ড্রয়েডেও আসছে!
-            </p>
-        </div>
-        <div class="mt-12 max-w-4xl mx-auto">
-            <div class="mb-6 border-b border-gray-300 dark:border-gray-700 flex justify-center space-x-2 sm:space-x-4" role="tablist">
-                <button class="tab-button active text-sm sm:text-base font-semibold py-3 px-4 sm:px-6 border-b-2 border-primary dark:border-dark-primary text-primary dark:text-dark-primary" data-tab="linux" role="tab" aria-selected="true">
-                    <i class="fab fa-linux"></i> লিনাক্স
-                </button>
-                <button class="tab-button text-sm sm:text-base font-semibold py-3 px-4 sm:px-6 border-b-2 border-transparent text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200 transition-colors" data-tab="windows" role="tab" aria-selected="false">
-                    <i class="fab fa-windows"></i> উইন্ডোজ
-                </button>
-                <button class="tab-button text-sm sm:text-base font-semibold py-3 px-4 sm:px-6 border-b-2 border-transparent text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200 transition-colors" data-tab="android" role="tab" aria-selected="false">
-                    <i class="fab fa-android"></i> অ্যান্ড্রয়েড
-                </button>
-            </div>
-            <div id="tab-content" class="mt-8">
-                <div class="tab-pane active" id="linux" role="tabpanel">
-                    <div class="max-w-3xl mx-auto">
-                        <p class="text-center text-gray-600 dark:text-gray-300 mb-8">
-                            লিনাক্সে ক্ষিপ্র ব্যবহারের জন্য দুটি প্রধান পদ্ধতি রয়েছে। আপনার পছন্দের পদ্ধতি বেছে নিন:
-                        </p>
-                        <div class="grid md:grid-cols-2 gap-6 mb-8">
-                            <div class="bg-white dark:bg-dark-secondary p-6 rounded-2xl shadow-md">
-                                <div class="flex items-center mb-4">
-                                    <div class="w-10 h-10 rounded-full bg-icon-primary flex items-center justify-center text-white mr-3">
-                                        <i class="fas fa-keyboard"></i>
-                                    </div>
-                                    <h3 class="text-xl font-bold text-primary dark:text-dark-primary">ibus দিয়ে ক্ষিপ্র</h3>
-                                </div>
-                                <p class="text-gray-600 dark:text-gray-300 mb-4">
-                                    ibus-m17n এবং টাইপিং বুস্টার ব্যবহার করে স্মার্ট সাজেশন সহ ক্ষিপ্র ব্যবহার করুন।
-                                </p>
-                                <a href="/installation/#ibus-m17n-দয়-কষপর-বযবহর-কর" class="bg-btn-primary text-white font-semibold px-4 py-2 rounded-lg text-sm inline-block transition-all duration-300">
-                                    বিস্তারিত দেখুন
-                                </a>
-                            </div>
-                            <div class="bg-white dark:bg-dark-secondary p-6 rounded-2xl shadow-md">
-                                <div class="flex items-center mb-4">
-                                    <div class="w-10 h-10 rounded-full bg-icon-primary flex items-center justify-center text-white mr-3">
-                                        <i class="fas fa-cog"></i>
-                                    </div>
-                                    <h3 class="text-xl font-bold text-primary dark:text-dark-primary">fcitx5 দিয়ে ক্ষিপ্র</h3>
-                                </div>
-                                <p class="text-gray-600 dark:text-gray-300 mb-4">
-                                    fcitx5-m17n ব্যবহার করে ক্ষিপ্র ইনস্টল করুন। fcitx5 ব্যবহারকারীদের জন্য।
-                                </p>
-                                <a href="/installation/#fcitx5-m17n-দয়-কষপর-বযবহর-কর" class="bg-btn-primary text-white font-semibold px-4 py-2 rounded-lg text-sm inline-block transition-all duration-300">
-                                    বিস্তারিত দেখুন
-                                </a>
-                            </div>
-                        </div>
-                        <div class="bg-secondary/20 dark:bg-dark-secondary/20 p-6 rounded-2xl">
-                            <div class="flex items-center mb-4">
-                                <div class="w-10 h-10 rounded-full bg-icon-primary flex items-center justify-center text-white mr-3">
-                                    <i class="fas fa-magic"></i>
-                                </div>
-                                <h3 class="text-xl font-bold text-primary dark:text-dark-primary">টাইপিং বুস্টার কনফিগারেশন</h3>
-                            </div>
-                            <p class="text-gray-600 dark:text-gray-300 mb-4">
-                                সর্বোৎকৃষ্ট টাইপিং অভিজ্ঞতার জন্য টাইপিং বুস্টার সঠিকভাবে কনফিগার করুন।
-                            </p>
-                            <a href="/installation/#টইপ-বসটর-কনফগর-কর" class="bg-btn-primary text-white font-semibold px-4 py-2 rounded-lg text-sm inline-block transition-all duration-300">
-                                কনফিগারেশন গাইড
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="tab-pane hidden" id="windows" role="tabpanel">
-                    <div class="max-w-3xl mx-auto">
-                        <p class="text-center text-gray-600 dark:text-gray-300 mb-8">
-                            উইন্ডোজে ক্ষিপ্র ব্যবহারের জন্য বিভিন্ন পদ্ধতি রয়েছে। আপনার পছন্দের পদ্ধতি বেছে নিন:
-                        </p>
-                        <div class="grid md:grid-cols-2 gap-6">
-                            <div class="bg-white dark:bg-dark-secondary p-6 rounded-2xl shadow-md">
-                                <div class="flex items-center mb-4">
-                                    <div class="w-10 h-10 rounded-full bg-icon-primary flex items-center justify-center text-white mr-3">
-                                        <i class="fab fa-windows"></i>
-                                    </div>
-                                    <h3 class="text-xl font-bold text-primary dark:text-dark-primary">বর্ণ কিবোর্ডে ক্ষিপ্র</h3>
-                                </div>
-                                <p class="text-gray-600 dark:text-gray-300 mb-4">
-                                    Codepotro-এর জনপ্রিয় কিবোর্ড Borno Native-এর নতুন ভার্শনে ক্ষিপ্র লেআউট বিল্ট-ইন।
-                                </p>
-                                <a href="/installation/#borno-native-এর-মধযম" class="bg-btn-primary text-white font-semibold px-4 py-2 rounded-lg text-sm inline-block transition-all duration-300">
-                                    বিস্তারিত দেখুন
-                                </a>
-                            </div>
-                            <div class="bg-white dark:bg-dark-secondary p-6 rounded-2xl shadow-md">
-                                <div class="flex items-center mb-4">
-                                    <div class="w-10 h-10 rounded-full bg-icon-primary flex items-center justify-center text-white mr-3">
-                                        <i class="fas fa-keyboard"></i>
-                                    </div>
-                                    <h3 class="text-xl font-bold text-primary dark:text-dark-primary">NMS Kontho-তে ক্ষিপ্র</h3>
-                                </div>
-                                <p class="text-gray-600 dark:text-gray-300 mb-4">
-                                    NMS Kontho অ্যাপ্লিকেশনের জন্য কমিউনিটির তৈরি কাস্টম ক্ষিপ্র লেআউট।
-                                </p>
-                                <a href="/installation/#nms-kontho-ত-কষপর" class="bg-btn-primary text-white font-semibold px-4 py-2 rounded-lg text-sm inline-block transition-all duration-300">
-                                    বিস্তারিত দেখুন
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="tab-pane hidden" id="android" role="tabpanel">
-                    <div class="max-w-3xl mx-auto">
-                        <p class="text-center text-gray-600 dark:text-gray-300 mb-8">
-                            অ্যান্ড্রয়েডে ক্ষিপ্র ব্যবহারের জন্য উন্নয়ন কাজ চলমান। বর্তমান অবস্থা দেখুন:
-                        </p>
-                        <div class="bg-white dark:bg-dark-secondary p-8 text-center rounded-2xl shadow-md">
-                            <div class="w-16 h-16 rounded-full bg-icon-primary flex items-center justify-center text-white mx-auto mb-6">
-                                <i class="fab fa-android text-2xl"></i>
-                            </div>
-                            <h3 class="text-2xl font-bold text-primary dark:text-dark-primary mb-4">
-                                অ্যান্ড্রয়েড: কাজ চলছে</h3>
-                            <p class="text-gray-600 dark:text-gray-300 mb-6">
-                                অ্যান্ড্রয়েড ব্যবহারকারীদের জন্যেও সুখবর আসছে! Codepotro টিম তাদের জনপ্রিয় Borno Android কিবোর্ডে ক্ষিপ্র যুক্ত করার কাজ করছে।
-                            </p>
-                            <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                                <a href="/installation/#অযনডরয়ড" class="bg-btn-primary text-white font-semibold px-6 py-3 rounded-lg shadow-md inline-block transition-all duration-300">
-                                    বিস্তারিত দেখুন
-                                </a>
-                                <a href="https://play.google.com/store/apps/details?id=com.codepotro.borno.keyboard" target="_blank" class="bg-btn-primary text-white font-semibold px-6 py-3 rounded-lg shadow-md inline-block transition-all duration-300">
-                                    Borno Android
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+<section id="installation" class="py-20 sm:py-24 bg-white">
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-16">
+      <h2
+        class="text-3xl sm:text-4xl font-bold text-gray-900 relative inline-block pb-2.5 after:content-[''] after:absolute after:bottom-0 after:left-1/2 after:transform after:-translate-x-1/2 after:w-[70px] after:h-0.5 after:bg-primary-dark after:transition-all after:duration-300 after:rounded-full">
+        আপনার ডিভাইসে ক্ষিপ্র
+      </h2>
+      <p class="mt-4 max-w-2xl mx-auto text-lg text-gray-600">
+        ক্ষিপ্র শুধু একটি সফটওয়্যার নয়, এটি বাংলা টাইপিং-এর একটি নতুন আইডিয়া।
+        আনুষ্ঠানিকভাবে ক্ষিপ্র শুধু লিনাক্সে পাওয়া গেলেও, আমাদের অসাধারণ
+        কমিউনিটির হাত ধরে উইন্ডোজেও এটি বিভিন্নভাবে ব্যবহার করা যাচ্ছে। খুব
+        শীঘ্রই অ্যান্ড্রয়েডেও আসছে!
+      </p>
     </div>
+    <div class="mt-12 max-w-4xl mx-auto">
+      <div
+        class="mb-6 border-b border-gray-300 flex justify-center space-x-2 sm:space-x-4"
+        role="tablist">
+        <button
+          class="tab-button active text-sm sm:text-base font-semibold py-3 px-4 sm:px-6 border-b-2 border-primary text-primary"
+          data-tab="linux"
+          role="tab"
+          aria-selected="true">
+          <i class="fab fa-linux"></i> লিনাক্স
+        </button>
+        <button
+          class="tab-button text-sm sm:text-base font-semibold py-3 px-4 sm:px-6 border-b-2 border-transparent text-gray-500 hover:text-gray-700 transition-colors"
+          data-tab="windows"
+          role="tab"
+          aria-selected="false">
+          <i class="fab fa-windows"></i> উইন্ডোজ
+        </button>
+        <button
+          class="tab-button text-sm sm:text-base font-semibold py-3 px-4 sm:px-6 border-b-2 border-transparent text-gray-500 hover:text-gray-700 transition-colors"
+          data-tab="android"
+          role="tab"
+          aria-selected="false">
+          <i class="fab fa-android"></i> অ্যান্ড্রয়েড
+        </button>
+      </div>
+      <div id="tab-content" class="mt-8">
+        <div class="tab-pane active" id="linux" role="tabpanel">
+          <div class="max-w-3xl mx-auto">
+            <p class="text-center text-gray-600 mb-8">
+              লিনাক্সে ক্ষিপ্র ব্যবহারের জন্য দুটি প্রধান পদ্ধতি রয়েছে। আপনার
+              পছন্দের পদ্ধতি বেছে নিন:
+            </p>
+            <div class="grid md:grid-cols-2 gap-6 mb-8">
+              <div class="bg-white p-6 rounded-2xl shadow-md">
+                <div class="flex items-center mb-4">
+                  <div
+                    class="w-10 h-10 rounded-full bg-icon-primary flex items-center justify-center text-white mr-3">
+                    <i class="fas fa-keyboard"></i>
+                  </div>
+                  <h3 class="text-xl font-bold text-primary-dark">
+                    ibus দিয়ে ক্ষিপ্র
+                  </h3>
+                </div>
+                <p class="text-gray-600 mb-4">
+                  ibus-m17n এবং টাইপিং বুস্টার ব্যবহার করে স্মার্ট সাজেশন সহ
+                  ক্ষিপ্র ব্যবহার করুন।
+                </p>
+                <a
+                  href="/installation/#ibus-m17n-দয়-কষপর-বযবহর-কর"
+                  class="bg-btn-primary text-white font-semibold px-4 py-2 rounded-lg text-sm inline-block transition-all duration-300">
+                  বিস্তারিত দেখুন
+                </a>
+              </div>
+              <div class="bg-white p-6 rounded-2xl shadow-md">
+                <div class="flex items-center mb-4">
+                  <div
+                    class="w-10 h-10 rounded-full bg-icon-primary flex items-center justify-center text-white mr-3">
+                    <i class="fas fa-cog"></i>
+                  </div>
+                  <h3 class="text-xl font-bold text-primary-dark">
+                    fcitx5 দিয়ে ক্ষিপ্র
+                  </h3>
+                </div>
+                <p class="text-gray-600 mb-4">
+                  fcitx5-m17n ব্যবহার করে ক্ষিপ্র ইনস্টল করুন। fcitx5
+                  ব্যবহারকারীদের জন্য।
+                </p>
+                <a
+                  href="/installation/#fcitx5-m17n-দয়-কষপর-বযবহর-কর"
+                  class="bg-btn-primary text-white font-semibold px-4 py-2 rounded-lg text-sm inline-block transition-all duration-300">
+                  বিস্তারিত দেখুন
+                </a>
+              </div>
+            </div>
+            <div class="bg-secondary/20 p-6 rounded-2xl">
+              <div class="flex items-center mb-4">
+                <div
+                  class="w-10 h-10 rounded-full bg-icon-primary flex items-center justify-center text-white mr-3">
+                  <i class="fas fa-magic"></i>
+                </div>
+                <h3 class="text-xl font-bold text-primary-dark">
+                  টাইপিং বুস্টার কনফিগারেশন
+                </h3>
+              </div>
+              <p class="text-gray-600 mb-4">
+                সর্বোৎকৃষ্ট টাইপিং অভিজ্ঞতার জন্য টাইপিং বুস্টার সঠিকভাবে
+                কনফিগার করুন।
+              </p>
+              <a
+                href="/installation/#টইপ-বসটর-কনফগর-কর"
+                class="bg-btn-primary text-white font-semibold px-4 py-2 rounded-lg text-sm inline-block transition-all duration-300">
+                কনফিগারেশন গাইড
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="tab-pane hidden" id="windows" role="tabpanel">
+          <div class="max-w-3xl mx-auto">
+            <p class="text-center text-gray-600 mb-8">
+              উইন্ডোজে ক্ষিপ্র ব্যবহারের জন্য বিভিন্ন পদ্ধতি রয়েছে। আপনার
+              পছন্দের পদ্ধতি বেছে নিন:
+            </p>
+            <div class="grid md:grid-cols-2 gap-6">
+              <div class="bg-white p-6 rounded-2xl shadow-md">
+                <div class="flex items-center mb-4">
+                  <div
+                    class="w-10 h-10 rounded-full bg-icon-primary flex items-center justify-center text-white mr-3">
+                    <i class="fab fa-windows"></i>
+                  </div>
+                  <h3 class="text-xl font-bold text-primary-dark">
+                    বর্ণ কিবোর্ডে ক্ষিপ্র
+                  </h3>
+                </div>
+                <p class="text-gray-600 mb-4">
+                  Codepotro-এর জনপ্রিয় কিবোর্ড Borno Native-এর নতুন ভার্শনে
+                  ক্ষিপ্র লেআউট বিল্ট-ইন।
+                </p>
+                <a
+                  href="/installation/#borno-native-এর-মধযম"
+                  class="bg-btn-primary text-white font-semibold px-4 py-2 rounded-lg text-sm inline-block transition-all duration-300">
+                  বিস্তারিত দেখুন
+                </a>
+              </div>
+              <div class="bg-white p-6 rounded-2xl shadow-md">
+                <div class="flex items-center mb-4">
+                  <div
+                    class="w-10 h-10 rounded-full bg-icon-primary flex items-center justify-center text-white mr-3">
+                    <i class="fas fa-keyboard"></i>
+                  </div>
+                  <h3 class="text-xl font-bold text-primary-dark">
+                    NMS Kontho-তে ক্ষিপ্র
+                  </h3>
+                </div>
+                <p class="text-gray-600 mb-4">
+                  NMS Kontho অ্যাপ্লিকেশনের জন্য কমিউনিটির তৈরি কাস্টম ক্ষিপ্র
+                  লেআউট।
+                </p>
+                <a
+                  href="/installation/#nms-kontho-ত-কষপর"
+                  class="bg-btn-primary text-white font-semibold px-4 py-2 rounded-lg text-sm inline-block transition-all duration-300">
+                  বিস্তারিত দেখুন
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="tab-pane hidden" id="android" role="tabpanel">
+          <div class="max-w-3xl mx-auto">
+            <p class="text-center text-gray-600 mb-8">
+              অ্যান্ড্রয়েডে ক্ষিপ্র ব্যবহারের জন্য উন্নয়ন কাজ চলমান। বর্তমান
+              অবস্থা দেখুন:
+            </p>
+            <div class="bg-white p-8 text-center rounded-2xl shadow-md">
+              <div
+                class="w-16 h-16 rounded-full bg-icon-primary flex items-center justify-center text-white mx-auto mb-6">
+                <i class="fab fa-android text-2xl"></i>
+              </div>
+              <h3 class="text-2xl font-bold text-primary-dark mb-4">
+                অ্যান্ড্রয়েড: কাজ চলছে
+              </h3>
+              <p class="text-gray-600 mb-6">
+                অ্যান্ড্রয়েড ব্যবহারকারীদের জন্যেও সুখবর আসছে! Codepotro টিম
+                তাদের জনপ্রিয় Borno Android কিবোর্ডে ক্ষিপ্র যুক্ত করার কাজ
+                করছে।
+              </p>
+              <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a
+                  href="/installation/#অযনডরয়ড"
+                  class="bg-btn-primary text-white font-semibold px-6 py-3 rounded-lg shadow-md inline-block transition-all duration-300">
+                  বিস্তারিত দেখুন
+                </a>
+                <a
+                  href="https://play.google.com/store/apps/details?id=com.codepotro.borno.keyboard"
+                  target="_blank"
+                  class="bg-btn-primary text-white font-semibold px-6 py-3 rounded-lg shadow-md inline-block transition-all duration-300">
+                  Borno Android
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
 
 <!-- Repositories Section -->
-<section id="repositories" class="py-20 sm:py-24">
-    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center mb-16">
-            <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-gray-100 relative inline-block pb-2.5 after:content-[''] after:absolute after:bottom-0 after:left-1/2 after:transform after:-translate-x-1/2 after:w-[70px] after:h-0.5 after:bg-primary after:transition-all after:duration-300 after:rounded-full">
-                ক্ষিপ্র রিপোজিটরি সমূহ</h2>
-            <p class="mt-4 max-w-2xl mx-auto text-lg text-gray-600 dark:text-gray-300">
-                ক্ষিপ্র কিবোর্ডের বিভিন্ন প্ল্যাটফর্মের জন্য তৈরি করা রিপোজিটরি গুলো দেখুন। প্রতিটি রিপোজিটরি আলাদা প্ল্যাটফর্মের জন্য অপ্টিমাইজ করা।
-            </p>
-        </div>
-        <div class="grid md:grid-cols-2 gap-6 max-w-6xl mx-auto">
-            <!-- khipro-m17n Repository -->
-            <div class="bg-white dark:bg-dark-secondary p-6 rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
-                <div class="flex items-center mb-4">
-                    <div class="w-12 h-12 rounded-full bg-icon-primary flex items-center justify-center text-white mr-4">
-                        <i class="fab fa-linux text-xl"></i>
-                    </div>
-                    <div>
-                        <h3 class="text-xl font-bold text-primary dark:text-dark-primary">khipro-m17n</h3>
-                        <p class="text-sm text-gray-500 dark:text-gray-400">মেইনটেইনার: <a href="https://github.com/rank-coder" target="_blank" class="text-primary dark:text-dark-primary hover:underline">Nafi</a></p>
-                    </div>
-                </div>
-                <p class="text-gray-600 dark:text-gray-300 mb-4 leading-relaxed">
-                    ক্ষিপ্র-m17n হলো লিনাক্সে m17n এ ব্যবহার উপযোগী ক্ষিপ্র লেআউট। ক্ষিপ্র কনসেপ্টের প্রথম অফিশিয়াল রিপোজিটরি এটি।
-                </p>
-                <div class="flex gap-3">
-                    <a href="https://github.com/rank-coder/khipro-m17n" target="_blank" class="bg-btn-primary text-white font-semibold px-4 py-2 rounded-lg text-sm inline-flex items-center gap-2 transition-all duration-300">
-                        <i class="fab fa-github"></i>
-                        রিপোজিটরি দেখুন
-                    </a>
-                </div>
-            </div>
-
-            <!-- khipro-python Repository -->
-            <div class="bg-white dark:bg-dark-secondary p-6 rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
-                <div class="flex items-center mb-4">
-                    <div class="w-12 h-12 rounded-full bg-icon-primary flex items-center justify-center text-white mr-4">
-                        <i class="fab fa-python text-xl"></i>
-                    </div>
-                    <div>
-                        <h3 class="text-xl font-bold text-primary dark:text-dark-primary">khipro-python</h3>
-                        <p class="text-sm text-gray-500 dark:text-gray-400">মেইনটেইনার: <a href="https://github.com/rank-coder" target="_blank" class="text-primary dark:text-dark-primary hover:underline">Nafi</a></p>
-                    </div>
-                </div>
-                <p class="text-gray-600 dark:text-gray-300 mb-4 leading-relaxed">
-                    উইন্ডোজ কিংবা অন্যান্য অপারেটিং সিস্টেমে কিংবা IM-এ ক্ষিপ্র সাপোর্ট আনতে ডেভেলপারদের জন্য পাইথনে ক্ষিপ্রর একটা ভার্শন তৈরি করা হয়েছে। এটাতে ক্ষিপ্রর পরিপূর্ণ লজিক কপি করা হয়েছে।
-                </p>
-                <div class="flex gap-3">
-                    <a href="https://github.com/KhiproKeyboard/khipro-python" target="_blank" class="bg-btn-primary text-white font-semibold px-4 py-2 rounded-lg text-sm inline-flex items-center gap-2 transition-all duration-300">
-                        <i class="fab fa-github"></i>
-                        রিপোজিটরি দেখুন
-                    </a>
-                </div>
-            </div>
-
-            <!-- khipro-cpp Repository -->
-            <div class="bg-white dark:bg-dark-secondary p-6 rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
-                <div class="flex items-center mb-4">
-                    <div class="w-12 h-12 rounded-full bg-icon-primary flex items-center justify-center text-white mr-4">
-                        <i class="fas fa-code text-xl"></i>
-                    </div>
-                    <div>
-                        <h3 class="text-xl font-bold text-primary dark:text-dark-primary">khipro-cpp</h3>
-                        <p class="text-sm text-gray-500 dark:text-gray-400">মেইনটেইনার: <a href="https://github.com/JayedAhsan" target="_blank" class="text-primary dark:text-dark-primary hover:underline">@JayedAhsan</a></p>
-                    </div>
-                </div>
-                <p class="text-gray-600 dark:text-gray-300 mb-4 leading-relaxed">
-                    ক্ষিপ্র কিবোর্ড লেআউটের C++ পোর্ট।
-                </p>
-                <div class="flex gap-3">
-                    <a href="https://github.com/JayedAhsan/khipro-cpp" target="_blank" class="bg-btn-primary text-white font-semibold px-4 py-2 rounded-lg text-sm inline-flex items-center gap-2 transition-all duration-300">
-                        <i class="fab fa-github"></i>
-                        রিপোজিটরি দেখুন
-                    </a>
-                </div>
-            </div>
-
-            <!-- khipro-nms Repository -->
-            <div class="bg-white dark:bg-dark-secondary p-6 rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
-                <div class="flex items-center mb-4">
-                    <div class="w-12 h-12 rounded-full bg-icon-primary flex items-center justify-center text-white mr-4">
-                        <i class="fas fa-keyboard text-xl"></i>
-                    </div>
-                    <div>
-                        <h3 class="text-xl font-bold text-primary dark:text-dark-primary">khipro-nms</h3>
-                        <p class="text-sm text-gray-500 dark:text-gray-400">মেইনটেইনার: <a href="https://github.com/NabilSnigdho" target="_blank" class="text-primary dark:text-dark-primary hover:underline">@NabilSnigdho</a></p>
-                    </div>
-                </div>
-                <p class="text-gray-600 dark:text-gray-300 mb-4 leading-relaxed">
-                    ক্ষিপ্র-ভিত্তিক NMS Kontho লেআউট। এটি NMS Kontho অ্যাপ্লিকেশনের সাথে ব্যবহারের জন্য ডেভেলপ করা হয়েছে।
-                </p>
-                <div class="flex gap-3">
-                    <a href="https://github.com/NabilSnigdho/khipro-nms" target="_blank" class="bg-btn-primary text-white font-semibold px-4 py-2 rounded-lg text-sm inline-flex items-center gap-2 transition-all duration-300">
-                        <i class="fab fa-github"></i>
-                        রিপোজিটরি দেখুন
-                    </a>
-                </div>
-            </div>
-        </div>
+<section id="repositories" class="py-20 sm:py-24 bg-gray-50">
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-16">
+      <h2
+        class="text-3xl sm:text-4xl font-bold text-gray-900 relative inline-block pb-2.5 after:content-[''] after:absolute after:bottom-0 after:left-1/2 after:transform after:-translate-x-1/2 after:w-[70px] after:h-0.5 after:bg-primary-dark after:transition-all after:duration-300 after:rounded-full">
+        ক্ষিপ্র রিপোজিটরি সমূহ
+      </h2>
+      <p class="mt-4 max-w-2xl mx-auto text-lg text-gray-600">
+        ক্ষিপ্র কিবোর্ডের বিভিন্ন প্ল্যাটফর্মের জন্য তৈরি করা রিপোজিটরি গুলো
+        দেখুন। প্রতিটি রিপোজিটরি আলাদা প্ল্যাটফর্মের জন্য অপ্টিমাইজ করা।
+      </p>
     </div>
+    <div class="grid md:grid-cols-2 gap-6 max-w-6xl mx-auto">
+      <!-- khipro-m17n Repository -->
+      <div
+        class="bg-white p-6 rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+        <div class="flex items-center mb-4">
+          <div
+            class="w-12 h-12 rounded-full bg-icon-primary flex items-center justify-center text-white mr-4">
+            <i class="fab fa-linux text-xl"></i>
+          </div>
+          <div>
+            <h3 class="text-xl font-bold text-primary-dark">khipro-m17n</h3>
+            <p class="text-sm text-gray-500">
+              মেইনটেইনার:
+              <a
+                href="https://github.com/rank-coder"
+                target="_blank"
+                class="text-primary hover:underline"
+                >Nafi</a
+              >
+            </p>
+          </div>
+        </div>
+        <p class="text-gray-600 mb-4 leading-relaxed">
+          ক্ষিপ্র-m17n হলো লিনাক্সে m17n এ ব্যবহার উপযোগী ক্ষিপ্র লেআউট। ক্ষিপ্র
+          কনসেপ্টের প্রথম অফিশিয়াল রিপোজিটরি এটি।
+        </p>
+        <div class="flex gap-3">
+          <a
+            href="https://github.com/rank-coder/khipro-m17n"
+            target="_blank"
+            class="bg-btn-primary text-white font-semibold px-4 py-2 rounded-lg text-sm inline-flex items-center gap-2 transition-all duration-300">
+            <i class="fab fa-github"></i>
+            রিপোজিটরি দেখুন
+          </a>
+        </div>
+      </div>
+
+      <!-- khipro-python Repository -->
+      <div
+        class="bg-white p-6 rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+        <div class="flex items-center mb-4">
+          <div
+            class="w-12 h-12 rounded-full bg-icon-primary flex items-center justify-center text-white mr-4">
+            <i class="fab fa-python text-xl"></i>
+          </div>
+          <div>
+            <h3 class="text-xl font-bold text-primary-dark">khipro-python</h3>
+            <p class="text-sm text-gray-500">
+              মেইনটেইনার:
+              <a
+                href="https://github.com/rank-coder"
+                target="_blank"
+                class="text-primary hover:underline"
+                >Nafi</a
+              >
+            </p>
+          </div>
+        </div>
+        <p class="text-gray-600 mb-4 leading-relaxed">
+          উইন্ডোজ কিংবা অন্যান্য অপারেটিং সিস্টেমে কিংবা IM-এ ক্ষিপ্র সাপোর্ট
+          আনতে ডেভেলপারদের জন্য পাইথনে ক্ষিপ্রর একটা ভার্শন তৈরি করা হয়েছে।
+          এটাতে ক্ষিপ্রর পরিপূর্ণ লজিক কপি করা হয়েছে।
+        </p>
+        <div class="flex gap-3">
+          <a
+            href="https://github.com/KhiproKeyboard/khipro-python"
+            target="_blank"
+            class="bg-btn-primary text-white font-semibold px-4 py-2 rounded-lg text-sm inline-flex items-center gap-2 transition-all duration-300">
+            <i class="fab fa-github"></i>
+            রিপোজিটরি দেখুন
+          </a>
+        </div>
+      </div>
+
+      <!-- khipro-cpp Repository -->
+      <div
+        class="bg-white p-6 rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+        <div class="flex items-center mb-4">
+          <div
+            class="w-12 h-12 rounded-full bg-icon-primary flex items-center justify-center text-white mr-4">
+            <i class="fas fa-code text-xl"></i>
+          </div>
+          <div>
+            <h3 class="text-xl font-bold text-primary-dark">khipro-cpp</h3>
+            <p class="text-sm text-gray-500">
+              মেইনটেইনার:
+              <a
+                href="https://github.com/JayedAhsan"
+                target="_blank"
+                class="text-primary hover:underline"
+                >@JayedAhsan</a
+              >
+            </p>
+          </div>
+        </div>
+        <p class="text-gray-600 mb-4 leading-relaxed">
+          ক্ষিপ্র কিবোর্ড লেআউটের C++ পোর্ট।
+        </p>
+        <div class="flex gap-3">
+          <a
+            href="https://github.com/JayedAhsan/khipro-cpp"
+            target="_blank"
+            class="bg-btn-primary text-white font-semibold px-4 py-2 rounded-lg text-sm inline-flex items-center gap-2 transition-all duration-300">
+            <i class="fab fa-github"></i>
+            রিপোজিটরি দেখুন
+          </a>
+        </div>
+      </div>
+
+      <!-- khipro-nms Repository -->
+      <div
+        class="bg-white p-6 rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+        <div class="flex items-center mb-4">
+          <div
+            class="w-12 h-12 rounded-full bg-icon-primary flex items-center justify-center text-white mr-4">
+            <i class="fas fa-keyboard text-xl"></i>
+          </div>
+          <div>
+            <h3 class="text-xl font-bold text-primary-dark">khipro-nms</h3>
+            <p class="text-sm text-gray-500">
+              মেইনটেইনার:
+              <a
+                href="https://github.com/Shoshostro"
+                target="_blank"
+                class="text-primary hover:underline"
+                >@Shoshostro</a
+              >
+            </p>
+          </div>
+        </div>
+        <p class="text-gray-600 mb-4 leading-relaxed">
+          ক্ষিপ্র-ভিত্তিক NMS Kontho লেআউট। এটি NMS Kontho অ্যাপ্লিকেশনের সাথে
+          ব্যবহারের জন্য ডেভেলপ করা হয়েছে।
+        </p>
+        <div class="flex gap-3">
+          <a
+            href="https://github.com/KhiproKeyboard/khipro-nms"
+            target="_blank"
+            class="bg-btn-primary text-white font-semibold px-4 py-2 rounded-lg text-sm inline-flex items-center gap-2 transition-all duration-300">
+            <i class="fab fa-github"></i>
+            রিপোজিটরি দেখুন
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
 
 <!-- Community Section -->
-<section id="community" class="py-20 sm:py-24 bg-pattern">
-    <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-gray-100 relative inline-block pb-2.5 after:content-[''] after:absolute after:bottom-0 after:left-1/2 after:transform after:-translate-x-1/2 after:w-[70px] after:h-0.5 after:bg-primary after:transition-all after:duration-300 after:rounded-full">
-            আমাদের আড্ডায় যোগ দিন</h2>
-        <p class="mt-4 max-w-2xl mx-auto text-lg text-gray-600 dark:text-gray-300">
-            ক্ষিপ্র একটি কমিউনিটি প্রজেক্ট। আপনার যেকোনো প্রশ্ন, আইডিয়া বা সমস্যা নিয়ে সরাসরি চলে আসুন আমাদের আড্ডায়। আপনার অংশগ্রহণই আমাদের এগিয়ে চলার প্রেরণা।
-        </p>
-        <div class="mt-10 grid sm:grid-cols-2 gap-6 max-w-2xl mx-auto">
-            <a href="https://t.me/KhiproKeyboard" target="_blank" class="bg-white dark:bg-dark-secondary p-6 rounded-xl shadow-md flex items-center space-x-4 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:bg-white/95 dark:hover:bg-dark-secondary/95">
-                <span class="text-4xl text-primary dark:text-white"><i class="fab fa-telegram"></i></span>
-                <div class="text-left">
-                    <h3 class="font-semibold text-lg">টেলিগ্রাম গ্রুপ</h3>
-                    <p class="text-gray-500 dark:text-gray-300">সরাসরি আলোচনা ও সাপোর্টের জন্য</p>
-                </div>
-            </a>
-            <a href="https://github.com/KhiproKeyboard" target="_blank" class="bg-white dark:bg-dark-secondary p-6 rounded-xl shadow-md flex items-center space-x-4 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:bg-white/95 dark:hover:bg-dark-secondary/95">
-                <span class="text-4xl text-gray-800 dark:text-white"><i class="fab fa-github"></i></span>
-                <div class="text-left">
-                    <h3 class="font-semibold text-lg">গিটহাব অর্গানাইজেশন</h3>
-                    <p class="text-gray-500 dark:text-gray-300">কোড দেখুন এবং উন্নয়নে অংশ নিন</p>
-                </div>
-            </a>
+<section id="community" class="py-20 sm:py-24 pb-32 md:pb-24 bg-white">
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
+    <h2
+      class="text-3xl sm:text-4xl font-bold text-gray-900 relative inline-block pb-2.5 after:content-[''] after:absolute after:bottom-0 after:left-1/2 after:transform after:-translate-x-1/2 after:w-[70px] after:h-0.5 after:bg-primary-dark after:transition-all after:duration-300 after:rounded-full">
+      আমাদের আড্ডায় যোগ দিন
+    </h2>
+    <p class="mt-4 max-w-2xl mx-auto text-lg text-gray-600">
+      ক্ষিপ্র একটি কমিউনিটি প্রজেক্ট। আপনার যেকোনো প্রশ্ন, আইডিয়া বা সমস্যা
+      নিয়ে সরাসরি চলে আসুন আমাদের আড্ডায়। আপনার অংশগ্রহণই আমাদের এগিয়ে চলার
+      প্রেরণা।
+    </p>
+    <div class="mt-10 grid sm:grid-cols-2 gap-6 max-w-2xl mx-auto">
+      <a
+        href="https://t.me/KhiproKeyboard"
+        target="_blank"
+        class="bg-white p-6 rounded-xl shadow-md flex items-center space-x-4 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:bg-white/95">
+        <span class="text-4xl text-primary"
+          ><i class="fab fa-telegram"></i
+        ></span>
+        <div class="text-left">
+          <h3 class="font-semibold text-lg">টেলিগ্রাম গ্রুপ</h3>
+          <p class="text-gray-500">সরাসরি আলোচনা ও সাপোর্টের জন্য</p>
         </div>
+      </a>
+      <a
+        href="https://github.com/KhiproKeyboard"
+        target="_blank"
+        class="bg-white p-6 rounded-xl shadow-md flex items-center space-x-4 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:bg-white/95">
+        <span class="text-4xl text-gray-800"
+          ><i class="fab fa-github"></i
+        ></span>
+        <div class="text-left">
+          <h3 class="font-semibold text-lg">গিটহাব অর্গানাইজেশন</h3>
+          <p class="text-gray-500">কোড দেখুন এবং উন্নয়নে অংশ নিন</p>
+        </div>
+      </a>
     </div>
+  </div>
 </section>
 {{ end }}
