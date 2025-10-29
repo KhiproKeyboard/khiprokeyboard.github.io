@@ -1,82 +1,36 @@
 /* Khipro Keyboard - Centralized Color System */
 /* All colors are managed from this single file using CSS custom properties */
 
-
 :root {
-    /* Light Mode Colors - Coral & Deep Red Theme */
+    /* Colors - Coral & Deep Red Theme */
     --color-primary: #c56e6c;        /* Logo coral color */
     --color-primary-light: #d48a88;  /* Lighter coral */
     --color-primary-dark: #b85856;   /* Darker coral */
-    --color-header-dark: #6e3133;    /* Deep red for headers */
+    --color-header-dark: #8b4a47;    /* Medium red for headers */
     --color-secondary: #f4e6e5;      /* Soft coral tint */
-    --color-light: #fefcfc;          /* Warm white */
     --color-dark-text: #2d1f1f;      /* Dark warm gray */
-    --color-accent: #8b4a47;         /* Medium red-brown */
+    --color-accent: #a85d59;         /* Lighter red-brown for hover */
     
     /* Background Colors */
-    --color-body-bg: #fefcfc;        /* Light mode background */
+    --color-body-bg: #fefcfc;
     --color-card-bg: #ffffff;
-    --color-secondary-bg: rgba(244, 230, 229, 0.2); /* secondary with opacity */
+    --color-secondary-bg: rgba(244, 230, 229, 0.2);
     
     /* Text Colors */
-    --color-text-primary: #2d1f1f;   /* Dark warm gray for light mode */
-    --color-text-secondary: #1f2937;  /* Darker for better readability */
-    --color-text-muted: #374151;      /* Much darker for docs content */
-    --color-text-light: #4b5563;      /* Darker for better contrast */
+    --color-text-primary: #2d1f1f;
+    --color-text-secondary: #1f2937;
+    --color-text-muted: #374151;
+    --color-text-light: #4b5563;
     
     /* Border Colors */
     --color-border-light: #e5e7eb;
     --color-border-medium: #d1d5db;
     --color-border-dark: #9ca3af;
     
-    /* State Colors */
-    --color-success: #c56e6c;        /* Use primary coral for success */
-    --color-error: #dc2626;
-    --color-warning: #f59e0b;
-    --color-info: #3b82f6;
-    
     /* Pattern Colors */
     --color-pattern-light: rgba(197, 110, 108, 0.12);
-    --color-pattern-section: rgba(197, 110, 108, 0.06);
     
     /* Code Block Colors */
-    --color-code-bg: #fce8e8;
-    --color-code-text: #000000;
-}
-
-/* Dark Mode Colors */
-.dark {
-    /* Dark Mode - Warm Dark Theme */
-    --color-primary: #e89996;         /* Light coral for dark mode */
-    --color-primary-light: #f0a8a5;   /* Lighter coral */
-    --color-primary-dark: #d48a88;    /* Medium coral */
-    --color-header-dark: #8b4a47;     /* Medium red-brown for headers */
-    --color-secondary: #2f2020;       /* Dark warm gray */
-    --color-light: #261a1a;           /* Medium dark warm */
-    --color-dark-text: #f5f2f2;       /* Warm white text */
-    --color-accent: #c56e6c;          /* Logo color as accent */
-    
-    /* Background Colors */
-    --color-body-bg: #1f1515;         /* Very dark warm */
-    --color-card-bg: var(--color-secondary);
-    --color-secondary-bg: rgba(47, 32, 32, 0.2);
-    
-    /* Text Colors */
-    --color-text-primary: var(--color-dark-text);
-    --color-text-secondary: #d1d5db;
-    --color-text-muted: #9ca3af;
-    --color-text-light: #6b7280;
-    
-    /* Border Colors */
-    --color-border-light: #374151;
-    --color-border-medium: #4b5563;
-    --color-border-dark: #6b7280;
-    
-    /* Pattern Colors */
-    --color-pattern-light: rgba(232, 153, 150, 0.04);
-    --color-pattern-section: rgba(232, 153, 150, 0.03);
-    
-    /* Code Block Colors - Keep light for readability */
     --color-code-bg: #fce8e8;
     --color-code-text: #000000;
 }
@@ -101,22 +55,7 @@
 .hover-bg-primary:hover { background-color: var(--color-primary) !important; }
 .hover-bg-primary-dark:hover { background-color: var(--color-primary-dark) !important; }
 
-/* Background Patterns using CSS Variables */
-.bg-body-pattern {
-    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23c56e6c' fill-opacity='0.12'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-}
-
-.dark .bg-body-pattern {
-    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23e89996' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-}
-
-.bg-pattern {
-    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23c56e6c' fill-opacity='0.06'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-}
-
-.dark .bg-pattern {
-    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23e89996' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-}
+/* Background patterns removed for clean design */
 
 /* Component-Specific Color Styles */
 
@@ -140,17 +79,6 @@
     font-weight: 500;
 }
 
-.dark .toc a:hover {
-    background-color: var(--color-border-light);
-    color: var(--color-text-primary);
-    border-left-color: var(--color-primary);
-}
-
-.dark .toc a.active {
-    background-color: var(--color-secondary);
-    color: var(--color-primary);
-    border-left-color: var(--color-primary);
-}
 
 /* Article Content Colors */
 article h1 {
@@ -229,10 +157,6 @@ article th:last-child {
     border-right: none; /* Remove right border for last column */
 }
 
-.dark article th {
-    background-color: var(--color-header-dark);
-    color: var(--color-dark-text);
-}
 
 article td {
     border: 1px solid var(--color-border-medium);
@@ -256,18 +180,12 @@ article tr:nth-child(even) {
     background-color: var(--color-secondary-bg);
 }
 
-.dark article tr:nth-child(even) {
-    background-color: var(--color-secondary-bg);
-}
 
 /* Row hover effect */
 article tr:hover {
     background-color: var(--color-pattern-light);
 }
 
-.dark article tr:hover {
-    background-color: var(--color-pattern-light);
-}
 
 /* Button Colors */
 .btn-primary {
@@ -306,26 +224,14 @@ article tr:hover {
 
 /* Custom Icon and Button Background Classes */
 .bg-icon-primary {
-    background-color: var(--color-primary) !important;
-}
-
-.dark .bg-icon-primary {
-    background-color: #8b4a47 !important;
-}
-
-.bg-btn-primary {
-    background-color: var(--color-primary) !important;
-}
-
-.dark .bg-btn-primary {
-    background-color: #8b4a47 !important;
-}
-
-.bg-btn-primary:hover {
     background-color: var(--color-primary-dark) !important;
 }
 
-.dark .bg-btn-primary:hover {
-    background-color: #7a4240 !important;
+.bg-btn-primary {
+    background-color: var(--color-primary-dark) !important;
+}
+
+.bg-btn-primary:hover {
+    background-color: var(--color-accent) !important;
 }
 

@@ -1,6 +1,6 @@
 {{ define "main" }}
-<div class="min-h-screen bg-gray-50 dark:bg-dark-primary pt-0 {{ if eq .Section "installation" }}page-installation{{ else if eq .Section "docs" }}page-docs{{ end }}">
-    <div class="flex flex-col lg:flex-row gap-4 sm:gap-6 p-2 sm:p-4 lg:p-8">
+<div class="min-h-screen bg-white pt-0 pb-20 md:pb-0 {{ if eq .Section "installation" }}page-installation{{ else if eq .Section "docs" }}page-docs{{ end }}">
+    <div class="flex flex-col lg:flex-row gap-4 sm:gap-6 p-2 sm:p-4 lg:p-8 pt-4 md:pt-8">
         <!-- TOC Sidebar -->
         {{ partial "toc.html" . }}
         
@@ -9,14 +9,14 @@
         <div class="w-full">
             <!-- Main Content -->
             <main class="w-full">
-                <article class="bg-white dark:bg-dark-secondary rounded-2xl shadow-lg p-4 sm:p-6 lg:p-12 w-full">
+                <article class="bg-white rounded-2xl shadow-lg p-4 sm:p-6 lg:p-12 w-full">
                     <!-- Page Header - Front matter content hidden -->
-                    <header class="mb-4 pb-3 border-b border-gray-200 dark:border-gray-700" style="display: none;">
-                        <h1 class="text-3xl lg:text-4xl font-bold text-gray-900 dark:text-gray-100 mb-2">
+                    <header class="mb-4 pb-3 border-b border-gray-200" style="display: none;">
+                        <h1 class="text-3xl lg:text-4xl font-bold text-gray-900 mb-2">
                             {{ .Title }}
                         </h1>
                         {{ if .Params.description }}
-                        <p class="text-lg text-gray-600 dark:text-gray-300 leading-relaxed">
+                        <p class="text-lg text-gray-600 leading-relaxed">
                             {{ .Params.description }}
                         </p>
                         {{ end }}
@@ -361,13 +361,13 @@ article img {
 </style>
                     
                     <!-- Page Navigation -->
-                    <nav class="mt-12 pt-8 border-t border-gray-200 dark:border-gray-700">
+                    <nav class="mt-12 pt-8 border-t border-gray-200">
                         <div class="flex justify-between items-center">
                             {{ with .PrevInSection }}
-                            <a href="{{ .RelPermalink }}" class="group flex items-center text-primary dark:text-dark-primary hover:text-primary-dark dark:hover:text-dark-primary/80 transition-colors">
+                            <a href="{{ .RelPermalink }}" class="group flex items-center text-primary hover:text-primary-dark transition-colors">
                                 <i class="fas fa-chevron-left mr-2 group-hover:-translate-x-1 transition-transform"></i>
                                 <div class="text-left">
-                                    <div class="text-sm text-gray-500 dark:text-gray-400">পূর্ববর্তী</div>
+                                    <div class="text-sm text-gray-500">পূর্ববর্তী</div>
                                     <div class="font-semibold">{{ .Title }}</div>
                                 </div>
                             </a>
@@ -376,9 +376,9 @@ article img {
                             {{ end }}
                             
                             {{ with .NextInSection }}
-                            <a href="{{ .RelPermalink }}" class="group flex items-center text-primary dark:text-dark-primary hover:text-primary-dark dark:hover:text-dark-primary/80 transition-colors">
+                            <a href="{{ .RelPermalink }}" class="group flex items-center text-primary hover:text-primary-dark transition-colors">
                                 <div class="text-right">
-                                    <div class="text-sm text-gray-500 dark:text-gray-400">পরবর্তী</div>
+                                    <div class="text-sm text-gray-500">পরবর্তী</div>
                                     <div class="font-semibold">{{ .Title }}</div>
                                 </div>
                                 <i class="fas fa-chevron-right ml-2 group-hover:translate-x-1 transition-transform"></i>
@@ -406,7 +406,7 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // Create scroll indicator paragraph (before table)
         const indicator = document.createElement('p');
-        indicator.className = 'scroll-indicator text-sm text-gray-600 dark:text-gray-400 mb-2 flex items-center';
+        indicator.className = 'scroll-indicator text-sm text-gray-600 mb-2 flex items-center';
         indicator.innerHTML = '<i class="fas fa-arrows-alt-h mr-2"></i>পাশে স্ক্রল করে সম্পূর্ণ টেবিল দেখুন';
         indicator.style.display = 'none';
         
@@ -447,7 +447,7 @@ document.addEventListener('DOMContentLoaded', function() {
         if (heading.id) {
             const anchor = document.createElement('a');
             anchor.href = '#' + heading.id;
-            anchor.className = 'anchor-link opacity-0 group-hover:opacity-100 transition-opacity ml-2 text-gray-400 hover:text-gray-600 dark:hover:text-gray-300';
+            anchor.className = 'anchor-link opacity-0 group-hover:opacity-100 transition-opacity ml-2 text-gray-400 hover:text-gray-600';
             anchor.innerHTML = '<i class="fas fa-link text-sm"></i>';
             anchor.setAttribute('aria-label', 'Link to this section');
             

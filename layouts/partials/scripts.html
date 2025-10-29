@@ -1,15 +1,33 @@
 <script>
-    // Mobile menu functionality
+    // FAQ Accordion functionality
     document.addEventListener('DOMContentLoaded', function() {
-        const mobileMenuButton = document.getElementById('mobile-menu-button');
-        const mobileMenu = document.getElementById('mobile-menu');
+        const faqItems = document.querySelectorAll('.faq-item');
         
-        if (mobileMenuButton && mobileMenu) {
-            mobileMenuButton.addEventListener('click', function() {
-                mobileMenu.classList.toggle('hidden');
-                menuIconClose.classList.toggle('hidden');
+        faqItems.forEach(item => {
+            const question = item.querySelector('.faq-question');
+            const answer = item.querySelector('.faq-answer');
+            const icon = question.querySelector('i');
+            
+            question.addEventListener('click', function() {
+                // Close all other FAQs
+                faqItems.forEach(otherItem => {
+                    if (otherItem !== item) {
+                        const otherAnswer = otherItem.querySelector('.faq-answer');
+                        const otherIcon = otherItem.querySelector('.faq-question i');
+                        otherAnswer.classList.add('hidden');
+                        otherIcon.style.transform = 'rotate(0deg)';
+                    }
+                });
+                
+                // Toggle current FAQ
+                answer.classList.toggle('hidden');
+                if (answer.classList.contains('hidden')) {
+                    icon.style.transform = 'rotate(0deg)';
+                } else {
+                    icon.style.transform = 'rotate(180deg)';
+                }
             });
-        }
+        });
 
         // Tab functionality for homepage
         const tabButtons = document.querySelectorAll('.tab-button');
@@ -21,8 +39,8 @@
                 
                 // Remove active class from all buttons and panes
                 tabButtons.forEach(btn => {
-                    btn.classList.remove('active', 'border-primary', 'dark:border-dark-primary', 'text-primary', 'dark:text-dark-primary');
-                    btn.classList.add('border-transparent', 'text-gray-500', 'dark:text-gray-400');
+                    btn.classList.remove('active', 'border-primary', 'text-primary');
+                    btn.classList.add('border-transparent', 'text-gray-500');
                     btn.setAttribute('aria-selected', 'false');
                 });
                 
@@ -32,8 +50,8 @@
                 });
                 
                 // Add active class to clicked button and corresponding pane
-                this.classList.add('active', 'border-primary', 'dark:border-dark-primary', 'text-primary', 'dark:text-dark-primary');
-                this.classList.remove('border-transparent', 'text-gray-500', 'dark:text-gray-400');
+                this.classList.add('active', 'border-primary', 'text-primary');
+                this.classList.remove('border-transparent', 'text-gray-500');
                 this.setAttribute('aria-selected', 'true');
                 
                 const targetPane = document.getElementById(targetTab);
@@ -146,33 +164,7 @@
         }
 
 
-        // Navigation active state based on scroll position
-        function updateNavigation() {
-            const sections = document.querySelectorAll('section[id]');
-            const navLinks = document.querySelectorAll('.nav-link');
-            
-            let currentSection = '';
-            sections.forEach(section => {
-                const rect = section.getBoundingClientRect();
-                if (rect.top <= 100 && rect.bottom >= 0) {
-                    currentSection = section.id;
-                }
-            });
-            
-            navLinks.forEach(link => {
-                link.classList.remove('active');
-                const href = link.getAttribute('href');
-                if (href === '/#' + currentSection || (href === '/' && currentSection === 'home')) {
-                    link.classList.add('active');
-                }
-            });
-        }
-
-        // Update navigation on scroll (only for homepage)
-        if (document.querySelector('section[id]')) {
-            window.addEventListener('scroll', updateNavigation);
-            updateNavigation(); // Initial call
-        }
+        // Navigation active state removed - only hover effects remain
     });
 
     // External links handler - make all external links open in new tabs
