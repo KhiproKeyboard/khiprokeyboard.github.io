@@ -629,8 +629,8 @@ BTW ami arrc iujar \= btw আমি আর্চ ইউজার
   <tr>
     <td>ngf (স্বাধীন)<br>ng{কার}<br>ng (যুক্তবর্ণে)</td>
     <td>ঙ</td>
-    <td>rongf<br>ranga<br>rangga<br>ongk<br>ong;k</td>
-    <td>রং<br>রাঙা<br>রাঙ্গা<br>অঙ্ক<br>অংক</td>
+    <td>rongf<br>ranga<br>rangga</td>
+    <td>রং<br>রাঙা<br>রাঙ্গা</td>
   </tr>
   <tr>
     <td>c</td>
@@ -980,7 +980,7 @@ BTW ami arrc iujar \= btw আমি আর্চ ইউজার
   <tr>
     <td>/</td>
     <td>ঁ</td>
-    <td>চন্দ্রবিন্দু, ta/der = তাদের</td>
+    <td>চন্দ্রবিন্দু, ta/der = তাঁদের</td>
   </tr>
   <tr>
     <td>.</td>
