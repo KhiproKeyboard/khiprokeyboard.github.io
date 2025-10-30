@@ -973,9 +973,9 @@ BTW ami arrc iujar \= btw আমি আর্চ ইউজার
     <td>বিসর্গ, duxkh = দুঃখ</td>
   </tr>
   <tr>
-    <td>ng</td>
+    <td>ng<br>ng;</td>
     <td>ং</td>
-    <td>অনুস্বার, bangla = বাংলা, baeng;k = ব্যাংক</td>
+    <td>অনুস্বার, bangla = বাংলা<br>baeng;k = ব্যাংক</td>
   </tr>
   <tr>
     <td>/</td>
