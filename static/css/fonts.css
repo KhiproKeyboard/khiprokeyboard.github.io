@@ -28,6 +28,9 @@ header {
 footer {
     font-family: 'Anek Bangla', sans-serif;
 }
+mobile-bottom-nav {
+    font-family: 'Anek Bangla', sans-serif;
+}
 
 /* Kalpurush font only for installation and docs pages - using URL-based targeting */
 body[data-page="installation"],
