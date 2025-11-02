@@ -4,7 +4,7 @@ title: 'ক্ষিপ্র কিবোর্ড'
 defaultContentLanguage: 'bn'
 
 params:
-  description: 'দ্রুততম বাংলা টাইপিংয়ের অভিজ্ঞতা'
+  description: 'দ্রুততম বাংলা কিবোর্ড'
   
 markup:
   goldmark:
