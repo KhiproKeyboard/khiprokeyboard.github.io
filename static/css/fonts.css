@@ -3,38 +3,37 @@
 
 /* Font Face Declarations */
 @font-face {
-    font-family: 'Anek Bangla';
-    src: url('/fonts/AnekBangla.ttf') format('truetype');
-    font-weight: 300 700;
-    font-display: swap;
+  font-family: "Anek Bangla";
+  src: url("/fonts/AnekBangla.ttf") format("truetype");
+  font-weight: 300 700;
+  font-display: swap;
 }
 
 @font-face {
-    font-family: 'Kalpurush';
-    src: url('/fonts/kalpurush.ttf') format('truetype');
-    font-weight: normal;
-    font-display: swap;
+  font-family: "BCC Purno";
+  src: url("/fonts/BCC Purno.woff2") format("woff2");
+  font-weight: normal;
+  font-display: swap;
 }
 
 /* Font Family Configurations */
 /* Default font for all pages */
 body {
-    font-family: 'Anek Bangla', sans-serif;
+  font-family: "Anek Bangla", sans-serif;
 }
 
 header {
-    font-family: 'Anek Bangla', sans-serif;
+  font-family: "Anek Bangla", sans-serif;
 }
 footer {
-    font-family: 'Anek Bangla', sans-serif;
+  font-family: "Anek Bangla", sans-serif;
 }
 .text-xs {
-    font-family: 'Anek Bangla', sans-serif;
+  font-family: "Anek Bangla", sans-serif;
 }
 
 /* Kalpurush font only for installation and docs pages - using URL-based targeting */
 body[data-page="installation"],
 body[data-page="docs"] {
-    font-family: 'Kalpurush', 'Anek Bangla', sans-serif;
+  font-family: "BCC Purno", "Anek Bangla", sans-serif;
 }
-
