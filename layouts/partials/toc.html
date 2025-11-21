@@ -1,188 +1,197 @@
 {{ if .TableOfContents }}
 <nav class="toc w-80 hidden lg:block flex-shrink-0 mb-0">
-    <div class="bg-white rounded-2xl shadow-lg flex flex-col sticky top-0">
-        <div class="p-4 border-b border-gray-200 flex-shrink-0">
-            <h3 class="text-base font-semibold text-gray-900 mb-0 flex items-center">
-                <i class="fas fa-list mr-2 text-primary"></i>
-                সূচিপত্র
-            </h3>
-        </div>
-        <div class="toc-content flex-1 overflow-y-auto p-4">
-            <div class="prose prose-sm max-w-none">
-                {{ .TableOfContents | safeHTML }}
-            </div>
-        </div>
+  <div class="bg-white rounded-2xl shadow-lg flex flex-col sticky top-0">
+    <div class="p-4 border-b border-gray-200 flex-shrink-0">
+      <h3 class="text-base font-semibold text-gray-900 mb-0 flex items-center">
+        <i class="fas fa-list mr-2 text-primary"></i>
+        সূচিপত্র
+      </h3>
     </div>
+    <div class="toc-content flex-1 overflow-y-auto p-4">
+      <div class="prose prose-sm max-w-none">
+        {{ .TableOfContents | safeHTML }}
+      </div>
+    </div>
+  </div>
 </nav>
 
 <!-- Mobile TOC Toggle Button Container -->
 <div class="lg:hidden sticky top-4 z-40 h-0 pointer-events-none">
-    <button id="toc-mobile-toggle" class="absolute right-4 top-4 bg-primary text-white p-3 rounded-full shadow-lg hover:bg-primary-dark transition-all duration-200 backdrop-blur-sm pointer-events-auto">
-        <i class="fas fa-list text-lg"></i>
-        <span class="sr-only">সূচিপত্র খুলুন</span>
-    </button>
+  <button
+    id="toc-mobile-toggle"
+    class="absolute right-4 top-4 bg-primary text-white p-3 rounded-full shadow-lg hover:bg-primary-dark transition-all duration-200 backdrop-blur-sm pointer-events-auto">
+    <i class="fas fa-list text-lg"></i>
+    <span class="sr-only">সূচিপত্র খুলুন</span>
+  </button>
 </div>
 
 <!-- Mobile TOC Overlay -->
-<div id="toc-mobile-overlay" class="lg:hidden fixed inset-0 bg-black bg-opacity-50 z-40 opacity-0 invisible transition-all duration-300"></div>
+<div
+  id="toc-mobile-overlay"
+  class="lg:hidden fixed inset-0 bg-black bg-opacity-50 z-40 opacity-0 invisible transition-all duration-300"></div>
 
 <!-- Mobile TOC Sheet -->
-<div id="toc-mobile-sheet" class="lg:hidden fixed top-0 left-0 bottom-0 w-80 max-w-[85vw] bg-white shadow-2xl z-50 transform -translate-x-full transition-transform duration-300 ease-in-out">
-    <div class="h-full flex flex-col">
-        <!-- Header -->
-        <div class="p-4 border-b border-gray-200 flex items-center justify-between flex-shrink-0">
-            <h3 class="text-base font-semibold text-gray-900 flex items-center">
-                <i class="fas fa-list mr-2 text-primary"></i>
-                সূচিপত্র
-            </h3>
-            <button id="toc-mobile-close" class="p-2 text-gray-500 hover:text-gray-700 transition-colors">
-                <i class="fas fa-times text-lg"></i>
-            </button>
-        </div>
-        
-        <!-- Content -->
-        <div class="flex-1 overflow-y-auto p-4">
-            <div class="prose prose-sm max-w-none">
-                {{ .TableOfContents | safeHTML }}
-            </div>
-        </div>
+<div
+  id="toc-mobile-sheet"
+  class="lg:hidden fixed top-0 left-0 bottom-0 w-80 max-w-[85vw] bg-white shadow-2xl z-50 transform -translate-x-full transition-transform duration-300 ease-in-out">
+  <div class="h-full flex flex-col">
+    <!-- Header -->
+    <div
+      class="p-4 border-b border-gray-200 flex items-center justify-between flex-shrink-0">
+      <h3 class="text-base font-semibold text-gray-900 flex items-center">
+        <i class="fas fa-list mr-2 text-primary"></i>
+        সূচিপত্র
+      </h3>
+      <button
+        id="toc-mobile-close"
+        class="p-2 text-gray-500 hover:text-gray-700 transition-colors">
+        <i class="fas fa-times text-lg"></i>
+      </button>
     </div>
+
+    <!-- Content -->
+    <div class="flex-1 overflow-y-auto p-4">
+      <div class="prose prose-sm max-w-none">
+        {{ .TableOfContents | safeHTML }}
+      </div>
+    </div>
+  </div>
 </div>
 
 <style>
-/* TOC styles - colors managed by /css/colors.css */
-.toc .prose ul {
+  /* TOC styles - colors managed by /css/colors.css */
+  .toc .prose ul {
     list-style: none;
     padding-left: 0;
     margin: 0;
-}
+  }
 
-.toc .prose ul ul {
+  .toc .prose ul ul {
     padding-left: 1rem;
     margin-top: 0.25rem;
-}
+  }
 
-.toc .prose li {
+  .toc .prose li {
     margin: 0.125rem 0;
-}
+  }
 
-.toc .prose a {
+  .toc .prose a {
     display: block;
     padding: 0.5rem 0.75rem;
     border-radius: 0.5rem;
     text-decoration: none;
-    font-size: 0.9375rem;
-    line-height: 1.4rem;
+    font-size: 1.05rem;
+    line-height: 1.6rem;
     transition: all 0.2s ease;
     border-left: 3px solid transparent;
-}
+  }
 
-/* TOC Sidebar Styles */
-@media (min-width: 1024px) {
+  /* TOC Sidebar Styles */
+  @media (min-width: 1024px) {
     .toc {
-        width: 20rem;
-        max-height: 90vh;
+      width: 20rem;
+      max-height: 90vh;
     }
-    
+
     .toc-content {
-        overflow-y: auto;
-        max-height: calc(90vh - 5rem);
+      overflow-y: auto;
+      max-height: calc(90vh - 5rem);
     }
-    
+
     /* Custom scrollbar for TOC */
     .toc-content::-webkit-scrollbar {
-        width: 6px;
+      width: 6px;
     }
-    
-    .toc-content::-webkit-scrollbar-track {
-        background: #f1f5f9;
-        border-radius: 3px;
-    }
-    
-    .toc-content::-webkit-scrollbar-thumb {
-        background: #cbd5e1;
-        border-radius: 3px;
-    }
-    
-    .toc-content::-webkit-scrollbar-thumb:hover {
-        background: #94a3b8;
-    }
-}
 
-/* Mobile TOC Sheet Styles */
-@media (max-width: 1023px) {
+    .toc-content::-webkit-scrollbar-track {
+      background: #f1f5f9;
+      border-radius: 3px;
+    }
+
+    .toc-content::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+      border-radius: 3px;
+    }
+
+    .toc-content::-webkit-scrollbar-thumb:hover {
+      background: #94a3b8;
+    }
+  }
+
+  /* Mobile TOC Sheet Styles */
+  @media (max-width: 1023px) {
     #toc-mobile-toggle {
-        backdrop-filter: blur(10px);
-        -webkit-backdrop-filter: blur(10px);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
     }
-    
+
     #toc-mobile-sheet.open {
-        transform: translateX(0);
+      transform: translateX(0);
     }
-    
+
     #toc-mobile-overlay.open {
-        opacity: 1;
-        visibility: visible;
+      opacity: 1;
+      visibility: visible;
     }
-    
+
     /* Improve mobile TOC content spacing */
     #toc-mobile-sheet .prose a {
-        padding: 0.5rem 0.75rem;
-        margin: 0.125rem 0;
-        font-size: 1rem;
-        line-height: 1.4;
-        font-weight: 500;
+      padding: 0.5rem 0.75rem;
+      margin: 0.125rem 0;
+      font-size: 1.1rem;
+      line-height: 1.6;
+      font-weight: 500;
     }
-    
+
     #toc-mobile-sheet .prose ul ul a {
-        padding-left: 1.5rem;
-        font-size: 0.9375rem;
+      padding-left: 1.5rem;
+      font-size: 1.02rem;
     }
-    
+
     #toc-mobile-sheet .prose ul ul ul a {
-        padding-left: 2.25rem;
-        font-size: 0.875rem;
+      padding-left: 2.25rem;
+      font-size: 0.95rem;
     }
-    
+
     /* Better touch targets for mobile */
     #toc-mobile-sheet .prose a {
-        min-height: 44px;
-        display: flex;
-        align-items: center;
+      min-height: 44px;
+      display: flex;
+      align-items: center;
     }
-    
+
     /* Custom scrollbar for mobile TOC */
     #toc-mobile-sheet .prose::-webkit-scrollbar {
-        width: 4px;
+      width: 4px;
     }
-    
-    #toc-mobile-sheet .prose::-webkit-scrollbar-track {
-        background: #f1f5f9;
-        border-radius: 2px;
-    }
-    
-    #toc-mobile-sheet .prose::-webkit-scrollbar-thumb {
-        background: #cbd5e1;
-        border-radius: 2px;
-    }
-}
 
-/* Small mobile devices */
-@media (max-width: 480px) {
+    #toc-mobile-sheet .prose::-webkit-scrollbar-track {
+      background: #f1f5f9;
+      border-radius: 2px;
+    }
+
+    #toc-mobile-sheet .prose::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+      border-radius: 2px;
+    }
+  }
+
+  /* Small mobile devices */
+  @media (max-width: 480px) {
     #toc-mobile-sheet {
-        width: 100vw;
-        max-width: 100vw;
+      width: 100vw;
+      max-width: 100vw;
     }
-    
+
     #toc-mobile-toggle {
-        right: 16px;
-        padding: 0.625rem;
+      right: 16px;
+      padding: 0.625rem;
     }
-    
+
     #toc-mobile-sheet .prose a {
-        font-size: 0.9375rem;
-        padding: 0.5rem 0.75rem;
+      font-size: 1.02rem;
+      padding: 0.5rem 0.75rem;
     }
-}
+  }
 </style>
 {{ end }}

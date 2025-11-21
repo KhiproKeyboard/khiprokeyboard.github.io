@@ -5,7 +5,7 @@
         {{ partial "toc.html" . }}
         
         <!-- Main Content Container -->
-        <div class="flex-1 min-w-0">
+        <div class="flex-1 min-w-0 text-[1.12rem] leading-relaxed md:text-[1.2rem]">
         <div class="w-full">
             <!-- Main Content -->
             <main class="w-full">
@@ -44,7 +44,7 @@ article h6[id] {
 /* Typography Styles - Colors managed by /css/colors.css */
 
 article h1 {
-    font-size: 2.5rem;
+    font-size: 3rem;
     font-weight: 700;
     margin-bottom: 1.5rem;
     margin-top: 2rem;
@@ -53,7 +53,7 @@ article h1 {
 }
 
 article h2 {
-    font-size: 2rem;
+    font-size: 2.5rem;
     font-weight: 600;
     margin-top: 3rem;
     margin-bottom: 1.25rem;
@@ -62,7 +62,7 @@ article h2 {
 }
 
 article h3 {
-    font-size: 1.5rem;
+    font-size: 1.9rem;
     font-weight: 600;
     margin-top: 2rem;
     margin-bottom: 1rem;
@@ -70,14 +70,14 @@ article h3 {
 }
 
 article h4 {
-    font-size: 1.25rem;
+    font-size: 1.6rem;
     font-weight: 600;
     margin-top: 1.5rem;
     margin-bottom: 0.75rem;
 }
 
 article p {
-    font-size: 1.150rem;
+    font-size: 1.3rem;
     line-height: 1.75;
     margin-bottom: 1.25rem;
     text-align: justify;
@@ -187,7 +187,7 @@ article blockquote {
     margin: 1.5rem 0;
     border-radius: 0 0.5rem 0.5rem 0;
     font-style: italic;
-    font-size: 1.150rem;
+    font-size: 1.3rem;
 }
 
 article ul, article ol {
@@ -206,7 +206,7 @@ article ol {
 article li {
     margin-bottom: 0.5rem;
     line-height: 1.6;
-    font-size: 1.150rem;
+    font-size: 1.3rem;
 }
 
 article hr {
@@ -244,7 +244,7 @@ article table {
     border-collapse: separate; /* Use separate borders for better visibility */
     border-spacing: 0; /* No spacing between cells */
     margin: 0;
-    font-size: 1.150rem;
+    font-size: 1.3rem;
     border-radius: 0.5rem;
     overflow: hidden;
     table-layout: auto; /* Columns size based on content */
@@ -304,7 +304,7 @@ article th[colspan] {
 /* Mobile responsive styles */
 @media (max-width: 768px) {
     article table {
-        font-size: 1.150rem;
+        font-size: 1.22rem;
         width: auto; /* Let table size based on content */
         min-width: 0; /* Remove minimum width constraint */
     }
@@ -322,14 +322,14 @@ article th[colspan] {
     article table:nth-of-type(2) th,
     article table:nth-of-type(2) td {
         text-align: center;
-        font-size: 1.150rem;
+        font-size: 1.350rem;
         white-space: nowrap;
     }
 }
 
 @media (max-width: 480px) {
     article table {
-        font-size: 1.150rem;
+        font-size: 1.250rem;
         width: auto; /* Let table size based on content */
     }
 
@@ -343,7 +343,7 @@ article th[colspan] {
     article table:nth-of-type(1) td,
     article table:nth-of-type(2) th,
     article table:nth-of-type(2) td {
-        font-size: 1.150rem;
+        font-size: 1.250rem;
         white-space: nowrap;
     }
 }
