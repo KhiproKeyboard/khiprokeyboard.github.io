@@ -29,7 +29,7 @@ To learn how to effectively use the Khipro Keyboard and explore its comprehensiv
 Khipro is an open-source, community-driven project. We welcome all questions, ideas, and contributions. Join our community to discuss, get support, and help us grow!
 
 *   **Telegram Group:** [Join our Telegram Group](https://t.me/KhiproKeyboard) for direct discussions and support.
-*   **GitHub Organization:** [Explore our GitHub Organization](https://github.com/KhiproKeyboard) to view the code and participate in development.
+*   **GitHub Discussion:** [Explore our GitHub Discussion Forum](https://github.com/KhiproKeyboard/Khipro/discussions) to participate in development or propose ideas and feature requests.
 
 ## License
 This project is open-source. All rights are not reserved, it is a free software.
