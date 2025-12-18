@@ -1,33 +1,35 @@
-# Khipro Keyboard Website (ক্ষিপ্র কিবোর্ড ওয়েবসাইট)
+# [ক্ষিপ্র কিবোর্ড ওয়েবসাইট (Khipro Keyboard Website)](https://KhiproKeyboard.github.io)
 
-## Overview
-This repository hosts the official website for the **Khipro Keyboard (ক্ষিপ্র কিবোর্ড)** project. The Khipro Keyboard is an innovative initiative dedicated to providing a faster, more intuitive, and efficient Bengali typing experience, inspired by the Chinese Pinyin romanization method. This website serves as a central hub for information, documentation, and community engagement related to the Khipro Keyboard.
+[FOR ENGLISH click here](README.me)
 
-## What You'll Find on This Website
-*   **Introduction to Khipro:** Learn about the core concept of Khipro Keyboard, its goals, and how it differs from traditional phonetic typing methods.
-*   **Comprehensive Documentation:** Access detailed mapping tables, explanations of character input, conjuncts, diacritics, and special symbols.
-*   **Installation Guides:** Find step-by-step instructions for installing and configuring Khipro Keyboard on various operating systems, including Linux, Windows (via community solutions), and updates on Android development.
-*   **Community Information:** Discover how to join the Khipro community, contribute to the project, and get support.
-*   **Developer Resources:** Information for developers interested in implementing the Khipro concept in their own applications, including links to the Khipro Python version.
+## ওভারভিউ (Overview)
+এই রিপোজিটরিতে **ক্ষিপ্র কিবোর্ড (Khipro Keyboard)** প্রকল্পের অফিসিয়াল ওয়েবসাইটটি হোস্ট করা হয়েছে। ক্ষিপ্র কিবোর্ড একটি উদ্ভাবনী উদ্যোগ যা চীনা পিনয়িন (Pinyin) রোমানীকরণ পদ্ধতি দ্বারা অনুপ্রাণিত হয়ে আরও দ্রুত, সহজবোধ্য এবং দক্ষ বাংলা টাইপিং অভিজ্ঞতা প্রদানের জন্য কাজ করছে। এই ওয়েবসাইটটি ক্ষিপ্র কিবোর্ড সংক্রান্ত তথ্য, ডকুমেন্টেশন এবং কমিউনিটি যুক্ত হওয়ার একটি কেন্দ্রীয় কেন্দ্র হিসেবে কাজ করে।
 
-## Khipro Keyboard Project Highlights
-The Khipro Keyboard project aims to:
-*   Eliminate the need for the Shift key for common characters, enhancing typing speed and comfort.
-*   Ensure all essential Bengali characters and symbols are easily accessible within the standard QWERTY layout.
-*   Provide context-aware input for characters like ং (Anusvara) and ঙ (Unga).
-*   Utilize Zero Width Non-Joiner (ZWNJ) and Zero Width Joiner (ZWJ) for precise glyph control.
+## এই ওয়েবসাইটে আপনি যা পাবেন
+* **ক্ষিপ্র-এর পরিচিতি:** ক্ষিপ্র কিবোর্ডের মূল ধারণা, এর লক্ষ্য এবং প্রচলিত ফোনেটিক টাইপিং পদ্ধতির সাথে এর পার্থক্য সম্পর্কে জানুন।
+* **বিস্তারিত ডকুমেন্টেশন:** বিস্তারিত ম্যাপিং টেবিল, বর্ণ ইনপুট পদ্ধতি, যুক্তাক্ষর, কার-ফলা এবং বিশেষ প্রতীকের ব্যাখ্যা।
+* **ইনস্টলেশন গাইড:** লিনাক্স, উইন্ডোজ (কমিউনিটি সলিউশনের মাধ্যমে) এবং অ্যান্ড্রয়েড ডেভেলপমেন্টের আপডেটসহ বিভিন্ন অপারেটিং সিস্টেমে ক্ষিপ্র কিবোর্ড ইনস্টল ও কনফিগার করার ধাপে ধাপে নির্দেশনা।
+* **কমিউনিটি তথ্য:** কীভাবে ক্ষিপ্র কমিউনিটিতে যোগ দেবেন, প্রকল্পে অবদান রাখবেন এবং সহায়তা পাবেন তা জানুন।
+* **ডেভেলপার রিসোর্স:** যারা তাদের নিজস্ব অ্যাপ্লিকেশনে ক্ষিপ্র ধারণাটি প্রয়োগ করতে আগ্রহী তাদের জন্য প্রয়োজনীয় তথ্য, যার মধ্যে ক্ষিপ্র-এর পাইথন (Python) ভার্সনের লিঙ্ক অন্তর্ভুক্ত রয়েছে।
 
-## Installation
-For detailed installation instructions for Linux, Windows, and Android, please visit the [Installation Section on our Website](https://khiprokeyboard.github.io/#installation).
+## ক্ষিপ্র কিবোর্ড প্রকল্পের মূল বৈশিষ্ট্যসমূহ
+ক্ষিপ্র কিবোর্ড প্রকল্পের লক্ষ্য হলো:
+* সাধারণ বর্ণগুলোর জন্য শিফট (Shift) কী-এর প্রয়োজনীয়তা দূর করা, যা টাইপিংয়ের গতি এবং স্বাচ্ছন্দ্য বৃদ্ধি করে।
+* প্রমিত QWERTY লেআউটের মধ্যেই সমস্ত প্রয়োজনীয় বাংলা বর্ণ এবং চিহ্ন সহজে ব্যবহারের সুবিধা নিশ্চিত করা।
+* ং (অনুস্বার) এবং ঙ (উঙ)-এর মতো বর্ণগুলোর জন্য কনটেক্সট-অ্যাওয়ার (Context-aware) ইনপুট প্রদান করা।
+* নির্ভুল গ্লিফ (glyph) নিয়ন্ত্রণের জন্য জিরো উইডথ নন-জয়নার (ZWNJ) এবং জিরো উইডথ জয়নার (ZWJ) ব্যবহার করা।
 
-## Usage
-To learn how to effectively use the Khipro Keyboard and explore its comprehensive mapping, please refer to the [Official Documentation](https://khiprokeyboard.github.io/docs) available on this website.
+## ইনস্টলেশন (Installation)
+লিনাক্স, উইন্ডোজ এবং অ্যান্ড্রয়েডের বিস্তারিত ইনস্টলেশন নির্দেশাবলীর জন্য, অনুগ্রহ করে আমাদের ওয়েবসাইটের [ইনস্টলেশন সেকশন](https://khiprokeyboard.github.io/#installation) ভিজিট করুন।
 
-## Community
-Khipro is an open-source, community-driven project. We welcome all questions, ideas, and contributions. Join our community to discuss, get support, and help us grow!
+## ব্যবহার পদ্ধতি (Usage)
+কীভাবে কার্যকরভাবে ক্ষিপ্র কিবোর্ড ব্যবহার করবেন এবং এর বিস্তারিত ম্যাপিং সম্পর্কে জানতে, এই ওয়েবসাইটে উপলব্ধ [অফিসিয়াল ডকুমেন্টেশন](https://khiprokeyboard.github.io/docs) দেখুন।
 
-*   **Telegram Group:** [Join our Telegram Group](https://t.me/KhiproKeyboard) for direct discussions and support.
-*   **GitHub Organization:** [Explore our GitHub Organization](https://github.com/KhiproKeyboard) to view the code and participate in development.
+## কমিউনিটি (Community)
+ক্ষিপ্র একটি ওপেন-সোর্স এবং কমিউনিটি-চালিত প্রকল্প। আমরা আপনাদের সকল প্রশ্ন, নতুন ধারণা এবং অবদানকে স্বাগত জানাই। আলোচনা করতে, সহায়তা পেতে এবং আমাদের এই উদ্যোগকে এগিয়ে নিতে আমাদের কমিউনিটিতে যোগ দিন!
 
-## License
-This project is open-source. All rights are not reserved, it is a free software.
+* **টেলিগ্রাম গ্রুপ:** সরাসরি আলোচনা এবং সহায়তার জন্য আমাদের [টেলিগ্রাম গ্রুপে যোগ দিন](https://t.me/KhiproKeyboard)।
+* **গিটহাব অর্গানাইজেশন:** কোড দেখতে এবং ডেভেলপমেন্টে অংশ নিতে আমাদের [গিটহাব অর্গানাইজেশনটি দেখুন](https://github.com/KhiproKeyboard)।
+
+## লাইসেন্স (License)
+এই প্রকল্পটি ওপেন-সোর্স। এর স্বত্ব সংরক্ষিত নয় (All rights are not reserved); এটি একটি মুক্ত সফটওয়্যার (Free Software)।
