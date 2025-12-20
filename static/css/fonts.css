@@ -4,36 +4,80 @@
 /* Font Face Declarations */
 @font-face {
   font-family: "Anek Bangla";
-  src: url("/fonts/AnekBangla.ttf") format("truetype");
+  src: url("/fonts/AnekBangla.woff2") format("woff2");
   font-weight: 300 700;
   font-display: swap;
 }
 
 @font-face {
-  font-family: "BCC Purno";
-  src: url("/fonts/BCC Purno.woff2") format("woff2");
+  font-family: "July";
+  src: url("/fonts/July.woff2") format("woff2");
   font-weight: normal;
   font-display: swap;
 }
 
 /* Font Family Configurations */
-/* Default font for all pages */
+/* Default font for ALL pages - Anek Bangla */
 body {
   font-family: "Anek Bangla", sans-serif;
 }
 
-header {
-  font-family: "Anek Bangla", sans-serif;
+/* July font ONLY for single.html article content and TOC */
+/* Main article tag in single.html - ALL elements inside */
+main article,
+main article *,
+main article h1,
+main article h2,
+main article h3,
+main article h4,
+main article h5,
+main article h6,
+main article p,
+main article ul,
+main article ol,
+main article li,
+main article a,
+main article blockquote,
+main article code,
+main article pre,
+main article table,
+main article th,
+main article td,
+main article strong,
+main article em,
+main article span {
+  font-family: "July", "Anek Bangla", sans-serif !important;
 }
-footer {
-  font-family: "Anek Bangla", sans-serif;
+
+/* TOC classes in single pages */
+.toc,
+#desktop-toc,
+#toc-mobile-sheet,
+#toc-mobile-sheet .prose,
+#mobile-toc-content,
+.toc-list,
+.toc-link-wrapper {
+  font-family: "July", "Anek Bangla", sans-serif !important;
 }
-.text-xs {
+
+/* Everything else uses Anek Bangla (default behavior) */
+header,
+footer,
+nav,
+.toc,
+h1, h2, h3, h4, h5, h6,
+.text-xs, .text-sm, .text-base, .text-lg, .text-xl,
+.text-2xl, .text-3xl, .text-4xl, .text-5xl, .text-6xl {
   font-family: "Anek Bangla", sans-serif;
 }
 
-/* Kalpurush font only for installation and docs pages - using URL-based targeting */
-body[data-page="installation"],
-body[data-page="docs"] {
-  font-family: "BCC Purno", "Anek Bangla", sans-serif;
+/* Mermaid diagram styles */
+.mermaid {
+    margin: 20px 0;
+    text-align: center;
+}
+
+.mermaid svg {
+    max-width: 100%;
+    height: auto;
 }

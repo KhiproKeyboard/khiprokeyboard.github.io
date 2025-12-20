@@ -3,26 +3,34 @@
 <title>{{ if .IsHome }}{{ .Site.Title }} - {{ .Site.Params.description }}{{ else }}{{ .Title }} | {{ .Site.Title }}{{ end }}</title>
 <link rel="icon" type="image/x-icon" href="/img/khipro-favicon.ico">
 
+<!-- Font Preloading for Performance -->
+<link rel="preload" href="/fonts/AnekBangla.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/July.woff2" as="font" type="font/woff2" crossorigin>
+
 <!-- Centralized Color System -->
 <link rel="stylesheet" href="/css/colors.css">
 <!-- Font System -->
 <link rel="stylesheet" href="/css/fonts.css">
+<!-- Main Content Styles -->
+<link rel="stylesheet" href="/css/main.css">
 
 <script src="https://cdn.tailwindcss.com"></script>
+<!-- KaTeX for math rendering -->
+{{ if or .Site.Params.katex .Site.Params.math }}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI+WdtXRGWt2kTvGFasHpSy3SV" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js" integrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzYCp1PLfAwTMDjB6fMwGCL+NKZfFZCO/T1" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbQjC2GaZe3JhNpKfZaqNZeA1q" crossorigin="anonymous"></script>
+{{ end }}
 <script>
     tailwind.config = {
         theme: {
             extend: {
                 colors: {
-                    // Map Tailwind classes to CSS variables
+                    // Map Tailwind classes to CSS variables - Simplified System
                     'primary': 'var(--color-primary)',
                     'primary-light': 'var(--color-primary-light)',
                     'primary-dark': 'var(--color-primary-dark)',
-                    'header-dark': 'var(--color-header-dark)',
-                    'secondary': 'var(--color-secondary)',
-                    'light': 'var(--color-light)',
-                    'dark-text': 'var(--color-dark-text)',
-                    'accent': 'var(--color-accent)',
+                    'accent': 'var(--color-primary-light)',
                 }
             }
         }
@@ -92,13 +100,13 @@
     }
 
     th {
-        background-color: #f9fafb;
+        background-color: var(--color-primary);
         font-weight: 600;
-        color: #374151;
+        color: white;
     }
 
     tr:hover {
-        background-color: #f3f4f6;
+        background-color: var(--color-pattern-light);
     }
 
     /* Mobile responsive tables */

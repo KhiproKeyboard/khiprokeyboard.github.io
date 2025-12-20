@@ -1,0 +1,9 @@
+[submodule "content/installation"]
+	path = content/installation
+	url = https://github.com/KhiproKeyboard/khipro-installation
+[submodule "content/documentation"]
+	path = content/documentation
+	url = https://github.com/KhiproKeyboard/khipro-documentation
+[submodule "content/quickstart"]
+	path = content/quickstart
+	url = https://github.com/KhiproKeyboard/khipro-quickstart

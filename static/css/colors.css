@@ -1,61 +1,50 @@
-/* Khipro Keyboard - Centralized Color System */
-/* All colors are managed from this single file using CSS custom properties */
+/* Khipro Keyboard - Simplified Color System */
+/* Full white background, full black text, with #a05054 as the only accent color */
 
 :root {
-    /* Colors - Coral & Deep Red Theme */
-    --color-primary: #c56e6c;        /* Logo coral color */
-    --color-primary-light: #d48a88;  /* Lighter coral */
-    --color-primary-dark: #b85856;   /* Darker coral */
-    --color-header-dark: #8b4a47;    /* Medium red for headers */
-    --color-secondary: #f4e6e5;      /* Soft coral tint */
-    --color-dark-text: #2d1f1f;      /* Dark warm gray */
-    --color-accent: #a85d59;         /* Lighter red-brown for hover */
-    
-    /* Background Colors */
-    --color-body-bg: #fefcfc;
-    --color-card-bg: #ffffff;
-    --color-secondary-bg: rgba(244, 230, 229, 0.2);
-    
-    /* Text Colors */
-    --color-text-primary: #2d1f1f;
-    --color-text-secondary: #1f2937;
-    --color-text-muted: #374151;
-    --color-text-light: #4b5563;
-    
-    /* Border Colors */
-    --color-border-light: #e5e7eb;
-    --color-border-medium: #d1d5db;
-    --color-border-dark: #9ca3af;
-    
-    /* Pattern Colors */
-    --color-pattern-light: rgba(197, 110, 108, 0.12);
-    
+    /* Primary Accent Color - #a05054 */
+    --color-primary: #a05054;        /* Main accent color */
+    --color-primary-light: #b06b6f;  /* Lighter accent */
+    --color-primary-dark: #904347;   /* Darker accent */
+
+    /* Text Colors - Pure Black & White System */
+    --color-text-primary: #000000;   /* Pure black text */
+    --color-text-secondary: #000000; /* Black text */
+    --color-text-muted: #000000;    /* Black text for muted text too */
+    --color-text-light: #000000;    /* Black text for light text too */
+
+    /* Background Colors - Pure White */
+    --color-body-bg: #ffffff;       /* Pure white background */
+    --color-card-bg: #ffffff;       /* Pure white card background */
+    --color-secondary-bg: #ffffff;  /* Pure white secondary background */
+
+    /* Border Colors - Grayscale */
+    --color-border-light: #e0e0e0;  /* Light gray border */
+    --color-border-medium: #cccccc; /* Medium gray border */
+    --color-border-dark: #999999;   /* Dark gray border */
+
+    /* Pattern Colors - Using accent only */
+    --color-pattern-light: rgba(160, 80, 84, 0.08);
+
     /* Code Block Colors */
-    --color-code-bg: #fce8e8;
-    --color-code-text: #000000;
+    --color-code-bg: #f5f5f5;      /* Very light gray for code */
+    --color-code-text: #000000;    /* Black code text */
 }
 
 /* Utility Classes for Common Color Usage */
 .text-primary { color: var(--color-primary) !important; }
+.text-primary-light { color: var(--color-primary-light) !important; }
 .text-primary-dark { color: var(--color-primary-dark) !important; }
-.text-header-dark { color: var(--color-header-dark) !important; }
-.text-accent { color: var(--color-accent) !important; }
 
 .bg-primary { background-color: var(--color-primary) !important; }
+.bg-primary-light { background-color: var(--color-primary-light) !important; }
 .bg-primary-dark { background-color: var(--color-primary-dark) !important; }
-.bg-header-dark { background-color: var(--color-header-dark) !important; }
-.bg-accent { background-color: var(--color-accent) !important; }
 
 .border-primary { border-color: var(--color-primary) !important; }
-.border-header-dark { border-color: var(--color-header-dark) !important; }
 
 /* Hover States */
 .hover-primary:hover { color: var(--color-primary) !important; }
-.hover-primary-dark:hover { color: var(--color-primary-dark) !important; }
 .hover-bg-primary:hover { background-color: var(--color-primary) !important; }
-.hover-bg-primary-dark:hover { background-color: var(--color-primary-dark) !important; }
-
-/* Background patterns removed for clean design */
 
 /* Component-Specific Color Styles */
 
@@ -74,11 +63,10 @@
 
 .toc a.active {
     background-color: var(--color-pattern-light);
-    color: var(--color-header-dark);
+    color: var(--color-primary);
     border-left-color: var(--color-primary);
     font-weight: 500;
 }
-
 
 /* Article Content Colors */
 article h1 {
@@ -137,55 +125,104 @@ article hr {
     background: linear-gradient(to right, var(--color-primary), var(--color-primary-light), var(--color-primary));
 }
 
-/* Table Colors */
-article table {
-    border: 2px solid var(--color-border-medium); /* Thicker outer border */
+/* Table Colors - Perfect accent color for all headers */
+article table,
+main table,
+.readme-content table,
+.markdown-body table {
+    border: 2px solid var(--color-border-medium);
 }
 
-article th {
-    background-color: var(--color-header-dark);
-    color: white;
+/* All thead elements use accent color */
+article thead,
+main thead,
+.readme-content thead,
+.markdown-body thead {
+    background-color: var(--color-primary);
+}
+
+/* All th elements use accent color with white text */
+article th,
+main th,
+.readme-content th,
+.markdown-body th {
+    background-color: var(--color-primary) !important;
+    color: white !important;
     border: 1px solid var(--color-border-medium);
-    border-top: none; /* Remove top border for first row */
+    border-top: none;
+    font-weight: 600;
+    padding: 0.75rem 0.5rem;
+    text-align: center;
 }
 
-article th:first-child {
-    border-left: none; /* Remove left border for first column */
+/* Ensure th elements are consistent */
+article th:first-child,
+main th:first-child {
+    border-left: none;
 }
 
-article th:last-child {
-    border-right: none; /* Remove right border for last column */
+article th:last-child,
+main th:last-child {
+    border-right: none;
 }
 
-
-article td {
+/* Table cells remain white background with black text */
+article td,
+main td,
+.readme-content td,
+.markdown-body td {
     border: 1px solid var(--color-border-medium);
-    border-top: none; /* Remove top border (covered by row above) */
+    border-top: none;
+    background-color: white !important;
+    color: black !important;
+    padding: 0.75rem 0.5rem;
+    text-align: center;
+    font-size: 1.150rem;
 }
 
-article td:first-child {
-    border-left: none; /* Remove left border for first column */
+article td:first-child,
+main td:first-child,
+.readme-content td:first-child,
+.markdown-body td:first-child {
+    border-left: none;
 }
 
-article td:last-child {
-    border-right: none; /* Remove right border for last column */
+article td:last-child,
+main td:last-child,
+.readme-content td:last-child,
+.markdown-body td:last-child {
+    border-right: none;
 }
 
-article tr:last-child td {
-    border-bottom: none; /* Remove bottom border for last row */
+article tr:last-child td,
+main tr:last-child td,
+.readme-content tr:last-child td,
+.markdown-body tr:last-child td {
+    border-bottom: none;
 }
 
-/* Zebra striping - alternating row colors */
-article tr:nth-child(even) {
-    background-color: var(--color-secondary-bg);
+/* Very subtle zebra striping - minimal color change for best readability */
+article tr:nth-child(odd),
+main tr:nth-child(odd),
+.readme-content tr:nth-child(odd),
+.markdown-body tr:nth-child(odd) {
+    background-color: #ffffff; /* Pure white for odd rows */
 }
 
-
-/* Row hover effect */
-article tr:hover {
-    background-color: var(--color-pattern-light);
+article tr:nth-child(even),
+main tr:nth-child(even),
+.readme-content tr:nth-child(even),
+.markdown-body tr:nth-child(even) {
+    background-color: #fafafa; /* Very light gray (just 2% darker than white) */
 }
 
+/* Very subtle hover effect */
+article tr:hover,
+main tr:hover,
+.readme-content tr:hover,
+.markdown-body tr:hover {
+    background-color: #f8f8f8; /* Slightly darker on hover (3% darker than white) */
+}
 
 /* Button Colors */
 .btn-primary {
@@ -199,27 +236,27 @@ article tr:hover {
 }
 
 .btn-secondary {
-    background-color: var(--color-header-dark);
+    background-color: var(--color-primary-dark);
     color: white;
     border: none;
 }
 
 .btn-secondary:hover {
-    background-color: var(--color-accent);
+    background-color: var(--color-primary-light);
 }
 
 /* Navigation Colors */
 .nav-link {
-    color: rgba(255, 255, 255, 0.9);
+    color: var(--color-text-light);
     transition: all 0.3s ease;
 }
 
 .nav-link:hover {
-    color: white;
+    color: var(--color-primary);
 }
 
 .nav-link.active::after {
-    background-color: white;
+    background-color: var(--color-primary);
 }
 
 /* Custom Icon and Button Background Classes */
@@ -228,10 +265,9 @@ article tr:hover {
 }
 
 .bg-btn-primary {
-    background-color: var(--color-primary-dark) !important;
+    background-color: var(--color-primary) !important;
 }
 
 .bg-btn-primary:hover {
-    background-color: var(--color-accent) !important;
+    background-color: var(--color-primary-dark) !important;
 }
-

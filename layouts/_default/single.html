@@ -1,17 +1,138 @@
 {{ define "main" }}
-<div class="min-h-screen bg-white pt-0 pb-20 md:pb-0 {{ if eq .Section "installation" }}page-installation{{ else if eq .Section "docs" }}page-docs{{ end }}">
+{{/* Check if this is a submodule page */}}
+{{- $isSubmodule := false -}}
+{{- $contentFile := "" -}}
+{{- $processedContent := .Content -}}
+
+{{- if or (eq .Section "installation") (eq .Layout "installation") -}}
+  {{- $isSubmodule = true -}}
+  {{- $contentFile = "content/installation/README.md" -}}
+{{- else if or (eq .Section "documentation") (eq .Layout "documentation") -}}
+  {{- $isSubmodule = true -}}
+  {{- $contentFile = "content/documentation/README.md" -}}
+{{- else if or (eq .Section "quickstart") (eq .Layout "quickstart") -}}
+  {{- $isSubmodule = true -}}
+  {{- $contentFile = "content/quickstart/README.md" -}}
+{{- end -}}
+
+{{- if $isSubmodule -}}
+  {{- if fileExists $contentFile -}}
+    {{- $rawContent := readFile $contentFile -}}
+    {{- /* Split content and remove front matter */ -}}
+    {{- $lines := split $rawContent "\n" -}}
+    {{- $frontMatterEnd := 0 -}}
+    {{- $inFrontMatter := false -}}
+    {{- $frontMatterLines := 0 -}}
+
+    {{- range $index, $line := $lines -}}
+      {{- $trimmed := trim $line " \t\r\n" -}}
+      {{- if eq $index 0 -}}
+        {{- if eq $trimmed "---" -}}
+          {{- $inFrontMatter = true -}}
+        {{- end -}}
+      {{- else if and $inFrontMatter (eq $trimmed "---") -}}
+        {{- $frontMatterEnd = $index -}}
+        {{- $inFrontMatter = false -}}
+      {{- else if $inFrontMatter -}}
+        {{- $frontMatterLines = add $frontMatterLines 1 -}}
+      {{- end -}}
+    {{- end -}}
+
+    {{- if gt $frontMatterEnd 0 -}}
+      {{- $contentLines := $lines | after (add $frontMatterEnd 1) -}}
+      {{- $contentWithoutFrontMatter := delimit $contentLines "\n" -}}
+      {{- $processedContent = $contentWithoutFrontMatter | markdownify -}}
+    {{- else -}}
+      {{- $processedContent = $rawContent | markdownify -}}
+    {{- end -}}
+    {{- /* Store in .Scratch for TOC to access */ -}}
+    {{- .Scratch.Set "processedContent" $processedContent -}}
+  {{- end -}}
+{{- end -}}
+
+{{/* Apply custom Banglish IDs to the processed content */}}
+{{- $originalContent := $processedContent -}}
+{{- $originalTOC := "" -}}
+
+{{/* Generate TOC for submodules */}}
+{{- if $isSubmodule -}}
+  {{- $headings := findRE "<h([1-6])([^>]*id=\"[^\"]+\")?[^>]*>(.*?)</h[1-6]>" $processedContent -}}
+  {{- $tocItems := slice -}}
+  {{- $idMap := dict -}}
+
+  {{- range $headings -}}
+    {{- $level := . | replaceRE ".*<h([1-6]).*" "$1" | int -}}
+    {{- $text := . | replaceRE "<[^>]*>" "" | replaceRE "</h[1-6]>" "" -}}
+    {{- $banglishID := $text | partial "banglish-id" -}}
+    {{- $existingID := "" -}}
+    {{- if . | findRE "id=\"" -}}
+      {{- $existingID = . | replaceRE ".*id=\"([^\"]+)\".*" "$1" -}}
+      {{- $idMap = merge $idMap (dict $existingID $banglishID) -}}
+    {{- end -}}
+    {{- $tocItem := dict "level" $level "text" $text "id" $banglishID -}}
+    {{- $tocItems = $tocItems | append $tocItem -}}
+  {{- end -}}
+
+  {{- /* Build TOC HTML with Banglish IDs */}}
+  {{- if gt (len $tocItems) 0 -}}
+    {{- $tocHTML := "<nav class=\"table-of-contents\"><ul style=\"list-style: none; padding-left: 0; margin: 0;\">" -}}
+    {{- range $tocItems -}}
+      {{- $tocHTML = printf "%s<li style=\"margin: 0.25rem 0;\"><a href=\"#%s\" style=\"display: block; padding: 0.5rem 0.75rem; border-radius: 0.375rem; text-decoration: none; font-size: 0.875rem; line-height: 1.25rem; transition: all 0.2s; border-left: 3px solid transparent; margin-left: %drem;\">%s</a></li>" $tocHTML .id (sub .level 1) .text -}}
+    {{- end -}}
+    {{- $tocHTML = printf "%s</ul></nav>" $tocHTML -}}
+    {{- $originalTOC = $tocHTML -}}
+    {{- /* Store in scratch for toc.html to access */ -}}
+    {{- .Scratch.Set "processedTOC" $tocHTML -}}
+  {{- end -}}
+{{- else -}}
+  {{- $originalTOC = .TableOfContents -}}
+{{- end -}}
+
+{{/* Replace Hugo-generated IDs with Banglish IDs in content */}}
+{{- $headings := findRE "<h([1-6])([^>]*id=\"[^\"]+\")?[^>]*>(.*?)</h[1-6]>" $processedContent -}}
+{{- $idMap := dict -}}
+
+{{- range $headings -}}
+  {{- $level := . | replaceRE ".*<h([1-6]).*" "$1" -}}
+  {{- $text := . | replaceRE "<[^>]*>" "" | replaceRE "</h[1-6]>" "" -}}
+  {{- $banglishID := $text | partial "banglish-id" -}}
+  {{- $existingID := "" -}}
+  {{- if . | findRE "id=\"" -}}
+    {{- $existingID = . | replaceRE ".*id=\"([^\"]+)\".*" "$1" -}}
+    {{- $idMap = merge $idMap (dict $existingID $banglishID) -}}
+  {{- end -}}
+{{- end -}}
+
+{{/* Replace IDs in content */}}
+{{- $finalContent := $processedContent -}}
+{{- range $existingID, $banglishID := $idMap -}}
+  {{- if $existingID -}}
+    {{- $finalContent = replaceRE (printf "id=\"%s\"" $existingID) (printf "id=\"%s\"" $banglishID) $finalContent -}}
+  {{- end -}}
+{{- end -}}
+
+{{/* Replace IDs in TOC */}}
+{{- $finalTOC := $originalTOC -}}
+{{- range $existingID, $banglishID := $idMap -}}
+  {{- if $existingID -}}
+    {{- $finalTOC = replaceRE (printf "href=\"#%s\"" $existingID) (printf "href=\"#%s\"" $banglishID) $finalTOC -}}
+  {{- end -}}
+{{- end -}}
+
+<div class="min-h-screen pt-0 pb-20 md:pb-0" style="background-color: #ffffff;">
     <div class="flex flex-col lg:flex-row gap-4 sm:gap-6 p-2 sm:p-4 lg:p-8 pt-4 md:pt-8">
-        <!-- TOC Sidebar -->
+          <!-- TOC Sidebar -->
         {{ partial "toc.html" . }}
-        
+
         <!-- Main Content Container -->
         <div class="flex-1 min-w-0 text-[1.12rem] leading-relaxed md:text-[1.2rem]">
         <div class="w-full">
             <!-- Main Content -->
             <main class="w-full">
-                <article class="bg-white rounded-2xl shadow-lg p-4 sm:p-6 lg:p-12 w-full">
-                    <!-- Page Header - Front matter content hidden -->
-                    <header class="mb-4 pb-3 border-b border-gray-200" style="display: none;">
+                <article class="rounded-2xl shadow-lg p-4 sm:p-6 lg:p-12 w-full">
+                    <!-- Page Header - Only show for non-submodule pages -->
+                    {{ if not $isSubmodule }}
+                    <header class="mb-4 pb-3 border-b border-gray-200">
                         <h1 class="text-3xl lg:text-4xl font-bold text-gray-900 mb-2">
                             {{ .Title }}
                         </h1>
@@ -21,345 +142,29 @@
                         </p>
                         {{ end }}
                     </header>
-                    
+                    {{ end }}
+
                     <!-- Content -->
-                    {{ .Content }}
+                    <div class="readme-content markdown-body single-page-content">
+                        {{ if $isSubmodule }}
+                            {{ if .Scratch.Get "processedContent" }}
+                                {{ $finalContent | safeHTML }}
+                            {{ else }}
+                                <div class="alert alert-warning">
+                                    <strong>সতর্কতা:</strong> {{ .Section }} content is currently unavailable.
+                                    Please ensure the git submodule is properly initialized and updated.
+                                    <br><br>
+                                    You can initialize the submodules by running:
+                                    <pre><code>git submodule update --init --recursive</code></pre>
+                                    Or update existing submodules:
+                                    <pre><code>git submodule update --remote --merge</code></pre>
+                                </div>
+                            {{ end }}
+                        {{ else }}
+                            {{ $finalContent | safeHTML }}
+                        {{ end }}
+                    </div>
 
-<style>
-/* Smooth scrolling and anchor offset handling */
-html {
-    scroll-behavior: smooth;
-}
-
-/* Add scroll margin to headings to account for sticky header */
-article h1[id],
-article h2[id], 
-article h3[id],
-article h4[id],
-article h5[id],
-article h6[id] {
-    scroll-margin-top: 100px; /* Header height + padding */
-}
-
-/* Typography Styles - Colors managed by /css/colors.css */
-
-article h1 {
-    font-size: 3rem;
-    font-weight: 700;
-    margin-bottom: 1.5rem;
-    margin-top: 2rem;
-    line-height: 1.2;
-    padding-bottom: 0.75rem;
-}
-
-article h2 {
-    font-size: 2.5rem;
-    font-weight: 600;
-    margin-top: 3rem;
-    margin-bottom: 1.25rem;
-    line-height: 1.3;
-    padding-bottom: 0.5rem;
-}
-
-article h3 {
-    font-size: 1.9rem;
-    font-weight: 600;
-    margin-top: 2rem;
-    margin-bottom: 1rem;
-    line-height: 1.4;
-}
-
-article h4 {
-    font-size: 1.6rem;
-    font-weight: 600;
-    margin-top: 1.5rem;
-    margin-bottom: 0.75rem;
-}
-
-article p {
-    font-size: 1.3rem;
-    line-height: 1.75;
-    margin-bottom: 1.25rem;
-    text-align: justify;
-}
-
-article a {
-    text-decoration: none;
-    font-weight: 500;
-    transition: all 0.2s ease;
-}
-
-article strong {
-    font-weight: 600;
-}
-
-article code {
-    padding: 0.25rem 0.5rem;
-    border-radius: 0.375rem;
-    font-size: 0.875rem;
-    font-family: 'Courier New', monospace;
-    font-weight: 500;
-}
-
-article pre {
-    padding: 0.75rem;
-    padding-top: 2rem;
-    border-radius: 0.5rem;
-    overflow-x: auto;
-    margin: 0;
-    border: none;
-    position: relative;
-    font-family: 'Monaco', 'Menlo', 'Consolas', 'Courier New', monospace !important;
-    font-size: 14px !important;
-    line-height: 1.4;
-    white-space: pre;
-    word-break: normal;
-}
-
-article pre code {
-    background-color: transparent !important;
-    color: inherit !important;
-    padding: 0 !important;
-    border-radius: 0 !important;
-    font-size: 14px !important;
-    font-family: 'Monaco', 'Menlo', 'Consolas', 'Courier New', monospace !important;
-    font-weight: 400 !important;
-    white-space: pre !important;
-    word-break: normal !important;
-}
-
-/* Clean shell command styling */
-article pre code[class*="language-sh"],
-article pre code[class*="language-bash"],
-article pre code[class*="language-shell"] {
-    color: #000000 !important;
-}
-
-/* Code block wrapper */
-.code-block-wrapper {
-    position: relative;
-    margin: 1.5rem 0;
-}
-
-/* Copy button styling */
-.copy-code-btn {
-    position: absolute;
-    top: 8px;
-    right: 8px;
-    background-color: #374151;
-    color: white;
-    border: 1px solid #4b5563;
-    padding: 4px 8px;
-    border-radius: 4px;
-    font-size: 11px;
-    font-family: system-ui, -apple-system, sans-serif;
-    cursor: pointer;
-    opacity: 0;
-    transition: all 0.2s ease;
-    z-index: 10;
-}
-
-article pre::-webkit-scrollbar {
-    height: 8px;
-}
-
-article pre::-webkit-scrollbar-track {
-    background: rgba(0,0,0,0.1);
-    border-radius: 4px;
-}
-
-article pre::-webkit-scrollbar-thumb {
-    background: rgba(0,0,0,0.3);
-    border-radius: 4px;
-}
-
-.copy-code-btn:hover {
-    background-color: #4b5563;
-    border-color: #6b7280;
-}
-
-.group:hover .copy-code-btn {
-    opacity: 1;
-}
-
-article blockquote {
-    padding: 1rem 1.5rem;
-    margin: 1.5rem 0;
-    border-radius: 0 0.5rem 0.5rem 0;
-    font-style: italic;
-    font-size: 1.3rem;
-}
-
-article ul, article ol {
-    margin: 1.25rem 0;
-    padding-left: 2rem;
-}
-
-article ul {
-    list-style-type: disc;
-}
-
-article ol {
-    list-style-type: decimal;
-}
-
-article li {
-    margin-bottom: 0.5rem;
-    line-height: 1.6;
-    font-size: 1.3rem;
-}
-
-article hr {
-    border: none;
-    height: 2px;
-    margin: 2rem 0;
-    border-radius: 1px;
-}
-
-/* Table Container for Responsive Design */
-.table-responsive-wrapper {
-    width: 100%;
-    max-width: 100%;
-    overflow-x: auto;
-    overflow-y: visible;
-    -webkit-overflow-scrolling: touch;
-    margin: 1.5rem 0;
-    position: relative;
-}
-
-.scroll-indicator {
-    margin-bottom: 0.5rem;
-    color: #6b7280;
-    font-size: 0.875rem;
-}
-
-.dark .scroll-indicator {
-    color: #9ca3af;
-}
-
-article table {
-    width: auto; /* Table sizes to fit content */
-    max-width: none; /* Allow table to be wider than container */
-    min-width: 0; /* No minimum width - fully flexible */
-    border-collapse: separate; /* Use separate borders for better visibility */
-    border-spacing: 0; /* No spacing between cells */
-    margin: 0;
-    font-size: 1.3rem;
-    border-radius: 0.5rem;
-    overflow: hidden;
-    table-layout: auto; /* Columns size based on content */
-    /* Border color managed by colors.css */
-}
-
-/* Responsive Table Wrapper */
-article p + table,
-article h1 + table,
-article h2 + table,
-article h3 + table,
-article h4 + table {
-    margin-top: 1.5rem;
-}
-
-article table + p,
-article table + h1,
-article table + h2,
-article table + h3,
-article table + h4 {
-    margin-top: 1.5rem;
-}
-
-article th {
-    font-weight: 600;
-    padding: 0.75rem 0.5rem;
-    text-align: left;
-    word-wrap: break-word;
-    width: auto; /* Cell width based on content */
-    white-space: nowrap; /* Keep content on one line */
-}
-
-article td {
-    padding: 0.75rem 0.5rem;
-    word-wrap: break-word;
-    font-size: 1.150rem;
-    width: auto; /* Cell width based on content */
-    white-space: nowrap; /* Keep content on one line */
-}
-
-/* Alternating row colors and hover - managed by colors.css */
-
-/* Allow text wrapping for cells with longer content */
-article td:last-child:not([colspan]),
-article th:last-child:not([colspan]) {
-    white-space: normal;
-    max-width: 300px;
-}
-
-/* Cells with colspan should not have max-width constraint */
-article td[colspan],
-article th[colspan] {
-    white-space: normal;
-    max-width: none;
-}
-
-/* Mobile responsive styles */
-@media (max-width: 768px) {
-    article table {
-        font-size: 1.22rem;
-        width: auto; /* Let table size based on content */
-        min-width: 0; /* Remove minimum width constraint */
-    }
-
-    article th,
-    article td {
-        padding: 0.5rem 0.25rem;
-        white-space: nowrap; /* Prevent wrapping to maintain natural width */
-        min-width: 0; /* Remove minimum width constraint */
-    }
-
-    /* Special handling for the first two tables */
-    article table:nth-of-type(1) th,
-    article table:nth-of-type(1) td,
-    article table:nth-of-type(2) th,
-    article table:nth-of-type(2) td {
-        text-align: center;
-        font-size: 1.350rem;
-        white-space: nowrap;
-    }
-}
-
-@media (max-width: 480px) {
-    article table {
-        font-size: 1.250rem;
-        width: auto; /* Let table size based on content */
-    }
-
-    article th,
-    article td {
-        padding: 0.4rem 0.2rem;
-        white-space: nowrap; /* Keep content on one line for natural sizing */
-    }
-
-    article table:nth-of-type(1) th,
-    article table:nth-of-type(1) td,
-    article table:nth-of-type(2) th,
-    article table:nth-of-type(2) td {
-        font-size: 1.250rem;
-        white-space: nowrap;
-    }
-}
-
-article img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 0.5rem;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    margin: 1.5rem auto;
-    display: block;
-}
-
-
-</style>
-                    
                     <!-- Page Navigation -->
                     <nav class="mt-12 pt-8 border-t border-gray-200">
                         <div class="flex justify-between items-center">
@@ -374,7 +179,7 @@ article img {
                             {{ else }}
                             <div></div>
                             {{ end }}
-                            
+
                             {{ with .NextInSection }}
                             <a href="{{ .RelPermalink }}" class="group flex items-center text-primary hover:text-primary-dark transition-colors">
                                 <div class="text-right">
@@ -392,274 +197,4 @@ article img {
         </div>
     </div>
 </div>
-
-<!-- Add anchor links to headings and TOC functionality -->
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    // Wrap tables in responsive containers
-    const tables = document.querySelectorAll('article table');
-    tables.forEach(function(table) {
-        // Skip if already wrapped
-        if (table.parentElement.classList.contains('table-responsive-wrapper')) {
-            return;
-        }
-        
-        // Create scroll indicator paragraph (before table)
-        const indicator = document.createElement('p');
-        indicator.className = 'scroll-indicator text-sm text-gray-600 mb-2 flex items-center';
-        indicator.innerHTML = '<i class="fas fa-arrows-alt-h mr-2"></i>পাশে স্ক্রল করে সম্পূর্ণ টেবিল দেখুন';
-        indicator.style.display = 'none';
-        
-        // Insert indicator before table
-        table.parentNode.insertBefore(indicator, table);
-        
-        // Create wrapper div
-        const wrapper = document.createElement('div');
-        wrapper.className = 'table-responsive-wrapper';
-        
-        // Insert wrapper before table and move table inside
-        table.parentNode.insertBefore(wrapper, table);
-        wrapper.appendChild(table);
-        
-        // Show/hide scroll indicator based on content overflow
-        function checkOverflow() {
-            const hasOverflow = wrapper.scrollWidth > wrapper.clientWidth;
-            indicator.style.display = hasOverflow ? 'flex' : 'none';
-        }
-        
-        // Check on load and resize with debouncing
-        checkOverflow();
-        let resizeTimeout;
-        window.addEventListener('resize', function() {
-            clearTimeout(resizeTimeout);
-            resizeTimeout = setTimeout(checkOverflow, 100);
-        });
-        
-        // Also check after fonts load
-        if (document.fonts) {
-            document.fonts.ready.then(checkOverflow);
-        }
-    });
-
-    // Add anchor links to headings
-    const headings = document.querySelectorAll('h2, h3, h4, h5, h6');
-    headings.forEach(function(heading) {
-        if (heading.id) {
-            const anchor = document.createElement('a');
-            anchor.href = '#' + heading.id;
-            anchor.className = 'anchor-link opacity-0 group-hover:opacity-100 transition-opacity ml-2 text-gray-400 hover:text-gray-600';
-            anchor.innerHTML = '<i class="fas fa-link text-sm"></i>';
-            anchor.setAttribute('aria-label', 'Link to this section');
-            
-            heading.classList.add('group');
-            heading.appendChild(anchor);
-        }
-    });
-    
-    // Add copy buttons to code blocks
-    const codeBlocks = document.querySelectorAll('pre code');
-    codeBlocks.forEach(function(codeBlock) {
-        const pre = codeBlock.parentElement;
-        
-        // Create wrapper div
-        const wrapper = document.createElement('div');
-        wrapper.className = 'code-block-wrapper group relative';
-        
-        // Create button
-        const button = document.createElement('button');
-        button.className = 'copy-code-btn';
-        button.innerHTML = '<i class="fas fa-copy mr-1.5"></i>কপি';
-        button.setAttribute('aria-label', 'Copy code');
-        
-        // Insert wrapper before pre and move pre inside
-        pre.parentNode.insertBefore(wrapper, pre);
-        wrapper.appendChild(pre);
-        wrapper.appendChild(button);
-        
-        button.addEventListener('click', function() {
-            // Get text content without the $ prefix for shell commands
-            let textToCopy = codeBlock.textContent;
-            if (codeBlock.className.includes('language-sh') || 
-                codeBlock.className.includes('language-bash') || 
-                codeBlock.className.includes('language-shell')) {
-                textToCopy = textToCopy.replace(/^\$ /gm, '');
-            }
-            
-            navigator.clipboard.writeText(textToCopy).then(function() {
-                button.innerHTML = '<i class="fas fa-check mr-1.5"></i>কপি হয়েছে!';
-                button.classList.remove('bg-gray-800', 'hover:bg-gray-700');
-                button.classList.add('bg-primary', 'hover:bg-primary-dark');
-                setTimeout(function() {
-                    button.innerHTML = '<i class="fas fa-copy mr-1.5"></i>কপি';
-                    button.classList.remove('bg-primary', 'hover:bg-primary-dark');
-                    button.classList.add('bg-gray-800', 'hover:bg-gray-700');
-                }, 2000);
-            }).catch(function() {
-                button.innerHTML = '<i class="fas fa-exclamation mr-1.5"></i>ত্রুটি';
-                button.classList.add('bg-red-600');
-                setTimeout(function() {
-                    button.innerHTML = '<i class="fas fa-copy mr-1.5"></i>কপি';
-                    button.classList.remove('bg-red-600');
-                }, 2000);
-            });
-        });
-    });
-    
-    // TOC Mobile Sheet Toggle
-    const tocToggle = document.getElementById('toc-mobile-toggle');
-    const tocSheet = document.getElementById('toc-mobile-sheet');
-    const tocOverlay = document.getElementById('toc-mobile-overlay');
-    const tocClose = document.getElementById('toc-mobile-close');
-    
-    function openTocSheet() {
-        if (tocSheet && tocOverlay) {
-            tocSheet.classList.add('open');
-            tocOverlay.classList.add('open');
-            document.body.style.overflow = 'hidden'; // Prevent background scrolling
-        }
-    }
-    
-    function closeTocSheet() {
-        if (tocSheet && tocOverlay) {
-            tocSheet.classList.remove('open');
-            tocOverlay.classList.remove('open');
-            document.body.style.overflow = ''; // Restore scrolling
-        }
-    }
-    
-    if (tocToggle) {
-        tocToggle.addEventListener('click', openTocSheet);
-    }
-    
-    if (tocClose) {
-        tocClose.addEventListener('click', closeTocSheet);
-    }
-    
-    if (tocOverlay) {
-        tocOverlay.addEventListener('click', closeTocSheet);
-    }
-    
-    // Close TOC sheet when clicking on a link
-    const tocSheetLinks = document.querySelectorAll('#toc-mobile-sheet a[href^="#"]');
-    tocSheetLinks.forEach(function(link) {
-        link.addEventListener('click', function() {
-            setTimeout(closeTocSheet, 100); // Small delay for smooth navigation
-        });
-    });
-    
-    // Handle escape key
-    document.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape' && tocSheet && tocSheet.classList.contains('open')) {
-            closeTocSheet();
-        }
-    });
-    
-    // Header height for scroll offset calculations
-    const header = document.getElementById('header');
-    const headerHeight = header ? header.offsetHeight : 80; // fallback to 80px
-    const scrollOffset = headerHeight + 20; // Add 20px padding
-    
-    // TOC Active Link Highlighting (works for both desktop and mobile TOC)
-    const tocLinks = document.querySelectorAll('.toc a[href^="#"], #toc-mobile-sheet a[href^="#"]');
-    const sections = document.querySelectorAll('h1[id], h2[id], h3[id], h4[id], h5[id], h6[id]');
-    
-    function updateActiveLink() {
-        let current = '';
-        const scrollPos = window.scrollY + scrollOffset;
-        
-        // Find the current section based on scroll position
-        for (let i = sections.length - 1; i >= 0; i--) {
-            const section = sections[i];
-            const sectionTop = section.offsetTop;
-            
-            if (scrollPos >= sectionTop) {
-                current = section.getAttribute('id');
-                break;
-            }
-        }
-        
-        // If we're at the very top, highlight the first section
-        if (!current && sections.length > 0 && window.scrollY < scrollOffset) {
-            current = sections[0].getAttribute('id');
-        }
-        
-        // Update active states
-        tocLinks.forEach(function(link) {
-            link.classList.remove('active');
-            if (current && link.getAttribute('href') === '#' + current) {
-                link.classList.add('active');
-            }
-        });
-    }
-    
-    // Smooth scroll with header offset for anchor links
-    function smoothScrollToAnchor(targetId) {
-        const targetElement = document.getElementById(targetId);
-        if (targetElement) {
-            const targetPosition = targetElement.offsetTop - scrollOffset;
-            window.scrollTo({
-                top: Math.max(0, targetPosition),
-                behavior: 'smooth'
-            });
-        }
-    }
-    
-    // Handle TOC and anchor link clicks
-    document.addEventListener('click', function(e) {
-        const link = e.target.closest('a[href^="#"]');
-        if (link) {
-            const href = link.getAttribute('href');
-            const targetId = href.substring(1);
-            
-            if (targetId && document.getElementById(targetId)) {
-                e.preventDefault();
-                smoothScrollToAnchor(targetId);
-                
-                // Update URL without jumping
-                if (history.pushState) {
-                    history.pushState(null, null, href);
-                } else {
-                    location.hash = href;
-                }
-                
-                // Close mobile TOC if open
-                if (link.closest('#toc-mobile-sheet')) {
-                    setTimeout(closeTocSheet, 100);
-                }
-            }
-        }
-    });
-    
-    // Handle direct hash navigation (e.g., page load with #anchor)
-    function handleHashNavigation() {
-        const hash = window.location.hash;
-        if (hash && hash.length > 1) {
-            const targetId = hash.substring(1);
-            // Small delay to ensure page is fully loaded
-            setTimeout(function() {
-                smoothScrollToAnchor(targetId);
-            }, 100);
-        }
-    }
-    
-    // Handle hash navigation on page load and hash change
-    handleHashNavigation();
-    window.addEventListener('hashchange', handleHashNavigation);
-    
-    // Update active link on scroll (only for main content, not TOC scroll)
-    let ticking = false;
-    window.addEventListener('scroll', function() {
-        if (!ticking) {
-            requestAnimationFrame(function() {
-                updateActiveLink();
-                ticking = false;
-            });
-            ticking = true;
-        }
-    });
-    
-    // Initial active link update
-    updateActiveLink();
-});
-</script>
 {{ end }}
