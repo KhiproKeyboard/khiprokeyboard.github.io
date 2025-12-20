@@ -1,18 +1,18 @@
 {{ define "main" }}
 <!-- Hero Section -->
-<section id="home" class="pt-16 pb-24 sm:pt-24 sm:pb-32" style="background-color: #ffffff;">
+<section id="home" class="pt-16 pb-24 sm:pt-24 sm:pb-32" style="background-color: var(--color-body-bg);">
   <div class="container mx-auto px-4 sm:px-6 lg:px-8">
     <div class="max-w-7xl mx-auto">
       <div class="grid md:grid-cols-2 gap-12 items-center">
         <!-- Left Column: Title and Description -->
         <div class="order-2 md:order-1">
           <h1
-            class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight mb-6" style="color: #000000;">
+            class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight mb-6" style="color: var(--color-text-primary);">
             <span class="block text-primary-dark"
               >বাংলা টাইপিংয়ে সেরা অভিজ্ঞতার জন্য একটি উদ্যোগ</span
             >
           </h1>
-          <div class="text-lg text-gray-600 space-y-4">
+          <div class="text-lg space-y-4" style="color: var(--color-text-secondary);">
             <p>
               বাংলা ফোনেটিক টাইপিংয়ের জন্য অভ্র জনপ্রিয় হলেও, বারবার Shift চাপা
               এবং কিছু key দূরে থাকার কারণে গতি ও ফ্লো নষ্ট হয়।
@@ -26,7 +26,7 @@
           <div class="mt-8">
             <a
               href="/docs"
-              class="bg-primary-dark hover:bg-accent text-white font-medium px-8 py-4 rounded-lg transition-all duration-300 transform hover:-translate-y-0.5 inline-block shadow-lg">
+              class="btn-primary text-white font-medium px-8 py-4 rounded-lg transition-all duration-300 transform hover:-translate-y-0.5 inline-block shadow-lg">
               ক্ষিপ্র ব্যবহার নির্দেশিকা
             </a>
           </div>
@@ -45,14 +45,14 @@
 </section>
 
 <!-- FAQ Section -->
-<section id="faq" class="py-20 sm:py-24 bg-gray-50">
+<section id="faq" class="py-20 sm:py-24" style="background-color: var(--color-secondary-bg);">
   <div class="container mx-auto px-4 sm:px-6 lg:px-8">
     <div class="text-center mb-16">
       <h2
-        class="text-3xl sm:text-4xl font-bold text-gray-900 relative inline-block pb-2.5 after:content-[''] after:absolute after:bottom-0 after:left-1/2 after:transform after:-translate-x-1/2 after:w-[70px] after:h-0.5 after:bg-primary-dark after:transition-all after:duration-300 after:rounded-full">
+        class="text-3xl sm:text-4xl font-bold relative inline-block pb-2.5 after:content-[''] after:absolute after:bottom-0 after:left-1/2 after:transform after:-translate-x-1/2 after:w-[70px] after:h-0.5 after:bg-primary-dark after:transition-all after:duration-300 after:rounded-full" style="color: var(--color-text-primary);">
         প্রায়শই জিজ্ঞাসিত প্রশ্ন
       </h2>
-      <p class="mt-4 max-w-2xl mx-auto text-lg text-gray-600">
+      <p class="mt-4 max-w-2xl mx-auto text-lg" style="color: var(--color-text-secondary);">
         ক্ষিপ্র কিবোর্ড সম্পর্কে সাধারণ প্রশ্ন এবং উত্তর
       </p>
     </div>
@@ -62,17 +62,17 @@
         <!-- Left Column FAQs -->
         <div class="space-y-4">
           <!-- FAQ Item 1 -->
-          <div class="faq-item bg-white rounded-lg shadow-md overflow-hidden">
+          <div class="faq-item rounded-lg shadow-md overflow-hidden" style="background-color: var(--color-card-bg);">
             <button
-              class="faq-question w-full text-left px-6 py-4 flex items-center justify-between hover:bg-gray-50 transition-colors">
-              <span class="font-semibold text-gray-900"
+              class="faq-question w-full text-left px-6 py-4 flex items-center justify-between transition-colors" style="hover:background-color: var(--color-border-light);">
+              <span class="font-semibold" style="color: var(--color-text-primary);"
                 >ক্ষিপ্র কিবোর্ড কী?</span
               >
               <i
                 class="fas fa-chevron-down text-primary transition-transform duration-300"></i>
             </button>
             <div
-              class="faq-answer hidden px-6 py-4 text-gray-600 border-t border-gray-200">
+              class="faq-answer hidden px-6 py-4 border-t" style="color: var(--color-text-secondary); border-color: var(--color-border-light);">
               <p>
                 <!-- এখানে উত্তর লেখা হবে -->
               </p>
@@ -80,17 +80,17 @@
           </div>
 
           <!-- FAQ Item 2 -->
-          <div class="faq-item bg-white rounded-lg shadow-md overflow-hidden">
+          <div class="faq-item rounded-lg shadow-md overflow-hidden" style="background-color: var(--color-card-bg);">
             <button
-              class="faq-question w-full text-left px-6 py-4 flex items-center justify-between hover:bg-gray-50 transition-colors">
-              <span class="font-semibold text-gray-900"
+              class="faq-question w-full text-left px-6 py-4 flex items-center justify-between transition-colors" style="hover:background-color: var(--color-border-light);">
+              <span class="font-semibold" style="color: var(--color-text-primary);"
                 >ক্ষিপ্র কোন প্ল্যাটফর্মে পাওয়া যায়?</span
               >
               <i
                 class="fas fa-chevron-down text-primary transition-transform duration-300"></i>
             </button>
             <div
-              class="faq-answer hidden px-6 py-4 text-gray-600 border-t border-gray-200">
+              class="faq-answer hidden px-6 py-4 border-t" style="color: var(--color-text-secondary); border-color: var(--color-border-light);">
               <p>
                 <!-- এখানে উত্তর লেখা হবে -->
               </p>
@@ -98,17 +98,17 @@
           </div>
 
           <!-- FAQ Item 3 -->
-          <div class="faq-item bg-white rounded-lg shadow-md overflow-hidden">
+          <div class="faq-item rounded-lg shadow-md overflow-hidden" style="background-color: var(--color-card-bg);">
             <button
-              class="faq-question w-full text-left px-6 py-4 flex items-center justify-between hover:bg-gray-50 transition-colors">
-              <span class="font-semibold text-gray-900"
+              class="faq-question w-full text-left px-6 py-4 flex items-center justify-between transition-colors" style="hover:background-color: var(--color-border-light);">
+              <span class="font-semibold" style="color: var(--color-text-primary);"
                 >অভ্র থেকে ক্ষিপ্রর পার্থক্য কী?</span
               >
               <i
                 class="fas fa-chevron-down text-primary transition-transform duration-300"></i>
             </button>
             <div
-              class="faq-answer hidden px-6 py-4 text-gray-600 border-t border-gray-200">
+              class="faq-answer hidden px-6 py-4 border-t" style="color: var(--color-text-secondary); border-color: var(--color-border-light);">
               <p>
                 <!-- এখানে উত্তর লেখা হবে -->
               </p>
@@ -116,17 +116,17 @@
           </div>
 
           <!-- FAQ Item 4 -->
-          <div class="faq-item bg-white rounded-lg shadow-md overflow-hidden">
+          <div class="faq-item rounded-lg shadow-md overflow-hidden" style="background-color: var(--color-card-bg);">
             <button
-              class="faq-question w-full text-left px-6 py-4 flex items-center justify-between hover:bg-gray-50 transition-colors">
-              <span class="font-semibold text-gray-900"
+              class="faq-question w-full text-left px-6 py-4 flex items-center justify-between transition-colors" style="hover:background-color: var(--color-border-light);">
+              <span class="font-semibold" style="color: var(--color-text-primary);"
                 >ক্ষিপ্র শিখতে কতদিন লাগে?</span
               >
               <i
                 class="fas fa-chevron-down text-primary transition-transform duration-300"></i>
             </button>
             <div
-              class="faq-answer hidden px-6 py-4 text-gray-600 border-t border-gray-200">
+              class="faq-answer hidden px-6 py-4 border-t" style="color: var(--color-text-secondary); border-color: var(--color-border-light);">
               <p>
                 <!-- এখানে উত্তর লেখা হবে -->
               </p>
@@ -137,17 +137,17 @@
         <!-- Right Column FAQs -->
         <div class="space-y-4">
           <!-- FAQ Item 5 -->
-          <div class="faq-item bg-white rounded-lg shadow-md overflow-hidden">
+          <div class="faq-item rounded-lg shadow-md overflow-hidden" style="background-color: var(--color-card-bg);">
             <button
-              class="faq-question w-full text-left px-6 py-4 flex items-center justify-between hover:bg-gray-50 transition-colors">
-              <span class="font-semibold text-gray-900"
+              class="faq-question w-full text-left px-6 py-4 flex items-center justify-between transition-colors" style="hover:background-color: var(--color-border-light);">
+              <span class="font-semibold" style="color: var(--color-text-primary);"
                 >টাইপিং বুস্টার কী?</span
               >
               <i
                 class="fas fa-chevron-down text-primary transition-transform duration-300"></i>
             </button>
             <div
-              class="faq-answer hidden px-6 py-4 text-gray-600 border-t border-gray-200">
+              class="faq-answer hidden px-6 py-4 border-t" style="color: var(--color-text-secondary); border-color: var(--color-border-light);">
               <p>
                 <!-- এখানে উত্তর লেখা হবে -->
               </p>
@@ -155,17 +155,17 @@
           </div>
 
           <!-- FAQ Item 6 -->
-          <div class="faq-item bg-white rounded-lg shadow-md overflow-hidden">
+          <div class="faq-item rounded-lg shadow-md overflow-hidden" style="background-color: var(--color-card-bg);">
             <button
-              class="faq-question w-full text-left px-6 py-4 flex items-center justify-between hover:bg-gray-50 transition-colors">
-              <span class="font-semibold text-gray-900"
+              class="faq-question w-full text-left px-6 py-4 flex items-center justify-between transition-colors" style="hover:background-color: var(--color-border-light);">
+              <span class="font-semibold" style="color: var(--color-text-primary);"
                 >ক্ষিপ্র কি ওপেন সোর্স?</span
               >
               <i
                 class="fas fa-chevron-down text-primary transition-transform duration-300"></i>
             </button>
             <div
-              class="faq-answer hidden px-6 py-4 text-gray-600 border-t border-gray-200">
+              class="faq-answer hidden px-6 py-4 border-t" style="color: var(--color-text-secondary); border-color: var(--color-border-light);">
               <p>
                 <!-- এখানে উত্তর লেখা হবে -->
               </p>
@@ -173,17 +173,17 @@
           </div>
 
           <!-- FAQ Item 7 -->
-          <div class="faq-item bg-white rounded-lg shadow-md overflow-hidden">
+          <div class="faq-item rounded-lg shadow-md overflow-hidden" style="background-color: var(--color-card-bg);">
             <button
-              class="faq-question w-full text-left px-6 py-4 flex items-center justify-between hover:bg-gray-50 transition-colors">
-              <span class="font-semibold text-gray-900"
+              class="faq-question w-full text-left px-6 py-4 flex items-center justify-between transition-colors" style="hover:background-color: var(--color-border-light);">
+              <span class="font-semibold" style="color: var(--color-text-primary);"
                 >সাপোর্ট কোথায় পাবো?</span
               >
               <i
                 class="fas fa-chevron-down text-primary transition-transform duration-300"></i>
             </button>
             <div
-              class="faq-answer hidden px-6 py-4 text-gray-600 border-t border-gray-200">
+              class="faq-answer hidden px-6 py-4 border-t" style="color: var(--color-text-secondary); border-color: var(--color-border-light);">
               <p>
                 <!-- এখানে উত্তর লেখা হবে -->
               </p>
@@ -191,17 +191,17 @@
           </div>
 
           <!-- FAQ Item 8 -->
-          <div class="faq-item bg-white rounded-lg shadow-md overflow-hidden">
+          <div class="faq-item rounded-lg shadow-md overflow-hidden" style="background-color: var(--color-card-bg);">
             <button
-              class="faq-question w-full text-left px-6 py-4 flex items-center justify-between hover:bg-gray-50 transition-colors">
-              <span class="font-semibold text-gray-900"
+              class="faq-question w-full text-left px-6 py-4 flex items-center justify-between transition-colors" style="hover:background-color: var(--color-border-light);">
+              <span class="font-semibold" style="color: var(--color-text-primary);"
                 >ক্ষিপ্রতে অবদান রাখতে চাই</span
               >
               <i
                 class="fas fa-chevron-down text-primary transition-transform duration-300"></i>
             </button>
             <div
-              class="faq-answer hidden px-6 py-4 text-gray-600 border-t border-gray-200">
+              class="faq-answer hidden px-6 py-4 border-t" style="color: var(--color-text-secondary); border-color: var(--color-border-light);">
               <p>
                 <!-- এখানে উত্তর লেখা হবে -->
               </p>
@@ -214,14 +214,14 @@
 </section>
 
 <!-- Installation Section -->
-<section id="installation" class="py-20 sm:py-24 bg-white">
+<section id="installation" class="py-20 sm:py-24" style="background-color: var(--color-body-bg);">
   <div class="container mx-auto px-4 sm:px-6 lg:px-8">
     <div class="text-center mb-16">
       <h2
-        class="text-3xl sm:text-4xl font-bold text-gray-900 relative inline-block pb-2.5 after:content-[''] after:absolute after:bottom-0 after:left-1/2 after:transform after:-translate-x-1/2 after:w-[70px] after:h-0.5 after:bg-primary-dark after:transition-all after:duration-300 after:rounded-full">
+        class="text-3xl sm:text-4xl font-bold relative inline-block pb-2.5 after:content-[''] after:absolute after:bottom-0 after:left-1/2 after:transform after:-translate-x-1/2 after:w-[70px] after:h-0.5 after:bg-primary-dark after:transition-all after:duration-300 after:rounded-full" style="color: var(--color-text-primary);">
         আপনার ডিভাইসে ক্ষিপ্র
       </h2>
-      <p class="mt-4 max-w-2xl mx-auto text-lg text-gray-600">
+      <p class="mt-4 max-w-2xl mx-auto text-lg" style="color: var(--color-text-secondary);">
         ক্ষিপ্র শুধু একটি সফটওয়্যার নয়, এটি বাংলা টাইপিং-এর একটি নতুন আইডিয়া।
         আনুষ্ঠানিকভাবে ক্ষিপ্র লিনাক্সের পাশাপাশি অ্যান্ড্রয়েড ও উইন্ডোজেও
         ব্যবহার করা যাচ্ছে।
@@ -229,7 +229,7 @@
     </div>
     <div class="mt-12 max-w-4xl mx-auto">
       <div
-        class="mb-6 border-b border-gray-300 flex justify-center space-x-2 sm:space-x-4"
+        class="mb-6 flex justify-center space-x-2 sm:space-x-4 border-b" style="border-color: var(--color-border-medium);"
         role="tablist">
         <button
           class="tab-button active text-sm sm:text-base font-semibold py-3 px-4 sm:px-6 border-b-2 border-primary text-primary"
@@ -239,14 +239,14 @@
           <i class="fab fa-linux"></i> লিনাক্স
         </button>
         <button
-          class="tab-button text-sm sm:text-base font-semibold py-3 px-4 sm:px-6 border-b-2 border-transparent text-gray-500 hover:text-gray-700 transition-colors"
+          class="tab-button text-sm sm:text-base font-semibold py-3 px-4 sm:px-6 border-b-2 border-transparent transition-colors" style="color: var(--color-text-muted); hover:color: var(--color-text-primary);"
           data-tab="windows"
           role="tab"
           aria-selected="false">
           <i class="fab fa-windows"></i> উইন্ডোজ
         </button>
         <button
-          class="tab-button text-sm sm:text-base font-semibold py-3 px-4 sm:px-6 border-b-2 border-transparent text-gray-500 hover:text-gray-700 transition-colors"
+          class="tab-button text-sm sm:text-base font-semibold py-3 px-4 sm:px-6 border-b-2 border-transparent transition-colors" style="color: var(--color-text-muted); hover:color: var(--color-text-primary);"
           data-tab="android"
           role="tab"
           aria-selected="false">
@@ -257,7 +257,7 @@
         <div class="tab-pane active" id="linux" role="tabpanel">
           <div class="max-w-3xl mx-auto">
             <div class="grid md:grid-cols-2 gap-6 mb-8">
-              <div class="bg-white p-6 rounded-2xl shadow-md">
+              <div class="p-6 rounded-2xl shadow-md" style="background-color: var(--color-card-bg);">
                 <div class="flex items-center mb-4">
                   <div
                     class="w-10 h-10 rounded-full bg-icon-primary flex items-center justify-center text-white mr-3">
@@ -267,7 +267,7 @@
                     ক্ষিপ্র m17n
                   </h3>
                 </div>
-                <p class="text-gray-600 mb-4">
+                <p class="mb-4" style="color: var(--color-text-secondary);">
                   লিনাক্সে IBus অথবা Fcitx5 উভয় ইনপুট মেথডেই ক্ষিপ্র m17n এর
                   মাধ্যমে ক্ষিপ্র ইনপুট মেথড ব্যবহার করে দ্রুত বাংলা লেখা যাবে।
                 </p>
@@ -277,7 +277,7 @@
                   বিস্তারিত দেখুন
                 </a>
               </div>
-              <div class="bg-white p-6 rounded-2xl shadow-md">
+              <div class="p-6 rounded-2xl shadow-md" style="background-color: var(--color-card-bg);">
                 <div class="flex items-center mb-4">
                   <div
                     class="w-10 h-10 rounded-full bg-icon-primary flex items-center justify-center text-white mr-3">
@@ -287,7 +287,7 @@
                     টাইপিং বুস্টার কনফিগারেশন
                   </h3>
                 </div>
-                <p class="text-gray-600 mb-4">
+                <p class="mb-4" style="color: var(--color-text-secondary);">
                   ক্ষিপ্রর সাথে টাইপিং বুস্টার সঠিকভাবে কনফিগার করে ব্যবহার করলে
                   বাংলা টাইপিং অভিজ্ঞতাকে আরো ক্ষিপ্রতর করা সম্ভব।
                 </p>
@@ -303,7 +303,7 @@
         <div class="tab-pane hidden" id="windows" role="tabpanel">
           <div class="max-w-3xl mx-auto">
             <div class="grid md:grid-cols-2 gap-6">
-              <div class="bg-white p-6 rounded-2xl shadow-md">
+              <div class="p-6 rounded-2xl shadow-md" style="background-color: var(--color-card-bg);">
                 <div class="flex items-center mb-4">
                   <div
                     class="w-10 h-10 rounded-full bg-icon-primary flex items-center justify-center text-white mr-3">
@@ -313,7 +313,7 @@
                     বর্ণ কিবোর্ডে ক্ষিপ্র
                   </h3>
                 </div>
-                <p class="text-gray-600 mb-4">
+                <p class="mb-4" style="color: var(--color-text-secondary);">
                   Codepotro-এর জনপ্রিয় কিবোর্ড বর্ণ-এর নতুন দুটি ভ্যারিয়েন্ট Borno Native ও Borno Drops-এ ক্ষিপ্র লেআউট বিল্ট-ইন।
                 </p>
                 <a
@@ -322,7 +322,7 @@
                   বিস্তারিত দেখুন
                 </a>
               </div>
-              <div class="bg-white p-6 rounded-2xl shadow-md">
+              <div class="p-6 rounded-2xl shadow-md" style="background-color: var(--color-card-bg);">
                 <div class="flex items-center mb-4">
                   <div
                     class="w-10 h-10 rounded-full bg-icon-primary flex items-center justify-center text-white mr-3">
@@ -332,7 +332,7 @@
                     NMS Kontho-তে ক্ষিপ্র
                   </h3>
                 </div>
-                <p class="text-gray-600 mb-4">
+                <p class="mb-4" style="color: var(--color-text-secondary);">
                   NMS Kontho অ্যাপ্লিকেশনের জন্য কমিউনিটির তৈরি কাস্টম ক্ষিপ্র
                   লেআউট।
                 </p>
@@ -348,7 +348,7 @@
         <div class="tab-pane hidden" id="android" role="tabpanel">
           <div class="max-w-3xl mx-auto">
             <div class="grid md:grid-cols-2 gap-6">
-              <div class="bg-white p-6 rounded-2xl shadow-md">
+              <div class="p-6 rounded-2xl shadow-md" style="background-color: var(--color-card-bg);">
                 <div class="flex items-center mb-4">
                   <div
                     class="w-10 h-10 rounded-full bg-icon-primary flex items-center justify-center text-white mr-3">
@@ -358,7 +358,7 @@
                     হেলিবোর্ডে ক্ষিপ্র
                   </h3>
                 </div>
-                <p class="text-gray-600 mb-4">
+                <p class="mb-4" style="color: var(--color-text-secondary);">
                   ওপেন সোর্স হেলিবোর্ড অ্যান্ড্রয়েড কিবোর্ডে অফিশিয়ালি ক্ষিপ্র
                   লেআউট যুক্ত করা হয়েছে। HeliBoard 3.6-beta1 থেকে সকল পরবর্তী
                   রিলিজে ক্ষিপ্র লেআউট ব্যবহার করা যাবে।
@@ -369,7 +369,7 @@
                   বিস্তারিত দেখুন
                 </a>
               </div>
-              <div class="bg-white p-6 rounded-2xl shadow-md">
+              <div class="p-6 rounded-2xl shadow-md" style="background-color: var(--color-card-bg);">
                 <div class="flex items-center mb-4">
                   <div
                     class="w-10 h-10 rounded-full bg-icon-primary flex items-center justify-center text-white mr-3">
@@ -379,7 +379,7 @@
                     বর্ণ অ্যান্ড্রয়েড
                   </h3>
                 </div>
-                <p class="text-gray-600 mb-4">
+                <p class="mb-4" style="color: var(--color-text-secondary);">
                   Codepotro টিম তাদের জনপ্রিয় Borno Android কিবোর্ডে ক্ষিপ্র
                   যুক্ত করবেন বলে জানিয়েছেন। পরবর্তী আপডেটগুলো থেকে বর্ণ
                   অ্যান্ড্রয়েডে ক্ষিপ্র লেয়াউট ব্যবহার করা যাবে।
@@ -399,14 +399,14 @@
 </section>
 
 <!-- Repositories Section -->
-<section id="repositories" class="py-20 sm:py-24 bg-gray-50">
+<section id="repositories" class="py-20 sm:py-24" style="background-color: var(--color-secondary-bg);">
   <div class="container mx-auto px-4 sm:px-6 lg:px-8">
     <div class="text-center mb-16">
       <h2
-        class="text-3xl sm:text-4xl font-bold text-gray-900 relative inline-block pb-2.5 after:content-[''] after:absolute after:bottom-0 after:left-1/2 after:transform after:-translate-x-1/2 after:w-[70px] after:h-0.5 after:bg-primary-dark after:transition-all after:duration-300 after:rounded-full">
+        class="text-3xl sm:text-4xl font-bold relative inline-block pb-2.5 after:content-[''] after:absolute after:bottom-0 after:left-1/2 after:transform after:-translate-x-1/2 after:w-[70px] after:h-0.5 after:bg-primary-dark after:transition-all after:duration-300 after:rounded-full" style="color: var(--color-text-primary);">
         ক্ষিপ্র রিপোজিটরি সমূহ
       </h2>
-      <p class="mt-4 max-w-2xl mx-auto text-lg text-gray-600">
+      <p class="mt-4 max-w-2xl mx-auto text-lg" style="color: var(--color-text-secondary);">
         ক্ষিপ্র কিবোর্ডের বিভিন্ন প্ল্যাটফর্মের জন্য তৈরি করা রিপোজিটরি গুলো
         দেখুন। প্রতিটি রিপোজিটরি আলাদা প্ল্যাটফর্মের জন্য অপ্টিমাইজ করা।
       </p>
@@ -414,7 +414,7 @@
     <div class="grid md:grid-cols-2 gap-6 max-w-6xl mx-auto">
       <!-- khipro-m17n Repository -->
       <div
-        class="bg-white p-6 rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+        class="p-6 rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1" style="background-color: var(--color-card-bg);">
         <div class="flex items-center mb-4">
           <div
             class="w-12 h-12 rounded-full bg-icon-primary flex items-center justify-center text-white mr-4">
@@ -422,7 +422,7 @@
           </div>
           <div>
             <h3 class="text-xl font-bold text-primary-dark">khipro-m17n</h3>
-            <p class="text-sm text-gray-500">
+            <p class="text-sm" style="color: var(--color-text-muted);">
               মেইনটেইনার:
               <a
                 href="https://github.com/rank-coder"
@@ -433,7 +433,7 @@
             </p>
           </div>
         </div>
-        <p class="text-gray-600 mb-4 leading-relaxed">
+        <p class="mb-4 leading-relaxed" style="color: var(--color-text-secondary);">
           ক্ষিপ্র-m17n হলো লিনাক্সে m17n এ ব্যবহার উপযোগী ক্ষিপ্র লেআউট। ক্ষিপ্র
           কনসেপ্টের প্রথম অফিশিয়াল রিপোজিটরি এটি।
         </p>
@@ -450,7 +450,7 @@
 
       <!-- khipro-python Repository -->
       <div
-        class="bg-white p-6 rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+        class="p-6 rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1" style="background-color: var(--color-card-bg);">
         <div class="flex items-center mb-4">
           <div
             class="w-12 h-12 rounded-full bg-icon-primary flex items-center justify-center text-white mr-4">
@@ -458,7 +458,7 @@
           </div>
           <div>
             <h3 class="text-xl font-bold text-primary-dark">khipro-python</h3>
-            <p class="text-sm text-gray-500">
+            <p class="text-sm" style="color: var(--color-text-muted);">
               মেইনটেইনার:
               <a
                 href="https://github.com/rank-coder"
@@ -469,7 +469,7 @@
             </p>
           </div>
         </div>
-        <p class="text-gray-600 mb-4 leading-relaxed">
+        <p class="mb-4 leading-relaxed" style="color: var(--color-text-secondary);">
           উইন্ডোজ কিংবা অন্যান্য অপারেটিং সিস্টেমে কিংবা IM-এ ক্ষিপ্র সাপোর্ট
           আনতে ডেভেলপারদের জন্য পাইথনে ক্ষিপ্রর একটা ভার্শন তৈরি করা হয়েছে।
           এটাতে ক্ষিপ্রর পরিপূর্ণ লজিক কপি করা হয়েছে।
@@ -487,7 +487,7 @@
 
       <!-- khipro-cpp Repository -->
       <div
-        class="bg-white p-6 rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+        class="p-6 rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1" style="background-color: var(--color-card-bg);">
         <div class="flex items-center mb-4">
           <div
             class="w-12 h-12 rounded-full bg-icon-primary flex items-center justify-center text-white mr-4">
@@ -495,7 +495,7 @@
           </div>
           <div>
             <h3 class="text-xl font-bold text-primary-dark">khipro-cpp</h3>
-            <p class="text-sm text-gray-500">
+            <p class="text-sm" style="color: var(--color-text-muted);">
               মেইনটেইনার:
               <a
                 href="https://github.com/JayedAhsan"
@@ -506,7 +506,7 @@
             </p>
           </div>
         </div>
-        <p class="text-gray-600 mb-4 leading-relaxed">
+        <p class="mb-4 leading-relaxed" style="color: var(--color-text-secondary);">
           ক্ষিপ্র কিবোর্ড লেআউটের C++ পোর্ট।
         </p>
         <div class="flex gap-3">
@@ -522,7 +522,7 @@
 
       <!-- khipro-nms Repository -->
       <div
-        class="bg-white p-6 rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+        class="p-6 rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1" style="background-color: var(--color-card-bg);">
         <div class="flex items-center mb-4">
           <div
             class="w-12 h-12 rounded-full bg-icon-primary flex items-center justify-center text-white mr-4">
@@ -530,7 +530,7 @@
           </div>
           <div>
             <h3 class="text-xl font-bold text-primary-dark">khipro-nms</h3>
-            <p class="text-sm text-gray-500">
+            <p class="text-sm" style="color: var(--color-text-muted);">
               মেইনটেইনার:
               <a
                 href="https://github.com/Shoshostro"
@@ -541,7 +541,7 @@
             </p>
           </div>
         </div>
-        <p class="text-gray-600 mb-4 leading-relaxed">
+        <p class="mb-4 leading-relaxed" style="color: var(--color-text-secondary);">
           ক্ষিপ্র-ভিত্তিক NMS Kontho লেআউট। এটি NMS Kontho অ্যাপ্লিকেশনের সাথে
           ব্যবহারের জন্য ডেভেলপ করা হয়েছে।
         </p>
@@ -560,13 +560,13 @@
 </section>
 
 <!-- Community Section -->
-<section id="community" class="py-20 sm:py-24 pb-32 md:pb-24 bg-white">
+<section id="community" class="py-20 sm:py-24 pb-32 md:pb-24" style="background-color: var(--color-body-bg);">
   <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
     <h2
-      class="text-3xl sm:text-4xl font-bold text-gray-900 relative inline-block pb-2.5 after:content-[''] after:absolute after:bottom-0 after:left-1/2 after:transform after:-translate-x-1/2 after:w-[70px] after:h-0.5 after:bg-primary-dark after:transition-all after:duration-300 after:rounded-full">
+      class="text-3xl sm:text-4xl font-bold relative inline-block pb-2.5 after:content-[''] after:absolute after:bottom-0 after:left-1/2 after:transform after:-translate-x-1/2 after:w-[70px] after:h-0.5 after:bg-primary-dark after:transition-all after:duration-300 after:rounded-full" style="color: var(--color-text-primary);">
       আমাদের আড্ডায় যোগ দিন
     </h2>
-    <p class="mt-4 max-w-2xl mx-auto text-lg text-gray-600">
+    <p class="mt-4 max-w-2xl mx-auto text-lg" style="color: var(--color-text-secondary);">
       ক্ষিপ্র একটি কমিউনিটি প্রজেক্ট। আপনার যেকোনো প্রশ্ন, আইডিয়া বা সমস্যা
       নিয়ে সরাসরি চলে আসুন আমাদের আড্ডায়। আপনার অংশগ্রহণই আমাদের এগিয়ে চলার
       প্রেরণা।
@@ -575,25 +575,25 @@
       <a
         href="https://t.me/KhiproKeyboard"
         target="_blank"
-        class="bg-white p-6 rounded-xl shadow-md flex items-center space-x-4 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:bg-white/95">
+        class="p-6 rounded-xl shadow-md flex items-center space-x-4 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:bg-white/95" style="background-color: var(--color-card-bg);">
         <span class="text-4xl text-primary"
           ><i class="fab fa-telegram"></i
         ></span>
         <div class="text-left">
           <h3 class="font-semibold text-lg">টেলিগ্রাম গ্রুপ</h3>
-          <p class="text-gray-500">সরাসরি আলোচনা ও সাপোর্টের জন্য</p>
+          <p style="color: var(--color-text-muted);">সরাসরি আলোচনা ও সাপোর্টের জন্য</p>
         </div>
       </a>
       <a
         href="https://github.com/KhiproKeyboard"
         target="_blank"
-        class="bg-white p-6 rounded-xl shadow-md flex items-center space-x-4 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:bg-white/95">
-        <span class="text-4xl text-gray-800"
+        class="p-6 rounded-xl shadow-md flex items-center space-x-4 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:bg-white/95" style="background-color: var(--color-card-bg);">
+        <span class="text-4xl" style="color: var(--color-text-muted);"
           ><i class="fab fa-github"></i
         ></span>
         <div class="text-left">
           <h3 class="font-semibold text-lg">গিটহাব অর্গানাইজেশন</h3>
-          <p class="text-gray-500">কোড দেখুন এবং উন্নয়নে অংশ নিন</p>
+          <p style="color: var(--color-text-muted);">কোড দেখুন এবং উন্নয়নে অংশ নিন</p>
         </div>
       </a>
     </div>

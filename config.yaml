@@ -38,7 +38,6 @@ security:
     methods: []
     urls: []
 
-# Enable KaTeX for math rendering
 params:
   description: "দ্রুততম বাংলা কিবোর্ড"
   math: true
@@ -46,24 +45,21 @@ params:
 
 menu:
   main:
-    - name: "পরিচিতি"
-      url: "/#home"
-      weight: 10
     - name: "এফ-এ-কিউ"
       url: "/#faq"
-      weight: 15
+      weight: 10
     - name: "ইনস্টলেশন"
       url: "/#installation"
-      weight: 20
+      weight: 15
     - name: "ডকুমেন্টেশন"
       url: "/documentation/"
-      weight: 25
+      weight: 20
     - name: "কুইকস্টার্ট"
       url: "/quickstart/"
-      weight: 30
+      weight: 25
     - name: "কমিউনিটি"
       url: "/#community"
-      weight: 40
+      weight: 30
 
 outputs:
   home: ["HTML", "RSS", "SiteMap"]

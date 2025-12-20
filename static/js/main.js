@@ -2,6 +2,93 @@
 // Moved from inline scripts in layouts/_default/single.html
 
 document.addEventListener('DOMContentLoaded', function() {
+    // Mobile Menu Drawer Functionality
+    const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+    const mobileMenuDrawer = document.getElementById('mobile-menu-drawer');
+    const menuOverlay = document.getElementById('menu-overlay');
+    const mobileMenuItems = document.querySelectorAll('.mobile-menu-item');
+
+    function openMobileMenu() {
+        mobileMenuDrawer.style.display = 'block';
+        // Force reflow before adding open class
+        mobileMenuDrawer.offsetHeight;
+        mobileMenuDrawer.classList.add('open');
+        mobileMenuDrawer.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden'; // Prevent background scrolling
+        // Set ARIA attributes
+        mobileMenuToggle.setAttribute('aria-expanded', 'true');
+        // Change hamburger to X icon
+        mobileMenuToggle.innerHTML = '<i class="fas fa-times text-xl"></i>';
+    }
+
+    function closeMobileMenu() {
+        mobileMenuDrawer.classList.remove('open');
+        mobileMenuDrawer.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = ''; // Restore scrolling
+        // Set ARIA attributes
+        mobileMenuToggle.setAttribute('aria-expanded', 'false');
+        // Change X back to hamburger icon
+        mobileMenuToggle.innerHTML = '<i class="fas fa-bars text-xl"></i>';
+        // Hide after transition
+        setTimeout(() => {
+            if (!mobileMenuDrawer.classList.contains('open')) {
+                mobileMenuDrawer.style.display = 'none';
+            }
+        }, 300);
+    }
+
+    // Toggle menu open/close
+    if (mobileMenuToggle) {
+        mobileMenuToggle.addEventListener('click', function(e) {
+            e.preventDefault();
+            if (mobileMenuDrawer.classList.contains('open')) {
+                closeMobileMenu();
+            } else {
+                openMobileMenu();
+            }
+        });
+    }
+
+    // Close menu when clicking overlay
+    if (menuOverlay) {
+        menuOverlay.addEventListener('click', closeMobileMenu);
+    }
+
+    // Close menu when clicking on a menu item
+    mobileMenuItems.forEach(function(item) {
+        item.addEventListener('click', function() {
+            closeMobileMenu();
+        });
+    });
+
+    // Close menu with Escape key
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && mobileMenuDrawer.classList.contains('open')) {
+            closeMobileMenu();
+        }
+    });
+
+    // Dark Mode Toggle (Visual Only - Click Handler for Future Implementation)
+    const darkModeToggle = document.getElementById('dark-mode-toggle');
+    const darkModeToggleMobile = document.getElementById('dark-mode-toggle-mobile');
+
+    function handleDarkModeToggle(button) {
+        if (button) {
+            button.addEventListener('click', function(e) {
+                e.preventDefault();
+                // Visual feedback only - no actual theme switching
+                this.innerHTML = '<i class="fas fa-sun text-lg"></i>';
+                setTimeout(() => {
+                    this.innerHTML = '<i class="fas fa-moon text-lg"></i>';
+                }, 500);
+            });
+        }
+    }
+
+    // Initialize both desktop and mobile dark mode toggles
+    handleDarkModeToggle(darkModeToggle);
+    handleDarkModeToggle(darkModeToggleMobile);
+
     // Wrap tables in responsive containers
     const tables = document.querySelectorAll('table'); // Target ALL tables
     tables.forEach(function(table) {
@@ -118,19 +205,22 @@ document.addEventListener('DOMContentLoaded', function() {
     const tocSheet = document.getElementById('toc-mobile-sheet');
     const tocOverlay = document.getElementById('toc-mobile-overlay');
     const tocClose = document.getElementById('toc-mobile-close');
+    const tocCloseBottom = document.getElementById('toc-mobile-close-bottom');
 
     function openTocSheet() {
-        if (tocSheet && tocOverlay) {
+        if (tocSheet && tocOverlay && tocToggle) {
             tocSheet.classList.add('open');
             tocOverlay.classList.add('open');
+            tocToggle.classList.add('toc-open'); // Change button icon
             document.body.style.overflow = 'hidden'; // Prevent background scrolling
         }
     }
 
     function closeTocSheet() {
-        if (tocSheet && tocOverlay) {
+        if (tocSheet && tocOverlay && tocToggle) {
             tocSheet.classList.remove('open');
             tocOverlay.classList.remove('open');
+            tocToggle.classList.remove('toc-open'); // Change button icon back
             document.body.style.overflow = ''; // Restore scrolling
         }
     }
@@ -143,12 +233,16 @@ document.addEventListener('DOMContentLoaded', function() {
         tocClose.addEventListener('click', closeTocSheet);
     }
 
+    if (tocCloseBottom) {
+        tocCloseBottom.addEventListener('click', closeTocSheet);
+    }
+
     if (tocOverlay) {
         tocOverlay.addEventListener('click', closeTocSheet);
     }
 
     // Close TOC sheet when clicking on a link
-    const tocSheetLinks = document.querySelectorAll('#toc-mobile-sheet a[href^="#"]');
+    const tocSheetLinks = document.querySelectorAll('#toc-mobile-sheet .toc-tree a[href^="#"]');
     tocSheetLinks.forEach(function(link) {
         link.addEventListener('click', function() {
             setTimeout(closeTocSheet, 100); // Small delay for smooth navigation
@@ -168,7 +262,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const scrollOffset = headerHeight + 20; // Add 20px padding
 
     // TOC Active Link Highlighting (works for both desktop and mobile TOC)
-    const tocLinks = document.querySelectorAll('.toc a[href^="#"], #toc-mobile-sheet a[href^="#"]');
+    const tocLinks = document.querySelectorAll('.toc-tree a[href^="#"]');
     const sections = document.querySelectorAll('h1[id], h2[id], h3[id], h4[id], h5[id], h6[id]');
 
     function updateActiveLink() {

@@ -5,6 +5,90 @@ html {
     scroll-behavior: smooth;
 }
 
+/* Unified Header Styles */
+/* Mobile Menu Drawer States */
+#mobile-menu-drawer {
+    visibility: hidden;
+    opacity: 0;
+}
+
+#mobile-menu-drawer.open {
+    visibility: visible;
+    opacity: 1;
+}
+
+#mobile-menu-drawer:not(.open) #menu-overlay {
+    opacity: 0;
+    pointer-events: none;
+}
+
+#mobile-menu-drawer.open #menu-overlay {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+#mobile-menu-drawer:not(.open) #menu-panel {
+    transform: translateY(-100%);
+}
+
+#mobile-menu-drawer.open #menu-panel {
+    transform: translateY(0);
+}
+
+/* Prevent body scroll when mobile menu is open */
+body.menu-open {
+    overflow: hidden;
+}
+
+/* Mobile Menu Item Hover Effects */
+.mobile-menu-item {
+    position: relative;
+}
+
+.mobile-menu-item:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Dark Mode Toggle Button Animation */
+#dark-mode-toggle {
+    transition: transform 0.3s ease;
+}
+
+#dark-mode-toggle:hover {
+    transform: rotate(20deg);
+}
+
+#dark-mode-toggle:active {
+    transform: scale(0.95);
+}
+
+/* Hamburger Menu Icon Animation */
+#mobile-menu-toggle {
+    transition: all 0.3s ease;
+}
+
+#mobile-menu-toggle:active {
+    transform: scale(0.9);
+}
+
+/* Ensure header is always on top */
+#header {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+}
+
+/* Remove bottom padding that was added for mobile bottom nav */
+body {
+    padding-top: 0; /* Header handles its own spacing */
+    padding-bottom: 0; /* Remove bottom padding since no bottom nav */
+}
+
+/* Fix for any remaining bottom navigation references */
+#mobile-bottom-nav {
+    display: none !important;
+}
+
 /* Add scroll margin to headings to account for sticky header */
 article h1[id],
 article h2[id],
