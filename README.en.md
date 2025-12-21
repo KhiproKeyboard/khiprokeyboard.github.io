@@ -1,4 +1,4 @@
-# [Khipro Keyboard Website (ক্ষিপ্র কিবোর্ড ওয়েবসাইট)](https://KhiproKeyboard.github.io)
+# [Khipro Keyboard Website (ক্ষিপ্র কিবোর্ড ওয়েবসাইট)](https://khiproteam.github.io/khipro)
 
 [বাংলায় পড়তে ক্লিক করুন](README.md)
 
@@ -20,16 +20,16 @@ The Khipro Keyboard project aims to:
 *   Utilize Zero Width Non-Joiner (ZWNJ) and Zero Width Joiner (ZWJ) for precise glyph control.
 
 ## Installation
-For detailed installation instructions for Linux, Windows, and Android, please visit the [Installation Section on our Website](https://khiprokeyboard.github.io/#installation).
+For detailed installation instructions for Linux, Windows, and Android, please visit the [Installation Section on our Website](https://khiproteam.github.io/khipro/#installation).
 
 ## Usage
-To learn how to effectively use the Khipro Keyboard and explore its comprehensive mapping, please refer to the [Official Documentation](https://khiprokeyboard.github.io/docs) available on this website.
+To learn how to effectively use the Khipro Keyboard and explore its comprehensive mapping, please refer to the [Official Documentation](https://khiproteam.github.io/khipro/docs) available on this website.
 
 ## Community
 Khipro is an open-source, community-driven project. We welcome all questions, ideas, and contributions. Join our community to discuss, get support, and help us grow!
 
 *   **Telegram Group:** [Join our Telegram Group](https://t.me/KhiproKeyboard) for direct discussions and support.
-*   **GitHub Discussion:** [Explore our GitHub Discussion Forum](https://github.com/KhiproKeyboard/Khipro/discussions) to participate in development or propose ideas and feature requests.
+*   **GitHub Discussion:** [Explore our GitHub Discussion Forum](https://github.com/KhiproTeam/Khipro/discussions) to participate in development or propose ideas and feature requests.
 
 ## License
 This project is open-source. All rights are not reserved, it is a free software.
