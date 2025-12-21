@@ -25,6 +25,9 @@ jobs:
           submodules: recursive
           fetch-depth: 0
 
+      - name: Update Git submodules
+        run: git submodule update --init --recursive --force
+
       - name: Setup Hugo
         uses: peaceiris/actions-hugo@v3
         with:
