@@ -3,7 +3,7 @@
 <head>
     {{ partial "head.html" . }}
 </head>
-<body class="antialiased bg-white text-dark-text" data-page="{{ if eq .RelPermalink "/installation/" }}installation{{ else if eq .RelPermalink "/docs/" }}docs{{ end }}">
+<body class="antialiased bg-white text-black" data-page="{{ if eq .Section "installation" }}installation{{ else if eq .Section "documentation" }}docs{{ else if eq .Section "quickstart" }}quickstart{{ end }}" style="background-color: #ffffff; color: #000000;">
     {{ partial "header.html" . }}
     
     <main>
@@ -12,5 +12,6 @@
     
     {{ partial "footer.html" . }}
     {{ partial "scripts.html" . }}
+    {{ partial "mermaid.html" . }}
 </body>
 </html>

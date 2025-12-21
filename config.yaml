@@ -1,42 +1,65 @@
-baseURL: 'https://khiproteam.github.io/khipro/'
-languageCode: 'bn'
-title: 'ক্ষিপ্র কিবোর্ড'
-defaultContentLanguage: 'bn'
+baseURL: "https://khiproteam.github.io/khipro/"
+languageCode: "bn"
+title: "ক্ষিপ্র কিবোর্ড"
+defaultContentLanguage: "bn"
 
-params:
-  description: 'দ্রুততম বাংলা কিবোর্ড'
-  
+# Build settings
+build:
+  writeStats: true
+
 markup:
   goldmark:
     renderer:
-      unsafe: true
+      unsafe: true # Required for HTML tables in submodule content
       hardWraps: true
     parser:
       autoHeadingID: true
-      autoHeadingIDType: 'github'
-  tableOfContents:
-    startLevel: 1
-    endLevel: 6
-    ordered: false
-  highlight:
-    style: 'github'
-    lineNos: false
-    codeFences: true
+      autoHeadingIDType: "github"
+      attribute:
+        block: true
+        title: true
+      wrapStandAloneImageWithinParagraph: false
+  # Mermaid diagram support
+  mermaid:
+    enable: true
+    theme: "default"
+    smartypants:
+      quotes: true
+
+# Security settings
+security:
+  enableInlineShortcodes: false
+  exec:
+    allow: []
+    osEnv: []
+  funcs:
+    getenv: []
+  http:
+    methods: []
+    urls: []
+
+params:
+  description: "দ্রুততম বাংলা কিবোর্ড"
+  math: true
+  katex: true
 
 menu:
   main:
-    - name: 'পরিচিতি'
-      url: '/#home'
+    - name: "এফ-এ-কিউ"
+      url: "#faq"
       weight: 10
-    - name: 'ইনস্টলেশন'
-      url: '/#installation'
+    - name: "ইনস্টলেশন"
+      url: "#installation"
+      weight: 15
+    - name: "ডকুমেন্টেশন"
+      url: "documentation/"
       weight: 20
-    - name: 'কমিউনিটি'
-      url: '/#community'
+    - name: "কুইকস্টার্ট"
+      url: "quickstart/"
+      weight: 25
+    - name: "কমিউনিটি"
+      url: "#community"
       weight: 30
-    - name: 'ডকুমেন্টেশন'
-      url: '/docs'
-      weight: 40
 
 outputs:
   home: ["HTML", "RSS", "SiteMap"]

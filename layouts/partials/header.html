@@ -1,45 +1,67 @@
-<!-- Desktop Header -->
-<header id="header" class="hidden md:block bg-header-dark backdrop-blur-md sticky top-0 z-50 shadow-lg">
-    <nav class="container mx-auto px-4 sm:px-6 lg:px-8">
+<!-- Unified Header -->
+<header id="header" class="sticky top-0 z-50 shadow-lg" style="background-color: var(--color-primary);">
+    <!-- Desktop Navigation -->
+    <nav class="container mx-auto px-4 sm:px-6 lg:px-8 hidden md:block">
         <div class="flex items-center justify-center h-16">
-            <div class="flex items-center space-x-6">
-                <a href="/#home"
-                    class="nav-link relative px-3 py-2 rounded-md text-base font-medium text-white/90 hover:text-white transition-all duration-300 after:content-[''] after:absolute after:bottom-[-2px] after:left-0 after:w-0 after:h-0.5 after:bg-white after:transition-all after:duration-300 hover:after:w-full">পরিচিতি</a>
-                <a href="/#faq"
-                    class="nav-link relative px-3 py-2 rounded-md text-base font-medium text-white/90 hover:text-white transition-all duration-300 after:content-[''] after:absolute after:bottom-[-2px] after:left-0 after:w-0 after:h-0.5 after:bg-white after:transition-all after:duration-300 hover:after:w-full">FAQ</a>
-                <a href="/#installation"
-                    class="nav-link relative px-3 py-2 rounded-md text-base font-medium text-white/90 hover:text-white transition-all duration-300 after:content-[''] after:absolute after:bottom-[-2px] after:left-0 after:w-0 after:h-0.5 after:bg-white after:transition-all after:duration-300 hover:after:w-full">ইনস্টলেশন</a>
-                <a href="/#community"
-                    class="nav-link relative px-3 py-2 rounded-md text-base font-medium text-white/90 hover:text-white transition-all duration-300 after:content-[''] after:absolute after:bottom-[-2px] after:left-0 after:w-0 after:h-0.5 after:bg-white after:transition-all after:duration-300 hover:after:w-full">কমিউনিটি</a>
-                <a href="/docs"
-                    class="nav-link relative px-3 py-2 rounded-md text-base font-medium text-white/90 hover:text-white transition-all duration-300 after:content-[''] after:absolute after:bottom-[-2px] after:left-0 after:w-0 after:h-0.5 after:bg-white after:transition-all after:duration-300 hover:after:w-full">ডকুমেন্টেশন</a>
+            <!-- Home Icon -->
+            <a href="{{ "" | relLangURL }}" class="flex items-center text-white/90 hover:text-white transition-colors mr-8">
+                <i class="fas fa-home text-xl"></i>
+                <span class="sr-only">হোম</span>
+            </a>
+
+            <!-- Desktop Navigation Menu -->
+            <div class="flex items-center space-x-6 flex-1 justify-center">
+                {{ range .Site.Menus.main.ByWeight }}
+                <a href="{{ .URL }}"
+                    class="nav-link relative px-3 py-2 rounded-md text-base font-medium text-white/90 hover:text-white transition-all duration-300 after:content-[''] after:absolute after:bottom-[-2px] after:left-0 after:w-0 after:h-0.5 after:bg-white after:transition-all after:duration-300 hover:after:w-full">{{ .Name }}</a>
+                {{ end }}
             </div>
+
+            <!-- Dark Mode Toggle (Desktop) -->
+            <button id="dark-mode-toggle" class="text-white/90 hover:text-white transition-colors p-2 ml-8" aria-label="ডার্ক মোড">
+                <i class="fas fa-moon text-lg"></i>
+            </button>
         </div>
     </nav>
-</header>
 
-<!-- Mobile Bottom Navigation -->
-<nav id="mobile-bottom-nav" class="md:hidden fixed bottom-0 left-0 right-0 bg-header-dark shadow-lg z-50">
-    <div class="flex items-center justify-around h-16">
-        <a href="/#home" class="mobile-nav-link flex flex-col items-center justify-center flex-1 text-white/80 hover:text-white transition-colors">
-            <i class="fas fa-home text-lg mb-0.5"></i>
-            <span class="text-xs">পরিচিতি</span>
-        </a>
-        <a href="/#faq" class="mobile-nav-link flex flex-col items-center justify-center flex-1 text-white/80 hover:text-white transition-colors">
-            <i class="fas fa-question-circle text-lg mb-0.5"></i>
-            <span class="text-xs">FAQ</span>
-        </a>
-        <a href="/#installation" class="mobile-nav-link flex flex-col items-center justify-center flex-1 text-white/80 hover:text-white transition-colors">
-            <i class="fas fa-download text-lg mb-0.5"></i>
-            <span class="text-xs">ইনস্টলেশন</span>
-        </a>
-        <a href="/#community" class="mobile-nav-link flex flex-col items-center justify-center flex-1 text-white/80 hover:text-white transition-colors">
-            <i class="fas fa-users text-lg mb-0.5"></i>
-            <span class="text-xs">কমিউনিটি</span>
-        </a>
-        <a href="/docs" class="mobile-nav-link flex flex-col items-center justify-center flex-1 text-white/80 hover:text-white transition-colors">
-            <i class="fas fa-book text-lg mb-0.5"></i>
-            <span class="text-xs">ডকুমেন্টেশন</span>
-        </a>
+    <!-- Mobile Navigation -->
+    <nav class="md:hidden">
+        <div class="flex items-center justify-between h-16 px-4">
+            <!-- Home Icon (Left) -->
+            <a href="{{ "" | relLangURL }}" class="flex items-center text-white/90 hover:text-white transition-colors">
+                <i class="fas fa-home text-xl"></i>
+                <span class="sr-only">হোম</span>
+            </a>
+
+            <!-- Hamburger Menu (Center) -->
+            <button id="mobile-menu-toggle" class="text-white/90 hover:text-white transition-colors p-2" aria-label="মেনু" aria-expanded="false" aria-controls="mobile-menu-drawer">
+                <i class="fas fa-bars text-xl"></i>
+            </button>
+
+            <!-- Dark Mode Toggle (Right) -->
+            <button id="dark-mode-toggle-mobile" class="text-white/90 hover:text-white transition-colors p-2" aria-label="ডার্ক মোড">
+                <i class="fas fa-moon text-lg"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu Drawer -->
+    <div id="mobile-menu-drawer" class="md:hidden fixed top-16 left-0 right-0 bottom-0 z-40" aria-hidden="true">
+        <!-- Backdrop Overlay -->
+        <div id="menu-overlay" class="absolute inset-0 bg-black bg-opacity-50 transition-opacity duration-300"></div>
+
+        <!-- Menu Drop Panel - Full Width -->
+        <div id="menu-panel" class="absolute top-0 left-0 right-0 shadow-2xl transform -translate-y-full transition-transform duration-300 ease-in-out" style="background-color: var(--color-primary);">
+            <!-- Menu Items - Grid Layout -->
+            <div class="p-4">
+                <div class="grid grid-cols-2 gap-2">
+                    {{ range .Site.Menus.main.ByWeight }}
+                    <a href="{{ .URL }}" class="mobile-menu-item px-4 py-3 rounded-lg text-white/90 hover:text-white hover:bg-white/10 transition-all duration-200 text-base text-center font-medium border border-white/20">
+                        {{ .Name }}
+                    </a>
+                    {{ end }}
+                </div>
+            </div>
+        </div>
     </div>
-</nav>
+</header>

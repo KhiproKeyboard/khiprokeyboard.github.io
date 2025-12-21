@@ -1,0 +1,13 @@
+{{ $file_path := .Get "file" }}
+{{ if $file_path }}
+  {{ $file := readFile $file_path }}
+  {{ if $file }}
+    <div class="single-page-content">
+      {{ $file | markdownify }}
+    </div>
+  {{ else }}
+    <p class="error">File not found: {{ $file_path }}</p>
+  {{ end }}
+{{ else }}
+  <p class="error">No file path specified</p>
+{{ end }}
