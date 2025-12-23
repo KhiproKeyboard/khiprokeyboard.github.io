@@ -1,0 +1,59 @@
+/* ============================================
+   CARDS - Components
+   ============================================ */
+
+/* Card Component */
+.card {
+  background-color: var(--color-card-bg);
+  border-radius: 1rem;
+  padding: 1.5rem;
+  box-shadow: var(--shadow-md);
+  transition: all var(--transition-base);
+}
+
+.card:hover {
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-4px);
+}
+
+/* Icon Box Component */
+.icon-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: var(--radius-full);
+  background-color: var(--color-icon-primary);
+  color: #ffffff;
+  flex-shrink: 0;
+}
+
+.icon-box--md { width: 2rem; height: 2rem; }
+
+.icon-box--lg { width: 3rem; height: 3rem; }
+
+/* Grid System */
+.grid--2 {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .grid--2 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Link Component */
+.link {
+  color: var(--color-primary);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+.link:hover {
+  color: var(--color-primary-dark);
+  text-decoration: underline;
+}

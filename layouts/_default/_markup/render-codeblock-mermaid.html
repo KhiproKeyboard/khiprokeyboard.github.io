@@ -1,0 +1,22 @@
+{{/*
+  Mermaid Diagram Render Hook
+  Processes ```mermaid fenced code blocks
+  Outputs a pre element with class 'mermaid' for JavaScript initialization
+
+  Supported Diagram Types (all Mermaid.js v11 types):
+  - Flowcharts (flowchart, graph)
+  - Sequence diagrams (sequenceDiagram)
+  - Class diagrams (classDiagram)
+  - State diagrams (stateDiagram-v2)
+  - Entity Relationship (erDiagram)
+  - User Journey (journey)
+  - Gantt charts (gantt)
+  - Pie charts (pie)
+  - Git graphs (gitGraph)
+  - Mindmaps (mindmap)
+  - And more...
+*/}}
+
+<div class="mermaid-container">
+  <pre class="mermaid">{{- .Inner -}}</pre>
+</div>

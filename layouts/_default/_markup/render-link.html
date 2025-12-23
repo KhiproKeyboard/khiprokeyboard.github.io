@@ -1,7 +1,10 @@
-{{- $link := .Destination -}}
-{{- $isExternal := strings.HasPrefix $link "http" -}}
+{{- $isExternal := false -}}
+{{- $url := .Destination -}}
+{{- $isExternal = or (strings.HasPrefix $url "http://") (strings.HasPrefix $url "https://") -}}
+{{- $isExternal = and $isExternal (not (strings.HasPrefix $url .Page.Site.BaseURL)) -}}
+
 {{- if $isExternal -}}
-<a href="{{ $link | safeURL }}" target="_blank" rel="noopener noreferrer"{{ with .Title }} title="{{ . }}"{{ end }}>{{ .Text | safeHTML }}</a>
+<a href="{{ .Destination }}" target="_blank" rel="noopener noreferrer" class="external-link">{{ .Text }}</a>
 {{- else -}}
-<a href="{{ $link | relURL }}"{{ with .Title }} title="{{ . }}"{{ end }}>{{ .Text | safeHTML }}</a>
+<a href="{{ .Destination }}"{{ with .Title }} title="{{ . }}"{{ end }}>{{ .Text }}</a>
 {{- end -}}

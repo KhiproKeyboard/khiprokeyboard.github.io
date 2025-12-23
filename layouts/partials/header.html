@@ -1,67 +1,76 @@
-<!-- Unified Header -->
-<header id="header" class="sticky top-0 z-50 shadow-lg" style="background-color: var(--color-primary);">
-    <!-- Desktop Navigation -->
-    <nav class="container mx-auto px-4 sm:px-6 lg:px-8 hidden md:block">
-        <div class="flex items-center justify-center h-16">
-            <!-- Home Icon -->
-            <a href="{{ "" | relLangURL }}" class="flex items-center text-white/90 hover:text-white transition-colors mr-8">
-                <i class="fas fa-home text-xl"></i>
-                <span class="sr-only">হোম</span>
-            </a>
+<header class="header" role="banner">
+    <nav class="nav nav--desktop" role="navigation" aria-label="প্রধান নেভিগেশন">
+        <div class="u-container">
+            <div class="nav__inner">
+                <!-- Home Icon -->
+                <a href="{{ site.Data.header.home_link }}" class="nav__home" aria-label="{{ site.Data.header.home_aria_label }}">
+                    <i class="{{ site.Data.header.home_icon }}"></i>
+                </a>
 
-            <!-- Desktop Navigation Menu -->
-            <div class="flex items-center space-x-6 flex-1 justify-center">
-                {{ range .Site.Menus.main.ByWeight }}
-                <a href="{{ .URL }}"
-                    class="nav-link relative px-3 py-2 rounded-md text-base font-medium text-white/90 hover:text-white transition-all duration-300 after:content-[''] after:absolute after:bottom-[-2px] after:left-0 after:w-0 after:h-0.5 after:bg-white after:transition-all after:duration-300 hover:after:w-full">{{ .Name }}</a>
-                {{ end }}
+                <!-- Navigation Menu -->
+                <ul class="nav__menu">
+                    {{ range site.Data.header.menu_items }}
+                    <li class="nav__item">
+                        <a href="{{ .url }}" class="nav__link">{{ .name }}</a>
+                    </li>
+                    {{ end }}
+                </ul>
+
+                <!-- Dark Mode Toggle -->
+                <button
+                    class="theme-toggle"
+                    type="button"
+                    aria-label="{{ site.Data.header.dark_mode_aria_label }}"
+                    data-theme-toggle>
+                    <i class="{{ site.Data.header.dark_mode_icon }}" data-theme-icon-dark></i>
+                    <i class="{{ site.Data.header.light_mode_icon }}" data-theme-icon-light></i>
+                </button>
             </div>
-
-            <!-- Dark Mode Toggle (Desktop) -->
-            <button id="dark-mode-toggle" class="text-white/90 hover:text-white transition-colors p-2 ml-8" aria-label="ডার্ক মোড">
-                <i class="fas fa-moon text-lg"></i>
-            </button>
         </div>
     </nav>
 
     <!-- Mobile Navigation -->
-    <nav class="md:hidden">
-        <div class="flex items-center justify-between h-16 px-4">
-            <!-- Home Icon (Left) -->
-            <a href="{{ "" | relLangURL }}" class="flex items-center text-white/90 hover:text-white transition-colors">
-                <i class="fas fa-home text-xl"></i>
-                <span class="sr-only">হোম</span>
+    <nav class="nav nav--mobile" role="navigation" aria-label="মোবাইল নেভিগেশন">
+        <div class="nav__mobile-inner">
+            <!-- Dark Mode Toggle -->
+            <button
+                class="theme-toggle"
+                type="button"
+                aria-label="{{ site.Data.header.dark_mode_aria_label }}"
+                data-theme-toggle>
+                <i class="{{ site.Data.header.dark_mode_icon }}" data-theme-icon-dark></i>
+                <i class="{{ site.Data.header.light_mode_icon }}" data-theme-icon-light></i>
+            </button>
+
+            <!-- Home Icon -->
+            <a href="{{ site.Data.header.home_link }}" class="nav__home" aria-label="{{ site.Data.header.home_aria_label }}">
+                <i class="{{ site.Data.header.home_icon }}"></i>
             </a>
 
-            <!-- Hamburger Menu (Center) -->
-            <button id="mobile-menu-toggle" class="text-white/90 hover:text-white transition-colors p-2" aria-label="মেনু" aria-expanded="false" aria-controls="mobile-menu-drawer">
-                <i class="fas fa-bars text-xl"></i>
-            </button>
-
-            <!-- Dark Mode Toggle (Right) -->
-            <button id="dark-mode-toggle-mobile" class="text-white/90 hover:text-white transition-colors p-2" aria-label="ডার্ক মোড">
-                <i class="fas fa-moon text-lg"></i>
+            <!-- Mobile Menu Toggle -->
+            <button
+                class="mobile-menu-toggle"
+                type="button"
+                aria-label="{{ site.Data.header.mobile_menu_aria_label }}"
+                aria-expanded="false"
+                aria-controls="mobile-menu"
+                data-mobile-menu-toggle>
+                <i class="{{ site.Data.header.mobile_menu_icon }}"></i>
             </button>
         </div>
-    </nav>
 
-    <!-- Mobile Menu Drawer -->
-    <div id="mobile-menu-drawer" class="md:hidden fixed top-16 left-0 right-0 bottom-0 z-40" aria-hidden="true">
-        <!-- Backdrop Overlay -->
-        <div id="menu-overlay" class="absolute inset-0 bg-black bg-opacity-50 transition-opacity duration-300"></div>
-
-        <!-- Menu Drop Panel - Full Width -->
-        <div id="menu-panel" class="absolute top-0 left-0 right-0 shadow-2xl transform -translate-y-full transition-transform duration-300 ease-in-out" style="background-color: var(--color-primary);">
-            <!-- Menu Items - Grid Layout -->
-            <div class="p-4">
-                <div class="grid grid-cols-2 gap-2">
-                    {{ range .Site.Menus.main.ByWeight }}
-                    <a href="{{ .URL }}" class="mobile-menu-item px-4 py-3 rounded-lg text-white/90 hover:text-white hover:bg-white/10 transition-all duration-200 text-base text-center font-medium border border-white/20">
-                        {{ .Name }}
-                    </a>
+        <!-- Mobile Menu Drawer -->
+        <div class="mobile-menu" id="mobile-menu" hidden>
+            <div class="mobile-menu__overlay" data-mobile-menu-overlay></div>
+            <div class="mobile-menu__panel">
+                <ul class="mobile-menu__list">
+                    {{ range site.Data.header.menu_items }}
+                    <li class="mobile-menu__item">
+                        <a href="{{ .url }}" class="mobile-menu__link">{{ .name }}</a>
+                    </li>
                     {{ end }}
-                </div>
+                </ul>
             </div>
         </div>
-    </div>
+    </nav>
 </header>
