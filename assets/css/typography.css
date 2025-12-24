@@ -55,8 +55,9 @@
   line-height: 1.75;
 }
 
-.doc-article__content td {
-  font-size: 1.15rem;
+.doc-article__content td,
+.doc-article__content th {
+  font-size: 1.3rem;
 }
 
 .doc-article__content h1 {
