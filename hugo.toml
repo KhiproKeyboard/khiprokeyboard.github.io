@@ -1,0 +1,25 @@
+baseURL = "https://khiproteam.github.io/khipro/"
+languageCode = "bn"
+title = "ক্ষিপ্র কিবোর্ড"
+defaultContentLanguage = "bn"
+
+[params]
+description = "দ্রুততম বাংলা কিবোর্ড"
+
+canonifyURLs = true
+relativeURLs = false
+
+[markup.goldmark.renderer]
+unsafe = true
+
+[markup.tableOfContents]
+startLevel = 2
+endLevel = 4
+ordered = false
+
+[outputs]
+home = ["HTML"]
+section = ["HTML"]
+taxonomy = ["HTML"]
+term = ["HTML"]
+page = ["HTML"]

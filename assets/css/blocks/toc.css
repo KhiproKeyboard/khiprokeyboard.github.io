@@ -1,0 +1,481 @@
+/* ============================================
+   TOC - Table of Contents (Collapsible Tree)
+   ============================================ */
+
+/* ============================================
+   TOC CUSTOM PROPERTIES
+   ============================================ */
+
+.doc-toc {
+  --toc-indent-size: 0.75rem;
+  --toc-line-color: var(--color-border-medium);
+  --toc-icon-size: 1rem;
+  --toc-active-color: var(--color-primary);
+}
+
+/* ============================================
+   SIDEBAR TOC (Desktop)
+   ============================================ */
+
+.doc-sidebar {
+  position: relative;
+}
+
+@media (min-width: 1024px) {
+  .doc-sidebar {
+    position: sticky;
+    top: calc(4rem + var(--space-lg));
+    max-height: calc(100vh - 6rem);
+    overflow-y: auto;
+  }
+
+  .doc-sidebar::-webkit-scrollbar {
+    width: 4px;
+  }
+
+  .doc-sidebar::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .doc-sidebar::-webkit-scrollbar-thumb {
+    background-color: var(--color-border-medium);
+    border-radius: var(--radius-full);
+  }
+}
+
+@media (max-width: 1023px) {
+  .doc-sidebar {
+    display: none;
+  }
+}
+
+/* ============================================
+   TOC CARD
+   ============================================ */
+
+.doc-toc {
+  background: var(--color-card-bg);
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--radius-xl);
+  padding: var(--space-md);
+  position: relative;
+  overflow: hidden;
+}
+
+.doc-toc::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--color-primary);
+}
+
+/* TOC Header */
+.doc-toc__header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  margin-bottom: var(--space-md);
+  padding-bottom: var(--space-md);
+  border-bottom: 1px solid var(--color-border-light);
+}
+
+.doc-toc__icon {
+  width: 1.5rem;
+  height: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-primary);
+  color: #ffffff;
+  border-radius: var(--radius-md);
+  font-size: 0.75rem;
+}
+
+.doc-toc__title {
+  font-size: 0.875rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--color-text-secondary);
+  margin: 0;
+}
+
+/* ============================================
+   TOC NAVIGATION
+   ============================================ */
+
+.doc-toc__nav {
+  display: flex;
+  flex-direction: column;
+}
+
+.doc-toc__list {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.doc-toc__item {
+  margin: 0;
+  position: relative;
+}
+
+/* ============================================
+   TOC LINKS
+   ============================================ */
+
+.doc-toc__link {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  padding: 0.5rem 0.75rem;
+  background-color: transparent;
+  color: var(--color-text-secondary);
+  font-size: 0.9375rem;
+  font-weight: 600;
+  line-height: 1.4;
+  text-decoration: none;
+  transition: all var(--transition-fast);
+  position: relative;
+  border-radius: var(--radius-md);
+}
+
+.doc-toc__link:hover {
+  background-color: var(--color-bg-2);
+  color: var(--color-primary);
+}
+
+.doc-toc__link--active,
+.doc-toc__link.active {
+  background-color: rgba(144, 67, 71, 0.08);
+  color: var(--color-primary);
+}
+
+.doc-toc__link--active .doc-toc__arrow,
+.doc-toc__link--active .doc-toc__dot,
+.doc-toc__link--active .doc-toc__folder,
+.doc-toc__link--active .doc-toc__file,
+.doc-toc__link--active .doc-toc__angle,
+.doc-toc__link.active .doc-toc__arrow,
+.doc-toc__link.active .doc-toc__dot,
+.doc-toc__link.active .doc-toc__folder,
+.doc-toc__link.active .doc-toc__file,
+.doc-toc__link.active .doc-toc__angle {
+  color: var(--color-primary);
+}
+
+/* ============================================
+   TOC ICONS - Arrow, Dot, Folder, File, Angle
+   ============================================ */
+
+.doc-toc__indicators,
+.doc-toc__level-icon,
+.doc-toc__arrow,
+.doc-toc__dot,
+.doc-toc__folder,
+.doc-toc__file,
+.doc-toc__angle {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition-fast);
+  color: var(--color-text-secondary);
+}
+
+/* Container for Arrow/Dot (always same width) */
+.doc-toc__indicators {
+  width: 1rem;
+}
+
+/* Container for the level-specific icon (Folder/File/Angle) */
+.doc-toc__level-icon {
+  width: 1.25rem;
+}
+
+/* Arrow for expandable items */
+.doc-toc__arrow {
+  width: 1rem;
+  font-size: 0.625rem;
+  cursor: pointer;
+}
+
+.doc-toc__arrow i {
+  transition: transform var(--transition-fast);
+}
+
+.doc-toc__item--expanded .doc-toc__arrow i {
+  transform: rotate(90deg);
+}
+
+/* Dot for non-expandable main items */
+.doc-toc__dot {
+  width: 1rem;
+  font-size: 0.3rem;
+}
+
+/* Folder icon */
+.doc-toc__folder {
+  width: 1rem;
+  font-size: 0.875rem;
+}
+
+/* File icon for sub-items */
+.doc-toc__file {
+  font-size: 0.8rem;
+}
+
+/* Angle icon for deep items */
+.doc-toc__angle {
+  font-size: 0.7rem;
+}
+
+/* ============================================
+   TOC LEVELS - Indentation
+   ============================================ */
+
+.doc-toc__item--level-1>.doc-toc__link {
+  font-size: 1rem;
+  font-weight: 700;
+  padding: 0.625rem 0.75rem;
+}
+
+.doc-toc__item--level-2>.doc-toc__link {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  padding-left: calc(var(--toc-indent-size) + 0.75rem);
+}
+
+.doc-toc__item--level-3>.doc-toc__link {
+  font-size: 0.875rem;
+  font-weight: 500;
+  padding-left: calc(var(--toc-indent-size) * 2 + 0.75rem);
+}
+
+.doc-toc__item--level-4>.doc-toc__link,
+.doc-toc__item--level-5>.doc-toc__link,
+.doc-toc__item--level-6>.doc-toc__link {
+  font-size: 0.8125rem;
+  font-weight: 500;
+  padding-left: calc(var(--toc-indent-size) * 3 + 0.75rem);
+}
+
+/* ============================================
+   COLLAPSIBLE CHILDREN
+   ============================================ */
+
+.doc-toc__children {
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height var(--transition-base);
+}
+
+.doc-toc__children--expanded {
+  max-height: 2000px;
+}
+
+/* ============================================
+   TOC EMPTY STATE
+   ============================================ */
+
+.doc-toc__empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-sm);
+  padding: var(--space-xl) var(--space-md);
+  text-align: center;
+}
+
+.doc-toc__empty-icon {
+  width: 3rem;
+  height: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--color-bg-2);
+  color: var(--color-text-secondary);
+  border-radius: var(--radius-full);
+  font-size: 1.25rem;
+}
+
+.doc-toc__empty-text {
+  font-size: 0.875rem;
+  color: var(--color-text-secondary);
+}
+
+/* ============================================
+   MOBILE TOC DRAWER
+   ============================================ */
+
+.doc-toc-drawer {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: grid;
+  grid-template-columns: 1fr;
+  opacity: 0;
+  visibility: hidden;
+  transition: all var(--transition-base);
+}
+
+.doc-toc-drawer[aria-hidden="false"] {
+  opacity: 1;
+  visibility: visible;
+}
+
+.doc-toc-drawer__overlay {
+  grid-column: 1;
+  grid-row: 1;
+  background-color: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(4px);
+}
+
+.doc-toc-drawer__panel {
+  grid-column: 1;
+  grid-row: 1;
+  align-self: stretch;
+  width: 100%;
+  max-width: 320px;
+  background-color: var(--color-card-bg);
+  display: flex;
+  flex-direction: column;
+  transform: translateX(-100%);
+  transition: transform var(--transition-base);
+}
+
+.doc-toc-drawer[aria-hidden="false"] .doc-toc-drawer__panel {
+  transform: translateX(0);
+}
+
+@media (min-width: 480px) {
+  .doc-toc-drawer__panel {
+    max-width: 360px;
+    box-shadow: var(--shadow-xl);
+  }
+}
+
+.doc-toc-drawer__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-md);
+  padding: var(--space-md);
+  background: var(--color-primary);
+  color: #ffffff;
+}
+
+.doc-toc-drawer__title {
+  font-size: 1rem;
+  font-weight: 700;
+  margin: 0;
+}
+
+.doc-toc-drawer__close {
+  width: 2rem;
+  height: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+  border-radius: var(--radius-md);
+  transition: all var(--transition-fast);
+}
+
+.doc-toc-drawer__close:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  transform: scale(1.05);
+}
+
+.doc-toc-drawer__body {
+  flex: 1;
+  overflow-y: auto;
+  padding: var(--space-md);
+}
+
+.doc-toc-drawer__body::-webkit-scrollbar {
+  width: 4px;
+}
+
+.doc-toc-drawer__body::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.doc-toc-drawer__body::-webkit-scrollbar-thumb {
+  background-color: var(--color-border-medium);
+  border-radius: var(--radius-full);
+}
+
+.doc-toc-drawer__body .doc-toc {
+  background: none;
+  border: none;
+  padding: 0;
+}
+
+.doc-toc-drawer__body .doc-toc::before {
+  display: none;
+}
+
+.doc-toc-drawer__body .doc-toc__header {
+  display: none;
+}
+
+/* ============================================
+   MOBILE TOC BUTTON (FAB) - Top position
+   ============================================ */
+
+.doc-toc-fab {
+  position: fixed;
+  top: var(--space-md);
+  right: var(--space-md);
+  z-index: 90;
+  width: 3rem;
+  height: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-primary);
+  color: #ffffff;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-lg);
+  transition: all var(--transition-base);
+  font-size: 0.875rem;
+}
+
+.doc-toc-fab:hover {
+  transform: scale(1.05);
+  box-shadow: var(--shadow-xl);
+}
+
+.doc-toc-fab:active {
+  transform: scale(0.95);
+}
+
+@media (min-width: 1024px) {
+  .doc-toc-fab {
+    display: none;
+  }
+}
+
+/* ============================================
+   MOBILE STYLES
+   ============================================ */
+
+@media (max-width: 1023px) {
+  .doc-toc__link {
+    min-height: 44px;
+    font-size: 1rem;
+    padding: 0.625rem 1rem;
+  }
+
+  .doc-toc__item--level-2>.doc-toc__link {
+    font-size: 1.0625rem;
+  }
+}

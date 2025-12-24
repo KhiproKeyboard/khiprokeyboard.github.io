@@ -1,17 +1,67 @@
 <!DOCTYPE html>
-<html lang="bn" class="scroll-smooth">
+<html lang="{{ .Site.Language.Lang }}" data-theme="light">
+
 <head>
-    {{ partial "head.html" . }}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="{{ with .Description }}{{ . }}{{ else }}{{ .Site.Params.description }}{{ end }}">
+    <title>{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} - {{ .Site.Title }}{{ end }}</title>
+
+    <!-- External Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+Da+2:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- CSS Pipeline: Concatenate, minify, and fingerprint all CSS files -->
+    {{ $composition := resources.Get "css/composition.css" }}
+    {{ $base := resources.Get "css/base.css" }}
+    {{ $typography := resources.Get "css/typography.css" | resources.ExecuteAsTemplate "css/typography.processed.css" . }}
+    {{ $utilities := resources.Get "css/utilities.css" }}
+    {{ $skipLink := resources.Get "css/blocks/skip-link.css" }}
+    {{ $buttons := resources.Get "css/blocks/buttons.css" }}
+    {{ $cards := resources.Get "css/blocks/cards.css" }}
+    {{ $sections := resources.Get "css/blocks/sections.css" }}
+    {{ $header := resources.Get "css/blocks/header.css" }}
+    {{ $footer := resources.Get "css/blocks/footer.css" }}
+    {{ $home := resources.Get "css/blocks/home.css" }}
+    {{ $notFound := resources.Get "css/blocks/not-found.css" }}
+    {{ $toc := resources.Get "css/blocks/toc.css" }}
+    {{ $docs := resources.Get "css/blocks/docs.css" }}
+    {{ $css := slice $composition $base $typography $utilities $skipLink $buttons $cards $sections $header $footer $home $notFound $toc $docs | resources.Concat "css/main.css" }}
+    {{ $css = $css | minify | fingerprint }}
+    <link rel="stylesheet" href="{{ $css.RelPermalink }}">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.1.0/css/fontawesome.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.1.0/css/solid.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.1.0/css/brands.min.css">
+
+    <!-- Favicon -->
+    <link rel="icon" href="{{ "img/khipro-favicon.ico" | relURL }}" type="image/x-icon">
+
 </head>
-<body class="antialiased bg-white text-black" data-page="{{ if eq .Section "installation" }}installation{{ else if eq .Section "documentation" }}docs{{ else if eq .Section "quickstart" }}quickstart{{ end }}" style="background-color: #ffffff; color: #000000;">
+
+<body>
+    <!-- Skip Link (Accessibility) -->
+    <a href="#main-content" class="skip-link">মূল বিষয়বস্তুতে যান</a>
+
+    <!-- Header Navigation -->
     {{ partial "header.html" . }}
-    
-    <main>
+
+    <!-- Main Content Area -->
+    <main id="main-content">
         {{ block "main" . }}{{ end }}
     </main>
-    
+
+    <!-- Footer -->
     {{ partial "footer.html" . }}
-    {{ partial "scripts.html" . }}
-    {{ partial "mermaid.html" . }}
+
+    <!-- JavaScript -->
+    {{ $js := resources.Get "js/main.js" }}
+    {{ $js = $js | minify | fingerprint }}
+    <script src="{{ $js.RelPermalink }}"></script>
 </body>
+
 </html>

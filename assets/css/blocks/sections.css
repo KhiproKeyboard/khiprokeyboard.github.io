@@ -1,0 +1,46 @@
+/* ============================================
+   SECTIONS - Layout Components
+   ============================================ */
+
+/* Section Container */
+.section {
+  padding-block: var(--space-2xl);
+}
+
+.section--alt {
+  background-color: var(--color-bg-2);
+}
+
+/* Section Header */
+.section-header {
+  text-align: center;
+  margin-bottom: var(--space-2xl);
+}
+
+.section-header__title {
+  font-size: clamp(1.75rem, 4vw, 2.25rem);
+  font-weight: 700;
+  color: var(--color-text-primary);
+  margin-bottom: var(--space-md);
+  position: relative;
+  display: inline-block;
+}
+
+.section-header__title::after {
+  content: '';
+  position: absolute;
+  bottom: -0.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 4.375rem;
+  height: 0.125rem;
+  background-color: var(--color-primary);
+  border-radius: var(--radius-full);
+}
+
+.section-header__description {
+  font-size: 1.125rem;
+  color: var(--color-text-secondary);
+  max-width: 32rem;
+  margin-inline: auto;
+}

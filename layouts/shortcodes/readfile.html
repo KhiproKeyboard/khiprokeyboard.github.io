@@ -1,13 +1,46 @@
-{{ $file_path := .Get "file" }}
-{{ if $file_path }}
-  {{ $file := readFile $file_path }}
-  {{ if $file }}
-    <div class="single-page-content">
-      {{ $file | markdownify }}
-    </div>
-  {{ else }}
-    <p class="error">File not found: {{ $file_path }}</p>
-  {{ end }}
-{{ else }}
-  <p class="error">No file path specified</p>
-{{ end }}
+{{/* Shortcode to read file content and process as markdown */}}
+{{/* Usage: {{< readfile "content/documentation/README.md" >}} */}}
+{{- $filePath := .Get 0 -}}
+{{- if fileExists $filePath -}}
+  {{- $rawContent := readFile $filePath -}}
+  {{- /* Remove front matter if present (YAML between --- markers) */ -}}
+  {{- $lines := split $rawContent "\n" -}}
+  {{- $frontMatterEnd := 0 -}}
+  {{- $inFrontMatter := false -}}
+  {{- $contentStart := 0 -}}
+
+  {{- range $index, $line := $lines -}}
+    {{- $trimmed := trim $line " \t\r\n" -}}
+    {{- if eq $index 0 -}}
+      {{- if eq $trimmed "---" -}}
+        {{- $inFrontMatter = true -}}
+      {{- else -}}
+        {{- /* No front matter, content starts at line 0 */ -}}
+        {{- $contentStart = $index -}}
+        {{- break -}}
+      {{- end -}}
+    {{- else if and $inFrontMatter (eq $trimmed "---") -}}
+      {{- /* End of front matter, content starts after this line */ -}}
+      {{- $frontMatterEnd = $index -}}
+      {{- $contentStart = (add $frontMatterEnd 1) -}}
+      {{- $inFrontMatter = false -}}
+      {{- break -}}
+    {{- end -}}
+  {{- end -}}
+
+  {{- /* Extract content without front matter */ -}}
+  {{- if gt $contentStart 0 -}}
+    {{- $contentLines := $lines | after $contentStart -}}
+    {{- $contentWithoutFrontMatter := delimit $contentLines "\n" -}}
+    {{- $contentWithoutFrontMatter | markdownify -}}
+  {{- else -}}
+    {{- $rawContent | markdownify -}}
+  {{- end -}}
+{{- else -}}
+  <div class="alert" style="padding: 1rem; background-color: #fef3c7; border-radius: 0.5rem; margin-bottom: 1rem;">
+    <strong>সতর্কতা:</strong> ফাইল পাওয়া যায়নি।
+    <br><br>
+    গিট সাবমোডিউল আপডেট করুন:
+    <pre><code>git submodule update --init --recursive</code></pre>
+  </div>
+{{- end -}}

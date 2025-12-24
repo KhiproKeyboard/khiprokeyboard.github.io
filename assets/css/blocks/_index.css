@@ -1,0 +1,13 @@
+/* ============================================
+   BLOCKS - Components
+   ============================================ */
+
+/* Import individual block components */
+@import 'blocks/skip-link.css';
+@import 'blocks/buttons.css';
+@import 'blocks/cards.css';
+@import 'blocks/sections.css';
+@import 'blocks/header.css';
+@import 'blocks/footer.css';
+@import 'blocks/home.css';
+@import 'blocks/not-found.css';

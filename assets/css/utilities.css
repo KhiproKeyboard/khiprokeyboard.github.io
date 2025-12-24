@@ -1,0 +1,87 @@
+/* ============================================
+   UTILITIES - Single-Purpose Classes
+   ============================================ */
+
+/* Container */
+.u-container {
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding-inline: var(--space-md);
+}
+
+@media (min-width: 640px) {
+  .u-container {
+    padding-inline: var(--space-lg);
+  }
+}
+
+@media (min-width: 1024px) {
+  .u-container {
+    padding-inline: var(--space-xl);
+  }
+}
+
+/* Wide Container - for sections with cards */
+.u-container--wide {
+  width: 100%;
+  max-width: 80rem;
+  margin: 0 auto;
+  padding-inline: var(--space-md);
+}
+
+@media (min-width: 640px) {
+  .u-container--wide {
+    padding-inline: var(--space-lg);
+  }
+}
+
+@media (min-width: 1024px) {
+  .u-container--wide {
+    padding-inline: var(--space-xl);
+  }
+}
+
+/* Text Alignment */
+.u-text-center { text-align: center; }
+.u-text-left { text-align: left; }
+.u-text-right { text-align: right; }
+
+/* Spacing - Padding */
+.u-py-sm { padding-block: var(--space-sm); }
+.u-py-md { padding-block: var(--space-md); }
+.u-py-lg { padding-block: var(--space-lg); }
+.u-py-xl { padding-block: var(--space-xl); }
+.u-py-2xl { padding-block: var(--space-2xl); }
+.u-py-3xl { padding-block: var(--space-3xl); }
+
+.u-px-sm { padding-inline: var(--space-sm); }
+.u-px-md { padding-inline: var(--space-md); }
+.u-px-lg { padding-inline: var(--space-lg); }
+
+/* Spacing - Margin */
+.u-mb-sm { margin-bottom: var(--space-sm); }
+.u-mb-md { margin-bottom: var(--space-md); }
+.u-mb-lg { margin-bottom: var(--space-lg); }
+.u-mb-xl { margin-bottom: var(--space-xl); }
+.u-mb-2xl { margin-bottom: var(--space-2xl); }
+
+/* Display */
+.u-hidden { display: none; }
+.u-block { display: block; }
+.u-flex { display: flex; }
+.u-inline-flex { display: inline-flex; }
+.u-grid { display: grid; }
+
+/* Visually Hidden (for screen readers) */
+.u-sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
