@@ -1,70 +1,114 @@
 <!DOCTYPE html>
-<html lang="bn">
+<html lang="{{ site.Language.Lang }}" data-theme="light">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>পাতা পাওয়া যায়নি - {{ .Site.Title }}</title>
-    <meta name="description" content="অনুরোধকৃত পাতাটি খুঁজে পাওয়া যায়নি।">
-    <link rel="stylesheet" href="{{ "css/colors.css" | relURL }}">
-    <link rel="stylesheet" href="{{ "css/fonts.css" | relURL }}">
-    <link rel="stylesheet" href="{{ "css/main.css" | relURL }}">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        'primary': 'var(--color-primary)',
-                        'primary-light': 'var(--color-primary-light)',
-                        'primary-dark': 'var(--color-primary-dark)',
-                    }
-                }
-            }
-        }
-    </script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-</head>
-<body class="antialiased bg-white text-black min-h-screen flex items-center justify-center" style="background-color: #ffffff; color: #000000;">
-    <div class="container mx-auto px-4 py-8 text-center">
-        <div class="mb-8">
-            <i class="fas fa-search text-6xl text-primary mb-4"></i>
-            <h1 class="text-4xl md:text-6xl font-bold mb-4">৪০৪</h1>
-            <h2 class="text-2xl md:text-3xl font-semibold mb-4">পাতা পাওয়া যায়নি</h2>
-            <p class="text-lg text-gray-600 mb-8 max-w-md mx-auto">
-                দুঃখিত! আপনি যে পাতাটি খুঁজছেন সেটি পাওয়া যায়নি।
-            </p>
-        </div>
+    <title>৪০৪ | {{ site.Title }}</title>
 
-        <div class="space-y-4">
-            <a href="{{ "/" | relURL }}" class="inline-flex items-center px-6 py-3 bg-primary text-white rounded-lg hover:bg-primary-dark transition-colors">
-                <i class="fas fa-home mr-2"></i>
-                হোমপেজে যান
-            </a>
-            <div class="mt-4">
-                <p class="text-gray-500">অথবা</p>
-                <div class="mt-2 space-x-4">
-                    <a href="{{ "/installation/" | relURL }}" class="text-primary hover:text-primary-dark transition-colors">
-                        ইনস্টলেশন
+    <!-- External Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+Da+2:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- CSS -->
+    {{ $composition := resources.Get "css/composition.css" }}
+    {{ $base := resources.Get "css/base.css" }}
+    {{ $typography := resources.Get "css/typography.css" | resources.ExecuteAsTemplate "css/typography.processed.css" site }}
+    {{ $utilities := resources.Get "css/utilities.css" }}
+    {{ $skipLink := resources.Get "css/blocks/skip-link.css" }}
+    {{ $buttons := resources.Get "css/blocks/buttons.css" }}
+    {{ $cards := resources.Get "css/blocks/cards.css" }}
+    {{ $sections := resources.Get "css/blocks/sections.css" }}
+    {{ $header := resources.Get "css/blocks/header.css" }}
+    {{ $footer := resources.Get "css/blocks/footer.css" }}
+    {{ $home := resources.Get "css/blocks/home.css" }}
+    {{ $notFound := resources.Get "css/blocks/not-found.css" }}
+    {{ $css := slice $composition $base $typography $utilities $skipLink $buttons $cards $sections $header $footer $home
+    $notFound | resources.Concat "css/main.css" }}
+    {{ $css = $css | minify | fingerprint }}
+    <link rel="stylesheet" href="{{ $css.RelPermalink }}">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.1.0/css/fontawesome.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.1.0/css/solid.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.1.0/css/brands.min.css">
+
+    <style>
+        /* Full height 404 page styles */
+        body {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        #main-content {
+            flex: 1;
+            display: flex;
+            align-items: center;
+        }
+        .not-found {
+            width: 100%;
+            flex: 1;
+            display: flex;
+            align-items: center;
+            margin: 0;
+        }
+        .not-found__content {
+            text-align: center;
+            width: 100%;
+            max-width: 100%;
+            margin: 0;
+        }
+    </style>
+
+</head>
+
+<body>
+    <!-- Skip Link (Accessibility) -->
+    <a href="#main-content" class="skip-link">মূল বিষয়বস্তুতে যান</a>
+
+    <!-- Header Navigation -->
+    {{ partial "header.html" site }}
+
+    <!-- 404 Page Container -->
+    <main id="main-content">
+        <div class="not-found">
+            <div class="u-container">
+                <div class="not-found__content">
+                    <!-- Error Code -->
+                    <h1 class="not-found__code">৪০৪</h1>
+
+                    <!-- Error Message -->
+                    <p class="not-found__description">দুঃখিত! আপনি যে পেইজটি খুঁজছেন সেটি পাওয়া যায়নি।</p>
+
+                    <!-- Home Button -->
+                    <a href="{{ "" | relURL }}" class="btn btn--primary">
+                        <i class="fas fa-home" aria-hidden="true"></i>
+                        হোমপেজে যান
                     </a>
-                    <a href="{{ "/documentation/" | relURL }}" class="text-primary hover:text-primary-dark transition-colors">
-                        ডকুমেন্টেশন
-                    </a>
-                    <a href="{{ "/quickstart/" | relURL }}" class="text-primary hover:text-primary-dark transition-colors">
-                        কুইকস্টার্ট
-                    </a>
+
+                    <!-- GitHub Link -->
+                    <p class="not-found__github" style="margin-top: var(--space-lg);">
+                        যদি আপনি মনে করেন এটি একটি ত্রুটি, অনুগ্রহ করে আমাদের
+                        <a href="https://github.com/orgs/KhiproTeam/discussions" target="_blank" rel="noopener noreferrer" class="link">
+                            GitHub Discussions
+                        </a>
+                        এ জানান।
+                    </p>
                 </div>
             </div>
         </div>
+    </main>
 
-        <div class="mt-12">
-            <p class="text-sm text-gray-400">
-                যদি আপনি মনে করেন এটি একটি ত্রুটি, অনুগ্রহ করে আমাদের
-                <a href="https://github.com/KhiproKeyboard/khipro-keyboard.github.io/issues" target="_blank" rel="noopener noreferrer" class="text-primary hover:underline">
-                    GitHub Issues
-                </a>
-                এ জানান।
-            </p>
-        </div>
-    </div>
+    <!-- Footer -->
+    {{ partial "footer.html" site }}
+
+    <!-- JavaScript -->
+    {{ $js := resources.Get "js/main.js" }}
+    {{ $js = $js | minify | fingerprint }}
+    <script src="{{ $js.RelPermalink }}"></script>
 </body>
+
 </html>

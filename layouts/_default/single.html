@@ -1,28 +1,33 @@
 {{ define "main" }}
-{{/* Check if this is a submodule page */}}
+{{/* =======================================================
+     DOCS PAGE LAYOUT - Collapsible Tree TOC
+     Auto-detects submodule folder from page path
+     ======================================================= */}}
+
 {{- $isSubmodule := false -}}
 {{- $contentFile := "" -}}
 {{- $processedContent := .Content -}}
 
-{{- if or (eq .Section "installation") (eq .Layout "installation") -}}
-  {{- $isSubmodule = true -}}
-  {{- $contentFile = "content/installation/README.md" -}}
-{{- else if or (eq .Section "documentation") (eq .Layout "documentation") -}}
-  {{- $isSubmodule = true -}}
-  {{- $contentFile = "content/documentation/README.md" -}}
-{{- else if or (eq .Section "quickstart") (eq .Layout "quickstart") -}}
+{{/* Auto-detect submodule folder from current page path */}}
+{{- $currentSection := .CurrentSection.RelPermalink -}}
+{{- $currentRel := .RelPermalink -}}
+{{- if or (eq $currentSection "/khipro/quickstart/") (eq $currentRel "/khipro/quickstart/") -}}
   {{- $isSubmodule = true -}}
   {{- $contentFile = "content/quickstart/README.md" -}}
+{{- else if or (eq $currentSection "/khipro/installation/") (eq $currentRel "/khipro/installation/") -}}
+  {{- $isSubmodule = true -}}
+  {{- $contentFile = "content/installation/README.md" -}}
+{{- else if or (eq $currentSection "/khipro/documentation/") (eq $currentRel "/khipro/documentation/") -}}
+  {{- $isSubmodule = true -}}
+  {{- $contentFile = "content/documentation/README.md" -}}
 {{- end -}}
 
 {{- if $isSubmodule -}}
   {{- if fileExists $contentFile -}}
     {{- $rawContent := readFile $contentFile -}}
-    {{- /* Split content and remove front matter */ -}}
     {{- $lines := split $rawContent "\n" -}}
     {{- $frontMatterEnd := 0 -}}
     {{- $inFrontMatter := false -}}
-    {{- $frontMatterLines := 0 -}}
 
     {{- range $index, $line := $lines -}}
       {{- $trimmed := trim $line " \t\r\n" -}}
@@ -33,172 +38,207 @@
       {{- else if and $inFrontMatter (eq $trimmed "---") -}}
         {{- $frontMatterEnd = $index -}}
         {{- $inFrontMatter = false -}}
-      {{- else if $inFrontMatter -}}
-        {{- $frontMatterLines = add $frontMatterLines 1 -}}
       {{- end -}}
     {{- end -}}
 
     {{- if gt $frontMatterEnd 0 -}}
-      {{- $contentLines := $lines | after (add $frontMatterEnd 1) -}}
+      {{- $contentLines := $lines | after (add $frontMatterEnd 2) -}}
       {{- $contentWithoutFrontMatter := delimit $contentLines "\n" -}}
       {{- $processedContent = $contentWithoutFrontMatter | markdownify -}}
     {{- else -}}
-      {{- $processedContent = $rawContent | markdownify -}}
+      {{- $contentLines := $lines | after 1 -}}
+      {{- $contentWithoutFrontMatter := delimit $contentLines "\n" -}}
+      {{- $processedContent = $contentWithoutFrontMatter | markdownify -}}
     {{- end -}}
 
-    {{- /* Fix hardcoded absolute paths for subpath deployment */ -}}
-    {{- $processedContent = replaceRE `src="/img/` (printf `src="%s` ("/img/" | relURL)) $processedContent -}}
-    {{- $processedContent = replaceRE `href="/img/` (printf `href="%s` ("/img/" | relURL)) $processedContent -}}
-    {{- /* Store in .Scratch for TOC to access */ -}}
+    {{- $processedContent = replaceRE "src=\"/img/" (printf "src=\"%s" ("img/" | relURL)) $processedContent -}}
+    {{- $processedContent = replaceRE "href=\"/img/" (printf "href=\"%s" ("img/" | relURL)) $processedContent -}}
+
+    {{/* Transform GitHub-style alerts: [!NOTE], [!TIP], etc. */}}
+    {{- $processedContent = $processedContent | replaceRE "(?s)<blockquote>\\s*<p>\\s*\\[!NOTE\\](?:<br>|\\s+)?(.*?)</p>\\s*</blockquote>" "<div class=\"doc-alert doc-alert--note\"><div class=\"doc-alert__icon\"><i class=\"fas fa-info-circle\"></i></div><div class=\"doc-alert__content\"><strong>নোট</strong><p>$1</p></div></div>" -}}
+    {{- $processedContent = $processedContent | replaceRE "(?s)<blockquote>\\s*<p>\\s*\\[!TIP\\](?:<br>|\\s+)?(.*?)</p>\\s*</blockquote>" "<div class=\"doc-alert doc-alert--tip\"><div class=\"doc-alert__icon\"><i class=\"fas fa-lightbulb\"></i></div><div class=\"doc-alert__content\"><strong>টিপ</strong><p>$1</p></div></div>" -}}
+    {{- $processedContent = $processedContent | replaceRE "<blockquote>\\s*<p>\\s*\\[!IMPORTANT\\](?:<br>|\\s+)?(.*?)</p>\\s*</blockquote>" "<div class=\"doc-alert doc-alert--important\"><div class=\"doc-alert__icon\"><i class=\"fas fa-exclamation-circle\"></i></div><div class=\"doc-alert__content\"><strong>গুরুত্বপূর্ণ</strong><p>$1</p></div></div>" -}}
+    {{- $processedContent = $processedContent | replaceRE "<blockquote>\\s*<p>\\s*\\[!IMPORTANT\\](?:<br>|\\s+)?(.*?)</p>\\s*<p>(.*?)</p>\\s*</blockquote>" "<div class=\"doc-alert doc-alert--important\"><div class=\"doc-alert__icon\"><i class=\"fas fa-exclamation-circle\"></i></div><div class=\"doc-alert__content\"><strong>গুরুত্বপূর্ণ</strong><p>$1</p><p>$2</p></div></div>" -}}
+    {{- $processedContent = $processedContent | replaceRE "<blockquote>\\s*<p>\\s*\\[!WARNING\\](?:<br>|\\s+)?(.*?)</p>\\s*</blockquote>" "<div class=\"doc-alert doc-alert--warning\"><div class=\"doc-alert__icon\"><i class=\"fas fa-exclamation-triangle\"></i></div><div class=\"doc-alert__content\"><strong>সতর্কতা</strong><p>$1</p></div></div>" -}}
+    {{- $processedContent = $processedContent | replaceRE "<blockquote>\\s*<p>\\s*\\[!WARNING\\](?:<br>|\\s+)?(.*?)</p>\\s*<p>(.*?)</p>\\s*</blockquote>" "<div class=\"doc-alert doc-alert--warning\"><div class=\"doc-alert__icon\"><i class=\"fas fa-exclamation-triangle\"></i></div><div class=\"doc-alert__content\"><strong>সতর্কতা</strong><p>$1</p><p>$2</p></div></div>" -}}
+    {{- $processedContent = $processedContent | replaceRE "<blockquote>\\s*<p>\\s*\\[!CAUTION\\](?:<br>|\\s+)?(.*?)</p>\\s*</blockquote>" "<div class=\"doc-alert doc-alert--caution\"><div class=\"doc-alert__icon\"><i class=\"fas fa-fire\"></i></div><div class=\"doc-alert__content\"><strong>সাবধান</strong><p>$1</p></div></div>" -}}
+    {{- $processedContent = $processedContent | replaceRE "<blockquote>\\s*<p>\\s*\\[!CAUTION\\](?:<br>|\\s+)?(.*?)</p>\\s*<p>(.*?)</p>\\s*</blockquote>" "<div class=\"doc-alert doc-alert--caution\"><div class=\"doc-alert__icon\"><i class=\"fas fa-fire\"></i></div><div class=\"doc-alert__content\"><strong>সাবধান</strong><p>$1</p><p>$2</p></div></div>" -}}
+
     {{- .Scratch.Set "processedContent" $processedContent -}}
   {{- end -}}
 {{- end -}}
 
-{{/* Apply custom Banglish IDs to the processed content */}}
-{{- $originalContent := $processedContent -}}
-{{- $originalTOC := "" -}}
+{{/* 
+   SYNC IDs: Hugo generates Bengali IDs, but we want Banglish IDs for better compatibility.
+   We map original IDs to Banglish IDs and replace them in the content.
+*/}}
+{{- $idMap := dict -}}
+{{- $tocData := slice -}}
 
-{{/* Generate TOC for submodules */}}
 {{- if $isSubmodule -}}
-  {{- $headings := findRE "<h([1-6])([^>]*id=\"[^\"]+\")?[^>]*>(.*?)</h[1-6]>" $processedContent -}}
-  {{- $tocItems := slice -}}
-  {{- $idMap := dict -}}
+  {{/* 1. Add page title as first H1 */}}
+  {{- $tocData = $tocData | append (dict "level" 1 "text" .Title "id" "top") -}}
 
-  {{- range $headings -}}
+  {{/* 2. Find all headings to build ID map and TOC data */}}
+  {{- $headingBlocks := findRE "<h([1-6])([^>]*)?>(.*?)</h[1-6]>" $processedContent -}}
+  {{- range $headingBlocks -}}
     {{- $level := . | replaceRE ".*<h([1-6]).*" "$1" | int -}}
-    {{- $text := . | replaceRE "<[^>]*>" "" | replaceRE "</h[1-6]>" "" -}}
-    {{- $banglishID := $text | partial "banglish-id" -}}
+    {{- $rawText := . | replaceRE "<[^>]*>" "" -}}
+    {{- $text := $rawText | htmlUnescape -}}
+    
+    {{/* Extract existing ID from heading tag if it exists */}}
     {{- $existingID := "" -}}
-    {{- if . | findRE "id=\"" -}}
+    {{- if findRE "id=\"([^\"]+)\"" . -}}
       {{- $existingID = . | replaceRE ".*id=\"([^\"]+)\".*" "$1" -}}
+    {{- end -}}
+
+    {{/* Generate Banglish ID */}}
+    {{- $banglishID := $text | partial "banglish-id" -}}
+
+    {{/* If heading already has an ID, map it to Banglish ID */}}
+    {{- if $existingID -}}
       {{- $idMap = merge $idMap (dict $existingID $banglishID) -}}
     {{- end -}}
-    {{- $tocItem := dict "level" $level "text" $text "id" $banglishID -}}
-    {{- $tocItems = $tocItems | append $tocItem -}}
+
+    {{- $tocData = $tocData | append (dict "level" $level "text" $text "id" $banglishID) -}}
   {{- end -}}
 
-  {{- /* Build TOC HTML with Banglish IDs */}}
-  {{- if gt (len $tocItems) 0 -}}
-    {{- $tocHTML := "<nav class=\"table-of-contents\"><ul style=\"list-style: none; padding-left: 0; margin: 0;\">" -}}
-    {{- range $tocItems -}}
-      {{- $tocHTML = printf "%s<li style=\"margin: 0.25rem 0;\"><a href=\"#%s\" style=\"display: block; padding: 0.5rem 0.75rem; border-radius: 0.375rem; text-decoration: none; font-size: 0.875rem; line-height: 1.25rem; transition: all 0.2s; border-left: 3px solid transparent; margin-left: %drem;\">%s</a></li>" $tocHTML .id (sub .level 1) .text -}}
+  {{/* 3. Replace IDs in content */}}
+  {{- $finalContent := $processedContent -}}
+  {{- range $oldID, $newID := $idMap -}}
+    {{- $finalContent = replace $finalContent (printf "id=\"%s\"" $oldID) (printf "id=\"%s\"" $newID) -}}
+    {{/* Also fix any internal links that might use the old IDs */}}
+    {{- $finalContent = replace $finalContent (printf "href=\"#%s\"" $oldID) (printf "href=\"#%s\"" $newID) -}}
+  {{- end -}}
+  {{- .Scratch.Set "finalContent" $finalContent -}}
+{{- end -}}
+
+{{/* Check which items have children - H1 with H2/H3 following */}}
+{{- $hasChildren := dict -}}
+{{- range $index, $item := $tocData -}}
+  {{- $nextIndex := add $index 1 -}}
+  {{- if lt $nextIndex (len $tocData) -}}
+    {{- $nextItem := index $tocData $nextIndex -}}
+    {{- if gt $nextItem.level $item.level -}}
+      {{- $hasChildren = merge $hasChildren (dict (string $index) true) -}}
     {{- end -}}
-    {{- $tocHTML = printf "%s</ul></nav>" $tocHTML -}}
-    {{- $originalTOC = $tocHTML -}}
-    {{- /* Store in scratch for toc.html to access */ -}}
-    {{- .Scratch.Set "processedTOC" $tocHTML -}}
-  {{- end -}}
-{{- else -}}
-  {{- $originalTOC = .TableOfContents -}}
-{{- end -}}
-
-{{/* Replace Hugo-generated IDs with Banglish IDs in content */}}
-{{- $headings := findRE "<h([1-6])([^>]*id=\"[^\"]+\")?[^>]*>(.*?)</h[1-6]>" $processedContent -}}
-{{- $idMap := dict -}}
-
-{{- range $headings -}}
-  {{- $level := . | replaceRE ".*<h([1-6]).*" "$1" -}}
-  {{- $text := . | replaceRE "<[^>]*>" "" | replaceRE "</h[1-6]>" "" -}}
-  {{- $banglishID := $text | partial "banglish-id" -}}
-  {{- $existingID := "" -}}
-  {{- if . | findRE "id=\"" -}}
-    {{- $existingID = . | replaceRE ".*id=\"([^\"]+)\".*" "$1" -}}
-    {{- $idMap = merge $idMap (dict $existingID $banglishID) -}}
   {{- end -}}
 {{- end -}}
 
-{{/* Replace IDs in content */}}
-{{- $finalContent := $processedContent -}}
-{{- range $existingID, $banglishID := $idMap -}}
-  {{- if $existingID -}}
-    {{- $finalContent = replaceRE (printf "id=\"%s\"" $existingID) (printf "id=\"%s\"" $banglishID) $finalContent -}}
-  {{- end -}}
-{{- end -}}
-
-{{/* Replace IDs in TOC */}}
-{{- $finalTOC := $originalTOC -}}
-{{- range $existingID, $banglishID := $idMap -}}
-  {{- if $existingID -}}
-    {{- $finalTOC = replaceRE (printf "href=\"#%s\"" $existingID) (printf "href=\"#%s\"" $banglishID) $finalTOC -}}
-  {{- end -}}
-{{- end -}}
-
-<div class="min-h-screen pt-0 pb-20 md:pb-0" style="background-color: #ffffff;">
-    <div class="flex flex-col lg:flex-row gap-4 sm:gap-6 p-2 sm:p-4 lg:p-8 pt-4 md:pt-8">
-          <!-- TOC Sidebar -->
-        {{ partial "toc.html" . }}
-
-        <!-- Main Content Container -->
-        <div class="flex-1 min-w-0 text-[1.12rem] leading-relaxed md:text-[1.2rem]">
-        <div class="w-full">
-            <!-- Main Content -->
-            <main class="w-full">
-                <article class="rounded-2xl shadow-lg p-4 sm:p-6 lg:p-12 w-full">
-                    <!-- Page Header - Only show for non-submodule pages -->
-                    {{ if not $isSubmodule }}
-                    <header class="mb-4 pb-3 border-b border-gray-200">
-                        <h1 class="text-3xl lg:text-4xl font-bold text-gray-900 mb-2">
-                            {{ .Title }}
-                        </h1>
-                        {{ if .Params.description }}
-                        <p class="text-lg text-gray-600 leading-relaxed">
-                            {{ .Params.description }}
-                        </p>
-                        {{ end }}
-                    </header>
-                    {{ end }}
-
-                    <!-- Content -->
-                    <div class="readme-content markdown-body single-page-content">
-                        {{ if $isSubmodule }}
-                            {{ if .Scratch.Get "processedContent" }}
-                                {{ $finalContent | safeHTML }}
-                            {{ else }}
-                                <div class="alert alert-warning">
-                                    <strong>সতর্কতা:</strong> {{ .Section }} content is currently unavailable.
-                                    Please ensure the git submodule is properly initialized and updated.
-                                    <br><br>
-                                    You can initialize the submodules by running:
-                                    <pre><code>git submodule update --init --recursive</code></pre>
-                                    Or update existing submodules:
-                                    <pre><code>git submodule update --remote --merge</code></pre>
-                                </div>
-                            {{ end }}
-                        {{ else }}
-                            {{ $finalContent | safeHTML }}
-                        {{ end }}
-                    </div>
-
-                    <!-- Page Navigation -->
-                    <nav class="mt-12 pt-8 border-t border-gray-200">
-                        <div class="flex justify-between items-center">
-                            {{ with .PrevInSection }}
-                            <a href="{{ .RelPermalink }}" class="group flex items-center text-primary hover:text-primary-dark transition-colors">
-                                <i class="fas fa-chevron-left mr-2 group-hover:-translate-x-1 transition-transform"></i>
-                                <div class="text-left">
-                                    <div class="text-sm text-gray-500">পূর্ববর্তী</div>
-                                    <div class="font-semibold">{{ .Title }}</div>
-                                </div>
-                            </a>
-                            {{ else }}
-                            <div></div>
-                            {{ end }}
-
-                            {{ with .NextInSection }}
-                            <a href="{{ .RelPermalink }}" class="group flex items-center text-primary hover:text-primary-dark transition-colors">
-                                <div class="text-right">
-                                    <div class="text-sm text-gray-500">পরবর্তী</div>
-                                    <div class="font-semibold">{{ .Title }}</div>
-                                </div>
-                                <i class="fas fa-chevron-right ml-2 group-hover:translate-x-1 transition-transform"></i>
-                            </a>
-                            {{ end }}
-                        </div>
-                    </nav>
-                </article>
-            </main>
+<div class="doc-layout">
+  <aside class="doc-sidebar">
+    <div class="doc-toc">
+      <div class="doc-toc__header">
+        <div class="doc-toc__icon">
+          <i class="fas fa-list"></i>
         </div>
+        <h2 class="doc-toc__title">সূচিপত্র</h2>
+      </div>
+
+      {{ if gt (len $tocData) 0 }}
+        <nav class="doc-toc__nav" aria-label="Table of Contents">
+          <ul class="doc-toc__list" role="list" id="doc-toc-list">
+            {{- range $index, $item := $tocData -}}
+              {{- $hasChild := index $hasChildren (string $index) -}}
+              {{- $isH1 := eq $item.level 1 -}}
+              {{- $isH2 := eq $item.level 2 -}}
+              
+              <li class="doc-toc__item doc-toc__item--level-{{ $item.level }}{{ if $hasChild }} doc-toc__item--has-children{{ end }}" data-toc-item>
+                <a href="#{{ $item.id }}" class="doc-toc__link" data-toc-link>
+                  <span class="doc-toc__indicators">
+                    {{- if $hasChild -}}
+                      <span class="doc-toc__arrow" data-toc-arrow>
+                        <i class="fas fa-chevron-right"></i>
+                      </span>
+                    {{- else if $isH1 -}}
+                      <span class="doc-toc__dot">
+                        <i class="fas fa-circle"></i>
+                      </span>
+                    {{- end -}}
+                  </span>
+
+                  <span class="doc-toc__level-icon">
+                    {{- if $isH1 -}}
+                      <span class="doc-toc__folder" data-toc-folder>
+                        <i class="fas fa-folder"></i>
+                      </span>
+                    {{- else if $isH2 -}}
+                      <span class="doc-toc__file" data-toc-icon>
+                        <i class="fas fa-file-alt"></i>
+                      </span>
+                    {{- else -}}
+                      <span class="doc-toc__angle">
+                        <i class="fas fa-angle-right"></i>
+                      </span>
+                    {{- end -}}
+                  </span>
+
+                  <span class="doc-toc__text">{{ $item.text }}</span>
+                </a>
+              </li>
+            {{- end -}}
+          </ul>
+        </nav>
+      {{ else }}
+        <div class="doc-toc__empty">
+          <div class="doc-toc__empty-icon">
+            <i class="fas fa-inbox"></i>
+          </div>
+          <p class="doc-toc__empty-text">কোনো বিষয়বস্তু নেই</p>
         </div>
+      {{ end }}
     </div>
+  </aside>
+
+  <main class="doc-main" role="main" id="top">
+    <article class="doc-article">
+      <header class="doc-article__header">
+        <div class="doc-article__meta">
+          <span class="doc-article__type">ডকুমেন্টেশন</span>
+        </div>
+        <h1 class="doc-article__title">{{ .Title }}</h1>
+        {{ with .Params.description }}
+          <p class="doc-article__description">{{ . }}</p>
+        {{ end }}
+      </header>
+
+      <div class="doc-article__content">
+        {{ if and $isSubmodule (not (fileExists $contentFile)) }}
+          <div class="doc-alert doc-alert--warning">
+            <div class="doc-alert__icon">
+              <i class="fas fa-exclamation-triangle"></i>
+            </div>
+            <div class="doc-alert__content">
+              <strong>সতর্কতা:</strong> কন্টেন্ট পাওয়া যায়নি।
+              <p>গিট সাবমোডিউল আপডেট করুন:</p>
+              <pre><code>git submodule update --init --recursive</code></pre>
+            </div>
+          </div>
+        {{ else }}
+          {{ .Scratch.Get "finalContent" | safeHTML }}
+        {{ end }}
+      </div>
+    </article>
+  </main>
 </div>
+
+<div class="doc-toc-drawer" id="doc-toc-drawer" aria-hidden="true">
+  <div class="doc-toc-drawer__overlay" data-doc-toc-overlay></div>
+  <div class="doc-toc-drawer__panel">
+    <header class="doc-toc-drawer__header">
+      <h2 class="doc-toc-drawer__title">সূচিপত্র</h2>
+      <button class="doc-toc-drawer__close" type="button" aria-label="বন্ধ করুন" data-doc-toc-close>
+        <i class="fas fa-times"></i>
+      </button>
+    </header>
+    <div class="doc-toc-drawer__body" data-doc-toc-clone></div>
+  </div>
+</div>
+
+{{ if gt (len $tocData) 0 }}
+  <button class="doc-toc-fab" type="button" aria-label="সূচিপত্র দেখুন" aria-expanded="false" aria-controls="doc-toc-drawer" data-doc-toc-toggle>
+    <i class="fas fa-bars"></i>
+  </button>
+{{ end }}
+
 {{ end }}

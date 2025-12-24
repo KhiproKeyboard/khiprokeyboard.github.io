@@ -1,0 +1,11 @@
+title: "আমাদের আড্ডায় যোগ দিন"
+description: "ক্ষিপ্র একটি কমিউনিটি প্রজেক্ট। আপনার যেকোনো প্রশ্ন, আইডিয়া বা সমস্যা নিয়ে সরাসরি চলে আসুন আমাদের আড্ডায়। আপনার অংশগ্রহণই আমাদের এগিয়ে চলার প্রেরণা।"
+communities:
+  - name: "টেলিগ্রাম গ্রুপ"
+    icon: "fab fa-telegram"
+    description: "সরাসরি আলোচনা ও সাপোর্টের জন্য"
+    link: "https://t.me/KhiproChat"
+  - name: "গিটহাব অর্গানাইজেশন"
+    icon: "fab fa-github"
+    description: "কোড দেখুন এবং উন্নয়নে অংশ নিন"
+    link: "https://github.com/KhiproTeam"

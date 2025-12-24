@@ -1,0 +1,14 @@
+/* ============================================
+   FOOTER
+   ============================================ */
+
+.footer {
+  background-color: var(--color-primary);
+  color: #ffffff;
+  padding-block: var(--space-lg);
+  text-align: center;
+}
+
+.footer__content {
+  font-size: 0.875rem;
+}

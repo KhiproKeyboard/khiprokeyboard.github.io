@@ -1,0 +1,30 @@
+home_icon: "fas fa-home"
+home_link: ""
+home_aria_label: "হোম"
+
+dark_mode_icon: "fas fa-moon"
+light_mode_icon: "fas fa-sun"
+dark_mode_aria_label: "ডার্ক মোড"
+
+mobile_menu_icon: "fas fa-bars"
+mobile_menu_aria_label: "মেনু"
+
+menu_items:
+  - name: "এফ-এ-কিউ"
+    url: "#faq"
+    weight: 10
+  - name: "ইনস্টলেশন"
+    url: "#installation"
+    weight: 15
+  - name: "ডকুমেন্টেশন"
+    url: "documentation/"
+    weight: 20
+  - name: "কুইকস্টার্ট"
+    url: "quickstart/"
+    weight: 25
+  - name: "রিপোজিটরি"
+    url: "#repositories"
+    weight: 30
+  - name: "কমিউনিটি"
+    url: "#community"
+    weight: 35
