@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://khiproteam.github.io/khipro/sitemap.xml

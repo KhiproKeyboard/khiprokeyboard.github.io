@@ -5,9 +5,13 @@ defaultContentLanguage = "bn"
 
 [params]
 description = "দ্রুততম বাংলা কিবোর্ড"
+keywords = "বাংলা কিবোর্ড, ক্ষিপ্র কিবোর্ড, বাংলা টাইপিং, Bengali keyboard, Khipro, Bangla typing"
+author = "KhiproTeam"
 
 canonifyURLs = true
 relativeURLs = false
+
+disableKinds = ["sitemap"]
 
 [markup.goldmark.renderer]
 unsafe = true
