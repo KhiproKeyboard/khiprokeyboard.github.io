@@ -57,3 +57,15 @@
   color: var(--color-primary-dark);
   text-decoration: underline;
 }
+
+/* External Link (from markdownify) */
+.external-link {
+  color: var(--color-primary);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+.external-link:hover {
+  color: var(--color-primary-dark);
+  text-decoration: underline;
+}

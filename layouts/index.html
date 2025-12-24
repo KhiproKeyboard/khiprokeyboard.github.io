@@ -13,7 +13,7 @@
                 <h1 class="hero__title">{{ $hero.main_heading }}</h1>
                 <div class="hero__description">
                     {{ range $hero.description_paragraphs }}
-                    <p>{{ . }}</p>
+                    <p>{{ . | markdownify }}</p>
                     {{ end }}
                 </div>
                 <a href="{{ $hero.cta_button.link | relURL }}" class="btn btn--primary btn--lg">
@@ -48,7 +48,7 @@
                         <i class="fas fa-chevron-down" aria-hidden="true"></i>
                     </button>
                     <div class="faq-answer" hidden>
-                        <p>{{ .answer }}</p>
+                        <p>{{ .answer | markdownify }}</p>
                     </div>
                 </div>
                 {{ end }}
@@ -64,7 +64,7 @@
                         <i class="fas fa-chevron-down" aria-hidden="true"></i>
                     </button>
                     <div class="faq-answer" hidden>
-                        <p>{{ .answer }}</p>
+                        <p>{{ .answer | markdownify }}</p>
                     </div>
                 </div>
                 {{ end }}
@@ -117,7 +117,7 @@
                                 </div>
                                 <h3 class="method-title">{{ .title }}</h3>
                             </div>
-                            <p class="method-description">{{ .description }}</p>
+                            <p class="method-description">{{ .description | markdownify }}</p>
                             <a href="{{ .link_url | relURL }}" class="btn btn--primary">{{ .link_text }}</a>
                         </div>
                         {{ end }}
@@ -158,7 +158,7 @@
                         </p>
                     </div>
                 </div>
-                <p class="repository-description">{{ .description }}</p>
+                <p class="repository-description">{{ .description | markdownify }}</p>
             </div>
             {{ end }}
         </div>
@@ -183,7 +183,7 @@
                 </div>
                 <div class="community-info">
                     <h3 class="community-name">{{ .name }}</h3>
-                    <p class="community-description">{{ .description }}</p>
+                    <p class="community-description">{{ .description | markdownify }}</p>
                 </div>
             </a>
             {{ end }}
