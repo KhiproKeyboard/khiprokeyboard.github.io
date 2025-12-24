@@ -1,5 +1,5 @@
 /* ============================================
-   MAIN - CSS Entry Point
+   MAIN CSS ENTRY POINT
+   This file is imported by Hugo - actual CSS
+   is concatenated via Hugo pipelines in baseof.html
    ============================================ */
-
-/* Hugo pipes concatenate all CSS files into this file */

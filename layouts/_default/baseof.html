@@ -46,9 +46,18 @@
     {{ $notFound := resources.Get "css/blocks/not-found.css" }}
     {{ $toc := resources.Get "css/blocks/toc.css" }}
     {{ $docs := resources.Get "css/blocks/docs.css" }}
-    {{ $css := slice $composition $base $typography $utilities $skipLink $buttons $cards $sections $header $footer $home $notFound $toc $docs | resources.Concat "css/main.css" }}
+    {{/* CSS Pipeline - split into two to work around Hugo slice bug with 13+ args */}}
+    {{ $cssSlice1 := slice $composition $base $typography $utilities $skipLink $buttons $cards $sections $header $footer }}
+    {{ $cssSlice2 := slice $home $notFound }}
+    {{ $allCss := $cssSlice1 | append $cssSlice2 }}
+    {{ $css := $allCss | resources.Concat "css/main.css" }}
     {{ $css = $css | minify | fingerprint }}
     <link rel="stylesheet" href="{{ $css.RelPermalink }}">
+    {{/* toc.css and docs.css included separately due to Hugo bug */}}
+    {{ $tocCss := $toc | minify | fingerprint }}
+    {{ $docsCss := $docs | minify | fingerprint }}
+    <link rel="stylesheet" href="{{ $tocCss.RelPermalink }}">
+    <link rel="stylesheet" href="{{ $docsCss.RelPermalink }}">
 
     <!-- Font Awesome Icons -->
     <link rel="stylesheet"
