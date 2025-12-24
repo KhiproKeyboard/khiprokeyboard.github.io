@@ -461,6 +461,16 @@ const DocsTOC = (() => {
         .querySelectorAll(`.doc-toc__link[href="#${activeId}"]`)
         .forEach((link) => {
           link.classList.add("doc-toc__link--active", "active");
+
+          // Also add active class to parent links
+          let parentItem = link.closest(".doc-toc__item")?.parentElement?.closest(".doc-toc__item");
+          while (parentItem) {
+            const parentLink = parentItem.querySelector(".doc-toc__link");
+            if (parentLink) {
+              parentLink.classList.add("doc-toc__link--active", "active");
+            }
+            parentItem = parentItem.parentElement?.closest(".doc-toc__item");
+          }
         });
     }
 
