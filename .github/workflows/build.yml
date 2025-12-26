@@ -25,6 +25,9 @@ jobs:
           submodules: recursive
           fetch-depth: 0
 
+      - name: Update submodules to latest
+        run: git submodule update --remote --recursive
+
       - name: Setup Hugo
         uses: peaceiris/actions-hugo@v3
         with:
