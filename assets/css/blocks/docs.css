@@ -640,10 +640,20 @@
 .doc-article__content .mermaid-container {
   margin: var(--space-lg) 0;
   padding: var(--space-lg);
-  background-color: var(--color-bg-2);
-  border: 1px solid var(--color-border-light);
   border-radius: var(--radius-lg);
   overflow-x: auto;
+}
+
+/* Light mode - subtle primary tint */
+[data-theme="light"] .doc-article__content .mermaid-container {
+  background-color: rgba(144, 67, 71, 0.03);
+  border: 1px solid rgba(144, 67, 71, 0.15);
+}
+
+/* Dark mode - subtle primary-light tint */
+[data-theme="dark"] .doc-article__content .mermaid-container {
+  background-color: rgba(193, 101, 106, 0.05);
+  border: 1px solid rgba(193, 101, 106, 0.2);
 }
 
 .doc-article__content .mermaid svg {
@@ -657,13 +667,13 @@
   font-family: "Baloo Da 2", sans-serif;
 }
 
-/* Theme-aware styling */
+/* Theme-aware styling for nodes */
 [data-theme="light"] .doc-article__content .mermaid .node rect,
 [data-theme="light"] .doc-article__content .mermaid .node circle,
 [data-theme="light"] .doc-article__content .mermaid .node polygon,
 [data-theme="light"] .doc-article__content .mermaid .node path {
-  fill: var(--color-bg-1);
-  stroke: var(--color-primary);
+  fill: #ffffff;
+  stroke: #904347;
   stroke-width: 2px;
 }
 
@@ -671,20 +681,36 @@
 [data-theme="dark"] .doc-article__content .mermaid .node circle,
 [data-theme="dark"] .doc-article__content .mermaid .node polygon,
 [data-theme="dark"] .doc-article__content .mermaid .node path {
-  fill: var(--color-bg-2);
-  stroke: var(--color-primary-light);
+  fill: #212121;
+  stroke: #c1656a;
   stroke-width: 2px;
 }
 
-.doc-article__content .mermaid .edgePath .path {
-  stroke: var(--color-border-medium);
+/* Edges */
+[data-theme="light"] .doc-article__content .mermaid .edgePath .path {
+  stroke: rgba(0, 0, 0, 0.2);
   stroke-width: 2px;
 }
 
+[data-theme="dark"] .doc-article__content .mermaid .edgePath .path {
+  stroke: rgba(255, 255, 255, 0.15);
+  stroke-width: 2px;
+}
+
+/* Labels */
 .doc-article__content .mermaid .edgeLabel,
 .doc-article__content .mermaid .nodeLabel {
   font-family: "Baloo Da 2", sans-serif;
-  color: var(--color-text-primary);
+}
+
+[data-theme="light"] .doc-article__content .mermaid .edgeLabel,
+[data-theme="light"] .doc-article__content .mermaid .nodeLabel {
+  color: #000000;
+}
+
+[data-theme="dark"] .doc-article__content .mermaid .edgeLabel,
+[data-theme="dark"] .doc-article__content .mermaid .nodeLabel {
+  color: #ffffff;
 }
 
 /* Mobile responsive */

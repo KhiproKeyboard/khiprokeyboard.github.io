@@ -605,6 +605,8 @@ const DocsTOC = (() => {
 const MermaidDiagrams = (() => {
   let mermaidLoaded = false;
   let mermaidInitializing = false;
+  // Store original mermaid source code for each diagram
+  const mermaidSources = new Map();
 
   const loadMermaid = async () => {
     if (mermaidLoaded || mermaidInitializing) return;
@@ -633,6 +635,13 @@ const MermaidDiagrams = (() => {
 
   const initializeMermaid = () => {
     if (!window.mermaid || !mermaidLoaded) return;
+
+    // Store original source before rendering
+    document.querySelectorAll(".mermaid").forEach((element) => {
+      const source = element.textContent;
+      const id = Array.from(document.querySelectorAll(".mermaid")).indexOf(element);
+      mermaidSources.set(id, source);
+    });
 
     mermaid.initialize({
       startOnLoad: false,
@@ -663,6 +672,18 @@ const MermaidDiagrams = (() => {
     if (!mermaidLoaded) return;
 
     const theme = getTheme();
+
+    // Reset each mermaid element to its original source
+    document.querySelectorAll(".mermaid").forEach((element, index) => {
+      const originalSource = mermaidSources.get(index);
+      if (originalSource) {
+        // Reset to original state
+        element.textContent = originalSource;
+        element.removeAttribute("data-processed");
+      }
+    });
+
+    // Reinitialize with new theme
     mermaid.initialize({
       theme: theme,
       startOnLoad: false,
@@ -675,10 +696,6 @@ const MermaidDiagrams = (() => {
         curve: "basis",
       },
       logLevel: "error",
-    });
-
-    document.querySelectorAll(".mermaid").forEach((element) => {
-      element.removeAttribute("data-processed");
     });
 
     mermaid
