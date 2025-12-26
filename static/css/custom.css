@@ -1,0 +1,17 @@
+/* 1. Trigger only on Mobile/Tablets (max-width 768px is standard for tablets/mobiles) */
+@media screen and (max-width: 768px) {
+
+    /* 2. Target the specific class we will add to your page */
+    body.mobile-small-text .content,
+    body.mobile-small-text article,
+    body.mobile-small-text main {
+        font-size: 0.7rem !important;
+        /* Force smaller size */
+        line-height: 1.5 !important;
+    }
+
+    /* Optional: Adjust headings on that page too 
+    body.mobile-small-text h1 {
+        font-size: 1.5rem !important;
+    }*/
+}
