@@ -34,7 +34,7 @@
     <!-- CSS Pipeline: Concatenate, minify, and fingerprint all CSS files -->
     {{ $composition := resources.Get "css/composition.css" }}
     {{ $base := resources.Get "css/base.css" }}
-    {{ $typography := resources.Get "css/typography.css" | resources.ExecuteAsTemplate "css/typography.processed.css" . }}
+    {{ $typography := resources.Get "css/doc-typography.css" | resources.ExecuteAsTemplate "css/doc-typography.processed.css" . }}
     {{ $utilities := resources.Get "css/utilities.css" }}
     {{ $skipLink := resources.Get "css/blocks/skip-link.css" }}
     {{ $buttons := resources.Get "css/blocks/buttons.css" }}

@@ -15,7 +15,7 @@
     <!-- CSS -->
     {{ $composition := resources.Get "css/composition.css" }}
     {{ $base := resources.Get "css/base.css" }}
-    {{ $typography := resources.Get "css/typography.css" | resources.ExecuteAsTemplate "css/typography.processed.css" site }}
+    {{ $typography := resources.Get "css/doc-typography.css" | resources.ExecuteAsTemplate "css/doc-typography.processed.css" site }}
     {{ $utilities := resources.Get "css/utilities.css" }}
     {{ $skipLink := resources.Get "css/blocks/skip-link.css" }}
     {{ $buttons := resources.Get "css/blocks/buttons.css" }}
