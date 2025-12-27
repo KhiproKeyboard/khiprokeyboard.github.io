@@ -3,10 +3,10 @@
    ============================================ */
 
 /* July Font Face Declaration */
-{{ $fontUrl := "fonts/July.woff2" | relURL }}
+{{ $fontUrl := "fonts/July.ttf" | relURL }}
 @font-face {
   font-family: "July";
-  src: url("{{ $fontUrl }}") format("woff2");
+  src: url("{{ $fontUrl }}") format("truetype");
   font-weight: normal;
   font-display: swap;
 }
