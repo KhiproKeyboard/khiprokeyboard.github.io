@@ -639,21 +639,16 @@
 
 .doc-article__content .mermaid-container {
   margin: var(--space-lg) 0;
-  padding: var(--space-lg);
+}
+
+/* Mermaid pre element - card-like styling */
+.doc-article__content .mermaid-container .mermaid {
+  background-color: var(--color-card-bg);
   border-radius: var(--radius-lg);
-  overflow-x: auto;
-}
-
-/* Light mode - subtle primary tint */
-[data-theme="light"] .doc-article__content .mermaid-container {
-  background-color: rgba(144, 67, 71, 0.03);
-  border: 1px solid rgba(144, 67, 71, 0.15);
-}
-
-/* Dark mode - subtle primary-light tint */
-[data-theme="dark"] .doc-article__content .mermaid-container {
-  background-color: rgba(193, 101, 106, 0.05);
-  border: 1px solid rgba(193, 101, 106, 0.2);
+  padding: var(--space-lg);
+  box-shadow: var(--shadow-md);
+  transition: all var(--transition-base);
+  font-family: "Baloo Da 2", sans-serif;
 }
 
 .doc-article__content .mermaid svg {
@@ -661,10 +656,6 @@
   height: auto;
   display: block;
   margin: 0 auto;
-}
-
-.doc-article__content .mermaid {
-  font-family: "Baloo Da 2", sans-serif;
 }
 
 /* Theme-aware styling for nodes */
@@ -715,11 +706,7 @@
 
 /* Mobile responsive */
 @media (max-width: 768px) {
-  .doc-article__content .mermaid-container {
+  .doc-article__content .mermaid-container .mermaid {
     padding: var(--space-md);
-    margin: var(--space-md) calc(-1 * var(--space-md));
-    border-radius: 0;
-    border-left: none;
-    border-right: none;
   }
 }
