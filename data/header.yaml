@@ -4,7 +4,8 @@ home_aria_label: "হোম"
 
 dark_mode_icon: "fas fa-moon"
 light_mode_icon: "fas fa-sun"
-dark_mode_aria_label: "ডার্ক মোড"
+system_mode_icon: "fas fa-desktop"
+dark_mode_aria_label: "থিম পরিবর্তন"
 
 mobile_menu_icon: "fas fa-bars"
 mobile_menu_aria_label: "মেনু"

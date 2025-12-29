@@ -107,7 +107,24 @@
   width: 100%;
 }
 
-/* Theme Toggle Button */
+.theme-toggle [data-theme-icon-dark],
+.theme-toggle [data-theme-icon-light],
+.theme-toggle [data-theme-icon-system] {
+  display: none;
+}
+
+html[data-theme="dark"] .theme-toggle [data-theme-icon-dark] {
+  display: inline-block;
+}
+
+html[data-theme="light"] .theme-toggle [data-theme-icon-light] {
+  display: inline-block;
+}
+
+html[data-theme="system"] .theme-toggle [data-theme-icon-system] {
+  display: inline-block;
+}
+
 .theme-toggle {
   display: flex;
   align-items: center;
@@ -120,18 +137,6 @@
 
 .theme-toggle:hover {
   color: #ffffff;
-}
-
-.theme-toggle [data-theme-icon-light] {
-  display: none;
-}
-
-[data-theme="dark"] .theme-toggle [data-theme-icon-dark] {
-  display: none;
-}
-
-[data-theme="dark"] .theme-toggle [data-theme-icon-light] {
-  display: inline-block;
 }
 
 /* Mobile Navigation */

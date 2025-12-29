@@ -2,12 +2,12 @@
     <nav class="nav nav--desktop" role="navigation" aria-label="প্রধান নেভিগেশন">
         <div class="u-container">
             <div class="nav__inner">
-                <!-- Home Icon -->
+                <!-- Home -->
                 <a href="{{ site.Data.header.home_link | relURL }}" class="nav__home" aria-label="{{ site.Data.header.home_aria_label }}">
                     <i class="{{ site.Data.header.home_icon }}"></i>
                 </a>
 
-                <!-- Navigation Menu -->
+                <!-- Menu -->
                 <ul class="nav__menu">
                     {{ range site.Data.header.menu_items }}
                     <li class="nav__item">
@@ -16,7 +16,7 @@
                     {{ end }}
                 </ul>
 
-                <!-- Dark Mode Toggle -->
+                <!-- Theme Toggle -->
                 <button
                     class="theme-toggle"
                     type="button"
@@ -24,15 +24,16 @@
                     data-theme-toggle>
                     <i class="{{ site.Data.header.dark_mode_icon }}" data-theme-icon-dark></i>
                     <i class="{{ site.Data.header.light_mode_icon }}" data-theme-icon-light></i>
+                    <i class="{{ site.Data.header.system_mode_icon }}" data-theme-icon-system></i>
                 </button>
             </div>
         </div>
     </nav>
 
-    <!-- Mobile Navigation -->
+    <!-- Mobile Nav -->
     <nav class="nav nav--mobile" role="navigation" aria-label="মোবাইল নেভিগেশন">
         <div class="nav__mobile-inner">
-            <!-- Dark Mode Toggle -->
+            <!-- Theme Toggle -->
             <button
                 class="theme-toggle"
                 type="button"
@@ -40,14 +41,15 @@
                 data-theme-toggle>
                 <i class="{{ site.Data.header.dark_mode_icon }}" data-theme-icon-dark></i>
                 <i class="{{ site.Data.header.light_mode_icon }}" data-theme-icon-light></i>
+                <i class="{{ site.Data.header.system_mode_icon }}" data-theme-icon-system></i>
             </button>
 
-            <!-- Home Icon -->
+            <!-- Home -->
             <a href="{{ site.Data.header.home_link | relURL }}" class="nav__home" aria-label="{{ site.Data.header.home_aria_label }}">
                 <i class="{{ site.Data.header.home_icon }}"></i>
             </a>
 
-            <!-- Mobile Menu Toggle -->
+            <!-- Menu Toggle -->
             <button
                 class="mobile-menu-toggle"
                 type="button"
@@ -59,7 +61,7 @@
             </button>
         </div>
 
-        <!-- Mobile Menu Drawer -->
+        <!-- Menu Drawer -->
         <div class="mobile-menu" id="mobile-menu" hidden>
             <div class="mobile-menu__overlay" data-mobile-menu-overlay></div>
             <div class="mobile-menu__panel">

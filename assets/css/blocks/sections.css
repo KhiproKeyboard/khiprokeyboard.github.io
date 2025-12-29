@@ -1,8 +1,5 @@
-/* ============================================
-   SECTIONS - Layout Components
-   ============================================ */
+/* Section Layout */
 
-/* Section Container */
 .section {
   padding-block: var(--space-2xl);
 }

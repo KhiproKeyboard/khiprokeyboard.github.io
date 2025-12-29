@@ -3,72 +3,83 @@
  * Modular, dependency-free vanilla JS
  */
 
-// ============================================
-// THEME TOGGLE MODULE
-// ============================================
 const ThemeToggle = (() => {
   const STORAGE_KEY = "khipro-theme";
-  const THEMES = { LIGHT: "light", DARK: "dark" };
+  const THEMES = { LIGHT: "light", DARK: "dark", SYSTEM: "system" };
 
-  const getPreferredTheme = () => {
+  const getSystemPreference = () => {
+    if (
+      window.matchMedia &&
+      window.matchMedia("(prefers-color-scheme: dark)").matches
+    ) {
+      return THEMES.DARK;
+    }
+    return THEMES.LIGHT;
+  };
+
+  const resolveTheme = (theme) => {
+    if (theme === THEMES.SYSTEM) {
+      return getSystemPreference();
+    }
+    return theme;
+  };
+
+  const getStoredTheme = () => {
     const stored = localStorage.getItem(STORAGE_KEY);
     if (stored && Object.values(THEMES).includes(stored)) {
       return stored;
     }
-    // Check system preference first, default to DARK if not available
-    if (
-      window.matchMedia &&
-      window.matchMedia("(prefers-color-scheme: light)").matches
-    ) {
-      return THEMES.LIGHT;
-    }
-    return THEMES.DARK; // Default to dark
+    return THEMES.SYSTEM;
   };
 
-  const setTheme = (theme) => {
-    document.documentElement.setAttribute("data-theme", theme);
-    localStorage.setItem(STORAGE_KEY, theme);
-    // Notify other modules of theme change
+  const setTheme = (themePreference) => {
+    localStorage.setItem(STORAGE_KEY, themePreference);
+    document.documentElement.setAttribute("data-theme", themePreference);
+
+    const systemPref = getSystemPreference();
+    document.documentElement.setAttribute("data-system-pref", systemPref);
+
+    const actualTheme = resolveTheme(themePreference);
+    document.documentElement.setAttribute("data-actual-theme", actualTheme);
+
     window.dispatchEvent(
-      new CustomEvent("themeChanged", { detail: { theme } })
+      new CustomEvent("themeChanged", { detail: { theme: actualTheme, preference: themePreference } })
     );
   };
 
   const init = () => {
-    const theme = getPreferredTheme();
-    setTheme(theme);
+    const themePreference = getStoredTheme();
+    setTheme(themePreference);
 
-    // Listen for system theme changes
-    window
-      .matchMedia("(prefers-color-scheme: dark)")
-      .addEventListener("change", (e) => {
-        if (!localStorage.getItem(STORAGE_KEY)) {
-          setTheme(e.matches ? THEMES.DARK : THEMES.LIGHT);
-        }
-      });
-
-    // Also listen for light scheme changes to handle all cases
-    window
-      .matchMedia("(prefers-color-scheme: light)")
-      .addEventListener("change", (e) => {
-        if (!localStorage.getItem(STORAGE_KEY)) {
-          setTheme(e.matches ? THEMES.LIGHT : THEMES.DARK);
-        }
-      });
+    const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
+    mediaQuery.addEventListener("change", () => {
+      const currentPreference = getStoredTheme();
+      if (currentPreference === THEMES.SYSTEM) {
+        setTheme(THEMES.SYSTEM);
+      }
+      document.documentElement.setAttribute("data-system-pref", getSystemPreference());
+    });
   };
 
   const toggle = () => {
     const current = document.documentElement.getAttribute("data-theme");
-    const newTheme = current === THEMES.DARK ? THEMES.LIGHT : THEMES.DARK;
+    let newTheme;
+
+    if (current === THEMES.SYSTEM) {
+      newTheme = THEMES.LIGHT;
+    } else if (current === THEMES.LIGHT) {
+      newTheme = THEMES.DARK;
+    } else {
+      newTheme = THEMES.SYSTEM;
+    }
+
     setTheme(newTheme);
   };
 
   return { init, toggle };
 })();
 
-// ============================================
 // MOBILE MENU MODULE
-// ============================================
 const MobileMenu = (() => {
   let toggleButton = null;
   let menu = null;
@@ -127,9 +138,7 @@ const MobileMenu = (() => {
   return { init };
 })();
 
-// ============================================
 // FAQ ACCORDION MODULE
-// ============================================
 const FAQAccordion = (() => {
   const init = () => {
     const faqItems = document.querySelectorAll(".faq-question");
@@ -160,9 +169,7 @@ const FAQAccordion = (() => {
   return { init };
 })();
 
-// ============================================
 // TABS MODULE
-// ============================================
 const Tabs = (() => {
   const init = () => {
     const tabButtons = document.querySelectorAll(".tab-button");
@@ -198,9 +205,7 @@ const Tabs = (() => {
   return { init };
 })();
 
-// ============================================
 // DOCS TOC MODULE - Collapsible Tree Implementation
-// ============================================
 const DocsTOC = (() => {
   class TreeTOC {
     constructor() {
@@ -595,13 +600,9 @@ const DocsTOC = (() => {
   return { init };
 })();
 
-// ============================================
 // RESPONSIVE TABLES MODULE
-// ============================================
 
-// ============================================
 // MERMAID DIAGRAM MODULE
-// ============================================
 const MermaidDiagrams = (() => {
   let mermaidLoaded = false;
   let mermaidInitializing = false;
@@ -629,8 +630,8 @@ const MermaidDiagrams = (() => {
   };
 
   const getTheme = () => {
-    const currentTheme = document.documentElement.getAttribute("data-theme");
-    return currentTheme === "dark" ? "dark" : "default";
+    const actualTheme = document.documentElement.getAttribute("data-actual-theme");
+    return actualTheme === "dark" ? "dark" : "default";
   };
 
   const initializeMermaid = () => {
@@ -720,9 +721,7 @@ const MermaidDiagrams = (() => {
   return { init };
 })();
 
-// ============================================
 // CODE COPY BUTTON MODULE
-// ============================================
 const CodeCopyButton = (() => {
   const copyToClipboard = async (text, button) => {
     try {
@@ -837,9 +836,7 @@ const CodeCopyButton = (() => {
   return { init };
 })();
 
-// ============================================
 // RESPONSIVE TABLES MODULE
-// ============================================
 const ResponsiveTables = (() => {
   const wrapTables = () => {
     const tables = document.querySelectorAll(".doc-article__content table");
@@ -888,9 +885,7 @@ const ResponsiveTables = (() => {
   return { init };
 })();
 
-// ============================================
 // INITIALIZATION
-// ============================================
 const App = (() => {
   const init = () => {
     ThemeToggle.init();

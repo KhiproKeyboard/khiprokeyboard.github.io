@@ -1,6 +1,4 @@
-/* ============================================
-   UTILITIES - Single-Purpose Classes
-   ============================================ */
+/* Utility Classes */
 
 /* Container */
 .u-container {
@@ -22,7 +20,7 @@
   }
 }
 
-/* Wide Container - for sections with cards */
+/* Wide Container */
 .u-container--wide {
   width: 100%;
   max-width: 80rem;
@@ -47,7 +45,7 @@
 .u-text-left { text-align: left; }
 .u-text-right { text-align: right; }
 
-/* Spacing - Padding */
+/* Padding */
 .u-py-sm { padding-block: var(--space-sm); }
 .u-py-md { padding-block: var(--space-md); }
 .u-py-lg { padding-block: var(--space-lg); }
@@ -59,7 +57,7 @@
 .u-px-md { padding-inline: var(--space-md); }
 .u-px-lg { padding-inline: var(--space-lg); }
 
-/* Spacing - Margin */
+/* Margin */
 .u-mb-sm { margin-bottom: var(--space-sm); }
 .u-mb-md { margin-bottom: var(--space-md); }
 .u-mb-lg { margin-bottom: var(--space-lg); }
@@ -73,7 +71,7 @@
 .u-inline-flex { display: inline-flex; }
 .u-grid { display: grid; }
 
-/* Visually Hidden (for screen readers) */
+/* Screen Reader Only */
 .u-sr-only {
   position: absolute;
   width: 1px;

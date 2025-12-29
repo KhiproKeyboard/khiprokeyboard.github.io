@@ -1,10 +1,6 @@
-/* ============================================
-   DOCS LAYOUT - Fresh Redesign
-   ============================================ */
+/* DOCS LAYOUT - Fresh Redesign */
 
-/* ============================================
-   DOCUMENT LAYOUT GRID
-   ============================================ */
+/* DOCUMENT LAYOUT GRID */
 
 .doc-layout {
   display: grid;
@@ -30,17 +26,13 @@
   }
 }
 
-/* ============================================
-   DOC MAIN (Content Area)
-   ============================================ */
+/* DOC MAIN (Content Area) */
 
 .doc-main {
   min-width: 0;
 }
 
-/* ============================================
-   DOC ARTICLE
-   ============================================ */
+/* DOC ARTICLE */
 
 .doc-article {
   background: var(--color-card-bg);
@@ -213,9 +205,7 @@
   color: #e0e0e0;
 }
 
-/* ============================================
-   CODE COPY BUTTON
-   ============================================ */
+/* CODE COPY BUTTON */
 
 .doc-article__content pre {
   position: relative;
@@ -260,9 +250,6 @@
   transform: scale(0.95);
 }
 
-.code-copy-btn i {
-  /* Typography in doc-typography.css */
-}
 
 .code-copy-btn--copied {
   background-color: rgba(16, 185, 129, 0.2);
@@ -407,9 +394,7 @@
   color: var(--color-text-secondary);
 }
 
-/* ============================================
-   DOC NAVIGATION (Prev/Next)
-   ============================================ */
+/* DOC NAVIGATION (Prev/Next) */
 
 .doc-nav {
   display: grid;
@@ -492,9 +477,7 @@
   display: block;
 }
 
-/* ============================================
-   DOC ALERT
-   ============================================ */
+/* DOC ALERT */
 
 .doc-alert {
   display: flex;
@@ -633,9 +616,7 @@
   /* Typography in doc-typography.css */
 }
 
-/* ============================================
-   MERMAID DIAGRAMS
-   ============================================ */
+/* MERMAID DIAGRAMS */
 
 .doc-article__content .mermaid-container {
   margin: var(--space-lg) 0;

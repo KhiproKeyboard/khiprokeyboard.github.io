@@ -1,10 +1,6 @@
-/* ============================================
-   TOC - Table of Contents (Collapsible Tree)
-   ============================================ */
+/* Table of Contents */
 
-/* ============================================
-   TOC CUSTOM PROPERTIES
-   ============================================ */
+/* Custom Properties */
 
 .doc-toc {
   --toc-indent-size: 0.75rem;
@@ -13,9 +9,7 @@
   --toc-active-color: var(--color-primary);
 }
 
-/* ============================================
-   SIDEBAR TOC (Desktop)
-   ============================================ */
+/* Sidebar (Desktop) */
 
 .doc-sidebar {
   position: relative;
@@ -49,9 +43,7 @@
   }
 }
 
-/* ============================================
-   TOC CARD
-   ============================================ */
+/* TOC CARD */
 
 .doc-toc {
   background: var(--color-card-bg);
@@ -103,9 +95,7 @@
   margin: 0;
 }
 
-/* ============================================
-   TOC NAVIGATION
-   ============================================ */
+/* TOC NAVIGATION */
 
 .doc-toc__nav {
   display: flex;
@@ -125,9 +115,7 @@
   position: relative;
 }
 
-/* ============================================
-   TOC LINKS
-   ============================================ */
+/* TOC LINKS */
 
 .doc-toc__link {
   display: flex;
@@ -169,9 +157,7 @@
   color: var(--color-primary);
 }
 
-/* ============================================
-   TOC ICONS - Arrow, Dot, Folder, File, Angle
-   ============================================ */
+/* TOC ICONS - Arrow, Dot, Folder, File, Angle */
 
 .doc-toc__indicators,
 .doc-toc__level-icon,
@@ -235,9 +221,7 @@
   font-size: 0.7rem;
 }
 
-/* ============================================
-   TOC LEVELS - Indentation
-   ============================================ */
+/* TOC LEVELS - Indentation */
 
 .doc-toc__item--level-1>.doc-toc__link {
   font-size: 1rem;
@@ -265,9 +249,7 @@
   padding-left: calc(var(--toc-indent-size) * 3 + 0.75rem);
 }
 
-/* ============================================
-   COLLAPSIBLE CHILDREN
-   ============================================ */
+/* COLLAPSIBLE CHILDREN */
 
 .doc-toc__children {
   overflow: hidden;
@@ -279,9 +261,7 @@
   max-height: 2000px;
 }
 
-/* ============================================
-   TOC EMPTY STATE
-   ============================================ */
+/* TOC EMPTY STATE */
 
 .doc-toc__empty {
   display: flex;
@@ -310,9 +290,7 @@
   color: var(--color-text-secondary);
 }
 
-/* ============================================
-   MOBILE TOC DRAWER
-   ============================================ */
+/* MOBILE TOC DRAWER */
 
 .doc-toc-drawer {
   position: fixed;
@@ -427,9 +405,7 @@
   display: none;
 }
 
-/* ============================================
-   MOBILE TOC BUTTON (FAB) - Top position
-   ============================================ */
+/* MOBILE TOC BUTTON (FAB) - Top position */
 
 .doc-toc-fab {
   position: fixed;
@@ -464,9 +440,7 @@
   }
 }
 
-/* ============================================
-   MOBILE STYLES
-   ============================================ */
+/* MOBILE STYLES */
 
 @media (max-width: 1023px) {
   .doc-toc__link {
