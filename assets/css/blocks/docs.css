@@ -523,18 +523,18 @@
 }
 
 .doc-alert--note {
-  background-color: rgba(59, 130, 246, 0.05);
-  border: 1px solid rgba(59, 130, 246, 0.2);
-  border-left: 4px solid #3b82f6;
+  background-color: rgba(31, 111, 235, 0.05);
+  border: 1px solid rgba(31, 111, 235, 0.2);
+  border-left: 4px solid #1f6feb;
 }
 
 .doc-alert--note .doc-alert__icon {
-  background-color: rgba(59, 130, 246, 0.1);
-  color: #3b82f6;
+  background-color: rgba(31, 111, 235, 0.1);
+  color: #1f6feb;
 }
 
 .doc-alert--note .doc-alert__content strong {
-  color: #1d4ed8;
+  color: #1f6feb;
 }
 
 .doc-alert--tip {
@@ -549,52 +549,52 @@
 }
 
 .doc-alert--tip .doc-alert__content strong {
-  color: #22863a;
+  color: #3fb950;
 }
 
 .doc-alert--important {
-  background-color: rgba(139, 92, 246, 0.05);
-  border: 1px solid rgba(139, 92, 246, 0.2);
-  border-left: 4px solid #8b5cf6;
+  background-color: rgba(171, 125, 248, 0.05);
+  border: 1px solid rgba(171, 125, 248, 0.2);
+  border-left: 4px solid #ab7df8;
 }
 
 .doc-alert--important .doc-alert__icon {
-  background-color: rgba(139, 92, 246, 0.1);
-  color: #8b5cf6;
+  background-color: rgba(171, 125, 248, 0.1);
+  color: #ab7df8;
 }
 
 .doc-alert--important .doc-alert__content strong {
-  color: #6d28d9;
+  color: #ab7df8;
 }
 
 .doc-alert--warning {
-  background-color: rgba(245, 158, 11, 0.05);
-  border: 1px solid rgba(245, 158, 11, 0.2);
-  border-left: 4px solid #f59e0b;
+  background-color: rgba(158, 117, 31, 0.05);
+  border: 1px solid rgba(158, 117, 31, 0.2);
+  border-left: 4px solid #9e751f;
 }
 
 .doc-alert--warning .doc-alert__icon {
-  background-color: rgba(245, 158, 11, 0.1);
-  color: #f59e0b;
+  background-color: rgba(158, 117, 31, 0.1);
+  color: #9e751f;
 }
 
 .doc-alert--warning .doc-alert__content strong {
-  color: #b45309;
+  color: #9e751f;
 }
 
 .doc-alert--caution {
-  background-color: rgba(239, 68, 68, 0.05);
-  border: 1px solid rgba(239, 68, 68, 0.2);
-  border-left: 4px solid #ef4444;
+  background-color: rgba(218, 54, 51, 0.05);
+  border: 1px solid rgba(218, 54, 51, 0.2);
+  border-left: 4px solid #da3633;
 }
 
 .doc-alert--caution .doc-alert__icon {
-  background-color: rgba(239, 68, 68, 0.1);
-  color: #ef4444;
+  background-color: rgba(218, 54, 51, 0.1);
+  color: #da3633;
 }
 
 .doc-alert--caution .doc-alert__content strong {
-  color: #b91c1c;
+  color: #da3633;
 }
 
 /* Mobile responsive alert sizes */
