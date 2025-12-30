@@ -454,12 +454,21 @@ const DocsTOC = (() => {
     }
 
     updateActiveState(activeId) {
+      // Store previously active links for collapse
+      const previouslyActiveLinks = Array.from(
+        document.querySelectorAll(".doc-toc__link--active, .doc-toc__link.active")
+      );
+
       // Remove active class from all links
       document.querySelectorAll(".doc-toc__link").forEach((link) => {
         link.classList.remove("doc-toc__link--active", "active");
       });
 
-      if (!activeId) return;
+      if (!activeId) {
+        // Collapse all previously expanded items when no active section
+        this.collapsePreviouslyActive(previouslyActiveLinks);
+        return;
+      }
 
       // Find and activate the matching link
       document
@@ -467,16 +476,93 @@ const DocsTOC = (() => {
         .forEach((link) => {
           link.classList.add("doc-toc__link--active", "active");
 
-          // Also add active class to parent links
-          let parentItem = link.closest(".doc-toc__item")?.parentElement?.closest(".doc-toc__item");
+          // Expand the active item itself if it has children
+          const activeItem = link.closest(".doc-toc__item");
+          if (activeItem && activeItem.classList.contains("doc-toc__item--has-children")) {
+            this.expandItem(activeItem);
+          }
+
+          // Expand all parent items
+          let parentItem = activeItem?.parentElement?.closest(".doc-toc__item");
           while (parentItem) {
             const parentLink = parentItem.querySelector(".doc-toc__link");
             if (parentLink) {
               parentLink.classList.add("doc-toc__link--active", "active");
             }
+            // Auto-expand parent if it has children
+            if (parentItem.classList.contains("doc-toc__item--has-children")) {
+              this.expandItem(parentItem);
+            }
             parentItem = parentItem.parentElement?.closest(".doc-toc__item");
           }
         });
+
+      // Collapse previously active items that are no longer active
+      this.collapsePreviouslyActive(previouslyActiveLinks);
+    }
+
+    collapsePreviouslyActive(previouslyActiveLinks) {
+      previouslyActiveLinks.forEach((oldLink) => {
+        // Skip if this link is still active
+        if (oldLink.classList.contains("doc-toc__link--active") ||
+            oldLink.classList.contains("active")) {
+          return;
+        }
+
+        // Find the parent item and collapse it if it's no longer in the active path
+        const item = oldLink.closest(".doc-toc__item");
+        if (!item) return;
+
+        // Only collapse if this item has children and is currently expanded
+        if (item.classList.contains("doc-toc__item--has-children") &&
+            item.classList.contains("doc-toc__item--expanded")) {
+          this.collapseItem(item);
+        }
+      });
+    }
+
+    expandItem(item) {
+      if (!item.classList.contains("doc-toc__item--expanded")) {
+        const children = item.querySelector("[data-toc-children]");
+        const folderIcon = item.querySelector("[data-toc-folder] i");
+
+        if (children) {
+          children.classList.remove("doc-toc__children--collapsed");
+          children.classList.add("doc-toc__children--expanded");
+        }
+
+        item.classList.add("doc-toc__item--expanded");
+
+        if (folderIcon) {
+          folderIcon.classList.remove("fa-folder");
+          folderIcon.classList.add("fa-folder-open");
+        }
+
+        // Sync with other TOC instances
+        this.syncTOCState(item);
+      }
+    }
+
+    collapseItem(item) {
+      const children = item.querySelector("[data-toc-children]");
+      const folderIcon = item.querySelector("[data-toc-folder] i");
+
+      if (!children) return;
+
+      const isExpanded = item.classList.contains("doc-toc__item--expanded");
+      if (!isExpanded) return;
+
+      children.classList.remove("doc-toc__children--expanded");
+      children.classList.add("doc-toc__children--collapsed");
+      item.classList.remove("doc-toc__item--expanded");
+
+      if (folderIcon) {
+        folderIcon.classList.remove("fa-folder-open");
+        folderIcon.classList.add("fa-folder");
+      }
+
+      // Sync with other TOC instances
+      this.syncTOCState(item);
     }
 
     navigateToSection(linkId) {
