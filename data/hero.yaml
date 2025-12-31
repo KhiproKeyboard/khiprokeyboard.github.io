@@ -5,5 +5,5 @@ description_paragraphs:
 hero_image: "img/khipro-logo.webp"
 hero_image_alt: "ক্ষিপ্র লোগো"
 cta_button:
-  text: "ক্ষিপ্র ব্যবহার নির্দেশিকা"
-  link: "documentation/"
+  text: "ক্ষিপ্র কুইকস্টার্ট গাইড"
+  link: "quickstart/"
