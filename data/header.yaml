@@ -14,16 +14,16 @@ menu_items:
   - name: "এফ-এ-কিউ"
     url: "#faq"
     weight: 10
-  - name: "ইনস্টলেশন"
-    url: "#installation"
-    weight: 15
-  - name: "ডকুমেন্টেশন"
-    url: "documentation/"
-    weight: 20
   - name: "কুইকস্টার্ট"
     url: "quickstart/"
+    weight: 15
+  - name: "ইনস্টলেশন"
+    url: "#installation"
+    weight: 20
+  - name: "ডকুমেন্টেশন"
+    url: "documentation/"
     weight: 25
-  - name: "রিপোজিটরি"
+  - name: "সোর্স কোড"
     url: "#repositories"
     weight: 30
   - name: "কমিউনিটি"
