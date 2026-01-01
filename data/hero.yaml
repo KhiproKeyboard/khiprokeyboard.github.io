@@ -5,7 +5,9 @@ description_paragraphs:
 hero_image: "img/khipro-logo.webp"
 hero_image_alt: "ক্ষিপ্র লোগো"
 cta_buttons:
-  - text: "ক্ষিপ্র কুইকস্টার্ট গাইড"
+  -
+    text: "ক্ষিপ্র কুইকস্টার্ট গাইড"
     link: "quickstart/"
-  - text: "লাইভ ট্রাই করুন"
+  -
+    text: "লাইভ ট্রাই করুন"
     link: "quickstart/#libh-tipn-dm"
