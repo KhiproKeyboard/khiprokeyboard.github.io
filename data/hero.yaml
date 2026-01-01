@@ -4,10 +4,9 @@ description_paragraphs:
   - "ক্ষিপ্রতে লোয়ারকেস ইনপুট ব্যবহার করে Shift ছাড়াই দ্রুত ও স্বচ্ছন্দে বাংলা লেখা যায়। প্রয়োজনীয় সব চিহ্ন হাত না সরিয়েই টাইপ করা সম্ভব।"
 hero_image: "img/khipro-logo.webp"
 hero_image_alt: "ক্ষিপ্র লোগো"
-cta_buttons:
-  -
-    text: "ক্ষিপ্র কুইকস্টার্ট গাইড"
-    link: "quickstart/"
-  -
-    text: "লাইভ ট্রাই করুন"
-    link: "quickstart/#libh-tipn-dm"
+cta_button:
+  text: "ক্ষিপ্র কুইকস্টার্ট গাইড"
+  link: "quickstart/"
+cta_button:
+  text: "লাইভ ট্রাই করুন"
+  link: "quickstart/#libh-tipn-dm"
