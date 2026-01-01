@@ -7,6 +7,3 @@ hero_image_alt: "ক্ষিপ্র লোগো"
 cta_button:
   text: "ক্ষিপ্র কুইকস্টার্ট গাইড"
   link: "quickstart/"
-cta_button:
-  text: "লাইভ ট্রাই করুন"
-  link: "quickstart/#libh-tipn-dm"
