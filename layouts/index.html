@@ -16,9 +16,13 @@
                     <p>{{ . | markdownify }}</p>
                     {{ end }}
                 </div>
-                <a href="{{ $hero.cta_button.link | relURL }}" class="btn btn--primary btn--lg">
-                    {{ $hero.cta_button.text }}
-                </a>
+                <div class="hero__actions">
+                    {{ range $hero.buttons }}
+                    <a href="{{ .link | relURL }}" class="btn {{ if .primary }}btn--primary{{ else }}btn--default{{ end }} btn--lg">
+                        {{ .text }}
+                    </a>
+                    {{ end }}
+                </div>
             </div>
             <div class="hero__image">
                 <img src="{{ $hero.hero_image | relURL }}" alt="{{ $hero.hero_image_alt }}" loading="lazy">
