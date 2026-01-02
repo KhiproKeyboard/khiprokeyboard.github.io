@@ -505,7 +505,7 @@ const DocsTOC = (() => {
       previouslyActiveLinks.forEach((oldLink) => {
         // Skip if this link is still active
         if (oldLink.classList.contains("doc-toc__link--active") ||
-            oldLink.classList.contains("active")) {
+          oldLink.classList.contains("active")) {
           return;
         }
 
@@ -515,7 +515,7 @@ const DocsTOC = (() => {
 
         // Only collapse if this item has children and is currently expanded
         if (item.classList.contains("doc-toc__item--has-children") &&
-            item.classList.contains("doc-toc__item--expanded")) {
+          item.classList.contains("doc-toc__item--expanded")) {
           this.collapseItem(item);
         }
       });
@@ -570,8 +570,8 @@ const DocsTOC = (() => {
         const element = document.getElementById(linkId);
         if (element) {
           const header = document.querySelector(".header");
-          const headerHeight = header ? header.offsetHeight : 80;
-          const offset = element.offsetTop - headerHeight - 20;
+          const headerHeight = header ? header.offsetHeight : 64;
+          const offset = element.offsetTop - 80;
 
           window.scrollTo({
             top: Math.max(0, offset),
@@ -593,7 +593,7 @@ const DocsTOC = (() => {
               ".doc-article__content h1[id], .doc-article__content h2[id], .doc-article__content h3[id], .doc-article__content h4[id]"
             );
             const header = document.querySelector(".header");
-            const headerHeight = header ? header.offsetHeight : 80;
+            const headerHeight = header ? header.offsetHeight : 64;
             const scrollPos = window.scrollY + headerHeight + 100;
 
             let currentSection = null;

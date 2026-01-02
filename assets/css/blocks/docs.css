@@ -129,7 +129,7 @@
 .doc-article__content h6 {
   margin-top: var(--space-xl);
   margin-bottom: var(--space-md);
-  scroll-margin-top: var(--space-2xl);
+  scroll-margin-top: 5rem;
   color: var(--color-text-primary);
 }
 
