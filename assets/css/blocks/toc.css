@@ -321,6 +321,7 @@
   align-self: stretch;
   width: 100%;
   max-width: 320px;
+  height: 100vh;
   background-color: var(--color-card-bg);
   display: flex;
   flex-direction: column;
